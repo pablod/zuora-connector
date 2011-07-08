@@ -90,15 +90,35 @@
           <bootclasspath>${sun.boot.class.path}</bootclasspath>
           <additionalparam>
             -quiet
-            -federate JDK http://download.oracle.com/javase/6/docs/api/index.html?
+            -federate JDK
+            http://download.oracle.com/javase/6/docs/api/index.html?
             -federationxml JDK
             http://doclava.googlecode.com/svn/static/api/openjdk-6.xml
             -hdf project.name "${project.name}"
-            -d ${project.build.directory}/apidocs
+            -d
+            ${project.build.directory}/apidocs
                     </additionalparam>
           <useStandardDocletOptions>false</useStandardDocletOptions>
           <additionalJOption>-J-Xmx1024m</additionalJOption>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>axistools-maven-plugin</artifactId>
+        <version>1.4</version>
+        <configuration>
+          <sourceDirectory>src/main/resources</sourceDirectory>
+          <wsdlFiles>
+            <wsdlFile>zuora-29.wsdl</wsdlFile>
+          </wsdlFiles>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>wsdl2java</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
     <resources>
@@ -142,6 +162,11 @@
       <artifactId>mule-tests-functional</artifactId>
       <version>${mule.version}</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mule.transports</groupId>
+      <artifactId>mule-transport-axis</artifactId>
+      <version>${mule.version}</version>
     </dependency>
   </dependencies>
 

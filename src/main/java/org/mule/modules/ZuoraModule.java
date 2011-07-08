@@ -25,6 +25,8 @@ import org.mule.api.annotations.Module;
 import org.mule.api.annotations.Processor;
 import org.mule.api.annotations.lifecycle.Start;
 
+import com.zuora.api.object.ZObject;
+
 import java.util.List;
 
 @Module(name="zuora",
@@ -44,7 +46,7 @@ public class ZuoraModule
      * @param subscriptions
      */
     @Processor
-    public void subscribe(List<Object> subscriptions){
+    public void subscribe(List<ZObject> subscriptions){
         
     }
 
@@ -59,7 +61,7 @@ public class ZuoraModule
      * @param zobjects
      */
     @Processor
-    public void create(List<Object> zobjects){
+    public void create(List<ZObject> zobjects){
         
     }
     
@@ -70,7 +72,7 @@ public class ZuoraModule
      * @param zobjects
      */
     @Processor
-    public void generate(List<Object> zobjects){
+    public void generate(List<ZObject> zobjects){
         
     }
 
@@ -81,7 +83,7 @@ public class ZuoraModule
      * @param zobjects
      */
     @Processor
-    public void update(List<Object> zobjects)
+    public void update(List<ZObject> zobjects)
     {
 
     }
@@ -93,7 +95,7 @@ public class ZuoraModule
      * @param zobjects
      */
     @Processor
-    public void delete(List<Object> zobjects)
+    public void delete(List<ZObject> zobjects)
     {
 
     }
@@ -129,7 +131,7 @@ public class ZuoraModule
      * @param amendaments
      */
     @Processor
-    public void amend(List<Object> amendaments)
+    public void amend(List<ZObject> amendaments)
     {
 
     }    
