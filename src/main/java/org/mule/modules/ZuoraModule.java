@@ -23,7 +23,9 @@ package org.mule.modules;
 import org.mule.api.annotations.Configurable;
 import org.mule.api.annotations.Module;
 import org.mule.api.annotations.Processor;
-import org.mule.api.annotations.lifecycle.Start;
+import org.mule.api.annotations.param.Optional;
+import org.mule.modules.zuora.api.ZuoraClient;
+import org.mule.modules.zuora.api.ZuoraException;
 
 import com.zuora.api.object.ZObject;
 
@@ -32,8 +34,11 @@ import java.util.List;
 @Module(name="zuora",
         namespace="http://repository.mulesoft.org/releases/org/mule/modules/mule-module-zuora",
         schemaLocation="http://repository.mulesoft.org/releases/org/mule/modules/mule-module-zuora/1.0-SNAPSHOT/mule-zuora.xsd")
-public class ZuoraModule
+public class ZuoraModule 
 {
+    @Configurable
+    @Optional
+    private ZuoraClient<ZuoraException> client;
     @Configurable
     private String username;
     @Configurable
@@ -46,7 +51,8 @@ public class ZuoraModule
      * @param subscriptions
      */
     @Processor
-    public void subscribe(List<ZObject> subscriptions){
+    public void subscribe(List<ZObject> subscriptions)
+    {
         
     }
 
@@ -61,8 +67,9 @@ public class ZuoraModule
      * @param zobjects
      */
     @Processor
-    public void create(List<ZObject> zobjects){
-        
+    public void create(List<ZObject> zobjects)
+    {
+
     }
     
     /**
@@ -72,8 +79,9 @@ public class ZuoraModule
      * @param zobjects
      */
     @Processor
-    public void generate(List<ZObject> zobjects){
-        
+    public void generate(List<ZObject> zobjects)
+    {
+
     }
 
     /**
@@ -139,7 +147,6 @@ public class ZuoraModule
     //@Start
     public void init() throws Exception
     {
-        
     }
     
     public String getPassword()
