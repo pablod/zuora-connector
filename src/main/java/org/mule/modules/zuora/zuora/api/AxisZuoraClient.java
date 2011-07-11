@@ -8,9 +8,9 @@
  * LICENSE.txt file.
  */
 
-package org.mule.modules.zuora.api;
+package org.mule.modules.zuora.zuora.api;
 
-import org.mule.modules.zuora.api.internal.PaginatedIterable;
+import org.mule.modules.zuora.zuora.api.internal.PaginatedIterable;
 
 import com.zuora.api.AmendRequest;
 import com.zuora.api.AmendResult;

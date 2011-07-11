@@ -9,7 +9,7 @@
  */
 
 
-package org.mule.modules.zuora.api.internal;
+package org.mule.modules.zuora.zuora.api.internal;
 
 import java.util.Iterator;
 

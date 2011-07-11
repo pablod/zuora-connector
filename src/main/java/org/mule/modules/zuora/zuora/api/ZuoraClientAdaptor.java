@@ -8,9 +8,9 @@
  * LICENSE.txt file.
  */
 
-package org.mule.modules.zuora.api;
+package org.mule.modules.zuora.zuora.api;
 
-import org.mule.modules.zuora.api.internal.ClientAdaptorInvocationHandler;
+import org.mule.modules.zuora.zuora.api.internal.ClientAdaptorInvocationHandler;
 
 import java.lang.reflect.Proxy;
 

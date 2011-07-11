@@ -8,7 +8,7 @@
  * LICENSE.txt file.
  */
 
-package org.mule.modules.zuora.api;
+package org.mule.modules.zuora.zuora.api;
 
 public class User
 {
