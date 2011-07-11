@@ -14,4 +14,14 @@ public class ZuoraException extends RuntimeException
 {
     private static final long serialVersionUID = -5507667830649176803L;
 
+    public ZuoraException(String message, Throwable cause)
+    {
+        super(message, cause);
+    }
+
+    public ZuoraException(Throwable cause)
+    {
+        super(cause);
+    }
+
 }

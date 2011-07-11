@@ -10,28 +10,34 @@
 
 package org.mule.modules.zuora.api;
 
+import com.zuora.api.AmendRequest;
+import com.zuora.api.AmendResult;
+import com.zuora.api.DeleteResult;
 import com.zuora.api.SaveResult;
+import com.zuora.api.SubscribeRequest;
+import com.zuora.api.SubscribeResult;
 import com.zuora.api.object.ZObject;
 
-import java.rmi.RemoteException;
 import java.util.List;
+
+import javax.validation.constraints.NotNull;
 
 public interface ZuoraClient<E extends Throwable>
 {
-    void subscribe(List<ZObject> subscriptions) throws E;
+    List<SubscribeResult> subscribe(@NotNull List<SubscribeRequest> subscriptions) throws E;
 
-    List<SaveResult> create(List<ZObject> zobjects) throws E;
+    List<SaveResult> create(@NotNull List<ZObject> zobjects) throws E;
 
-    List<SaveResult> generate(List<ZObject> zobjects) throws E;
+    List<SaveResult> generate(@NotNull List<ZObject> zobjects) throws E;
 
-    List<SaveResult> update(List<ZObject> zobjects) throws E;
+    List<SaveResult> update(@NotNull List<ZObject> zobjects) throws E;
 
-    void delete(List<ZObject> zobjects) throws E;
+    List<DeleteResult> delete(@NotNull String type, @NotNull List<String> ids) throws E;
 
-    void find(String zquery) throws E;
+    Iterable<ZObject> find(@NotNull String zquery) throws E;
 
-    User getUserInfo(String userid) throws E;
+    User getUserInfo(@NotNull String userid) throws E;
 
-    void amend(List<ZObject> amendaments) throws E;
+    List<AmendResult> amend(@NotNull  List<AmendRequest> amendaments) throws E;
 
 }

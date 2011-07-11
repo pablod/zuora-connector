@@ -10,18 +10,22 @@
 
 package org.mule.modules.zuora.api;
 
+import org.mule.modules.zuora.api.internal.PaginatedIterable;
+
 import com.zuora.api.AmendRequest;
+import com.zuora.api.AmendResult;
+import com.zuora.api.DeleteResult;
+import com.zuora.api.QueryResult;
 import com.zuora.api.SaveResult;
 import com.zuora.api.Soap;
+import com.zuora.api.SubscribeRequest;
+import com.zuora.api.SubscribeResult;
 import com.zuora.api.ZuoraServiceLocator;
-import com.zuora.api.fault.InvalidQueryLocatorFault;
-import com.zuora.api.fault.InvalidTypeFault;
-import com.zuora.api.fault.MalformedQueryFault;
-import com.zuora.api.fault.UnexpectedErrorFault;
 import com.zuora.api.object.ZObject;
 
 import java.rmi.RemoteException;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.xml.rpc.ServiceException;
@@ -43,57 +47,105 @@ public class AxisZuoraClient implements ZuoraClient<RemoteException>
     }
 
     @Override
-    public void amend(List<ZObject> amendaments)
-    {
-        // getPort().amend( new AmendRequest(toArray(amendaments), null, null));
-        // TODO
+    public List<AmendResult> amend(List<AmendRequest> amendaments) throws RemoteException
+    {   
+        Validate.notEmpty(amendaments);
+        return Arrays.asList(getPort().amend( amendaments.toArray(new AmendRequest[amendaments.size()]) ));
     }
 
     @Override
     public List<SaveResult> create(List<ZObject> zobjects) throws RemoteException
     {
+        Validate.notEmpty(zobjects);
         return Arrays.asList(getPort().create(toArray(zobjects)));
     }
 
     @Override
-    public void delete(List<ZObject> zobjects)
+    public List<DeleteResult> delete(String type, List<String> ids) throws RemoteException
     {
-        // TODO Auto-generated method stub
-        // getPort().delete( type, ids)
+        Validate.notEmpty(ids);
+        Validate.notEmpty(type);
+        return Arrays.asList(getPort().delete(type, ids.toArray(new String[ids.size()])));
     }
 
     @Override
-    public void find(String zquery) throws RemoteException
+    public Iterable<ZObject> find(final String zquery) throws RemoteException
     {
-        // TODO iterable
-        getPort().query(zquery);
+        Validate.notEmpty(zquery);
+        return new PaginatedIterable<ZObject, QueryResult>()
+        {
+            @Override
+            protected QueryResult firstPage()
+            {
+                try
+                {
+                    return getPort().query(zquery);
+                }
+                catch (Exception e)
+                {
+                    throw new ZuoraException("Failed to get first result page", e);
+                }
+            }
+
+            @Override
+            protected boolean hasNextPage(QueryResult page)
+            {
+                return !page.isDone();
+            }
+
+            @Override
+            protected QueryResult nextPage(QueryResult currentPage)
+            {
+                try
+                {
+                    return getPort().queryMore(currentPage.getQueryLocator());
+                }
+                catch (Exception e)
+                {
+                    throw new ZuoraException("Failed to get more results", e);
+                }
+            }
+
+            @Override
+            protected Iterator<ZObject> pageIterator(QueryResult page)
+            {
+                return Arrays.asList(page.getRecords()).iterator();
+            }
+        };
     }
 
     @Override
     public List<SaveResult> generate(List<ZObject> zobjects) throws RemoteException
     {
+        Validate.notEmpty(zobjects);
         return Arrays.asList(getPort().generate(toArray(zobjects)));
     }
 
     @Override
     public User getUserInfo(String userid) throws RemoteException
     {
-        getPort().getUserInfo(new StringHolder(), new StringHolder(), new StringHolder(), new StringHolder(),
-            new StringHolder(userid), new StringHolder());
-        // TODO return user data
-        return new User();
+        Validate.notEmpty(userid);
+        StringHolder tenantId = new StringHolder();
+        StringHolder tenantName = new StringHolder();
+        StringHolder userEmail = new StringHolder();
+        StringHolder userFullName = new StringHolder();
+        StringHolder username = new StringHolder();
+        getPort().getUserInfo(tenantId, tenantName, userEmail, userFullName,
+            new StringHolder(userid), username);
+        return new User(userid, tenantId.value, tenantName.value, userEmail.value, userFullName.value);
     }
 
     @Override
-    public void subscribe(List<ZObject> subscriptions)
+    public List<SubscribeResult> subscribe(List<SubscribeRequest> subscriptions) throws RemoteException
     {
-        // TODO Auto-generated method stub
-        // getPort().subscribe(subscribes)
+        Validate.notEmpty(subscriptions);
+        return Arrays.asList(getPort().subscribe(subscriptions.toArray(new SubscribeRequest[subscriptions.size()])));
     }
 
     @Override
     public List<SaveResult> update(List<ZObject> zobjects) throws RemoteException
     {
+        Validate.notEmpty(zobjects);
         return Arrays.asList(getPort().update(toArray(zobjects)));
     }
 

@@ -23,10 +23,20 @@ package org.mule.modules;
 import org.mule.api.annotations.Configurable;
 import org.mule.api.annotations.Module;
 import org.mule.api.annotations.Processor;
+import org.mule.api.annotations.lifecycle.Start;
 import org.mule.api.annotations.param.Optional;
+import org.mule.modules.zuora.api.AxisZuoraClient;
+import org.mule.modules.zuora.api.User;
 import org.mule.modules.zuora.api.ZuoraClient;
+import org.mule.modules.zuora.api.ZuoraClientAdaptor;
 import org.mule.modules.zuora.api.ZuoraException;
 
+import com.zuora.api.AmendRequest;
+import com.zuora.api.AmendResult;
+import com.zuora.api.DeleteResult;
+import com.zuora.api.SaveResult;
+import com.zuora.api.SubscribeRequest;
+import com.zuora.api.SubscribeResult;
 import com.zuora.api.object.ZObject;
 
 import java.util.List;
@@ -49,11 +59,12 @@ public class ZuoraModule
      *
      * {@code <subscribe subscriptions-ref="#[variable:subscribtions]"/>} 
      * @param subscriptions
+     * @return a subscription results list, one for each subscription 
      */
     @Processor
-    public void subscribe(List<ZObject> subscriptions)
+    public List<SubscribeResult> subscribe(List<com.zuora.api.SubscribeRequest> subscriptions)
     {
-        
+        return client.subscribe(subscriptions);
     }
 
     /**
@@ -65,23 +76,25 @@ public class ZuoraModule
      *           </zobject>
      *         </create>}   
      * @param zobjects
+     * @return a list of SaveResult, one for each ZObject  
      */
     @Processor
-    public void create(List<ZObject> zobjects)
+    public List<SaveResult> create(List<com.zuora.api.object.ZObject> zobjects)
     {
-
+        return client.create(zobjects);
     }
     
     /**
      * Batch creation of invoces for accounts
      * 
      * {@code <generate zobjects-ref="#[variable:accounts]"/>}
-     * @param zobjects
+     * @param zobjects 
+     * @return a list of SaveResult, one for each ZObject
      */
     @Processor
-    public void generate(List<ZObject> zobjects)
+    public List<SaveResult> generate(List<com.zuora.api.object.ZObject> zobjects)
     {
-
+        return client.generate(zobjects);
     }
 
     /**
@@ -89,23 +102,26 @@ public class ZuoraModule
      *
      * {@code <update zobjects-ref="#[variable:objects]"/>}
      * @param zobjects
+     * @return a list of SaveResult, one for each ZObject 
      */
     @Processor
-    public void update(List<ZObject> zobjects)
+    public List<SaveResult> update(List<com.zuora.api.object.ZObject> zobjects)
     {
-
+        return client.update(zobjects);
     }
     
     /**
      * Batch delete of ZObjects
      * 
-     * {@code <delete zobjects-ref="#[variable:objects]"/>}
-     * @param zobjects
+     * {@code <delete ids-ref="#[variable:ids]" type="#[variable:zobjectType]"/>}
+     * @param type the type of ZObjects to delete 
+     * @param ids 
+     * @return a list of DeleteResults, one for each id 
      */
     @Processor
-    public void delete(List<ZObject> zobjects)
+    public List<DeleteResult> delete(String type, List<String> ids)
     {
-
+        return client.delete(type, ids);
     }
     
     /**
@@ -114,11 +130,12 @@ public class ZuoraModule
      *
      * {@code <find query="#[header:queryString]" />}
      * @param zquery
+     * @return a ZObjects iterable
      */
     @Processor
-    public void find(String zquery)
+    public Iterable<ZObject> find(String zquery)
     {
-        
+        return client.find(zquery);
     }
     
     /**
@@ -126,27 +143,34 @@ public class ZuoraModule
      *
      * {@code <get-user-info userId="#[header:userId]""/>}
      * @param userid
+     * @return a User 
      */
     @Processor
-    public void getUserInfo(String userid){
-        
+    public User getUserInfo(String userid)
+    {
+        return client.getUserInfo(userid);
     }
     
     /**
      * Amends subscriptions
      *
      * {@code <amend amendaments-ref="#[header:amendamentsList]"/>}
-     * @param amendaments
+     * @param amendaments 
+     * @return a list of AmmendResults, one for each amendament
      */
     @Processor
-    public void amend(List<ZObject> amendaments)
+    public List<AmendResult> amend(List<com.zuora.api.AmendRequest> amendaments)
     {
-
+        return client.amend(amendaments);
     }    
     
     //@Start
     public void init() throws Exception
     {
+        if(client == null)
+        {
+            setClient(new AxisZuoraClient(username, password));
+        }
     }
     
     public String getPassword()
@@ -169,4 +193,8 @@ public class ZuoraModule
         this.username = username;
     }
     
+    public void setClient(ZuoraClient<?> client)
+    {
+        this.client = ZuoraClientAdaptor.adapt(client);
+    }
 }

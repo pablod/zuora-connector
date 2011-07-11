@@ -23,6 +23,8 @@
 
   <zuora:config username="username" password="password" />
 <!-- 
+
+<delete ids-ref="#[variable:ids]" type="#[variable:zobjectType]"/>
   <flow name="Subscribe">
     <zuora:subscribe subscriptions-ref="#[variable:subscribtions]" />
   </flow>

@@ -22,8 +22,8 @@ package org.mule.modules;
 
 import org.mule.api.MuleEvent;
 import org.mule.construct.SimpleFlowConstruct;
-import org.mule.tck.FunctionalTestCase;
 import org.mule.tck.AbstractMuleTestCase;
+import org.mule.tck.FunctionalTestCase;
 
 import org.junit.Test;
 
