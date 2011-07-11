@@ -27,7 +27,7 @@ import org.mule.tck.FunctionalTestCase;
 
 import org.junit.Test;
 
-public class ZuoraModuleTest extends FunctionalTestCase
+public class ZuoraModuleNamespaceTest extends FunctionalTestCase
 {
     @Override
     protected String getConfigResources()
