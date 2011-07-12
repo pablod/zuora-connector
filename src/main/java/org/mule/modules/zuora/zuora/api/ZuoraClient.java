@@ -10,13 +10,14 @@
 
 package org.mule.modules.zuora.zuora.api;
 
-import com.zuora.api.AmendRequest;
-import com.zuora.api.AmendResult;
-import com.zuora.api.DeleteResult;
-import com.zuora.api.SaveResult;
-import com.zuora.api.SubscribeRequest;
-import com.zuora.api.SubscribeResult;
-import com.zuora.api.object.ZObject;
+import org.mule.modules.zuora.zobject.ZObject;
+
+import com.sforce.soap.AmendRequest;
+import com.sforce.soap.AmendResult;
+import com.sforce.soap.DeleteResult;
+import com.sforce.soap.SaveResult;
+import com.sforce.soap.SubscribeRequest;
+import com.sforce.soap.SubscribeResult;
 
 import java.util.List;
 
@@ -36,7 +37,7 @@ public interface ZuoraClient<E extends Throwable>
 
     Iterable<ZObject> find(@NotNull String zquery) throws E;
 
-    User getUserInfo(@NotNull String userid) throws E;
+    String getUserInfo(@NotNull String userid) throws E;
 
     List<AmendResult> amend(@NotNull  List<AmendRequest> amendaments) throws E;
 

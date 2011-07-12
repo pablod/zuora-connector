@@ -23,23 +23,22 @@ package org.mule.modules.zuora;
 import org.mule.api.annotations.Configurable;
 import org.mule.api.annotations.Module;
 import org.mule.api.annotations.Processor;
-import org.mule.api.annotations.lifecycle.Start;
 import org.mule.api.annotations.param.Optional;
-import org.mule.modules.zuora.zuora.api.AxisZuoraClient;
-import org.mule.modules.zuora.zuora.api.User;
+import org.mule.modules.zuora.zobject.ZObject;
+import org.mule.modules.zuora.zuora.api.SfdcZuoraClient;
 import org.mule.modules.zuora.zuora.api.ZuoraClient;
 import org.mule.modules.zuora.zuora.api.ZuoraClientAdaptor;
 import org.mule.modules.zuora.zuora.api.ZuoraException;
 
-import com.zuora.api.AmendRequest;
-import com.zuora.api.AmendResult;
-import com.zuora.api.DeleteResult;
-import com.zuora.api.SaveResult;
-import com.zuora.api.SubscribeRequest;
-import com.zuora.api.SubscribeResult;
-import com.zuora.api.object.ZObject;
+import com.sforce.soap.AmendRequest;
+import com.sforce.soap.AmendResult;
+import com.sforce.soap.DeleteResult;
+import com.sforce.soap.SaveResult;
+import com.sforce.soap.SubscribeRequest;
+import com.sforce.soap.SubscribeResult;
 
 import java.util.List;
+
 
 @Module(name="zuora",
         namespace="http://repository.mulesoft.org/releases/org/mule/modules/mule-module-zuora",
@@ -53,6 +52,8 @@ public class ZuoraModule
     private String username;
     @Configurable
     private String password;
+    @Configurable
+    private String enpoint;
     
     /**
      * Batch creation of ZObjects associated to Subscriptions
@@ -62,7 +63,7 @@ public class ZuoraModule
      * @return a subscription results list, one for each subscription 
      */
     @Processor
-    public List<SubscribeResult> subscribe(List<com.zuora.api.SubscribeRequest> subscriptions)
+    public List<SubscribeResult> subscribe(List<SubscribeRequest> subscriptions)
     {
         return client.subscribe(subscriptions);
     }
@@ -79,7 +80,7 @@ public class ZuoraModule
      * @return a list of SaveResult, one for each ZObject  
      */
     @Processor
-    public List<SaveResult> create(List<com.zuora.api.object.ZObject> zobjects)
+    public List<SaveResult> create(List<ZObject> zobjects)
     {
         return client.create(zobjects);
     }
@@ -92,7 +93,7 @@ public class ZuoraModule
      * @return a list of SaveResult, one for each ZObject
      */
     @Processor
-    public List<SaveResult> generate(List<com.zuora.api.object.ZObject> zobjects)
+    public List<SaveResult> generate(List<ZObject> zobjects)
     {
         return client.generate(zobjects);
     }
@@ -105,7 +106,7 @@ public class ZuoraModule
      * @return a list of SaveResult, one for each ZObject 
      */
     @Processor
-    public List<SaveResult> update(List<com.zuora.api.object.ZObject> zobjects)
+    public List<SaveResult> update(List<ZObject> zobjects)
     {
         return client.update(zobjects);
     }
@@ -146,7 +147,7 @@ public class ZuoraModule
      * @return a User 
      */
     @Processor
-    public User getUserInfo(String userid)
+    public String getUserInfo(String userid)
     {
         return client.getUserInfo(userid);
     }
@@ -159,7 +160,7 @@ public class ZuoraModule
      * @return a list of AmmendResults, one for each amendament
      */
     @Processor
-    public List<AmendResult> amend(List<com.zuora.api.AmendRequest> amendaments)
+    public List<AmendResult> amend(List<AmendRequest> amendaments)
     {
         return client.amend(amendaments);
     }    
@@ -169,7 +170,7 @@ public class ZuoraModule
     {
         if(client == null)
         {
-            setClient(new AxisZuoraClient(username, password));
+            setClient(new SfdcZuoraClient(username, password, enpoint));
         }
     }
     
@@ -196,5 +197,15 @@ public class ZuoraModule
     public void setClient(ZuoraClient<?> client)
     {
         this.client = ZuoraClientAdaptor.adapt(client);
+    }
+    
+    public void setEnpoint(String enpoint)
+    {
+        this.enpoint = enpoint;
+    }
+    
+    public String getEnpoint()
+    {
+        return enpoint;
     }
 }

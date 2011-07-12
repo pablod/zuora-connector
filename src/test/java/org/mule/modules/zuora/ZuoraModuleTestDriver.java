@@ -21,19 +21,21 @@
 
 package org.mule.modules.zuora;
 
-import com.zuora.api.DeleteResult;
-import com.zuora.api.SaveResult;
-import com.zuora.api.object.Account;
-import com.zuora.api.object.ZObject;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import org.mule.modules.zuora.zobject.ZObject;
+
+import com.sforce.soap.Account;
+import com.sforce.soap.DeleteResult;
+import com.sforce.soap.SaveResult;
+import com.sforce.soap.StaticZObject;
 
 import java.util.Arrays;
 import java.util.Iterator;
-import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class ZuoraModuleTestDriver
 {
@@ -45,6 +47,7 @@ public class ZuoraModuleTestDriver
         module = new ZuoraModule();
         module.setPassword(System.getenv("zuoraPassword"));
         module.setUsername(System.getenv("zuoraUsername"));
+        module.setEnpoint("https://apisandbox.zuora.com/apps/services/a/29.0");
         module.init();
     }
 

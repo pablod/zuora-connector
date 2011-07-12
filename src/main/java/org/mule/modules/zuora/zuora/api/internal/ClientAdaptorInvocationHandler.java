@@ -15,7 +15,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.rmi.RemoteException;
 
-import org.apache.axis.AxisFault;
 import org.slf4j.Logger;
 
 public class ClientAdaptorInvocationHandler implements InvocationHandler
@@ -60,16 +59,7 @@ public class ClientAdaptorInvocationHandler implements InvocationHandler
     {
         try
         {
-            if (e instanceof AxisFault)
-            {
-                return exceptionClass.getConstructor(String.class, Throwable.class).newInstance(
-                    ((AxisFault) e).getFaultString(), e);
-            }
-            if (e instanceof RemoteException)
-            {
-                return exceptionClass.getConstructor(Throwable.class).newInstance(e);
-            }
-            return e;
+            return exceptionClass.getConstructor(Throwable.class).newInstance(e);
         }
         catch (Exception e1)
         {
