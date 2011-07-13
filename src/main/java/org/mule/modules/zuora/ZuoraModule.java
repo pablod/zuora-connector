@@ -53,7 +53,7 @@ public class ZuoraModule
     @Configurable
     private String password;
     @Configurable
-    private String enpoint;
+    private String endpoint;
     
     /**
      * Batch creation of ZObjects associated to Subscriptions
@@ -170,7 +170,7 @@ public class ZuoraModule
     {
         if(client == null)
         {
-            setClient(new SfdcZuoraClient(username, password, enpoint));
+            setClient(new SfdcZuoraClient(username, password, endpoint));
         }
     }
     
@@ -199,13 +199,13 @@ public class ZuoraModule
         this.client = ZuoraClientAdaptor.adapt(client);
     }
     
-    public void setEnpoint(String enpoint)
+    public void setEndpoint(String enpoint)
     {
-        this.enpoint = enpoint;
+        this.endpoint = enpoint;
     }
     
     public String getEnpoint()
     {
-        return enpoint;
+        return endpoint;
     }
 }

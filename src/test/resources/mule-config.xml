@@ -21,7 +21,7 @@
         http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/3.1/mule.xsd
         http://repository.mulesoft.org/releases/org/mule/modules/mule-module-zuora http://repository.mulesoft.org/releases/org/mule/modules/mule-module-zuora/1.0-SNAPSHOT/mule-zuora.xsd">
 
-  <zuora:config username="username" password="password" />
+  <zuora:config username="username" password="password" endpoint="zuoraendpoint like https://apisandbox.zuora.com/apps/services/a/29.0" />
 <!-- 
 
 <delete ids-ref="#[variable:ids]" type="#[variable:zobjectType]"/>

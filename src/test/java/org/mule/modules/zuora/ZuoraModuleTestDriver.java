@@ -48,7 +48,7 @@ public class ZuoraModuleTestDriver
         module = new ZuoraModule();
         module.setPassword(System.getenv("zuoraPassword"));
         module.setUsername(System.getenv("zuoraUsername"));
-        module.setEnpoint("https://apisandbox.zuora.com/apps/services/a/29.0");
+        module.setEndpoint("https://apisandbox.zuora.com/apps/services/a/29.0");
         module.init();
     }
 
