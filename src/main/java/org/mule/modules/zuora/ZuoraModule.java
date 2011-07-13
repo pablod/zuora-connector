@@ -56,6 +56,18 @@ public class ZuoraModule
     private String password;
     @Configurable
     private String endpoint;
+    @Optional
+    @Configurable
+    private String proxyHost;
+    @Optional
+    @Configurable
+    private String proxyUsername;
+    @Optional
+    @Configurable
+    private Integer proxyPort;
+    @Optional
+    @Configurable
+    private String proxyPassword;
     
     /**
      * Batch creation of ZObjects associated to Subscriptions
@@ -170,12 +182,13 @@ public class ZuoraModule
         return client.amend(amendaments);
     }    
     
-    //@Start
+    // @Start
     public void init() throws Exception
     {
-        if(client == null)
+        if (client == null)
         {
-            setClient(new SfdcZuoraClient(username, password, endpoint));
+            setClient(new SfdcZuoraClient(username, password, endpoint, proxyHost, proxyUsername,
+                proxyPassword, proxyPort));
         }
     }
     

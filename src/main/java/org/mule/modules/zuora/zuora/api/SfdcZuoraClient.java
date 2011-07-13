@@ -30,6 +30,8 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+
 import org.apache.commons.lang.Validate;
 
 /**
@@ -45,8 +47,18 @@ public class SfdcZuoraClient implements ZuoraClient<ConnectionException>
     private final String username;
     private final String password;
     private final String endpoint;
+    private final String proxyHost;
+    private final String proxyUsername;
+    private final Integer proxyPort;
+    private final String proxyPassword;
 
-    public SfdcZuoraClient(String username, String password, String endpoint)
+    public SfdcZuoraClient(@NotNull String username,
+                           @NotNull String password,
+                           @NotNull String endpoint,
+                           String proxyHost,
+                           String proxyUsername,
+                           String proxyPassword,
+                           Integer proxyPort)
     {
         Validate.notNull(username);
         Validate.notNull(password);
@@ -54,6 +66,10 @@ public class SfdcZuoraClient implements ZuoraClient<ConnectionException>
         this.username = username;
         this.password = password;
         this.endpoint = endpoint;
+        this.proxyHost = proxyHost;
+        this.proxyUsername = proxyUsername;
+        this.proxyPassword = proxyPassword;
+        this.proxyPort = proxyPort;
     }
 
     @Override
@@ -167,8 +183,6 @@ public class SfdcZuoraClient implements ZuoraClient<ConnectionException>
         return zobjects.toArray(new ZObject[zobjects.size()]);
     }
 
-
-
     private ConnectorConfig createConnectorConfig()
     {
         ConnectorConfig config = new ConnectorConfig();
@@ -179,17 +193,15 @@ public class SfdcZuoraClient implements ZuoraClient<ConnectionException>
         config.setServiceEndpoint(endpoint);
 
         config.setManualLogin(true);
-
-        // if (this.proxyHost != null) {
-        // config.setProxy(this.proxyHost, this.proxyPort);
-        // if (this.proxyUsername != null) {
-        // config.setProxyUsername(this.proxyUsername);
-        // }
-        // if (this.proxyPassword != null) {
-        // config.setProxyPassword(this.proxyPassword);
-        // }
-        // }
-
+        if (proxyHost != null)
+        {
+            config.setProxy(proxyHost, proxyPort);
+            if (proxyUsername != null)
+            {
+                config.setProxyUsername(proxyUsername);
+                config.setProxyPassword(proxyPassword);
+            }
+        }
         return config;
     }
 }
