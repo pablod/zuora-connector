@@ -14,7 +14,6 @@
 
 package org.mule.modules.zuora;
 
-import static org.junit.Assert.*;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -46,13 +45,12 @@ public class ZuoraModuleTestDriver
         module.setUsername(System.getenv("zuoraUsername"));
         module.setEndpoint("https://apisandbox.zuora.com/apps/services/a/29.0");
         module.init();
-//        for(ZObject z : module.find("select id from Account"))
-//        {
-//            module.delete("Account", Arrays.asList((String) ((Account) z).getField("Id")));
-//        }
+        // for(ZObject z : module.find("select id from Account"))
+        // {
+        // module.delete("Account", Arrays.asList((String) ((Account)
+        // z).getField("Id")));
+        // }
     }
-    
-    
 
     @Test
     public void createAndDelete() throws Exception
@@ -63,25 +61,34 @@ public class ZuoraModuleTestDriver
         DeleteResult deleteResult = module.delete("Account", Arrays.asList(result.getId())).get(0);
         assertTrue(deleteResult.getSuccess());
     }
-    
+
     @Test
     @SuppressWarnings("serial")
     public void createAndDeleteStatic() throws Exception
     {
-        SaveResult result = module.create("Contact",
-            Collections.<Map<String, Object>> singletonList(new HashMap<String, Object>()
-            {
+        final String accountId = module.create("Account", Collections.singletonList(testAccount())).get(0).getId();
+        try
+        {
+            SaveResult result = module.create("Contact",
+                Collections.<Map<String, Object>> singletonList(new HashMap<String, Object>()
                 {
-                    put("country", "US");
-                    put("firstName", "John");
-                    put("lastName", "Doe");
-                }
-            })).get(0);
-        System.out.println(result);
-        assertTrue(result.getSuccess());
+                    {
+                        put("country", "US");
+                        put("firstName", "John");
+                        put("lastName", "Doe");
+                        put("accountId", accountId);
+                    }
+                })).get(0);
+            System.out.println(result);
+            assertTrue(result.getSuccess());
 
-        DeleteResult deleteResult = module.delete("Contact", Arrays.asList(result.getId())).get(0);
-        assertTrue(deleteResult.getSuccess());
+            DeleteResult deleteResult = module.delete("Contact", Arrays.asList(result.getId())).get(0);
+            assertTrue(deleteResult.getSuccess());
+        }
+        finally
+        {
+            module.delete("Account", Arrays.asList(accountId)).get(0);
+        }
     }
 
     @Test
