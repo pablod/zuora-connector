@@ -21,41 +21,48 @@
         http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/3.1/mule.xsd
         http://repository.mulesoft.org/releases/org/mule/modules/mule-module-zuora http://repository.mulesoft.org/releases/org/mule/modules/mule-module-zuora/1.0/mule-zuora.xsd">
 
-  <zuora:config username="username" password="password" endpoint="zuoraendpoint like https://apisandbox.zuora.com/apps/services/a/29.0" />
-<!-- 
+  <zuora:config username="username" password="password"
+    endpoint="zuoraendpoint like https://apisandbox.zuora.com/apps/services/a/29.0" />
 
-<delete ids-ref="#[variable:ids]" type="#[variable:zobjectType]"/>
-  <flow name="Subscribe">
-    <zuora:subscribe subscriptions-ref="#[variable:subscribtions]" />
-  </flow>
-
-  <flow name="Create">
-    <zuora:create zobjects-ref="#[variable:zobjects]" />
-  </flow>
-
-  <flow name="Generate">
-    <zuora:generate zobjects-ref="#[variable:accounts]" />
-  </flow>
-
-  <flow name="Update">
-    <zuora:update zobjects-ref="#[variable:objects]" />
-  </flow>
+<!--  <flow name="Subscribe">-->
+<!--    <zuora:subscribe subscriptions-ref="#[variable:subscribtions]" />-->
+<!--  </flow>-->
+<!---->
+<!--  <flow name="Create">-->
+<!--    <zuora:create zobjects-ref="#[variable:zobjects]" />-->
+<!--  </flow>-->
+<!---->
+<!--  <flow name="Generate">-->
+<!--    <zuora:generate zobjects-ref="#[variable:accounts]" />-->
+<!--  </flow>-->
+<!---->
+<!--  <flow name="Update">-->
+<!--    <zuora:update >-->
+<!--      <zuora:zobjects>-->
+<!--        -->
+<!--      </zuora:zobjects>-->
+<!--    </zuora:update>-->
+<!--  </flow>-->
 
   <flow name="Delete">
-    <zuora:delete zobjects-ref="#[variable:objects]" />
+    <zuora:delete type="#[variable:type]">
+      <zuora:ids>
+        <zuora:id>459</zuora:id>
+      </zuora:ids>
+    </zuora:delete>
   </flow>
 
   <flow name="Find">
-    <zuora:find query="#[header:queryString]" />
+    <zuora:find zquery="#[header:queryString]" />
   </flow>
-
-  <flow name="Amend">
-    <zuora:amend amendaments-ref="#[header:amendamentsList]" />
-  </flow>
-
+  
+<!--  <flow name="Amend">-->
+<!--    <zuora:amend amendaments-ref="#[header:amendamentsList]" />-->
+<!--  </flow>-->
+<!---->
   <flow name="GetUserInfo">
-    <zuora:get-user-info userId="#[header:userId]" " />
+    <zuora:get-user-info />
   </flow>
- -->
+
 
 </mule>

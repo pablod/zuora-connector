@@ -21,12 +21,12 @@
 
 package org.mule.modules.zuora;
 
-import org.mule.api.MuleEvent;
 import org.mule.construct.SimpleFlowConstruct;
 import org.mule.tck.AbstractMuleTestCase;
 import org.mule.tck.FunctionalTestCase;
 
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  * Test for zuora mule schema ZuoraModuleNamespaceTest
@@ -44,5 +44,15 @@ public class ZuoraModuleNamespaceTest extends FunctionalTestCase
     @Test
     public void testFlow() throws Exception
     {
+    }
+
+    /**
+     * Retrieve a flow by name from the registry
+     * 
+     * @param name Name of the flow to retrieve
+     */
+    protected SimpleFlowConstruct lookupFlowConstruct(String name)
+    {
+        return (SimpleFlowConstruct) AbstractMuleTestCase.muleContext.getRegistry().lookupFlowConstruct(name);
     }
 }

@@ -50,6 +50,7 @@ public class SfdcZuoraClient implements ZuoraClient<ConnectionException>
     {
         Validate.notNull(username);
         Validate.notNull(password);
+        Validate.notNull(endpoint);
         this.username = username;
         this.password = password;
         this.endpoint = endpoint;

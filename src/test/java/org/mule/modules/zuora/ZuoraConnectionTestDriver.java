@@ -10,8 +10,6 @@
 
 package org.mule.modules.zuora;
 
-import org.mule.modules.zuora.zobject.ZObject;
-
 import com.sforce.ws.ConnectorConfig;
 import com.sforce.ws.bind.XMLizable;
 import com.zuora.api.object.Account;
