@@ -10,14 +10,16 @@
 
 package org.mule.modules.zuora;
 
-import com.sforce.soap.Account;
-import com.sforce.soap.Connector;
-import com.sforce.soap.LoginResult;
-import com.sforce.soap.QueryResult;
-import com.sforce.soap.SaveResult;
-import com.sforce.soap.SoapConnection;
+import org.mule.modules.zuora.zobject.ZObject;
+
 import com.sforce.ws.ConnectorConfig;
 import com.sforce.ws.bind.XMLizable;
+import com.zuora.api.object.Account;
+import com.zuora.api.object.Connector;
+import com.zuora.api.object.LoginResult;
+import com.zuora.api.object.QueryResult;
+import com.zuora.api.object.SaveResult;
+import com.zuora.api.object.SoapConnection;
 
 import java.util.Arrays;
 
@@ -51,10 +53,8 @@ public class ZuoraConnectionTestDriver
         }});
 
         System.out.println(Arrays.asList(create));
-
         QueryResult query = newConnection.query("SELECT Id FROM Account");
         System.out.println(Arrays.asList(query.getRecords()));
-
         System.out.println(Arrays.asList(newConnection.delete("Account", new String[]{create[0].getId()})));
 
     }

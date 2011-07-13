@@ -12,12 +12,12 @@ package org.mule.modules.zuora.zuora.api;
 
 import org.mule.modules.zuora.zobject.ZObject;
 
-import com.sforce.soap.AmendRequest;
-import com.sforce.soap.AmendResult;
-import com.sforce.soap.DeleteResult;
-import com.sforce.soap.SaveResult;
-import com.sforce.soap.SubscribeRequest;
-import com.sforce.soap.SubscribeResult;
+import com.zuora.api.object.AmendRequest;
+import com.zuora.api.object.AmendResult;
+import com.zuora.api.object.DeleteResult;
+import com.zuora.api.object.SaveResult;
+import com.zuora.api.object.SubscribeRequest;
+import com.zuora.api.object.SubscribeResult;
 
 import java.util.List;
 

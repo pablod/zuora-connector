@@ -27,10 +27,10 @@ import static org.junit.Assert.assertTrue;
 import org.mule.api.transport.Connectable;
 import org.mule.modules.zuora.zobject.ZObject;
 
-import com.sforce.soap.Account;
-import com.sforce.soap.DeleteResult;
-import com.sforce.soap.SaveResult;
-import com.sforce.soap.StaticZObject;
+import com.zuora.api.object.Account;
+import com.zuora.api.object.DeleteResult;
+import com.zuora.api.object.SaveResult;
+import com.zuora.api.object.StaticZObject;
 
 import java.util.Arrays;
 import java.util.Iterator;

@@ -30,6 +30,8 @@ import java.util.Arrays;
 
 
 /**
+ * <strong>Modified version of NameMapper to support Zuora</strong>.
+ * 
  * This class maps between xml and java names.
  *
  * @author http://cheenath
@@ -113,7 +115,7 @@ public class NameMapper {
             packageName = new StringBuilder(targetNamespace.substring(4));
             packageName = reverse(packageName);
         } else if (targetNamespace.startsWith("http://") || targetNamespace.startsWith("https://") ){
-           packageName = new StringBuilder(24).append("com.sforce.soap.").append(
+           packageName = new StringBuilder(24).append("com.zuora.api.object.").append(
                     targetNamespace.substring(targetNamespace.lastIndexOf('/')+1));
             /*
             try {

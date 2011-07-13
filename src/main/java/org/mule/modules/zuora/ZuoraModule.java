@@ -30,12 +30,12 @@ import org.mule.modules.zuora.zuora.api.ZuoraClient;
 import org.mule.modules.zuora.zuora.api.ZuoraClientAdaptor;
 import org.mule.modules.zuora.zuora.api.ZuoraException;
 
-import com.sforce.soap.AmendRequest;
-import com.sforce.soap.AmendResult;
-import com.sforce.soap.DeleteResult;
-import com.sforce.soap.SaveResult;
-import com.sforce.soap.SubscribeRequest;
-import com.sforce.soap.SubscribeResult;
+import com.zuora.api.object.AmendRequest;
+import com.zuora.api.object.AmendResult;
+import com.zuora.api.object.DeleteResult;
+import com.zuora.api.object.SaveResult;
+import com.zuora.api.object.SubscribeRequest;
+import com.zuora.api.object.SubscribeResult;
 
 import java.util.List;
 
