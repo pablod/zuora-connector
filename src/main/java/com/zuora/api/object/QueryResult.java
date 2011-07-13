@@ -12,6 +12,8 @@ package com.zuora.api.object;
 
 import org.mule.modules.zuora.zobject.ZObject;
 
+import com.sforce.ws.ConnectionException;
+
 /**
  * Generated class, please do not edit.
  */
@@ -160,11 +162,19 @@ public class QueryResult implements com.sforce.ws.bind.XMLizable {
     }
     __in.peekTag();
     if (__typeMapper.isElement(__in, records__typeInfo)) {
-      setRecords((ZObject[])__typeMapper.readObject(__in, records__typeInfo, ZObject[].class));
+      try{ 
+          setRecords((ZObject[])__typeMapper.readObject(__in, records__typeInfo, ZObject[].class));
+      }catch(InstantiationError e)
+      { 
+          setRecords(new ZObject[0]);
+          __in.nextTag();
+          __in.nextTag();
+      }
     }
     __in.peekTag();
-    if (__typeMapper.verifyElement(__in, size__typeInfo)) {
-      setSize(__typeMapper.readInt(__in, size__typeInfo, int.class));
+    if (__typeMapper.verifyElement(__in, size__typeInfo))
+    {
+        setSize(__typeMapper.readInt(__in, size__typeInfo, int.class));
     }
   }
 

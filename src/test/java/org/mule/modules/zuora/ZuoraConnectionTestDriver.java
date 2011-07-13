@@ -10,9 +10,10 @@
 
 package org.mule.modules.zuora;
 
+import org.mule.modules.zuora.zobject.DynamicZObject;
+
 import com.sforce.ws.ConnectorConfig;
 import com.sforce.ws.bind.XMLizable;
-import com.zuora.api.object.Account;
 import com.zuora.api.object.Connector;
 import com.zuora.api.object.LoginResult;
 import com.zuora.api.object.QueryResult;
@@ -36,9 +37,10 @@ public class ZuoraConnectionTestDriver
         newConnection.getSessionHeader().setSession(loginResult.getSession());
         newConnection.getConfig().setServiceEndpoint(loginResult.getServerUrl());
 
-        SaveResult[] create = newConnection.create(new XMLizable[]{new Account()
+        SaveResult[] create = newConnection.create(new XMLizable[]{new DynamicZObject()
         {
             {
+                setXmlType("Account");
                 setField("Name", "foo");
                 setField("Currency", "USD");
                 setField("BillCycleDay", 1);

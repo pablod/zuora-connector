@@ -622,6 +622,10 @@ public class TypeMapper {
                 throw new ConnectionException(value + "Not a valid enumeration for type: " + type );
             }
         }
+        
+        if(type.isInterface()) {
+           throw new InstantiationError("Type is interface");
+        }
 
         try {
             XMLizable result = (XMLizable) type.newInstance();
