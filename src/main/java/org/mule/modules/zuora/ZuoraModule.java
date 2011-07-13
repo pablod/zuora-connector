@@ -16,10 +16,10 @@ package org.mule.modules.zuora;
 import org.mule.api.annotations.Configurable;
 import org.mule.api.annotations.Module;
 import org.mule.api.annotations.Processor;
-import org.mule.api.annotations.lifecycle.Start;
 import org.mule.api.annotations.param.Optional;
 import org.mule.modules.zuora.zobject.DynamicZObject;
 import org.mule.modules.zuora.zobject.ZObject;
+import org.mule.modules.zuora.zobject.ZObjectType;
 import org.mule.modules.zuora.zuora.api.SfdcZuoraClient;
 import org.mule.modules.zuora.zuora.api.ZuoraClient;
 import org.mule.modules.zuora.zuora.api.ZuoraClientAdaptor;
@@ -96,7 +96,7 @@ public class ZuoraModule
      * @return a list of SaveResult, one for each ZObject  
      */
     @Processor
-    public List<SaveResult> create(String type, List<Map<String, Object>> zobjects)
+    public List<SaveResult> create(ZObjectType type, List<Map<String, Object>> zobjects)
     {
         return client.create(mapToZObject(type, zobjects));
     }
@@ -111,7 +111,7 @@ public class ZuoraModule
      * @return a list of SaveResult, one for each ZObject
      */
     @Processor
-    public List<SaveResult> generate(String type, List<Map<String, Object>> zobjects)
+    public List<SaveResult> generate(ZObjectType type, List<Map<String, Object>> zobjects)
     {
         return client.generate(mapToZObject(type, zobjects));
     }
@@ -125,7 +125,7 @@ public class ZuoraModule
      * @return a list of SaveResult, one for each ZObject 
      */
     @Processor
-    public List<SaveResult> update(String type, List<Map<String, Object>> zobjects)
+    public List<SaveResult> update(ZObjectType type, List<Map<String, Object>> zobjects)
     {
         return client.update(mapToZObject(type, zobjects));
     }
@@ -139,9 +139,9 @@ public class ZuoraModule
      * @return a list of DeleteResults, one for each id 
      */
     @Processor
-    public List<DeleteResult> delete(String type, List<String> ids)
+    public List<DeleteResult> delete(ZObjectType type, List<String> ids)
     {
-        return client.delete(type, ids);
+        return client.delete(type.getTypeName(), ids);
     }
     
     /**
@@ -228,19 +228,19 @@ public class ZuoraModule
         return endpoint;
     }
     
-    private ZObject toZObject(String type, Map<String, Object> map)
+    private ZObject toZObject(ZObjectType type, Map<String, Object> map)
     {
         DynamicZObject zobject = new DynamicZObject();
         for (Entry<String, Object> entry : map.entrySet())
         {
             zobject.setField(StringUtils.capitalize(entry.getKey()), entry.getValue());
         }
-        zobject.setXmlType(type);
+        zobject.setXmlType(type.getTypeName());
         return zobject;
     }
     
     @SuppressWarnings("unchecked")
-    private List<ZObject> mapToZObject(final String type, List<Map<String, Object>> maps)
+    private List<ZObject> mapToZObject(final ZObjectType type, List<Map<String, Object>> maps)
     {
         return (List<ZObject>) CollectionUtils.collect(maps, new Transformer()
         {

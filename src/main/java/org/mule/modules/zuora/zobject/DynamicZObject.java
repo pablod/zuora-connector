@@ -10,26 +10,22 @@
 
 package org.mule.modules.zuora.zobject;
 
-
-
 import com.sforce.ws.bind.XmlObject;
 
 import javax.xml.namespace.QName;
 
-/**
- * Generated class, please do not edit.
- */
-public class DynamicZObject extends XmlObject implements ZObject {
-    
+public class DynamicZObject extends XmlObject implements ZObject
+{
+    /**
+     * Constructor
+     */
+    public DynamicZObject()
+    {
+        setDefaultNamespace("http://object.api.zuora.com/");
+        setXmlType(this.getClass().getSimpleName());
+    }
 
-  /**
-   * Constructor
-   */
-  public DynamicZObject() {
-      setDefaultNamespace("http://object.api.zuora.com/");
-  }
-  
-  @Override
+    @Override
     public void setName(QName name)
     {
         throw new UnsupportedOperationException();

@@ -16,7 +16,4 @@ package com.zuora.api.object;
  */
 public class ProductRatePlanCharge extends org.mule.modules.zuora.zobject.DynamicZObject
 {
-    {
-        setXmlType("ProductRatePlanCharge");
-    }
 }

@@ -19,6 +19,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import org.mule.modules.zuora.zobject.ZObject;
+import org.mule.modules.zuora.zobject.ZObjectType;
 
 import com.zuora.api.object.Account;
 import com.zuora.api.object.DeleteResult;
@@ -55,10 +56,10 @@ public class ZuoraModuleTestDriver
     @Test
     public void createAndDelete() throws Exception
     {
-        SaveResult result = module.create("Account", Collections.singletonList(testAccount())).get(0);
+        SaveResult result = module.create(ZObjectType.Account, Collections.singletonList(testAccount())).get(0);
         assertTrue(result.getSuccess());
 
-        DeleteResult deleteResult = module.delete("Account", Arrays.asList(result.getId())).get(0);
+        DeleteResult deleteResult = module.delete(ZObjectType.Account, Arrays.asList(result.getId())).get(0);
         assertTrue(deleteResult.getSuccess());
     }
 
@@ -66,10 +67,10 @@ public class ZuoraModuleTestDriver
     @SuppressWarnings("serial")
     public void createAndDeleteStatic() throws Exception
     {
-        final String accountId = module.create("Account", Collections.singletonList(testAccount())).get(0).getId();
+        final String accountId = module.create(ZObjectType.Account, Collections.singletonList(testAccount())).get(0).getId();
         try
         {
-            SaveResult result = module.create("Contact",
+            SaveResult result = module.create(ZObjectType.Contact,
                 Collections.<Map<String, Object>> singletonList(new HashMap<String, Object>()
                 {
                     {
@@ -82,12 +83,12 @@ public class ZuoraModuleTestDriver
             System.out.println(result);
             assertTrue(result.getSuccess());
 
-            DeleteResult deleteResult = module.delete("Contact", Arrays.asList(result.getId())).get(0);
+            DeleteResult deleteResult = module.delete(ZObjectType.Contact, Arrays.asList(result.getId())).get(0);
             assertTrue(deleteResult.getSuccess());
         }
         finally
         {
-            module.delete("Account", Arrays.asList(accountId)).get(0);
+            module.delete(ZObjectType.Account, Arrays.asList(accountId)).get(0);
         }
     }
 
@@ -101,7 +102,7 @@ public class ZuoraModuleTestDriver
     @Test
     public void findOneResult() throws Exception
     {
-        String id = module.create("Account", Collections.singletonList(testAccount())).get(0).getId();
+        String id = module.create(ZObjectType.Account, Collections.singletonList(testAccount())).get(0).getId();
         try
         {
             Iterator<ZObject> result = module.find("SELECT Id FROM Account").iterator();
@@ -111,7 +112,7 @@ public class ZuoraModuleTestDriver
         }
         finally
         {
-            module.delete("Account", Arrays.asList(id));
+            module.delete(ZObjectType.Account, Arrays.asList(id));
         }
     }
 

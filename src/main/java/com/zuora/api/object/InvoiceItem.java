@@ -16,8 +16,4 @@ package com.zuora.api.object;
  */
 public class InvoiceItem extends org.mule.modules.zuora.zobject.DynamicZObject
 {
-    {
-        setXmlType("InvoiceItem");
-    }
-
 }
