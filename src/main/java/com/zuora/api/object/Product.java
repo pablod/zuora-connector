@@ -13,7 +13,7 @@ package com.zuora.api.object;
 /**
  * Generated class, please do not edit.
  */
-public class Product extends com.zuora.api.object.DynamicZObject 
+public class Product extends org.mule.modules.zuora.zobject.DynamicZObject 
 {
     {
         setXmlType("Product");

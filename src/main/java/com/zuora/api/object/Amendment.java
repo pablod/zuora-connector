@@ -13,7 +13,7 @@ package com.zuora.api.object;
 /**
  * Generated class, please do not edit.
  */
-public class Amendment extends com.zuora.api.object.StaticZObject {
+public class Amendment extends org.mule.modules.zuora.zobject.StaticZObject {
 
   /**
    * Constructor

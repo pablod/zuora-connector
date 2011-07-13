@@ -14,7 +14,7 @@ package com.zuora.api.object;
 /**
  * Generated class, please do not edit.
  */
-public class Account extends com.zuora.api.object.DynamicZObject
+public class Account extends org.mule.modules.zuora.zobject.DynamicZObject
 {
     {
         setXmlType("Account");

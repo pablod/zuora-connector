@@ -13,7 +13,7 @@ package com.zuora.api.object;
 /**
  * Generated class, please do not edit.
  */
-public class ProductRatePlanChargeTier extends com.zuora.api.object.StaticZObject {
+public class ProductRatePlanChargeTier extends org.mule.modules.zuora.zobject.StaticZObject {
 
   /**
    * Constructor

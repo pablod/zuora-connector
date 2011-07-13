@@ -8,9 +8,8 @@
  * LICENSE.txt file.
  */
 
-package com.zuora.api.object;
+package org.mule.modules.zuora.zobject;
 
-import org.mule.modules.zuora.zobject.ZObject;
 
 public class StaticZObject implements com.sforce.ws.bind.XMLizable, ZObject {
 

@@ -13,7 +13,7 @@ package com.zuora.api.object;
 /**
  * Generated class, please do not edit.
  */
-public class RatePlan extends com.zuora.api.object.StaticZObject {
+public class RatePlan extends org.mule.modules.zuora.zobject.StaticZObject {
 
   /**
    * Constructor

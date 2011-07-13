@@ -13,7 +13,7 @@ package com.zuora.api.object;
 /**
  * Generated class, please do not edit.
  */
-public class AccountingRunInvoiceSummary extends com.zuora.api.object.StaticZObject {
+public class AccountingRunInvoiceSummary extends org.mule.modules.zuora.zobject.StaticZObject {
 
   /**
    * Constructor
