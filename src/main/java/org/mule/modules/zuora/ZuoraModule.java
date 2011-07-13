@@ -42,7 +42,7 @@ import java.util.List;
 
 @Module(name="zuora",
         namespace="http://repository.mulesoft.org/releases/org/mule/modules/mule-module-zuora",
-        schemaLocation="http://repository.mulesoft.org/releases/org/mule/modules/mule-module-zuora/1.0-SNAPSHOT/mule-zuora.xsd")
+        schemaLocation="http://repository.mulesoft.org/releases/org/mule/modules/mule-module-zuora/1.0/mule-zuora.xsd")
 public class ZuoraModule 
 {
     @Configurable
