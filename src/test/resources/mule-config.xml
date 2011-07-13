@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
+  <!--
 
-    Mule Zuora Cloud Connector
-
-    Copyright (c) MuleSoft, Inc.  All rights reserved.  http://www.mulesoft.com
-
-    The software in this package is published under the terms of the CPAL v1.0
-    license, a copy of which has been included with this distribution in the
-    LICENSE.txt file.
-
--->
+    Mule Zuora Cloud Connector Copyright (c) MuleSoft, Inc. All rights
+    reserved. http://www.mulesoft.com The software in this package is
+    published under the terms of the CPAL v1.0 license, a copy of which
+    has been included with this distribution in the LICENSE.txt file.
+  -->
 
 <mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:spring="http://www.springframework.org/schema/beans"
@@ -22,25 +18,48 @@
   <zuora:config username="username" password="password"
     endpoint="zuoraendpoint like https://apisandbox.zuora.com/apps/services/a/29.0" />
 
-<!--  <flow name="Subscribe">-->
-<!--    <zuora:subscribe subscriptions-ref="#[variable:subscribtions]" />-->
-<!--  </flow>-->
+  <!--  <flow name="Subscribe">-->
+  <!--
+    <zuora:subscribe subscriptions-ref="#[variable:subscribtions]" />
+  -->
+  <!--  </flow>-->
 <!---->
-<!--  <flow name="Create">-->
-<!--    <zuora:create zobjects-ref="#[variable:zobjects]" />-->
-<!--  </flow>-->
-<!---->
-<!--  <flow name="Generate">-->
-<!--    <zuora:generate zobjects-ref="#[variable:accounts]" />-->
-<!--  </flow>-->
-<!---->
-<!--  <flow name="Update">-->
-<!--    <zuora:update >-->
-<!--      <zuora:zobjects>-->
-<!--        -->
-<!--      </zuora:zobjects>-->
-<!--    </zuora:update>-->
-<!--  </flow>-->
+
+  <flow name="Create">
+    <zuora:create type="Account">
+      <zuora:zobjects>
+        <zuora:zobject>
+          <name>foo</name>
+          <billCycleDay>1</billCycleDay>
+          <accountNumber>501</accountNumber>
+        </zuora:zobject>
+      </zuora:zobjects>
+    </zuora:create>
+  </flow>
+
+  <flow name="Generate">
+    <zuora:generate type="Account">
+      <zuora:zobjects>
+        <zuora:zobject>
+          <name>foo</name>
+          <billCycleDay>1</billCycleDay>
+          <accountNumber>501</accountNumber>
+        </zuora:zobject>
+      </zuora:zobjects>
+    </zuora:generate>
+  </flow>
+
+  <flow name="Update">
+    <zuora:update type="Account">
+      <zuora:zobjects>
+        <zuora:zobject>
+          <name>foo</name>
+          <billCycleDay>1</billCycleDay>
+          <accountNumber>501</accountNumber>
+        </zuora:zobject>
+      </zuora:zobjects>
+    </zuora:update>
+  </flow>
 
   <flow name="Delete">
     <zuora:delete type="#[variable:type]">
@@ -53,10 +72,10 @@
   <flow name="Find">
     <zuora:find zquery="#[header:queryString]" />
   </flow>
-  
-<!--  <flow name="Amend">-->
-<!--    <zuora:amend amendaments-ref="#[header:amendamentsList]" />-->
-<!--  </flow>-->
+
+  <!--  <flow name="Amend">-->
+  <!--    <zuora:amend amendaments-ref="#[header:amendamentsList]" />-->
+  <!--  </flow>-->
 <!---->
   <flow name="GetUserInfo">
     <zuora:get-user-info />

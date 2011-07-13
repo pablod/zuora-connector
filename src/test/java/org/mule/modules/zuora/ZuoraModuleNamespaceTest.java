@@ -19,7 +19,6 @@ import org.mule.tck.AbstractMuleTestCase;
 import org.mule.tck.FunctionalTestCase;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  * Test for zuora mule schema ZuoraModuleNamespaceTest

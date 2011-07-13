@@ -26,11 +26,18 @@ import org.mule.modules.zuora.zuora.api.ZuoraException;
 import com.zuora.api.object.AmendRequest;
 import com.zuora.api.object.AmendResult;
 import com.zuora.api.object.DeleteResult;
+import com.zuora.api.object.DynamicZObject;
 import com.zuora.api.object.SaveResult;
 import com.zuora.api.object.SubscribeRequest;
 import com.zuora.api.object.SubscribeResult;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections.Transformer;
+import org.apache.commons.lang.StringUtils;
 
 /**
  * @author flbulgarelli
@@ -71,39 +78,43 @@ public class ZuoraModule
      *              <zobject ref="#[variable:anObject]"/>
      *           </zobject>
      *         </create>}   
-     * @param zobjects
+     * @param zobjects the zobjects to create
+     * @param type the type of zobject passed
      * @return a list of SaveResult, one for each ZObject  
      */
     @Processor
-    public List<SaveResult> create(List<ZObject> zobjects)
+    public List<SaveResult> create(String type, List<Map<String, Object>> zobjects)
     {
-        return client.create(zobjects);
+        return client.create(mapToZObject(type, zobjects));
     }
     
     /**
      * Batch creation of invoces for accounts
      * 
      * {@code <generate zobjects-ref="#[variable:accounts]"/>}
-     * @param zobjects 
+     * @param zobjects the zobjects to generate
+     * @param type the type of zobject passed
+     * 
      * @return a list of SaveResult, one for each ZObject
      */
     @Processor
-    public List<SaveResult> generate(List<ZObject> zobjects)
+    public List<SaveResult> generate(String type, List<Map<String, Object>> zobjects)
     {
-        return client.generate(zobjects);
+        return client.generate(mapToZObject(type, zobjects));
     }
 
     /**
      * Batch update of ZObjects
      *
      * {@code <update zobjects-ref="#[variable:objects]"/>}
-     * @param zobjects
+     * @param zobjects the zobjects to update
+     * @param type the type of zobject passed
      * @return a list of SaveResult, one for each ZObject 
      */
     @Processor
-    public List<SaveResult> update(List<ZObject> zobjects)
+    public List<SaveResult> update(String type, List<Map<String, Object>> zobjects)
     {
-        return client.update(zobjects);
+        return client.update(mapToZObject(type, zobjects));
     }
     
     /**
@@ -138,7 +149,6 @@ public class ZuoraModule
      * Answers user information
      *
      * {@code <get-user-info userId="#[header:userId]""/>}
-     * @param userid
      * @return a User 
      */
     @Processor
@@ -202,5 +212,29 @@ public class ZuoraModule
     public String getEnpoint()
     {
         return endpoint;
+    }
+    
+    private ZObject toZObject(String type, Map<String, Object> map)
+    {
+        DynamicZObject zobject = new DynamicZObject();
+        for (Entry<String, Object> entry : map.entrySet())
+        {
+            zobject.setField(StringUtils.capitalize(entry.getKey()), entry.getValue());
+        }
+        zobject.setXmlType(type);
+        return zobject;
+    }
+    
+    @SuppressWarnings("unchecked")
+    private List<ZObject> mapToZObject(final String type, List<Map<String, Object>> maps)
+    {
+        return (List<ZObject>) CollectionUtils.collect(maps, new Transformer()
+        {
+            @Override
+            public Object transform(Object input)
+            {
+                return toZObject(type, (Map<String, Object>) input);
+            }
+        });
     }
 }

@@ -22,11 +22,13 @@ import org.mule.modules.zuora.zobject.ZObject;
 
 import com.zuora.api.object.Account;
 import com.zuora.api.object.DeleteResult;
-import com.zuora.api.object.DynamicZObject;
 import com.zuora.api.object.SaveResult;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -48,7 +50,7 @@ public class ZuoraModuleTestDriver
     @Test
     public void createAndDelete() throws Exception
     {
-        SaveResult result = module.create(Arrays.<ZObject> asList(testAccount())).get(0);
+        SaveResult result = module.create("Account", Collections.singletonList(testAccount())).get(0);
         assertTrue(result.getSuccess());
 
         DeleteResult deleteResult = module.delete("Account", Arrays.asList(result.getId())).get(0);
@@ -65,7 +67,7 @@ public class ZuoraModuleTestDriver
     @Test
     public void findOneResult() throws Exception
     {
-        String id = module.create(Arrays.<ZObject> asList(testAccount())).get(0).getId();
+        String id = module.create("Account", Collections.singletonList(testAccount())).get(0).getId();
         try
         {
             Iterator<ZObject> result = module.find("SELECT Id FROM Account").iterator();
@@ -85,20 +87,20 @@ public class ZuoraModuleTestDriver
         assertNotNull(module.getUserInfo());
     }
 
-    private DynamicZObject testAccount()
+    @SuppressWarnings("serial")
+    private Map<String, Object> testAccount()
     {
-        return new DynamicZObject()
+        return new HashMap<String, Object>()
         {
             {
-                setXmlType("Account");
-                setField("Name", "foo");
-                setField("Currency", "USD");
-                setField("BillCycleDay", 1);
-                setField("AccountNumber", "501");
-                setField("AllowInvoiceEdit", false);
-                setField("AutoPay", false);
-                setField("Notes", "foobar");
-                setField("Status", "Draft");
+                put("name", "foo");
+                put("currency", "USD");
+                put("billCycleDay", 1);
+                put("accountNumber", "501");
+                put("allowInvoiceEdit", false);
+                put("autoPay", false);
+                put("notes", "foobar");
+                put("status", "Draft");
             }
         };
     }
