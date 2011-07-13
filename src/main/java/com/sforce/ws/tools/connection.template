@@ -56,7 +56,7 @@ public class <%=gen.className%> {
       if (config.getSessionId()==null) {
         config.setServiceEndpoint(config.getAuthEndpoint());
         <%=gen.loginResult()%> result = login(config.getUsername(), config.getPassword());
-        config.setSessionId(result.getSessionId());
+        config.setSession(result.getSessionId());
         config.setServiceEndpoint(result.getServerUrl());
       } else {
         if (config.getServiceEndpoint() == null) {
@@ -68,7 +68,7 @@ public class <%=gen.className%> {
 
     <% if (gen.hasSessionHeader()) {%>
       __SessionHeader = new SessionHeader_element();
-      __SessionHeader.setSessionId(config.getSessionId());
+      __SessionHeader.setSession(config.getSessionId());
     <% } %>
   }
 

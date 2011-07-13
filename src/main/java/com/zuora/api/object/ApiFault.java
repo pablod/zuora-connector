@@ -36,9 +36,9 @@ public class ApiFault extends com.sforce.ws.SoapFaultException implements com.sf
   private com.zuora.api.object.ErrorCode FaultCode;
 
 @Override
-    public QName getFaultCode()
+    public String getFaultCode()
     {
-        return new QName(FaultCode.name());
+        return FaultCode.name();
     }
   
 

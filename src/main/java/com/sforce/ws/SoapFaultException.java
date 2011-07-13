@@ -34,7 +34,7 @@ public class SoapFaultException extends ConnectionException {
 		this.faultCode = faultCode;
 	}
 	
-	public QName getFaultCode() {
+	public Object getFaultCode() {
 		return faultCode;
 	}
 	
