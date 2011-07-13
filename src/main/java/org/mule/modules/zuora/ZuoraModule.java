@@ -147,9 +147,9 @@ public class ZuoraModule
      * @return a User 
      */
     @Processor
-    public String getUserInfo(String userid)
+    public String getUserInfo()
     {
-        return client.getUserInfo(userid);
+        return client.getUserInfo();
     }
     
     /**

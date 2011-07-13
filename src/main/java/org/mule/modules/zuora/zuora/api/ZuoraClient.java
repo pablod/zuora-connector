@@ -37,7 +37,7 @@ public interface ZuoraClient<E extends Throwable>
 
     Iterable<ZObject> find(@NotNull String zquery) throws E;
 
-    String getUserInfo(@NotNull String userid) throws E;
+    String getUserInfo() throws E;
 
     List<AmendResult> amend(@NotNull  List<AmendRequest> amendaments) throws E;
 

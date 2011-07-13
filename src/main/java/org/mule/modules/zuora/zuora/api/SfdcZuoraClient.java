@@ -123,7 +123,7 @@ public class SfdcZuoraClient implements ZuoraClient<ConnectionException>
     }
 
     @Override
-    public String getUserInfo(String userid) throws ConnectionException
+    public String getUserInfo() throws ConnectionException
     {
         return getConnection().getUserInfo();
     }

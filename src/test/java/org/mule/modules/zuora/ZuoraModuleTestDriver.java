@@ -21,9 +21,10 @@
 
 package org.mule.modules.zuora;
 
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
 import static org.junit.Assert.assertTrue;
 
+import org.mule.api.transport.Connectable;
 import org.mule.modules.zuora.zobject.ZObject;
 
 import com.sforce.soap.Account;
@@ -61,11 +62,20 @@ public class ZuoraModuleTestDriver
     }
 
     @Test
-    public void testname() throws Exception
+    public void find() throws Exception
     {
         Iterator<ZObject> result = module.find("SELECT Id FROM Account").iterator();
         assertTrue(result.hasNext());
+        assertNotNull(((Account)result.next()).getField("Id"));
         assertFalse(result.hasNext());
     }
+    
+    @Test
+    public void getUserInfo() throws Exception
+    {
+        assertNotNull(module.getUserInfo());
+    }
+    
+    
 
 }
