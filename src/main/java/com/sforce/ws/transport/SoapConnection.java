@@ -38,7 +38,6 @@ import javax.xml.namespace.QName;
 
 import com.sforce.ws.ConnectionException;
 import com.sforce.ws.ConnectorConfig;
-import com.sforce.ws.SoapFaultException;
 import com.sforce.ws.bind.TypeInfo;
 import com.sforce.ws.bind.TypeMapper;
 import com.sforce.ws.bind.XMLizable;
@@ -49,6 +48,8 @@ import com.sforce.ws.util.Verbose;
 import com.sforce.ws.wsdl.Constants;
 
 /**
+ * Modified version of original SoapConnection that handles exceptions properly 
+ * 
  * SoapConnection can be used to send and receive SOAP messages over the
  * specified Transport. This class can be used to send any XML data and it
  * returns the result as XML. This class is ideal to use with doc-literal
@@ -58,6 +59,7 @@ import com.sforce.ws.wsdl.Constants;
  * @version 1.0
  * @since 1.0  Nov 30, 2005
  */
+@SuppressWarnings("unchecked")
 public class SoapConnection {
     private String url;
     private TypeMapper typeMapper;
@@ -179,60 +181,14 @@ public class SoapConnection {
             throw new ConnectionException("Unable to find 'faultcode' in SOAP:Fault");
         }
         String faultCodeStr = xin.nextText();
-        String prefix = TypeMapper.getPrefix(faultCodeStr);
         String name = TypeMapper.getType(faultCodeStr);
-        String namespace = xin.getNamespace(prefix);
-        QName faultCode = new QName(namespace, name);
         
         xin.nextTag();
         if (!"faultstring".equals(xin.getName())) {
             throw new ConnectionException("Unable to find 'faultstring' in SOAP:Fault");
         }
         String faultstring = xin.nextText();
-
-        ConnectionException e;
-        xin.peekTag();
-        if ("detail".equals(xin.getName())) {
-            e = parseDetail(xin, faultCode, faultstring);
-        } else {
-        	e = new SoapFaultException(faultCode, faultstring);
-        }
-
-        xin.nextTag();
-        typeMapper.verifyTag(Constants.SOAP_ENVELOPE_NS, "Fault", xin.getNamespace(), xin.getName());
-
-        readSoapEnvelopeEnd(xin);
-        return e;
-    }
-
-    private ConnectionException parseDetail(XmlInputStream xin, QName faultCode, 
-			String faultstring) throws IOException, ConnectionException {
-
-        ConnectionException e;
-        xin.nextTag(); //consume <detail>
-        xin.peekTag(); //move to the body of <detail>
-
-        if (xin.getEventType() == XmlInputStream.END_TAG) { //check for empty detail element
-            throw new SoapFaultException(faultCode, faultstring);
-        }
-
-        TypeInfo info = new TypeInfo(null, null, null, null, 1, 1, true);
-
-        try {
-            e = (ConnectionException) typeMapper.readObject(xin, info, ConnectionException.class);
-            if (e instanceof SoapFaultException) {
-                ((SoapFaultException)e).setFaultCode(faultCode);
-            }
-        } catch (ConnectionException ce) {
-            throw new ConnectionException("Failed to parse detail: " + xin + " due to: " + ce, ce.getCause());
-        }
-
-        xin.nextTag(); //consume </detail>
-        if (!"detail".equals(xin.getName())) {
-            throw new ConnectionException("Failed to find </detail>");
-        }
-
-        return e;
+        return new ConnectionException("Fault code: " + name + " Fault String: " + faultstring);
     }
 
     private void readSoapEnvelopeStart(XmlInputStream xin) throws IOException, ConnectionException {

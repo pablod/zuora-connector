@@ -39,7 +39,9 @@ import com.zuora.api.object.SubscribeResult;
 
 import java.util.List;
 
-
+/**
+ * @author flbulgarelli
+ */
 @Module(name="zuora",
         namespace="http://repository.mulesoft.org/releases/org/mule/modules/mule-module-zuora",
         schemaLocation="http://repository.mulesoft.org/releases/org/mule/modules/mule-module-zuora/1.0/mule-zuora.xsd")

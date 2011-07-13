@@ -21,16 +21,16 @@
 
 package org.mule.modules.zuora;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import org.mule.api.transport.Connectable;
 import org.mule.modules.zuora.zobject.ZObject;
 
 import com.zuora.api.object.Account;
 import com.zuora.api.object.DeleteResult;
+import com.zuora.api.object.DynamicZObject;
 import com.zuora.api.object.SaveResult;
-import com.zuora.api.object.StaticZObject;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -55,27 +55,59 @@ public class ZuoraModuleTestDriver
     @Test
     public void createAndDelete() throws Exception
     {
-        SaveResult result = module.create(Arrays.<ZObject> asList(new Account())).get(0);
+        SaveResult result = module.create(Arrays.<ZObject> asList(testAccount())).get(0);
         assertTrue(result.getSuccess());
+
         DeleteResult deleteResult = module.delete("Account", Arrays.asList(result.getId())).get(0);
         assertTrue(deleteResult.getSuccess());
     }
 
     @Test
-    public void find() throws Exception
+    public void findNoResult() throws Exception
     {
         Iterator<ZObject> result = module.find("SELECT Id FROM Account").iterator();
-        assertTrue(result.hasNext());
-        assertNotNull(((Account)result.next()).getField("Id"));
         assertFalse(result.hasNext());
     }
-    
+
+    @Test
+    public void findOneResult() throws Exception
+    {
+        String id = module.create(Arrays.<ZObject> asList(testAccount())).get(0).getId();
+        try
+        {
+            Iterator<ZObject> result = module.find("SELECT Id FROM Account").iterator();
+            assertTrue(result.hasNext());
+            assertNotNull(((Account) result.next()).getField("Id"));
+            assertFalse(result.hasNext());
+        }
+        finally
+        {
+            module.delete("Account", Arrays.asList(id));
+        }
+    }
+
     @Test
     public void getUserInfo() throws Exception
     {
         assertNotNull(module.getUserInfo());
     }
-    
-    
+
+    private DynamicZObject testAccount()
+    {
+        return new DynamicZObject()
+        {
+            {
+                setXmlType("Account");
+                setField("Name", "foo");
+                setField("Currency", "USD");
+                setField("BillCycleDay", 1);
+                setField("AccountNumber", "501");
+                setField("AllowInvoiceEdit", false);
+                setField("AutoPay", false);
+                setField("Notes", "foobar");
+                setField("Status", "Draft");
+            }
+        };
+    }
 
 }

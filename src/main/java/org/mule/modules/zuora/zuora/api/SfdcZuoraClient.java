@@ -32,6 +32,14 @@ import java.util.List;
 
 import org.apache.commons.lang.Validate;
 
+/**
+ * Implementation of {@link ZuoraClient} based on a slightly modified version of the
+ * open-source <a href="http://code.google.com/p/sfdc-wsc/">fsdc-wsc</a>. Although
+ * that client is sales-force specific, it works with with Zuora since both APIs have
+ * very similar WSDL interfaces
+ * 
+ * @author flbulgarelli
+ */
 public class SfdcZuoraClient implements ZuoraClient<ConnectionException>
 {
     private final String username;
