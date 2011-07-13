@@ -3,6 +3,8 @@ package com.sforce.soap;
 
 import org.mule.modules.zuora.zobject.ZObject;
 
+import com.sforce.ws.bind.XmlObject;
+
 import javax.xml.namespace.QName;
 
 /**

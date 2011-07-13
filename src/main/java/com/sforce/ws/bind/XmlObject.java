@@ -25,22 +25,25 @@
  */
 package com.sforce.ws.bind;
 
+import com.sforce.ws.ConnectionException;
+import com.sforce.ws.parser.XmlInputStream;
+import com.sforce.ws.parser.XmlOutputStream;
+import com.sforce.ws.wsdl.Constants;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import javax.xml.namespace.QName;
 
-import com.sforce.ws.ConnectionException;
-import com.sforce.ws.parser.XmlInputStream;
-import com.sforce.ws.parser.XmlOutputStream;
-import com.sforce.ws.wsdl.Constants;
-
 /**
+ * <strong>Modified version of sfdc-wsc XmlObject, that handles xsi:type attributes on
+ * serialization.</strong> 
+ * 
  * This is a generic XML element -- same a DOM element. In the common case this
  * class must be able to hold child elements. We do not have a usecase for it yet.
  * So child elements are not implemented.
- *
+ * 
  * @author http://cheenath.com
  * @version 1.0
  * @since 1.0  Dec 12, 2005
@@ -61,7 +64,7 @@ public class XmlObject implements XMLizable {
     }
 
     public XmlObject(QName name, Object value) {
-        this.name = name;
+        this.name = name; 
         this.value = value;
     }
 
@@ -79,6 +82,11 @@ public class XmlObject implements XMLizable {
 
     public QName getXmlType() {
         return xmlType;
+    }
+    
+    public void setXmlType(String type)
+    {
+        this.xmlType =  new QName(type);
     }
 
     public Object getValue() {
@@ -220,37 +228,36 @@ public class XmlObject implements XMLizable {
 
     @Override
     public void write(QName element, XmlOutputStream out, TypeMapper typeMapper) throws IOException {
-        typeMapper.writeFieldXsiType(true);
         if (hasChildren()) {
             out.writeStartTag(element.getNamespaceURI(), element.getLocalPart());
+            out.writeAttribute(Constants.SCHEMA_INSTANCE_NS, "type", xmlType.getLocalPart());
             for (XmlObject child : children) {
                 child.write(child.getName(), out, typeMapper);
             }
             out.writeEndTag(element.getNamespaceURI(), element.getLocalPart());
         } else {
             if (value != null) {
-            	TypeInfo info = null;
-            	if (value instanceof XmlTypeInfoProvider) {
-            		info = ((XmlTypeInfoProvider)value).getTypeInfo(name.getNamespaceURI(), name.getLocalPart(), typeMapper);
-            	}
-            	if (info == null) {
-            		QName xmlType = typeMapper.getXmlType(value.getClass().getName());
-            		if (xmlType == null) {
-            			//todo: throw right exception
-            			throw new IOException("Unable to find xml type for :" + value.getClass().getName());
-            		}
-            		int max = value.getClass().isArray() ? -1 : 1;
-            		if (value.getClass().getName().equals("[B")) {
-            			//special case for byte[]
-            			max = 1;
-            		}
-            		info = new TypeInfo(name.getNamespaceURI(), name.getLocalPart(),
-            				xmlType.getNamespaceURI(), xmlType.getLocalPart(), 0, max, true);
-            	}
+                TypeInfo info = null;
+                if (value instanceof XmlTypeInfoProvider) {
+                    info = ((XmlTypeInfoProvider)value).getTypeInfo(name.getNamespaceURI(), name.getLocalPart(), typeMapper);
+                }
+                if (info == null) {
+                    QName xmlType = typeMapper.getXmlType(value.getClass().getName());
+                    if (xmlType == null) {
+                        //todo: throw right exception
+                        throw new IOException("Unable to find xml type for :" + value.getClass().getName());
+                    }
+                    int max = value.getClass().isArray() ? -1 : 1;
+                    if (value.getClass().getName().equals("[B")) {
+                        //special case for byte[]
+                        max = 1;
+                    }
+                    info = new TypeInfo(name.getNamespaceURI(), name.getLocalPart(),
+                            xmlType.getNamespaceURI(), xmlType.getLocalPart(), 0, max, true);
+                }
                 typeMapper.writeObject(out, info, value, true);
             }
         }
-        typeMapper.writeFieldXsiType(false);
     }
 
     @Override
