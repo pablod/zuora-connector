@@ -16,6 +16,7 @@ package org.mule.modules.zuora;
 import org.mule.api.annotations.Configurable;
 import org.mule.api.annotations.Module;
 import org.mule.api.annotations.Processor;
+import org.mule.api.annotations.lifecycle.Start;
 import org.mule.api.annotations.param.Optional;
 import org.mule.modules.zuora.zobject.DynamicZObject;
 import org.mule.modules.zuora.zobject.ZObject;
@@ -183,8 +184,8 @@ public class ZuoraModule
         return client.amend(amendaments);
     }    
     
-     //@Start
-    public void init() throws Exception
+     @Start
+    public void init() 
     {
         if (client == null)
         {
