@@ -1,27 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
+  <!--
 
-    Mule Zuora Cloud Connector
-
-    Copyright (c) MuleSoft, Inc.  All rights reserved.  http://www.mulesoft.com
-
-    The software in this package is published under the terms of the CPAL v1.0
-    license, a copy of which has been included with this distribution in the
-    LICENSE.txt file.
-
--->
+    Mule Zuora Cloud Connector Copyright (c) MuleSoft, Inc. All rights
+    reserved. http://www.mulesoft.com The software in this package is
+    published under the terms of the CPAL v1.0 license, a copy of which
+    has been included with this distribution in the LICENSE.txt file.
+  -->
 
 <mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:spring="http://www.springframework.org/schema/beans"
+  xmlns:http="http://www.mulesoft.org/schema/mule/http"
   xmlns:zuora="http://repository.mulesoft.org/releases/org/mule/modules/mule-module-zuora"
+  xmlns:scripting="http://www.mulesoft.org/schema/mule/scripting"
   xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
         http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/3.1/mule.xsd
+        http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mule/scripting/3.1/mule-scripting.xsd
+        http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/3.0/mule-http.xsd
         http://repository.mulesoft.org/releases/org/mule/modules/mule-module-zuora http://repository.mulesoft.org/releases/org/mule/modules/mule-module-zuora/1.0/mule-zuora.xsd">
 
-  <zuora:config username="username" password="password"
-    endpoint="zuoraendpoint like https://apisandbox.zuora.com/apps/services/a/29.0" />
+  <zuora:config username="${zuoraUsername}" password="${zuoraPassword}" endpoint="https://apisandbox.zuora.com/apps/services/a/29.0" />
 
-<!-- TODO -->
+  <flow name="CreateAccount">
+    <http:inbound-endpoint host="localhost" port="9090" path="zuora-demo-create-accounts" />
+    <zuora:create type="Account">
+      <zuora:zobjects>
+        <zuora:zobject>
+          <Name>#[header:inbound:name]</Name>
+          <Currency>#[header:inbound:currency]</Currency>
+          <AccountNumber>#[header:inbound:accountNumber]</AccountNumber>
+          <BillCycleDay>1</BillCycleDay>
+          <Status>Draft</Status>
+        </zuora:zobject>
+      </zuora:zobjects>
+    </zuora:create>
+  </flow>
+  
+  <flow name="GetAccounts">
+    <http:inbound-endpoint host="localhost" port="9090" path="zuora-demo-search-accounts" />
+    <zuora:find zquery="select Id, Name, Currency, BillCycleDay, AccountNumber from Account"/>
+    <scripting:component>
+      <scripting:script engine="groovy">
+      <![CDATA[  
+      return payload.collect({ x -> 
+""" 
+AccountId: ${x['Id']}
+  Name: ${x['Name']}
+  Currency: ${x['Currency']}
+  BillCycleDay: ${x['BillCycleDay']}
+  AccountNumber: ${x['AccountNumber']}
+"""
+        })
+        .join("");       
+      ]]>
+     </scripting:script>
+    </scripting:component>
+  </flow>
 
 </mule>
