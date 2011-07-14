@@ -25,6 +25,19 @@ public class DynamicZObject extends XmlObject implements ZObject
         setXmlType(this.getClass().getSimpleName());
     }
 
+    /**Synonym of getField for better groovy integration*/
+    public Object getAt(String name)
+    {
+        return getField(name);
+    }
+    
+    /**Synonym of setField for better groovy integration*/
+    public void setAt(String name, Object value)
+    {
+        setField(name, value);
+    }
+    
+
     @Override
     public void setName(QName name)
     {
