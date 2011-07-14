@@ -46,15 +46,18 @@ public class ZuoraModuleTestDriver
         module.setUsername(System.getenv("zuoraUsername"));
         module.setEndpoint("https://apisandbox.zuora.com/apps/services/a/29.0");
         module.init();
-        // for(ZObject z : module.find("select id from Account"))
-        // {
-        // module.delete("Account", Arrays.asList((String) ((Account)
-        // z).getField("Id")));
-        // }
+        for (ZObject z : module.find("select id from Account"))
+        {
+            System.out.println(z);
+            module.delete(ZObjectType.Account, Arrays.asList((String) ((Account) z).getField("Id")));
+        }
     }
-
+    
+    /**
+     * Test for creating dynamic zobjects
+     */
     @Test
-    public void createAndDelete() throws Exception
+    public void createAndDelete() 
     {
         SaveResult result = module.create(ZObjectType.Account, Collections.singletonList(testAccount())).get(0);
         assertTrue(result.getSuccess());
@@ -63,9 +66,12 @@ public class ZuoraModuleTestDriver
         assertTrue(deleteResult.getSuccess());
     }
 
+    /**
+     * Test for creating static zobjects
+     */
     @Test
     @SuppressWarnings("serial")
-    public void createAndDeleteStatic() throws Exception
+    public void createAndDeleteStatic() 
     {
         final String accountId = module.create(ZObjectType.Account, Collections.singletonList(testAccount())).get(0).getId();
         try
@@ -92,15 +98,21 @@ public class ZuoraModuleTestDriver
         }
     }
 
+    /**
+     * Test for fetching zobjects when there is no object that matches the query 
+     */
     @Test
-    public void findNoResult() throws Exception
+    public void findNoResult() 
     {
         Iterator<ZObject> result = module.find("SELECT Id FROM Account").iterator();
         assertFalse(result.hasNext());
     }
 
+    /**
+     * Test for fetching zobjects when there is an object that matches the query
+     */
     @Test
-    public void findOneResult() throws Exception
+    public void findOneResult() 
     {
         String id = module.create(ZObjectType.Account, Collections.singletonList(testAccount())).get(0).getId();
         try
@@ -117,7 +129,7 @@ public class ZuoraModuleTestDriver
     }
 
     @Test
-    public void getUserInfo() throws Exception
+    public void getUserInfo() 
     {
         assertNotNull(module.getUserInfo());
     }
