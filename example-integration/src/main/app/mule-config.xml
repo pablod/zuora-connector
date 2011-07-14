@@ -13,15 +13,49 @@
 
 <mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:spring="http://www.springframework.org/schema/beans"
+  xmlns:http="http://www.mulesoft.org/schema/mule/http"
   xmlns:zuora="http://repository.mulesoft.org/releases/org/mule/modules/mule-module-zuora"
+  xmlns:sfdc="http://www.mulesoft.org/schema/mule/salesforce"
   xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
         http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/3.1/mule.xsd
+        http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/3.0/mule-http.xsd
+        http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/3.1/mule-salesforce.xsd
         http://repository.mulesoft.org/releases/org/mule/modules/mule-module-zuora http://repository.mulesoft.org/releases/org/mule/modules/mule-module-zuora/1.0/mule-zuora.xsd">
 
-  <zuora:config username="username" password="password"
-    endpoint="zuoraendpoint like https://apisandbox.zuora.com/apps/services/a/29.0" />
+   <sfdc:config name="salesforce" username="${salesforceUsername}"
+  password="${salesforcePassword}" securityToken="${salesforceSecurityKey}" />
 
-<!-- TODO -->
+   <zuora:config username="${zuoraUsername}" password="${zuoraPassword}" endpoint="https://apisandbox.zuora.com/apps/services/a/29.0" />
 
+  <flow name="MigrateSalesforceAccounts">
+    <http:inbound-endpoint host="localhost" port="9091" path="zuora-demo-integration-migrate-salesforce" />
+    <sfdc:query
+      query="select Name, AccountNumber FROM Account"
+      batchsize="1" />
+    <collection-splitter />
+    <zuora:create type="Account">
+      <zuora:zobjects>
+        <zuora:zobject>
+          <Name>#[groovy:payload['Name']]</Name>
+          <Currency>USD</Currency>
+          <AccountNumber>#[groovy:payload['AccountNumber']]</AccountNumber>
+          <BillCycleDay>1</BillCycleDay>
+          <Status>Draft</Status>
+        </zuora:zobject>
+      </zuora:zobjects>
+    </zuora:create>
+  </flow>
+
+  <flow name="MigrateZuoraAccounts">
+    <http:inbound-endpoint host="localhost" port="9091" path="zuora-demo-integration-migrate-zuora" />
+    <zuora:find zquery="select Name, AccountNumber FROM Account" />
+    <collection-splitter />
+    <sfdc:create type="Account">
+      <sfdc:sObject>
+        <sfdc:field key="Name" value="#[groovy:payload['Name']]" />
+        <sfdc:field key="AccountNumber" value="#[groovy:payload['AccountNumber']]" />
+      </sfdc:sObject>
+    </sfdc:create>
+  </flow>
 </mule>

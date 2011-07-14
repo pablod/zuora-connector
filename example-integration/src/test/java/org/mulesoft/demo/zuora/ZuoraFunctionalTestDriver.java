@@ -8,7 +8,7 @@
  * LICENSE.txt file.
  */
 
-package org.mulesoft.demo.mongo;
+package org.mulesoft.demo.zuora;
 
 import org.mule.construct.SimpleFlowConstruct;
 import org.mule.tck.FunctionalTestCase;
@@ -22,9 +22,14 @@ public class ZuoraFunctionalTestDriver extends FunctionalTestCase
         return "mule-config.xml";
     }
 
-    public void testInsertProduct() throws Exception
+    public void testMigrateZuora() throws Exception
     {
-        //TODO
+        lookupFlowConstruct("MigrateZuoraAccounts").process(getTestEvent(""));
+    }
+    
+    public void testMigrateSalesforce() throws Exception
+    {
+        lookupFlowConstruct("MigrateSalesforceAccounts").process(getTestEvent(""));
     }
 
     private SimpleFlowConstruct lookupFlowConstruct(final String name)
