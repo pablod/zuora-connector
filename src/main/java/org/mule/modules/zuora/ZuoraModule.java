@@ -39,7 +39,6 @@ import java.util.Map.Entry;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Transformer;
-import org.apache.commons.lang.StringUtils;
 
 /**
  * @author flbulgarelli
@@ -101,14 +100,15 @@ public class ZuoraModule
     {
         return client.create(mapToZObject(type, zobjects));
     }
-    
+
     /**
-     * Batch creation of invoces for accounts
+     * Batch creation of invoces for accounts 
      * 
      * {@code <generate zobjects-ref="#[variable:accounts]"/>}
-     * @param zobjects the zobjects to generate
-     * @param type the type of zobject passed
      * 
+     * @param zobjects the zobjects to generate, as a list of string-object maps . 
+     *  Zuora attribute names, unlike java beans, are CamelCase.
+     * @param type the type of zobject passed
      * @return a list of SaveResult, one for each ZObject
      */
     @Processor
@@ -121,7 +121,8 @@ public class ZuoraModule
      * Batch update of ZObjects
      *
      * {@code <update zobjects-ref="#[variable:objects]"/>}
-     * @param zobjects the zobjects to update
+     * @param zobjects the zobjects to update, as a list of string-object maps . 
+     *  Zuora attribute names, unlike java beans, are CamelCase.
      * @param type the type of zobject passed
      * @return a list of SaveResult, one for each ZObject 
      */
@@ -151,7 +152,9 @@ public class ZuoraModule
      *
      * {@code <find query="#[header:queryString]" />}
      * @param zquery
-     * @return a ZObjects iterable
+     * @return a ZObjects iterable. ZObjects returned by this operation
+     *  may be instances of either StaticZObject - like Account or Amendment -,  if the object is a non-customizable Zuora entity,
+     *  or DynamicZObject,  if the object is a customizable Zuora entity
      */
     @Processor
     public Iterable<ZObject> find(String zquery)
