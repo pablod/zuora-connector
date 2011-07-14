@@ -233,7 +233,7 @@ public class ZuoraModule
         DynamicZObject zobject = new DynamicZObject();
         for (Entry<String, Object> entry : map.entrySet())
         {
-            zobject.setField(StringUtils.capitalize(entry.getKey()), entry.getValue());
+            zobject.setField(entry.getKey(), entry.getValue());
         }
         zobject.setXmlType(type.getTypeName());
         return zobject;

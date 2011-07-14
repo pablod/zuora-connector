@@ -74,10 +74,10 @@ public class ZuoraModuleTestDriver
                 Collections.<Map<String, Object>> singletonList(new HashMap<String, Object>()
                 {
                     {
-                        put("country", "US");
-                        put("firstName", "John");
-                        put("lastName", "Doe");
-                        put("accountId", accountId);
+                        put("Country", "US");
+                        put("FirstName", "John");
+                        put("LastName", "Doe");
+                        put("AccountId", accountId);
                     }
                 })).get(0);
             System.out.println(result);
@@ -128,14 +128,14 @@ public class ZuoraModuleTestDriver
         return new HashMap<String, Object>()
         {
             {
-                put("name", "foo");
-                put("currency", "USD");
-                put("billCycleDay", 1);
-                put("accountNumber", "501");
-                put("allowInvoiceEdit", false);
-                put("autoPay", false);
-                put("notes", "foobar");
-                put("status", "Draft");
+                put("Name", "foo");
+                put("Currency", "USD");
+                put("BillCycleDay", 1);
+                put("AccountNumber", "501");
+                put("AllowInvoiceEdit", false);
+                put("AutoPay", false);
+                put("Notes", "foobar");
+                put("Status", "Draft");
             }
         };
     }

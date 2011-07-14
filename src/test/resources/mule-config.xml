@@ -29,9 +29,9 @@
     <zuora:create type="Account">
       <zuora:zobjects>
         <zuora:zobject>
-          <name>foo</name>
-          <billCycleDay>1</billCycleDay>
-          <accountNumber>501</accountNumber>
+          <Name>foo</Name>
+          <BillCycleDay>1</BillCycleDay>
+          <AccountNumber>501</AccountNumber>
         </zuora:zobject>
       </zuora:zobjects>
     </zuora:create>
@@ -41,9 +41,9 @@
     <zuora:generate type="Account">
       <zuora:zobjects>
         <zuora:zobject>
-          <name>foo</name>
-          <billCycleDay>1</billCycleDay>
-          <accountNumber>501</accountNumber>
+          <Name>foo</Name>
+          <BillCycleDay>1</BillCycleDay>
+          <AccountNumber>501</AccountNumber>
         </zuora:zobject>
       </zuora:zobjects>
     </zuora:generate>
@@ -53,9 +53,9 @@
     <zuora:update type="Account">
       <zuora:zobjects>
         <zuora:zobject>
-          <name>foo</name>
-          <billCycleDay>1</billCycleDay>
-          <accountNumber>501</accountNumber>
+          <Name>foo</Name>
+          <BillCycleDay>1</BillCycleDay>
+          <AccountNumber>501</AccountNumber>
         </zuora:zobject>
       </zuora:zobjects>
     </zuora:update>
