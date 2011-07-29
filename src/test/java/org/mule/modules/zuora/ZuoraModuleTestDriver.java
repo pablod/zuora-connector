@@ -14,6 +14,7 @@
 
 package org.mule.modules.zuora;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -67,11 +68,11 @@ public class ZuoraModuleTestDriver
     }
 
     /**
-     * Test for creating static zobjects
+     * Test for creating zobjects with relationships
      */
     @Test
     @SuppressWarnings("serial")
-    public void createAndDeleteStatic() 
+    public void createAndDeleteRelated() 
     {
         SaveResult saveResult = module.create(ZObjectType.Account, Collections.singletonList(testAccount())).get(0);
         assertTrue(saveResult.isSuccess());
@@ -134,7 +135,13 @@ public class ZuoraModuleTestDriver
     @Test
     public void getUserInfo() 
     {
-        assertNotNull(module.getUserInfo());
+        User userInfo = module.getUserInfo();
+        assertNotNull(userInfo);
+        assertFalse(userInfo.getUserId().isEmpty());
+        assertFalse(userInfo.getUserEmail().isEmpty());
+        assertEquals(module.getUsername(), userInfo.getUsername());
+        assertFalse(userInfo.getTenantId().isEmpty());
+        assertFalse(userInfo.getTenantName().isEmpty());
     }
 
     @SuppressWarnings("serial")

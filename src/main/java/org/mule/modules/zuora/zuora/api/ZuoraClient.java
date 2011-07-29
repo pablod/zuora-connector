@@ -10,6 +10,8 @@
 
 package org.mule.modules.zuora.zuora.api;
 
+import org.mule.modules.zuora.User;
+
 import com.zuora.api.AmendRequest;
 import com.zuora.api.AmendResult;
 import com.zuora.api.DeleteResult;
@@ -36,7 +38,7 @@ public interface ZuoraClient<E extends Throwable>
 
     Iterable<ZObject> find(@NotNull String zquery) throws E;
 
-    String getUserInfo() throws E;
+    User getUserInfo() throws E;
 
     List<AmendResult> amend(@NotNull  List<AmendRequest> amendaments) throws E;
 

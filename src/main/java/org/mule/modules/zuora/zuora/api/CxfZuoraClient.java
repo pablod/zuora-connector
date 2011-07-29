@@ -10,6 +10,7 @@
 
 package org.mule.modules.zuora.zuora.api;
 
+import org.mule.modules.zuora.User;
 import org.mule.modules.zuora.zuora.api.internal.PaginatedIterable;
 
 import com.zuora.api.AmendRequest;
@@ -159,13 +160,19 @@ public class CxfZuoraClient implements ZuoraClient<Exception>
     }
 
     @Override
-    public String getUserInfo() throws Exception
+    public User getUserInfo() throws Exception
     {
         Holder<String> userId = new Holder<String>();
-        getConnection().getUserInfo(new Holder<String>(), new Holder<String>(), new Holder<String>(),
-            new Holder<String>(), userId, new Holder<String>());
+        Holder<String> tenantId = new Holder<String>();
+        Holder<String> tenantName = new Holder<String>();
+        Holder<String> userEmail = new Holder<String>();
+        Holder<String> userFullName = new Holder<String>();
+        Holder<String> username = new Holder<String>();
+        getConnection().getUserInfo(tenantId, tenantName, userEmail,
+            userFullName, userId, username);
         // TODO
-        return userId.value;
+        return new User(userId.value, username.value, userEmail.value, userFullName.value, tenantId.value,
+            tenantName.value);
     }
 
     @Override

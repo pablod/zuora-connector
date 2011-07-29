@@ -19,6 +19,12 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
 import org.w3c.dom.Element;
 
+/**
+ * Base class for Zuora objects that simplifies accessing customizable properties -
+ * properties that may be defined by user
+ * 
+ * @author flbulgarelli
+ */
 public abstract class Dynamic
 {
     public List<Object> getAny()
@@ -27,6 +33,13 @@ public abstract class Dynamic
                                                 + " are not dynamic. Use normal getters and setters instead");
     }
 
+    /**
+     * Synonym of {@link #setField(String, String)} that lets groovy script users
+     * to set dynamic properties with the indexed brackets [] syntax.
+     * 
+     * @param name
+     * @param value
+     */
     public void setAt(String name, String value)
     {
         setField(name, value);
@@ -45,6 +58,13 @@ public abstract class Dynamic
         }
     }
 
+    /**
+     * Synonym of {@link #getField(String)} that lets groovy script users
+     * to access dynamic properties with the indexed brackets [] syntax.
+     * 
+     * @param name
+     * @return {@link #getField(String)}
+     */
     public String getAt(String name)
     {
         return getField(name);

@@ -16,6 +16,7 @@ import com.zuora.api.SaveResult;
 import com.zuora.api.SessionHeader;
 import com.zuora.api.Soap;
 import com.zuora.api.ZuoraService;
+import com.zuora.api.object.Account;
 import com.zuora.api.object.ZObject;
 
 import java.util.Arrays;
@@ -62,7 +63,7 @@ public class ZuoraConnectionTestDriver
         bindingProvider.getRequestContext().put(Header.HEADER_LIST, Arrays.asList(new Header(new QName("urn:partner.soap.sforce.com", "SessionHeader"), sh, new JAXBDataBinding(SessionHeader.class))));
 
 
-        List<SaveResult> create = newConnection.create(Arrays.<ZObject>asList(new ZObject()
+        List<SaveResult> create = newConnection.create(Arrays.<ZObject>asList(new Account()
         {
             {
                 setField("Name", "foo");
