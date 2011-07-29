@@ -1,11 +1,6 @@
-The Mule Zuora Cloud Connector contains some generated code
-that was edited by hand. If you need to upgrade WSDL version, follow
-the following steps:
+When upgrading to new versions of Zuora, its wsdl must be modified in order
+to generate code properly:
 
 1. Get the new Zuora WSDL
-2. Replace Short definitions by Ints in it. The code generator does not support them 
-3. Generate the code by running the wsdlc class, passing the new, modified wsdl, and the destination of the generated code jar
-4. Delete classes under com.zuora.api.object 
-5. Import the generated jar 
-6. Edit code by hand so that dynamic zobjects are empty classes that
-	extend DynamicZObject, and the other zobjects extends StaticZObject
+2. Add <xs:any minOccurs="0" maxOccurs="unbounded"/> element to zObject complex type definition 
+3. Remove all <element> tags declared inside <sequence> elements of complex types that extend zObject type
