@@ -9,7 +9,7 @@
   <name>Mule Zuora Cloud Connector</name>
 
   <properties>
-    <mule.version>3.2.0-SNAPSHOT</mule.version>
+    <mule.version>3.2.0-M1</mule.version>
     <mule.devkit.version>1.0-SNAPSHOT</mule.devkit.version>
     <junit.version>4.8.2</junit.version>
     <mockito.version>1.8.2</mockito.version>

@@ -10,7 +10,7 @@
 
 package org.mulesoft.demo.zuora;
 
-import org.mule.construct.SimpleFlowConstruct;
+import org.mule.construct.Flow;
 import org.mule.tck.FunctionalTestCase;
 
 public class ZuoraFunctionalTestDriver extends FunctionalTestCase
@@ -32,9 +32,9 @@ public class ZuoraFunctionalTestDriver extends FunctionalTestCase
         lookupFlowConstruct("MigrateSalesforceAccounts").process(getTestEvent(""));
     }
 
-    private SimpleFlowConstruct lookupFlowConstruct(final String name)
+    private Flow lookupFlowConstruct(final String name)
     {
-        return (SimpleFlowConstruct) muleContext.getRegistry().lookupFlowConstruct(name);
+        return (Flow)muleContext.getRegistry().lookupFlowConstruct(name);
     }
 
 }

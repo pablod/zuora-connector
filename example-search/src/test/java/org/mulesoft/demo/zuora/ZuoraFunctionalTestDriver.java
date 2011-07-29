@@ -10,15 +10,11 @@
 
 package org.mulesoft.demo.zuora;
 
-import static org.junit.Assert.*;
-
 import org.mule.api.MuleEvent;
 import org.mule.api.MuleMessage;
 import org.mule.api.transport.PropertyScope;
-import org.mule.construct.SimpleFlowConstruct;
+import org.mule.construct.Flow;
 import org.mule.tck.FunctionalTestCase;
-
-import org.junit.Test;
 
 public class ZuoraFunctionalTestDriver extends FunctionalTestCase
 {
@@ -45,9 +41,9 @@ public class ZuoraFunctionalTestDriver extends FunctionalTestCase
         System.out.println(process.getMessage().getPayload());
     }
 
-    private SimpleFlowConstruct lookupFlowConstruct(final String name)
+    private Flow lookupFlowConstruct(final String name)
     {
-        return (SimpleFlowConstruct) muleContext.getRegistry().lookupFlowConstruct(name);
+        return (Flow) muleContext.getRegistry().lookupFlowConstruct(name);
     }
 
 }
