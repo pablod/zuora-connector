@@ -12,7 +12,7 @@
     <mule.version>3.2.0-SNAPSHOT</mule.version>
     <mule.devkit.version>1.0-SNAPSHOT</mule.devkit.version>
     <junit.version>4.8.2</junit.version>
-    <mule.zuora.version>1.0-SNAPSHOT</mule.zuora.version>
+    <mule.zuora.version>1.1-SNAPSHOT</mule.zuora.version>
     <ibeans.version>1.1</ibeans.version>
   </properties>
 
@@ -65,6 +65,10 @@
             <inclusion>
               <groupId>org.mule.modules</groupId>
               <artifactId>mule-module-zuora</artifactId>
+            </inclusion>
+            <inclusion>
+              <groupId>org.mule.tools.devkit</groupId>
+              <artifactId>mule-devkit-annotations</artifactId>
             </inclusion>
           </inclusions>
         </configuration>

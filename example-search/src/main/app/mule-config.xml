@@ -44,7 +44,7 @@
       <![CDATA[  
       return payload.collect({ x -> 
 """ 
-AccountId: ${x['Id']}
+AccountId: ${x.id}
   Name: ${x['Name']}
   Currency: ${x['Currency']}
   BillCycleDay: ${x['BillCycleDay']}
