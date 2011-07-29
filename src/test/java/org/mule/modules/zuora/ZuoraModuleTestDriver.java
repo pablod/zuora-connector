@@ -18,12 +18,11 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import org.mule.modules.zuora.zobject.ZObject;
 import org.mule.modules.zuora.zobject.ZObjectType;
 
-import com.zuora.api.object.Account;
-import com.zuora.api.object.DeleteResult;
-import com.zuora.api.object.SaveResult;
+import com.zuora.api.DeleteResult;
+import com.zuora.api.SaveResult;
+import com.zuora.api.object.ZObject;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -48,8 +47,7 @@ public class ZuoraModuleTestDriver
         module.init();
         for (ZObject z : module.find("select id from Account"))
         {
-            System.out.println(z);
-            module.delete(ZObjectType.Account, Arrays.asList((String) ((Account) z).getField("Id")));
+            module.delete(ZObjectType.Account, Arrays.asList(z.getId()));
         }
     }
     
@@ -60,10 +58,12 @@ public class ZuoraModuleTestDriver
     public void createAndDelete() 
     {
         SaveResult result = module.create(ZObjectType.Account, Collections.singletonList(testAccount())).get(0);
-        assertTrue(result.getSuccess());
+        assertTrue(result.isSuccess());
+        
+        System.out.println(result.getId());
 
         DeleteResult deleteResult = module.delete(ZObjectType.Account, Arrays.asList(result.getId())).get(0);
-        assertTrue(deleteResult.getSuccess());
+        assertTrue(deleteResult.isSuccess());
     }
 
     /**
@@ -73,11 +73,14 @@ public class ZuoraModuleTestDriver
     @SuppressWarnings("serial")
     public void createAndDeleteStatic() 
     {
-        final String accountId = module.create(ZObjectType.Account, Collections.singletonList(testAccount())).get(0).getId();
+        SaveResult saveResult = module.create(ZObjectType.Account, Collections.singletonList(testAccount())).get(0);
+        assertTrue(saveResult.isSuccess());
+        
+        final String accountId = saveResult.getId();
         try
         {
             SaveResult result = module.create(ZObjectType.Contact,
-                Collections.<Map<String, Object>> singletonList(new HashMap<String, Object>()
+                Collections.<Map<String, String>> singletonList(new HashMap<String, String>()
                 {
                     {
                         put("Country", "US");
@@ -87,10 +90,10 @@ public class ZuoraModuleTestDriver
                     }
                 })).get(0);
             System.out.println(result);
-            assertTrue(result.getSuccess());
+            assertTrue(result.isSuccess());
 
             DeleteResult deleteResult = module.delete(ZObjectType.Contact, Arrays.asList(result.getId())).get(0);
-            assertTrue(deleteResult.getSuccess());
+            assertTrue(deleteResult.isSuccess());
         }
         finally
         {
@@ -119,7 +122,7 @@ public class ZuoraModuleTestDriver
         {
             Iterator<ZObject> result = module.find("SELECT Id FROM Account").iterator();
             assertTrue(result.hasNext());
-            assertNotNull(((Account) result.next()).getField("Id"));
+            assertNotNull(result.next().getId());
             assertFalse(result.hasNext());
         }
         finally
@@ -135,17 +138,17 @@ public class ZuoraModuleTestDriver
     }
 
     @SuppressWarnings("serial")
-    private Map<String, Object> testAccount()
+    private Map<String, String> testAccount()
     {
-        return new HashMap<String, Object>()
+        return new HashMap<String, String>()
         {
             {
                 put("Name", "foo");
                 put("Currency", "USD");
-                put("BillCycleDay", 1);
-                put("AccountNumber", "501");
-                put("AllowInvoiceEdit", false);
-                put("AutoPay", false);
+                put("BillCycleDay", "1");
+                put("AccountNumber", "7891");
+                put("AllowInvoiceEdit", "false");
+                put("AutoPay", "false");
                 put("Notes", "foobar");
                 put("Status", "Draft");
             }

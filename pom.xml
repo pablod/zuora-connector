@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.mule.modules</groupId>
   <artifactId>mule-module-zuora</artifactId>
@@ -12,6 +13,7 @@
     <mule.devkit.version>1.0-SNAPSHOT</mule.devkit.version>
     <junit.version>4.8.2</junit.version>
     <mockito.version>1.8.2</mockito.version>
+    <cxf.version>2.3.0</cxf.version>
   </properties>
 
   <build>
@@ -26,6 +28,33 @@
       </plugins>
     </pluginManagement>
     <plugins>
+      <plugin>
+        <artifactId>cxf-codegen-plugin</artifactId>
+        <groupId>org.apache.cxf</groupId>
+        <version>${cxf.version}</version>
+        <executions>
+          <execution>
+            <id>generate-sources</id>
+            <phase>generate-sources</phase>
+            <configuration>
+             <extension>true</extension>
+              <wsdlOptions>
+                <wsdlOption>
+                  <wsdl>${basedir}/src/main/resources/zuora-29.modified.wsdl</wsdl>
+                  
+                    <bindingFiles>
+                        <bindingFile>${basedir}/src/main/resources/bindings.xml</bindingFile>
+                    </bindingFiles>
+                  <autoNameResolution>true</autoNameResolution>
+                </wsdlOption>
+              </wsdlOptions>
+            </configuration>
+            <goals>
+              <goal>wsdl2java</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -67,40 +96,40 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.8</version>
-        <executions>
-          <execution>
-            <id>attach-javadocs</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <docletArtifact>
-            <groupId>org.mule.tools.devkit</groupId>
-            <artifactId>mule-devkit-doclet</artifactId>
-            <version>1.0-SNAPSHOT</version>
-          </docletArtifact>
-          <doclet>org.mule.devkit.doclet.Doclava</doclet>
-          <bootclasspath>${sun.boot.class.path}</bootclasspath>
-          <additionalparam>
-            -quiet
-            -federate JDK
-            http://download.oracle.com/javase/6/docs/api/index.html?
-            -federationxml JDK
-            http://doclava.googlecode.com/svn/static/api/openjdk-6.xml
-            -hdf project.name "${project.name}"
-            -d
-            ${project.build.directory}/apidocs
+  <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-javadoc-plugin</artifactId>
+    <version>2.8</version>
+    <executions>
+      <execution>
+        <id>attach-javadocs</id>
+        <goals>
+          <goal>jar</goal>
+        </goals>
+      </execution>
+    </executions>
+    <configuration>
+      <docletArtifact>
+        <groupId>org.mule.tools.devkit</groupId>
+        <artifactId>mule-devkit-doclet</artifactId>
+        <version>1.0-SNAPSHOT</version>
+      </docletArtifact>
+      <doclet>org.mule.devkit.doclet.Doclava</doclet>
+      <bootclasspath>${sun.boot.class.path}</bootclasspath>
+      <additionalparam>
+        -quiet
+        -federate JDK
+        http://download.oracle.com/javase/6/docs/api/index.html?
+        -federationxml JDK
+        http://doclava.googlecode.com/svn/static/api/openjdk-6.xml
+        -hdf project.name "${project.name}"
+        -d
+        ${project.build.directory}/apidocs
                     </additionalparam>
-          <useStandardDocletOptions>false</useStandardDocletOptions>
-          <additionalJOption>-J-Xmx1024m</additionalJOption>
-        </configuration>
-      </plugin>
+      <useStandardDocletOptions>false</useStandardDocletOptions>
+      <additionalJOption>-J-Xmx1024m</additionalJOption>
+    </configuration>
+  </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>
@@ -148,13 +177,47 @@
   </build>
 
   <dependencies>
-    <!-- SFDC-WSC -->
+    <!-- CXF -->
     <dependency>
-      <groupId>rhino</groupId>
-      <artifactId>js</artifactId>
-      <version>1.7R2</version>
+      <groupId>org.mule.modules</groupId>
+      <artifactId>mule-module-cxf</artifactId>
+      <version>${mule.version}</version>
+      <scope>test</scope>
     </dependency>
-    
+    <dependency>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-databinding-jaxb</artifactId>
+      <version>${cxf.version}</version>
+      <scope>provided</scope>
+      <exclusions>
+        <!-- We use javax.activation -->
+        <exclusion>
+          <groupId>org.apache.geronimo.specs</groupId>
+          <artifactId>geronimo-activation_1.1_spec</artifactId>
+        </exclusion>
+        <!-- We use javax.mail -->
+        <exclusion>
+          <groupId>org.apache.geronimo.specs</groupId>
+          <artifactId>geronimo-javamail_1.4_spec</artifactId>
+        </exclusion>
+        <!-- We use stax-api -->
+        <exclusion>
+          <groupId>org.apache.geronimo.specs</groupId>
+          <artifactId>geronimo-stax-api_1.0_spec</artifactId>
+        </exclusion>
+        <!-- We use javax.xml.ws:jaxws-api -->
+        <exclusion>
+          <groupId>org.apache.geronimo.specs</groupId>
+          <artifactId>geronimo-jaxws_2.1_spec</artifactId>
+        </exclusion>
+        <!-- We use slf4j -->
+        <exclusion>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
     <!-- Testing -->
     <dependency>
       <groupId>junit</groupId>
@@ -174,7 +237,7 @@
       <version>${mule.version}</version>
       <scope>test</scope>
     </dependency>
-    
+
     <!--  Mule & Devkit -->
     <dependency>
       <groupId>org.mule.modules</groupId>
@@ -187,7 +250,7 @@
       <version>${mule.devkit.version}</version>
       <scope>provided</scope>
     </dependency>
-    
+
     <!-- documentation -->
     <dependency>
       <groupId>javax.validation</groupId>

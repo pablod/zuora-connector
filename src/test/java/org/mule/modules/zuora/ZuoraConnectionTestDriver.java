@@ -10,18 +10,25 @@
 
 package org.mule.modules.zuora;
 
-import org.mule.modules.zuora.zobject.DynamicZObject;
-
-import com.sforce.ws.ConnectorConfig;
-import com.sforce.ws.bind.XMLizable;
-import com.zuora.api.object.Connector;
-import com.zuora.api.object.LoginResult;
-import com.zuora.api.object.QueryResult;
-import com.zuora.api.object.SaveResult;
-import com.zuora.api.object.SoapConnection;
+import com.zuora.api.LoginResult;
+import com.zuora.api.QueryResult;
+import com.zuora.api.SaveResult;
+import com.zuora.api.SessionHeader;
+import com.zuora.api.Soap;
+import com.zuora.api.ZuoraService;
+import com.zuora.api.object.ZObject;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 
+import javax.xml.namespace.QName;
+import javax.xml.ws.BindingProvider;
+import javax.xml.ws.handler.MessageContext;
+
+import org.apache.cxf.headers.Header;
+import org.apache.cxf.jaxb.JAXBDataBinding;
 import org.junit.Test;
 
 public class ZuoraConnectionTestDriver
@@ -29,58 +36,51 @@ public class ZuoraConnectionTestDriver
     private static final String PASSWORD = System.getenv("zuoraPassword");
     private static final String USERNAME = System.getenv("zuoraUsername");
 
+    @SuppressWarnings("unchecked")
     @Test
     public void testname() throws Exception
     {
-        SoapConnection newConnection = Connector.newConnection(createConnectorConfig());
-        LoginResult loginResult = newConnection.login(USERNAME, PASSWORD);
-        newConnection.getSessionHeader().setSession(loginResult.getSession());
-        newConnection.getConfig().setServiceEndpoint(loginResult.getServerUrl());
+        ZuoraService serviceLocator = new ZuoraService(getClass().getResource("/zuora-29.wsdl"));
+        Soap  newConnection = serviceLocator.getPort(Soap.class);
+        BindingProvider bindingProvider = ((BindingProvider) newConnection);
+        bindingProvider.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, "https://apisandbox.zuora.com/apps/services/a/29.0");
+        LoginResult loginResult = null;
+        try
+        {
+            loginResult = newConnection.login(USERNAME, PASSWORD);
+        } catch (Exception e)
+        {
+            throw new RuntimeException(e);
+        }
 
-        SaveResult[] create = newConnection.create(new XMLizable[]{new DynamicZObject()
+        bindingProvider.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, loginResult.getServerUrl());
+        bindingProvider.getRequestContext().put(MessageContext.HTTP_REQUEST_HEADERS, new HashMap<String, List<String>>());
+
+        SessionHeader sh = new SessionHeader();
+        sh.setSession(loginResult.getSession());
+
+        bindingProvider.getRequestContext().put(Header.HEADER_LIST, Arrays.asList(new Header(new QName("urn:partner.soap.sforce.com", "SessionHeader"), sh, new JAXBDataBinding(SessionHeader.class))));
+
+
+        List<SaveResult> create = newConnection.create(Arrays.<ZObject>asList(new ZObject()
         {
             {
-                setXmlType("Account");
                 setField("Name", "foo");
                 setField("Currency", "USD");
-                setField("BillCycleDay", 1);
+                setField("BillCycleDay", "1");
                 setField("AccountNumber", "501");
-                setField("AllowInvoiceEdit", false);
-                setField("AutoPay", false);
+                setField("AllowInvoiceEdit", "false");
+                setField("AutoPay", "false");
                 setField("Notes", "foobar");
                 setField("Status", "Draft");
             }
-        }});
+        }));
 
         System.out.println(Arrays.asList(create));
         QueryResult query = newConnection.query("SELECT Id FROM Account");
         System.out.println(Arrays.asList(query.getRecords()));
-        System.out.println(Arrays.asList(newConnection.delete("Account", new String[]{create[0].getId()})));
+        System.out.println(Arrays.asList(newConnection.delete("Account", Collections.singletonList(create.get(0).getId()))));
 
-    }
-
-    private ConnectorConfig createConnectorConfig()
-    {
-        ConnectorConfig config = new ConnectorConfig();
-        config.setUsername(USERNAME);
-        config.setPassword(PASSWORD);
-
-        config.setAuthEndpoint("https://apisandbox.zuora.com/apps/services/a/29.0");
-        config.setServiceEndpoint("https://apisandbox.zuora.com/apps/services/a/29.0");
-
-        config.setManualLogin(true);
-
-        // if (this.proxyHost != null) {
-        // config.setProxy(this.proxyHost, this.proxyPort);
-        // if (this.proxyUsername != null) {
-        // config.setProxyUsername(this.proxyUsername);
-        // }
-        // if (this.proxyPassword != null) {
-        // config.setProxyPassword(this.proxyPassword);
-        // }
-        // }
-
-        return config;
     }
     
 }

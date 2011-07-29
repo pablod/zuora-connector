@@ -39,6 +39,7 @@ import com.zuora.api.object.RefundInvoicePayment;
 import com.zuora.api.object.Subscription;
 import com.zuora.api.object.TaxationItem;
 import com.zuora.api.object.Usage;
+import com.zuora.api.object.ZObject;
 
 /**
  * Enumeration of available ZObject classes. 
@@ -96,6 +97,18 @@ public enum ZObjectType
     public String getTypeName()
     {
         return name();
+    }
+
+    public ZObject newInstance()
+    {
+        try
+        {
+            return clazz.newInstance();
+        }
+        catch (Exception e)
+        {
+            throw new AssertionError(e);
+        }
     }
 
 }

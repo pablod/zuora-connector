@@ -16,29 +16,26 @@ package org.mule.modules.zuora;
 import org.mule.api.annotations.Configurable;
 import org.mule.api.annotations.Module;
 import org.mule.api.annotations.Processor;
-import org.mule.api.annotations.lifecycle.Start;
 import org.mule.api.annotations.param.Optional;
-import org.mule.modules.zuora.zobject.DynamicZObject;
-import org.mule.modules.zuora.zobject.ZObject;
 import org.mule.modules.zuora.zobject.ZObjectType;
-import org.mule.modules.zuora.zuora.api.SfdcZuoraClient;
+import org.mule.modules.zuora.zuora.api.CxfZuoraClient;
+import org.mule.modules.zuora.zuora.api.ZObjectMapper;
 import org.mule.modules.zuora.zuora.api.ZuoraClient;
 import org.mule.modules.zuora.zuora.api.ZuoraClientAdaptor;
 import org.mule.modules.zuora.zuora.api.ZuoraException;
 
-import com.zuora.api.object.AmendRequest;
-import com.zuora.api.object.AmendResult;
-import com.zuora.api.object.DeleteResult;
-import com.zuora.api.object.SaveResult;
-import com.zuora.api.object.SubscribeRequest;
-import com.zuora.api.object.SubscribeResult;
+import com.zuora.api.AmendRequest;
+import com.zuora.api.AmendResult;
+import com.zuora.api.DeleteResult;
+import com.zuora.api.SaveResult;
+import com.zuora.api.SubscribeRequest;
+import com.zuora.api.SubscribeResult;
+import com.zuora.api.object.ZObject;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.collections.Transformer;
+import javax.annotation.PostConstruct;
 
 /**
  * @author flbulgarelli
@@ -57,18 +54,7 @@ public class ZuoraModule
     private String password;
     @Configurable
     private String endpoint;
-    @Optional
-    @Configurable
-    private String proxyHost;
-    @Optional
-    @Configurable
-    private String proxyUsername;
-    @Optional
-    @Configurable
-    private Integer proxyPort;
-    @Optional
-    @Configurable
-    private String proxyPassword;
+    
     
     /**
      * Batch creation of ZObjects associated to Subscriptions
@@ -78,7 +64,7 @@ public class ZuoraModule
      * @return a subscription results list, one for each subscription 
      */
     @Processor
-    public List<SubscribeResult> subscribe(List<SubscribeRequest> subscriptions)
+    public List<SubscribeResult> subscribe(List<com.zuora.api.SubscribeRequest> subscriptions)
     {
         return client.subscribe(subscriptions);
     }
@@ -96,9 +82,9 @@ public class ZuoraModule
      * @return a list of SaveResult, one for each ZObject  
      */
     @Processor
-    public List<SaveResult> create(ZObjectType type, List<Map<String, Object>> zobjects)
+    public List<SaveResult> create(ZObjectType type, List<Map<String, String>> zobjects)
     {
-        return client.create(mapToZObject(type, zobjects));
+        return client.create(ZObjectMapper.toZObject(type, zobjects));
     }
 
     /**
@@ -112,9 +98,9 @@ public class ZuoraModule
      * @return a list of SaveResult, one for each ZObject
      */
     @Processor
-    public List<SaveResult> generate(ZObjectType type, List<Map<String, Object>> zobjects)
+    public List<SaveResult> generate(ZObjectType type, List<Map<String, String>> zobjects)
     {
-        return client.generate(mapToZObject(type, zobjects));
+        return client.generate(ZObjectMapper.toZObject(type, zobjects));
     }
 
     /**
@@ -127,9 +113,9 @@ public class ZuoraModule
      * @return a list of SaveResult, one for each ZObject 
      */
     @Processor
-    public List<SaveResult> update(ZObjectType type, List<Map<String, Object>> zobjects)
+    public List<SaveResult> update(ZObjectType type, List<Map<String, String>> zobjects)
     {
-        return client.update(mapToZObject(type, zobjects));
+        return client.update(ZObjectMapper.toZObject(type, zobjects));
     }
     
     /**
@@ -154,7 +140,7 @@ public class ZuoraModule
      * @param zquery
      * @return a ZObjects iterable. ZObjects returned by this operation
      *  may be instances of either StaticZObject - like Account or Amendment -,  if the object is a non-customizable Zuora entity,
-     *  or DynamicZObject,  if the object is a customizable Zuora entity
+     *  or ZObject,  if the object is a customizable Zuora entity
      */
     @Processor
     public Iterable<ZObject> find(String zquery)
@@ -182,19 +168,19 @@ public class ZuoraModule
      * @return a list of AmmendResults, one for each amendament
      */
     @Processor
-    public List<AmendResult> amend(List<AmendRequest> amendaments)
+    public List<AmendResult> amend(List<com.zuora.api.AmendRequest> amendaments)
     {
         return client.amend(amendaments);
     }    
     
-     @Start
-    public void init() 
+    @PostConstruct
+    public void init()
     {
         if (client == null)
         {
-            setClient(new SfdcZuoraClient(username, password, endpoint, proxyHost, proxyUsername,
-                proxyPassword, proxyPort));
+            setClient(new CxfZuoraClient(username, password, endpoint));
         }
+        
     }
     
     public String getPassword()
@@ -232,27 +218,6 @@ public class ZuoraModule
         return endpoint;
     }
     
-    private ZObject toZObject(ZObjectType type, Map<String, Object> map)
-    {
-        DynamicZObject zobject = new DynamicZObject();
-        for (Entry<String, Object> entry : map.entrySet())
-        {
-            zobject.setField(entry.getKey(), entry.getValue());
-        }
-        zobject.setXmlType(type.getTypeName());
-        return zobject;
-    }
+   
     
-    @SuppressWarnings("unchecked")
-    private List<ZObject> mapToZObject(final ZObjectType type, List<Map<String, Object>> maps)
-    {
-        return (List<ZObject>) CollectionUtils.collect(maps, new Transformer()
-        {
-            @Override
-            public Object transform(Object input)
-            {
-                return toZObject(type, (Map<String, Object>) input);
-            }
-        });
-    }
 }

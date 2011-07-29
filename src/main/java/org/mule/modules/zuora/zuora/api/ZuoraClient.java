@@ -10,14 +10,13 @@
 
 package org.mule.modules.zuora.zuora.api;
 
-import org.mule.modules.zuora.zobject.ZObject;
-
-import com.zuora.api.object.AmendRequest;
-import com.zuora.api.object.AmendResult;
-import com.zuora.api.object.DeleteResult;
-import com.zuora.api.object.SaveResult;
-import com.zuora.api.object.SubscribeRequest;
-import com.zuora.api.object.SubscribeResult;
+import com.zuora.api.AmendRequest;
+import com.zuora.api.AmendResult;
+import com.zuora.api.DeleteResult;
+import com.zuora.api.SaveResult;
+import com.zuora.api.SubscribeRequest;
+import com.zuora.api.SubscribeResult;
+import com.zuora.api.object.ZObject;
 
 import java.util.List;
 
