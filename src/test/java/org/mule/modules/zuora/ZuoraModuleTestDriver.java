@@ -121,9 +121,11 @@ public class ZuoraModuleTestDriver
         String id = module.create(ZObjectType.Account, Collections.singletonList(testAccount())).get(0).getId();
         try
         {
-            Iterator<ZObject> result = module.find("SELECT Id FROM Account").iterator();
+            Iterator<ZObject> result = module.find("SELECT Id, Name FROM Account").iterator();
             assertTrue(result.hasNext());
-            assertNotNull(result.next().getId());
+            ZObject next = result.next();
+            assertNotNull(next.getId());
+            assertEquals(testAccount().get("Name"), next.getAt("Name"));
             assertFalse(result.hasNext());
         }
         finally

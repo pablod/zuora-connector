@@ -17,6 +17,7 @@ import java.util.List;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
+import org.apache.commons.lang.builder.ToStringBuilder;
 import org.w3c.dom.Element;
 
 /**
@@ -27,7 +28,7 @@ import org.w3c.dom.Element;
  */
 public abstract class Dynamic
 {
-    public List<Object> getAny()
+    public List<Element> getAny()
     {
         throw new UnsupportedOperationException("Instances of class " + this.getClass()
                                                 + " are not dynamic. Use normal getters and setters instead");
@@ -82,9 +83,15 @@ public abstract class Dynamic
         {
             public boolean evaluate(Object object)
             {
-                return (object instanceof Element && ((Element) object).getTagName().equals(name));
+                return (object instanceof Element && ((Element) object).getLocalName().equals(name));
             }
         });
+    }
+    
+    @Override
+    public String toString()
+    {
+        return ToStringBuilder.reflectionToString(this);
     }
 
 }

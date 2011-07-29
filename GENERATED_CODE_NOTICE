@@ -2,5 +2,5 @@ When upgrading to new versions of Zuora, its wsdl must be modified in order
 to generate code properly:
 
 1. Get the new Zuora WSDL
-2. Add <xs:any minOccurs="0" maxOccurs="unbounded"/> element to zObject complex type definition 
+2. Add element  <xs:any minOccurs="0" maxOccurs="unbounded" processContents="skip"/> to zObject complex type definition 
 3. Remove all <element> tags declared inside <sequence> elements of complex types that extend zObject type

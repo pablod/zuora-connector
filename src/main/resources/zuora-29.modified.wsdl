@@ -8,7 +8,7 @@
 	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
 	xmlns:zns="http://api.zuora.com/" 
 	xmlns:ons="http://object.api.zuora.com/" 
-	xmlns:fns="http://fault.api.zuora.com/" 
+	xmlns:fns="http://fault.api.zuora.com/"
 	targetNamespace="http://api.zuora.com/">
 	<types>
 		<schema attributeFormDefault="qualified" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://object.api.zuora.com/">
@@ -16,7 +16,7 @@
 				<sequence>
 					<element minOccurs="0" maxOccurs="unbounded" name="fieldsToNull" nillable="true" type="string" />
 					<element minOccurs="0" maxOccurs="1" name="Id" nillable="true" type="zns:ID" />
-                    <xs:any minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:any minOccurs="0" maxOccurs="unbounded" processContents="skip"/>
 				</sequence>
 			</complexType>
 			<complexType name="Account">
