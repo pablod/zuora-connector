@@ -33,6 +33,7 @@ import com.zuora.api.object.ProductRatePlan;
 import com.zuora.api.object.ProductRatePlanCharge;
 import com.zuora.api.object.ProductRatePlanChargeTier;
 import com.zuora.api.object.RatePlan;
+import com.zuora.api.object.RatePlanCharge;
 import com.zuora.api.object.RatePlanChargeTier;
 import com.zuora.api.object.Refund;
 import com.zuora.api.object.RefundInvoicePayment;
@@ -74,6 +75,7 @@ public enum ZObjectType
     RatePlan(RatePlan.class), //
     RatePlanChargeTier(RatePlanChargeTier.class), // 
     RefundInvoicePayment(RefundInvoicePayment.class), //
+    RatePlanCharge(RatePlanCharge.class), //
     TaxationItem(TaxationItem.class);
 
     
