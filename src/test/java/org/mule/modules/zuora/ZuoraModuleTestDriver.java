@@ -139,21 +139,6 @@ public class ZuoraModuleTestDriver
     }
     
     @Test
-    public void testname() throws Exception
-    {
-        module.amend(Arrays.asList(new AmendRequest()
-        {
-            {
-                getAmendments().add(new Amendment()
-                {
-                    {
-                    }
-                });
-            }
-        }));
-    }
-
-    @Test
     public void getUserInfo() 
     {
         User userInfo = module.getUserInfo();
