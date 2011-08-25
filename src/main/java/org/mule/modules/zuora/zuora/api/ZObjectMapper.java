@@ -23,10 +23,10 @@ import org.apache.commons.collections.Transformer;
 
 public class ZObjectMapper
 {
-    public static ZObject toZObject(ZObjectType type, Map<String, String> map)
+    public static ZObject toZObject(ZObjectType type, Map<String, Object> map)
     {
         ZObject zobject = type.newInstance();
-        for (Entry<String, String> entry : map.entrySet())
+        for (Entry<String, Object> entry : map.entrySet())
         {
             zobject.setField(entry.getKey(), entry.getValue());
         }
@@ -34,14 +34,14 @@ public class ZObjectMapper
     }
 
     @SuppressWarnings("unchecked")
-    public static List<ZObject> toZObject(final ZObjectType type, List<Map<String, String>> maps)
+    public static List<ZObject> toZObject(final ZObjectType type, List<Map<String, Object>> maps)
     {
         return (List<ZObject>) CollectionUtils.collect(maps, new Transformer()
         {
             @Override
             public Object transform(Object input)
             {
-                return toZObject(type, (Map<String, String>) input);
+                return toZObject(type, (Map<String, Object>) input);
             }
         });
     }

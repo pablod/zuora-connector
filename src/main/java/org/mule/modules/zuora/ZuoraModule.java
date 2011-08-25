@@ -82,7 +82,7 @@ public class ZuoraModule
      * @return a list of SaveResult, one for each ZObject  
      */
     @Processor
-    public List<SaveResult> create(ZObjectType type, List<Map<String, String>> zobjects)
+    public List<SaveResult> create(ZObjectType type, List<Map<String, Object>> zobjects)
     {
         return client.create(ZObjectMapper.toZObject(type, zobjects));
     }
@@ -98,7 +98,7 @@ public class ZuoraModule
      * @return a list of SaveResult, one for each ZObject
      */
     @Processor
-    public List<SaveResult> generate(ZObjectType type, List<Map<String, String>> zobjects)
+    public List<SaveResult> generate(ZObjectType type, List<Map<String, Object>> zobjects)
     {
         return client.generate(ZObjectMapper.toZObject(type, zobjects));
     }
@@ -113,7 +113,7 @@ public class ZuoraModule
      * @return a list of SaveResult, one for each ZObject 
      */
     @Processor
-    public List<SaveResult> update(ZObjectType type, List<Map<String, String>> zobjects)
+    public List<SaveResult> update(ZObjectType type, List<Map<String, Object>> zobjects)
     {
         return client.update(ZObjectMapper.toZObject(type, zobjects));
     }

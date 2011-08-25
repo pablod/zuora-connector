@@ -31,28 +31,28 @@ public class ZObjectMapperUnitTest
     @Test
     public void toZobject() throws Exception
     {
-        Map<String, String> accountMap = testAccount();
+        Map<String, Object> accountMap = testAccount();
         
         ZObject zObject = ZObjectMapper.toZObject(ZObjectType.Account, accountMap);
         assertThat(zObject, instanceOf(Account.class));
-        for(Entry<String,String> e : accountMap.entrySet())
+        for(Entry<String,Object> e : accountMap.entrySet())
         {
             assertEquals(zObject.getAt(e.getKey()), e.getValue());
         }
     }
     
     @SuppressWarnings("serial")
-    private Map<String, String> testAccount()
+    private Map<String, Object> testAccount()
     {
-        return new HashMap<String, String>()
+        return new HashMap<String, Object>()
         {
             {
                 put("Name", "foo");
                 put("Currency", "USD");
-                put("BillCycleDay", "1");
+                put("BillCycleDay", 1);
                 put("AccountNumber", "7891");
-                put("AllowInvoiceEdit", "false");
-                put("AutoPay", "false");
+                put("AllowInvoiceEdit", false);
+                put("AutoPay", false);
                 put("Notes", "foobar");
                 put("Status", "Draft");
             }

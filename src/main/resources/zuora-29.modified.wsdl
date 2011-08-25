@@ -19,163 +19,870 @@
                     <xs:any minOccurs="0" maxOccurs="unbounded" processContents="skip"/>
 				</sequence>
 			</complexType>
+			
+	
+			
+			
 			<complexType name="Account">
 				<complexContent>
-					<extension base="ons:zObject"><sequence/></extension>
+					<extension base="ons:zObject">
+						<sequence>
+							<element minOccurs="0" name="AccountNumber" nillable="true" type="string" />
+							<element minOccurs="0" name="AdditionalEmailAddresses" nillable="true" type="string" />
+							<element minOccurs="0" name="AllowInvoiceEdit" nillable="true" type="boolean" />
+							<element minOccurs="0" name="AutoPay" nillable="true" type="boolean" />
+							<element minOccurs="0" name="Balance" nillable="true" type="decimal" />
+							<element minOccurs="0" name="Batch" nillable="true" type="string" />
+							<element minOccurs="0" name="BillCycleDay" type="int" />
+							<element minOccurs="0" name="BillToId" nillable="true" type="zns:ID" />
+               				<element minOccurs="0" name="CreatedById" nillable="true" type="zns:ID"  />
+               				<element minOccurs="0" name="CreatedDate" nillable="true" type="dateTime" />
+               				<element minOccurs="0" name="CreditBalance" nillable="true" type="decimal" />
+							<element minOccurs="0" name="CrmId" nillable="true" type="string" />
+							<element minOccurs="0" name="Currency" nillable="true" type="string" />
+							<element minOccurs="0" name="CustomerServiceRepName" nillable="true" type="string" />
+							<element minOccurs="0" name="DefaultPaymentMethodId" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="InvoiceDeliveryPrefsEmail" nillable="true" type="boolean"  />
+							<element minOccurs="0" name="InvoiceDeliveryPrefsPrint" nillable="true" type="boolean"  />
+							<element minOccurs="0" name="InvoiceTemplateId" nillable="true" type="zns:ID"  />
+							<element minOccurs="0" name="LastInvoiceDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="Name" nillable="true" type="string" />
+							<element minOccurs="0" name="Notes" nillable="true" type="string" />
+							<element minOccurs="0" name="ParentId" nillable="true" type="zns:ID"  />
+							<element minOccurs="0" name="PaymentGateway" nillable="true" type="string"  />
+							<element minOccurs="0" name="PaymentTerm" nillable="true" type="string" /><!-- user-defined enum -->
+							<element minOccurs="0" name="PurchaseOrderNumber" nillable="true" type="string" />
+							<element minOccurs="0" name="SalesRepName" nillable="true" type="string" />
+							<element minOccurs="0" name="SoldToId" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="Status" nillable="true" type="string" />
+							<element minOccurs="0" name="TaxExemptCertificateID" nillable="true" type="string" />
+							<element minOccurs="0" name="TaxExemptCertificateType" nillable="true" type="string" />
+							<element minOccurs="0" name="TaxExemptDescription" nillable="true" type="string" />
+							<element minOccurs="0" name="TaxExemptEffectiveDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="TaxExemptExpirationDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="TaxExemptIssuingJurisdiction" nillable="true" type="string" />
+							<element minOccurs="0" name="TaxExemptStatus" nillable="true" type="string"  />
+               				<element minOccurs="0" name="TotalInvoiceBalance" nillable="true" type="decimal"  />
+               				<element minOccurs="0" name="UpdatedById" nillable="true" type="zns:ID"  />
+               				<element minOccurs="0" name="UpdatedDate" nillable="true" type="dateTime" />
+						</sequence>
+					</extension>
 				</complexContent>
 			</complexType>
 			
             <complexType name="AccountingRun">
                 <complexContent>
-                    <extension base="ons:zObject"><sequence/></extension>
+                    <extension base="ons:zObject">
+                        <sequence>
+                           	<element minOccurs="0" name="AccountingRunDate" nillable="true" type="dateTime" /> 
+                           	<element minOccurs="0" name="AccountingRunNumber" nillable="true" type="string" />
+                           	<element minOccurs="0" name="AdjustmentExtractDownloadUrl" nillable="true" type="string" />
+               				<element minOccurs="0" name="CreatedById" nillable="true" type="zns:ID"  />
+               				<element minOccurs="0" name="CreatedDate" nillable="true" type="dateTime"  />
+                           	<element minOccurs="0" name="InvoiceExtractDownloadUrl" nillable="true" type="string" />
+                           	<element minOccurs="0" name="PaymentExtractDownloadUrl" nillable="true" type="string" />
+                           	<element minOccurs="0" name="Status" nillable="true" type="string" />
+              				<element minOccurs="0" name="UpdatedById" nillable="true" type="zns:ID"  />
+               				<element minOccurs="0" name="UpdatedDate" nillable="true" type="dateTime"  />
+                        </sequence>
+                    </extension>
                 </complexContent>
             </complexType>
             <complexType name="AccountingRunAdjustmentSummary"> 
                 <complexContent>
-                    <extension base="ons:zObject"><sequence/></extension>
+                    <extension base="ons:zObject">
+                        <sequence>
+                            <element minOccurs="0" name="AccountingRunId" nillable="true" type="zns:ID" /> 
+               				<element minOccurs="0" name="CreatedById" nillable="true" type="zns:ID"  />
+               				<element minOccurs="0" name="CreatedDate" nillable="true" type="dateTime"  />
+                            <element minOccurs="0" name="Currency" nillable="true" type="string" />
+                            <element minOccurs="0" name="IntegratedFailed" nillable="true" type="int" />
+					        <element minOccurs="0" name="IntegratedFailedAmount" nillable="true" type="decimal" />
+					        <element minOccurs="0" name="IntegratedSuccessful" nillable="true" type="int" />
+					        <element minOccurs="0" name="IntegratedSuccessfulAmount" nillable="true" type="decimal" />
+					        <element minOccurs="0" name="IntegratedTotal" nillable="true" type="int" />
+					        <element minOccurs="0" name="IntegratedTotalAmount" nillable="true" type="decimal" />
+					        <element minOccurs="0" name="ReadTotal" nillable="true" type="int" />
+					        <element minOccurs="0" name="ReadTotalAmount" nillable="true" type="decimal"  />
+               				<element minOccurs="0" name="UpdatedById" nillable="true" type="zns:ID"  />
+               				<element minOccurs="0" name="UpdatedDate" nillable="true" type="dateTime"  />
+                        </sequence>
+                    </extension>
                 </complexContent>
             </complexType>
             <complexType name="AccountingRunInvoiceSummary"> 
                 <complexContent>
-                    <extension base="ons:zObject"><sequence/></extension>
+                    <extension base="ons:zObject">
+                        <sequence>
+                            <element minOccurs="0" name="AccountingRunId" nillable="true" type="zns:ID" /> 
+               				<element minOccurs="0" name="CreatedById" nillable="true" type="zns:ID"  />
+               				<element minOccurs="0" name="CreatedDate" nillable="true" type="dateTime"  />
+                            <element minOccurs="0" name="Currency" nillable="true" type="string" />
+                            <element minOccurs="0" name="IntegratedFailed" nillable="true" type="int" />
+					        <element minOccurs="0" name="IntegratedFailedAmount" nillable="true" type="decimal"  />
+					        <element minOccurs="0" name="IntegratedSuccessful" nillable="true" type="int" />
+					        <element minOccurs="0" name="IntegratedSuccessfulAmount" nillable="true" type="decimal" />
+					        <element minOccurs="0" name="IntegratedTotal" nillable="true" type="int" />
+					        <element minOccurs="0" name="IntegratedTotalAmount" nillable="true" type="decimal" />
+					        <element minOccurs="0" name="ReadTotal" nillable="true" type="int" />
+					        <element minOccurs="0" name="ReadTotalAmount" nillable="true" type="decimal" />
+               				<element minOccurs="0" name="UpdatedById" nillable="true" type="zns:ID"  />
+               				<element minOccurs="0" name="UpdatedDate" nillable="true" type="dateTime"  />
+                        </sequence>
+                    </extension>
                 </complexContent>
             </complexType>
             <complexType name="AccountingRunPaymentSummary"> 
                 <complexContent>
-                    <extension base="ons:zObject"><sequence/></extension>
+                    <extension base="ons:zObject">
+                        <sequence>
+                            <element minOccurs="0" name="AccountingRunId" nillable="true" type="zns:ID" /> 
+			               	<element minOccurs="0" name="CreatedById" nillable="true" type="zns:ID"  />
+			                <element minOccurs="0" name="CreatedDate" nillable="true" type="dateTime"  />
+                            <element minOccurs="0" name="Currency" nillable="true" type="string" />
+                            <element minOccurs="0" name="IntegratedFailed" nillable="true" type="int" />
+					        <element minOccurs="0" name="IntegratedFailedAmount" nillable="true" type="decimal" />
+					        <element minOccurs="0" name="IntegratedSuccessful" nillable="true" type="int" />
+					        <element minOccurs="0" name="IntegratedSuccessfulAmount" nillable="true" type="decimal" />
+					        <element minOccurs="0" name="IntegratedTotal" nillable="true" type="int" />
+					        <element minOccurs="0" name="IntegratedTotalAmount" nillable="true" type="decimal" />
+					        <element minOccurs="0" name="ReadTotal" nillable="true" type="int" />
+					        <element minOccurs="0" name="ReadTotalAmount" nillable="true" type="decimal" />
+               				<element minOccurs="0" name="UpdatedById" nillable="true" type="zns:ID"  />
+              				<element minOccurs="0" name="UpdatedDate" nillable="true" type="dateTime"  />
+                        </sequence>
+                    </extension>
                 </complexContent>
             </complexType>
             <complexType name="InvoiceAccountingDetail"> 
                 <complexContent>
-                    <extension base="ons:zObject"><sequence/></extension>
+                    <extension base="ons:zObject">
+                        <sequence>
+					        <element minOccurs="0" name="AccountingRunDescription" nillable="true" type="string" />
+					        <element minOccurs="0" name="AccountingRunErrorCode" nillable="true" type="string"/>
+					        <element minOccurs="0" name="AccountingRunExternalId" nillable="true" type="string"/> 
+                            <element minOccurs="0" name="AccountingRunId" nillable="true" type="zns:ID"/>         
+                            <element minOccurs="0" name="AccountingRunNotes" nillable="true" type="string"/>                             
+                            <element minOccurs="0" name="AccountingRunSource" nillable="true" type="string"/>
+                            <element minOccurs="0" name="AccountingRunUpdateTime" nillable="true" type="dateTime"  />
+                            <element minOccurs="0" name="AccountingRunUserId" nillable="true" type="string" />
+			                <element minOccurs="0" name="CreatedById" nillable="true" type="zns:ID"  />
+			                <element minOccurs="0" name="CreatedDate" nillable="true" type="dateTime"  />
+                            <element minOccurs="0" name="InvoiceId" nillable="true" type="zns:ID"/>   
+                            <element minOccurs="0" name="TransferredToAccounting" nillable="true" type="string" />
+			                <element minOccurs="0" name="UpdatedById" nillable="true" type="zns:ID"  />
+			                <element minOccurs="0" name="UpdatedDate" nillable="true" type="dateTime"  />
+                        </sequence>
+                    </extension>
                 </complexContent>
             </complexType>
             <complexType name="AdjustmentAccountingDetail"> 
                 <complexContent>
-                    <extension base="ons:zObject"><sequence/></extension>
+                    <extension base="ons:zObject">
+                        <sequence>
+					        <element minOccurs="0" name="AccountingRunDescription" nillable="true" type="string" />
+					        <element minOccurs="0" name="AccountingRunErrorCode" nillable="true" type="string"/>
+					        <element minOccurs="0" name="AccountingRunExternalId" nillable="true" type="string"/> 
+                            <element minOccurs="0" name="AccountingRunId" nillable="true" type="zns:ID"/>         
+                            <element minOccurs="0" name="AccountingRunNotes" nillable="true" type="string"/>                             
+                            <element minOccurs="0" name="AccountingRunSource" nillable="true" type="string"/>
+                            <element minOccurs="0" name="AccountingRunUpdateTime" nillable="true" type="dateTime"  />
+                            <element minOccurs="0" name="AccountingRunUserId" nillable="true" type="string" />
+                            <element minOccurs="0" name="AdjustmentId" nillable="true" type="zns:ID"/>   
+			                <element minOccurs="0" name="CreatedById" nillable="true" type="zns:ID"  />
+			                <element minOccurs="0" name="CreatedDate" nillable="true" type="dateTime"  />
+                            <element minOccurs="0" name="TransferredToAccounting" nillable="true" type="string" />
+			                <element minOccurs="0" name="UpdatedById" nillable="true" type="zns:ID"  />
+			                <element minOccurs="0" name="UpdatedDate" nillable="true" type="dateTime"  />
+                        </sequence>
+                    </extension>
                 </complexContent>
             </complexType>
             <complexType name="PaymentAccountingDetail"> 
                 <complexContent>
-                    <extension base="ons:zObject"><sequence/></extension>
+                    <extension base="ons:zObject">
+                        <sequence>
+					        <element minOccurs="0" name="AccountingRunDescription" nillable="true" type="string" />
+					        <element minOccurs="0" name="AccountingRunErrorCode" nillable="true" type="string"/>
+					        <element minOccurs="0" name="AccountingRunExternalId" nillable="true" type="string"/> 
+                            <element minOccurs="0" name="AccountingRunId" nillable="true" type="zns:ID"/>         
+                            <element minOccurs="0" name="AccountingRunNotes" nillable="true" type="string"/>                             
+                            <element minOccurs="0" name="AccountingRunSource" nillable="true" type="string"/>
+                            <element minOccurs="0" name="AccountingRunUpdateTime" nillable="true" type="dateTime"  />
+                            <element minOccurs="0" name="AccountingRunUserId" nillable="true" type="string" />
+               				<element minOccurs="0" name="CreatedById" nillable="true" type="zns:ID"  />
+               				<element minOccurs="0" name="CreatedDate" nillable="true" type="dateTime"  />
+                            <element minOccurs="0" name="PaymentId" nillable="true" type="zns:ID"/>   
+                            <element minOccurs="0" name="ReconciliationStatus" nillable="true" type="string" />
+                            <element minOccurs="0" name="TransferredToAccounting" nillable="true" type="string" />
+               				<element minOccurs="0" name="UpdatedById" nillable="true" type="zns:ID"  />
+               				<element minOccurs="0" name="UpdatedDate" nillable="true" type="dateTime"  />
+                        </sequence>
+                    </extension>
                 </complexContent>
             </complexType>
 			<complexType name="InvoiceAdjustment">
 				<complexContent>
-					<extension base="ons:zObject"><sequence/></extension>
+					<extension base="ons:zObject">
+						<sequence>
+							<element minOccurs="0" name="AccountId" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="AccountingCode" nillable="true" type="string" />
+							<element minOccurs="0" name="AdjustmentDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="AdjustmentNumber" nillable="true" type="string" />
+							<element minOccurs="0" name="Amount" nillable="true" type="decimal" />
+               				<element minOccurs="0" name="CancelledById" nillable="true" type="zns:ID"/>
+               				<element minOccurs="0" name="CancelledOn" nillable="true" type="dateTime"/>
+               				<element minOccurs="0" name="Comments" nillable="true" type="string"/>
+							<element minOccurs="0" name="CreatedById" nillable="true" type="zns:ID" />
+               				<element minOccurs="0" name="CreatedDate" nillable="true" type="dateTime"  />
+							<element minOccurs="0" name="CustomerName" nillable="true" type="string" />
+							<element minOccurs="0" name="CustomerNumber" nillable="true" type="string" />
+               				<element minOccurs="0" name="ImpactAmount" nillable="true" type="decimal"/>
+               				<element minOccurs="0" name="InvoiceId" nillable="true" type="zns:ID" />
+               				<element minOccurs="0" name="InvoiceNumber" nillable="true" type="string"/>
+               				<element minOccurs="0" name="ReferenceId" nillable="true" type="string"/>
+							<element minOccurs="0" name="Status" nillable="true" type="string" />
+							<element minOccurs="0" name="TransferredToAccounting" nillable="true" type="string" />
+							<element minOccurs="0" name="Type" nillable="true" type="string"/>
+               				<element minOccurs="0" name="UpdatedById" nillable="true" type="zns:ID"  />
+               				<element minOccurs="0" name="UpdatedDate" nillable="true" type="dateTime"  />
+						</sequence>
+					</extension>
 				</complexContent>
 			</complexType>
 <complexType name="InvoiceItemAdjustment" >
 				<complexContent>
-					<extension base="ons:zObject"><sequence/></extension>
+					<extension base="ons:zObject">
+						<sequence>
+							<element minOccurs="0" name="AccountId" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="AccountingCode" nillable="true" type="string" />
+							<element minOccurs="0" name="AdjustmentDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="AdjustmentNumber" nillable="true" type="string" />
+							<element minOccurs="0" name="Amount" nillable="true" type="decimal" />
+							<element minOccurs="0" name="CancelledById" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="CancelledDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="Comment" nillable="true" type="string" />
+			               	<element minOccurs="0" name="CreatedById" nillable="true" type="zns:ID" />
+			               	<element minOccurs="0" name="CreatedDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="CustomerName" nillable="true" type="string" />
+							<element minOccurs="0" name="CustomerNumber" nillable="true" type="string" />
+							<element minOccurs="0" name="InvoiceId" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="InvoiceItemName" nillable="true" type="string" />
+							<element minOccurs="0" name="InvoiceNumber" nillable="true" type="string" />
+							<element minOccurs="0" name="ReferenceId" nillable="true" type="string" />
+							<element minOccurs="0" name="ServiceEndDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="ServiceStartDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="SourceId" nillable="true" type="string" />
+							<element minOccurs="0" name="SourceType" nillable="true" type="string" />
+							<element minOccurs="0" name="Status" nillable="true" type="string" />
+							<element minOccurs="0" name="TransferredToAccounting" nillable="true" type="string" />
+							<element minOccurs="0" name="Type" nillable="true" type="string" />
+               				<element minOccurs="0" name="UpdatedById" nillable="true" type="zns:ID" />
+               				<element minOccurs="0" name="UpdatedDate" nillable="true" type="dateTime" />
+						</sequence>
+					</extension>
 				</complexContent>
 			</complexType>	
 
 			<complexType name="Amendment">
 				<complexContent>
-					<extension base="ons:zObject"><sequence/></extension>
+					<extension base="ons:zObject">
+						<sequence>
+							<element minOccurs="0" name="AutoRenew" nillable="true" type="boolean"  />
+							<element minOccurs="0" name="Code" nillable="true" type="string" />
+							<element minOccurs="0" name="ContractEffectiveDate" nillable="true" type="dateTime" />
+               				<element minOccurs="0" name="CreatedById" nillable="true" type="zns:ID"  />
+               				<element minOccurs="0" name="CreatedDate" nillable="true" type="dateTime"  />
+               				<element minOccurs="0" name="CustomerAcceptanceDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="Description" nillable="true" type="string" />
+							<element minOccurs="0" name="DestinationAccountId" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="EffectiveDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="InitialTerm" nillable="true" type="long" />
+							<element minOccurs="0" name="Name" nillable="true" type="string" />
+							<element minOccurs="0" name="RatePlanData" nillable="true" type="zns:RatePlanData" />
+							<element minOccurs="0" name="RenewalTerm" nillable="true" type="long" />
+							<element minOccurs="0" name="ServiceActivationDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="Status" nillable="true" type="string" />
+							<element minOccurs="0" name="SubscriptionId" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="TermStartDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="TermType" nillable="true" type="string"  />
+							<element minOccurs="0" name="Type" nillable="true" type="string" />
+               				<element minOccurs="0" name="UpdatedById" nillable="true" type="zns:ID"  />
+               				<element minOccurs="0" name="UpdatedDate" nillable="true" type="dateTime"  />
+						</sequence>
+					</extension>
 				</complexContent>
 			</complexType>
 			<complexType name="Contact">
 				<complexContent>
-					<extension base="ons:zObject"><sequence/></extension>
+					<extension base="ons:zObject">
+						<sequence>
+							<element minOccurs="0" name="AccountId" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="Address1" nillable="true" type="string" />
+							<element minOccurs="0" name="Address2" nillable="true" type="string" />
+							<element minOccurs="0" name="City" nillable="true" type="string" />
+							<element minOccurs="0" name="Country" nillable="true" type="string" />
+							<element minOccurs="0" name="County" nillable="true" type="string"  /> 
+               				<element minOccurs="0" name="CreatedById" nillable="true" type="zns:ID"  />
+               				<element minOccurs="0" name="CreatedDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="Description" nillable="true" type="string"  />
+							<element minOccurs="0" name="Fax" nillable="true" type="string" />
+							<element minOccurs="0" name="FirstName" nillable="true" type="string" />
+							<element minOccurs="0" name="HomePhone" nillable="true" type="string" />
+							<element minOccurs="0" name="LastName" nillable="true" type="string" />
+							<element minOccurs="0" name="MobilePhone" nillable="true" type="string" />
+							<element minOccurs="0" name="NickName" nillable="true" type="string" />
+							<element minOccurs="0" name="OtherPhone" nillable="true" type="string" />
+							<element minOccurs="0" name="OtherPhoneType" nillable="true" type="string" />
+							<element minOccurs="0" name="PersonalEmail" nillable="true" type="string" />
+							<element minOccurs="0" name="PostalCode" nillable="true" type="string" />
+							<element minOccurs="0" name="State" nillable="true" type="string" />
+							<element minOccurs="0" name="TaxRegion" nillable="true" type="string"  />
+               				<element minOccurs="0" name="UpdatedById" nillable="true" type="zns:ID"  />
+              				<element minOccurs="0" name="UpdatedDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="WorkEmail" nillable="true" type="string" />
+							<element minOccurs="0" name="WorkPhone" nillable="true" type="string" />
+						</sequence>
+					</extension>
 				</complexContent>
 			</complexType>
 			<complexType name="Invoice" >
 				<complexContent>
-					<extension base="ons:zObject"><sequence/></extension>
+					<extension base="ons:zObject">
+						<sequence>
+							<element minOccurs="0" name="AccountId" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="AdjustmentAmount" nillable="true" type="decimal" />
+							<element minOccurs="0" name="Amount" nillable="true" type="decimal" />
+							<element minOccurs="0" name="AmountWithoutTax" nillable="true" type="decimal" />
+							<element minOccurs="0" name="Balance" nillable="true" type="decimal" />
+							<element minOccurs="0" name="Body" nillable="true" type="string" />
+							<element minOccurs="0" name="Comments" nillable="true" type="string" />
+							<element minOccurs="0" name="CreatedById" nillable="true" type="zns:ID"  />
+							<element minOccurs="0" name="CreatedDate" nillable="true" type="dateTime"  />
+							<element minOccurs="0" name="DueDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="IncludesOneTime" nillable="true" type="boolean" />
+							<element minOccurs="0" name="IncludesRecurring" nillable="true" type="boolean" />
+							<element minOccurs="0" name="IncludesUsage" nillable="true" type="boolean" />
+							<element minOccurs="0" name="InvoiceDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="InvoiceNumber" nillable="true" type="string" />
+							<element minOccurs="0" name="LastEmailSentDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="PaymentAmount" nillable="true" type="decimal" />
+							<element minOccurs="0" name="PostedBy" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="PostedDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="RefundAmount" nillable="true" type="decimal"  />
+							<element minOccurs="0" name="Status" nillable="true" type="string" />
+							<element minOccurs="0" name="TargetDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="TaxAmount" nillable="true" type="decimal"  />
+							<element minOccurs="0" name="TaxExemptAmount" nillable="true" type="decimal"  />
+							<element minOccurs="0" name="TransferredToAccounting" nillable="true" type="string" />
+							<element minOccurs="0" name="UpdatedById" nillable="true" type="zns:ID"  />
+							<element minOccurs="0" name="UpdatedDate" nillable="true" type="dateTime"  />
+						</sequence>
+					</extension>
 				</complexContent>
 			</complexType>
 			<complexType name="Refund">
 				<complexContent>
-					<extension base="ons:zObject"><sequence/></extension>
+					<extension base="ons:zObject">
+						<sequence>
+							<element minOccurs="0" name="AccountId" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="AccountingCode" nillable="true" type="string" />
+							<element minOccurs="0" name="Amount" nillable="true" type="decimal" />
+							<element minOccurs="0" name="Comment" nillable="true" type="string" />
+			               	<element minOccurs="0" name="CreatedById" nillable="true" type="zns:ID"  />
+			               	<element minOccurs="0" name="CreatedDate" nillable="true" type="dateTime"  />
+							<element minOccurs="0" name="Gateway" nillable="true" type="string" />
+							<element minOccurs="0" name="GatewayResponse" nillable="true" type="string" />
+							<element minOccurs="0" name="GatewayResponseCode" nillable="true" type="string" />
+							<element minOccurs="0" name="MethodType" nillable="true" type="string" />
+							<element minOccurs="0" name="PaymentId" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="ReferenceID" nillable="true" type="string" />
+							<element minOccurs="0" name="RefundDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="RefundNumber" nillable="true" type="string" />
+							<element minOccurs="0" name="RefundTransactionTime" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="SourceType" nillable="true" type="string" />
+							<element minOccurs="0" name="Status" nillable="true" type="string" />
+							<element minOccurs="0" name="TransferredToAccounting" nillable="true" type="string" />
+							<element minOccurs="0" name="Type" nillable="true" type="string" />
+			                <element minOccurs="0" name="UpdatedById" nillable="true" type="zns:ID"  />
+			                <element minOccurs="0" name="UpdatedDate" nillable="true" type="dateTime"  />
+						</sequence>
+					</extension>
 				</complexContent>
 			</complexType>
 			<complexType name="RefundInvoicePayment">
 				<complexContent>
-					<extension base="ons:zObject"><sequence/></extension>
+					<extension base="ons:zObject">
+						<sequence>
+               				<element minOccurs="0" name="CreatedById" nillable="true" type="zns:ID"  />
+               				<element minOccurs="0" name="CreatedDate" nillable="true" type="dateTime"  />
+							<element minOccurs="0" name="InvoicePaymentId" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="RefundAmount" nillable="true" type="decimal" />
+							<element minOccurs="0" name="RefundId" nillable="true" type="zns:ID" />
+               				<element minOccurs="0" name="UpdatedById" nillable="true" type="zns:ID"  />
+               				<element minOccurs="0" name="UpdatedDate" nillable="true" type="dateTime"  />
+						</sequence>
+					</extension>
 				</complexContent>
 			</complexType>
 			<complexType name="InvoiceItem">
 				<complexContent>
-					<extension base="ons:zObject"><sequence/></extension>
+					<extension base="ons:zObject">
+						<sequence>
+							<element minOccurs="0" name="AccountingCode" nillable="true" type="string" />
+							<element minOccurs="0" name="ChargeAmount" nillable="true" type="decimal" />
+							<element minOccurs="0" name="ChargeDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="ChargeDescription" nillable="true" type="string" />
+							<element minOccurs="0" name="ChargeName" nillable="true" type="string" />
+							<element minOccurs="0" name="ChargeNumber" nillable="true" type="string" />
+               				<element minOccurs="0" name="CreatedById" nillable="true" type="zns:ID"  />
+							<element minOccurs="0" name="CreatedDate" nillable="true" type="dateTime"  />
+							<element minOccurs="0" name="InvoiceId" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="ProductDescription" nillable="true" type="string" />
+							<element minOccurs="0" name="ProductId" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="ProductName" nillable="true" type="string" />
+							<element minOccurs="0" name="Quantity" nillable="true" type="decimal" />
+							<element minOccurs="0" name="RatePlanChargeId" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="RevRecCode" nillable="true" type="string" />
+							<element minOccurs="0" name="RevRecStartDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="RevRecTriggerCondition" nillable="true" type="string" />
+							<element minOccurs="0" name="ServiceEndDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="ServiceStartDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="SKU" nillable="true" type="string" />
+							<element minOccurs="0" name="SubscriptionId" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="SubscriptionNumber" nillable="true" type="string" />
+							<element minOccurs="0" name="TaxAmount" nillable="true" type="decimal" />
+	                        <element minOccurs="0" name="TaxCode" nillable="true" type="string" />
+							<element minOccurs="0" name="TaxExemptAmount" nillable="true" type="decimal" />
+							<element minOccurs="0" name="UnitPrice" nillable="true" type="decimal" />
+							<element minOccurs="0" name="UOM" nillable="true" type="string" />
+              				<element minOccurs="0" name="UpdatedById" nillable="true" type="zns:ID"  />
+							<element minOccurs="0" name="UpdatedDate" nillable="true" type="dateTime"  />
+						</sequence>
+					</extension>
 				</complexContent>
 			</complexType>
 			<complexType name="InvoicePayment">
 				<complexContent>
-					<extension base="ons:zObject"><sequence/></extension>
+					<extension base="ons:zObject">
+						<sequence>
+							<element minOccurs="0" name="Amount" nillable="true" type="decimal" />
+               				<element minOccurs="0" name="CreatedById" nillable="true" type="zns:ID"  />
+               				<element minOccurs="0" name="CreatedDate" nillable="true" type="dateTime"  />
+							<element minOccurs="0" name="InvoiceId" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="PaymentId" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="RefundAmount" nillable="true" type="decimal" />
+               				<element minOccurs="0" name="UpdatedById" nillable="true" type="zns:ID"  />
+               				<element minOccurs="0" name="UpdatedDate" nillable="true" type="dateTime"  />
+						</sequence>
+					</extension>
 				</complexContent>
 			</complexType>
 			<complexType name="Payment">
 				<complexContent>
-					<extension base="ons:zObject"><sequence/></extension>
+					<extension base="ons:zObject">
+						<sequence>
+							<element minOccurs="0" name="AccountId" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="AccountingCode" nillable="true" type="string" />
+							<element minOccurs="0" name="Amount" nillable="true" type="decimal" />
+               				<element minOccurs="0" name="AppliedCreditBalanceAmount" nillable="true" type="decimal"  />
+							<element minOccurs="0" name="AppliedInvoiceAmount" nillable="true" type="decimal" />							
+							<element minOccurs="0" name="AuthTransactionId" nillable="true" type="string" />
+							<element minOccurs="0" name="BankIdentificationNumber" nillable="true" type="string" />
+							<element minOccurs="0" name="Comment" nillable="true" type="string" />
+               				<element minOccurs="0" name="CreatedById" nillable="true" type="zns:ID"  />
+               				<element minOccurs="0" name="CreatedDate" nillable="true" type="dateTime"  />
+							<element minOccurs="0" name="EffectiveDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="GatewayOrderId" nillable="true" type="string" />
+							<element minOccurs="0" name="GatewayResponse" nillable="true" type="string" />
+							<element minOccurs="0" name="GatewayResponseCode" nillable="true" type="string" />
+							<element minOccurs="0" name="InvoiceId" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="InvoiceNumber" nillable="true" type="string" />
+							<element minOccurs="0" name="PaymentMethodId" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="PaymentNumber" nillable="true" type="string" />
+							<element minOccurs="0" name="ReferenceId" nillable="true" type="string" />
+							<element minOccurs="0" name="RefundAmount" nillable="true" type="decimal" />
+							<element minOccurs="0" name="SecondPaymentReferenceId" nillable="true" type="string" />
+							<element minOccurs="0" name="SoftDescriptor" nillable="true" type="string" />
+							<element minOccurs="0" name="SoftDescriptorPhone" nillable="true" type="string" />
+							<element minOccurs="0" name="Status" nillable="true" type="string" />
+							<element minOccurs="0" name="TransferredToAccounting" nillable="true" type="string" />
+							<element minOccurs="0" name="Type" nillable="true" type="string" />
+               			<element minOccurs="0" name="UpdatedById" nillable="true" type="zns:ID"  />
+               			<element minOccurs="0" name="UpdatedDate" nillable="true" type="dateTime"  />
+						</sequence>
+					</extension>
 				</complexContent>
 			</complexType>
 			<complexType name="PaymentMethod">
 				<complexContent>
-					<extension base="ons:zObject"><sequence/></extension>
+					<extension base="ons:zObject">
+						<sequence>
+							<element minOccurs="0" name="AccountId" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="AchAbaCode" nillable="true" type="string" />
+							<element minOccurs="0" name="AchAccountName" nillable="true" type="string" />
+							<element minOccurs="0" name="AchAccountNumber" nillable="true" type="string" />
+							<element minOccurs="0" name="AchAccountNumberMask" nillable="true" type="string" />
+							<element minOccurs="0" name="AchAccountType" nillable="true" type="string" />
+							<element minOccurs="0" name="AchBankName" nillable="true" type="string" />
+							<element minOccurs="0" name="Active" nillable="true" type="boolean" />
+							<element minOccurs="0" name="BankIdentificationNumber" nillable="true" type="string" />
+               				<element minOccurs="0" name="CreatedById" nillable="true" type="zns:ID"  />
+               				<element minOccurs="0" name="CreatedDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="CreditCardAddress1" nillable="true" type="string" />
+							<element minOccurs="0" name="CreditCardAddress2" nillable="true" type="string" />
+							<element minOccurs="0" name="CreditCardCity" nillable="true" type="string" />
+							<element minOccurs="0" name="CreditCardCountry" nillable="true" type="string" />
+							<element minOccurs="0" name="CreditCardExpirationMonth" nillable="true" type="int" />
+							<element minOccurs="0" name="CreditCardExpirationYear" nillable="true" type="int" />
+							<element minOccurs="0" name="CreditCardHolderName" nillable="true" type="string" />
+							<element minOccurs="0" name="CreditCardMaskNumber" nillable="true" type="string" />
+							<element minOccurs="0" name="CreditCardNumber" nillable="true" type="string" />
+							<element minOccurs="0" name="CreditCardPostalCode" nillable="true" type="string" />
+							<element minOccurs="0" name="CreditCardSecurityCode" nillable="true" type="string" />
+							<element minOccurs="0" name="CreditCardState" nillable="true" type="string" />
+							<element minOccurs="0" name="CreditCardType" nillable="true" type="string" />
+							<element minOccurs="0" name="DeviceSessionId" nillable="true" type="string" />
+							<element minOccurs="0" name="Email" nillable="true" type="string" />
+							<element minOccurs="0" name="IPAddress" nillable="true" type="string" />
+							<element minOccurs="0" name="LastFailedSaleTransactionDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="LastTransactionDateTime" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="LastTransactionStatus" nillable="true" type="string" />
+							<element minOccurs="0" name="MaxConsecutivePaymentFailures" nillable="true" type="short" />
+							<element minOccurs="0" name="Name" nillable="true" type="string" />
+							<element minOccurs="0" name="NumConsecutiveFailures" nillable="true" type="int" />
+							<element minOccurs="0" name="PaymentRetryWindow" nillable="true" type="short" />
+							<element minOccurs="0" name="PaypalBaid" nillable="true" type="string" /> 
+							<element minOccurs="0" name="PaypalEmail" nillable="true" type="string" />
+							<element minOccurs="0" name="PaypalPreapprovalKey" nillable="true" type="string" />
+							<element minOccurs="0" name="PaypalType" nillable="true" type="string" />
+							<element minOccurs="0" name="Phone" nillable="true" type="string" />
+							<element minOccurs="0" name="SkipValidation" nillable="true" type="boolean" />
+							<element minOccurs="0" name="Type" nillable="true" type="string" />
+               				<element minOccurs="0" name="UpdatedById" nillable="true" type="zns:ID"  />
+               				<element minOccurs="0" name="UpdatedDate" nillable="true" type="dateTime" />
+               				<element minOccurs="0" name="UseDefaultRetryRule" nillable="true" type="boolean" />
+						</sequence>
+					</extension>
 				</complexContent>
 			</complexType>
 			<complexType name="Product">
 				<complexContent>
-					<extension base="ons:zObject"><sequence/></extension>
+					<extension base="ons:zObject">
+						<sequence>
+							<element minOccurs="0" name="Category" nillable="true" type="string" />
+			               	<element minOccurs="0" name="CreatedById" nillable="true" type="zns:ID"  />
+			               	<element minOccurs="0" name="CreatedDate" nillable="true" type="dateTime"  />
+							<element minOccurs="0" name="Description" nillable="true" type="string" />
+							<element minOccurs="0" name="EffectiveEndDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="EffectiveStartDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="Name" nillable="true" type="string" />
+							<element minOccurs="0" name="SKU" nillable="true" type="string" />
+			               	<element minOccurs="0" name="UpdatedById" nillable="true" type="zns:ID"  />
+			               	<element minOccurs="0" name="UpdatedDate" nillable="true" type="dateTime"  />
+						</sequence>
+					</extension>
 				</complexContent>
 			</complexType>
 			<complexType name="ProductRatePlan">
 				<complexContent>
-					<extension base="ons:zObject"><sequence/></extension>
+					<extension base="ons:zObject">
+						<sequence>
+			               	<element minOccurs="0" name="CreatedById" nillable="true" type="zns:ID"  />
+			               	<element minOccurs="0" name="CreatedDate" nillable="true" type="dateTime"  />
+							<element minOccurs="0" name="Description" nillable="true" type="string" />
+							<element minOccurs="0" name="EffectiveEndDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="EffectiveStartDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="Name" nillable="true" type="string" />
+							<element minOccurs="0" name="ProductId" nillable="true" type="zns:ID" />
+               				<element minOccurs="0" name="UpdatedById" nillable="true" type="zns:ID"  />
+               				<element minOccurs="0" name="UpdatedDate" nillable="true" type="dateTime"  />
+						</sequence>
+					</extension>
 				</complexContent>
 			</complexType>
 			<complexType name="ProductRatePlanCharge">
 				<complexContent>
-					<extension base="ons:zObject"><sequence/></extension>
+					<extension base="ons:zObject">
+						<sequence>
+							<element minOccurs="0" name="AccountingCode" nillable="true" type="string" />
+							<element minOccurs="0" name="BillCycleDay" nillable="true" type="int"  />
+							<element minOccurs="0" name="BillCycleType" nillable="true" type="string"  />
+							<element minOccurs="0" name="BillingPeriod" nillable="true" type="string"  />
+							<element minOccurs="0" name="BillingPeriodAlignment" nillable="true" type="string"  />
+               				<element minOccurs="0" name="ChargeModel" nillable="true" type="string"  />
+							<element minOccurs="0" name="ChargeType" nillable="true" type="string"  />
+			               	<element minOccurs="0" name="CreatedById" nillable="true" type="zns:ID"  />
+			               	<element minOccurs="0" name="CreatedDate" nillable="true" type="dateTime"  />
+							<element minOccurs="0" name="DefaultQuantity" nillable="true" type="decimal" />
+							<element minOccurs="0" name="Description" nillable="true" type="string" />
+							<element minOccurs="0" name="IncludedUnits" nillable="true" type="decimal" />
+							<element minOccurs="0" name="MaxQuantity" nillable="true" type="decimal"  />
+							<element minOccurs="0" name="MinQuantity" nillable="true" type="decimal"  />
+							<element minOccurs="0" name="Name" nillable="true" type="string" />
+							<element minOccurs="0" name="NumberOfPeriod" nillable="true" type="long"  />
+							<element minOccurs="0" name="OverageCalculationOption" nillable="true" type="string"  />
+							<element minOccurs="0" name="OverageUnusedUnitsCreditOption" nillable="true" type="string"  />
+							<element minOccurs="0" name="ProductRatePlanChargeTierData" nillable="true" type="zns:ProductRatePlanChargeTierData"  />
+							<element minOccurs="0" name="ProductRatePlanId" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="RevRecCode" nillable="true" type="string"  />
+							<element minOccurs="0" name="RevRecTriggerCondition" nillable="true" type="string"  />
+							<element minOccurs="0" name="SmoothingModel" nillable="true" type="string"  />
+							<element minOccurs="0" name="SpecificBillingPeriod" nillable="true" type="long" />
+							<element minOccurs="0" name="Taxable" nillable="true" type="boolean"  />
+							<element minOccurs="0" name="TaxCode" nillable="true" type="string"  />
+							<element minOccurs="0" name="TriggerEvent" nillable="true" type="string"  />
+							<element minOccurs="0" name="UOM" nillable="true" type="string" />
+			               	<element minOccurs="0" name="UpdatedById" nillable="true" type="zns:ID"  />
+			               	<element minOccurs="0" name="UpdatedDate" nillable="true" type="dateTime"  />
+						</sequence>
+					</extension>
 				</complexContent>
 			</complexType>
 			<complexType name="ProductRatePlanChargeTier">
 				<complexContent>
-					<extension base="ons:zObject"><sequence/></extension>
+					<extension base="ons:zObject">
+						<sequence>
+							<element minOccurs="0" name="Active" nillable="true" type="boolean" />
+               				<element minOccurs="0" name="CreatedById" nillable="true" type="zns:ID"  />
+               				<element minOccurs="0" name="CreatedDate" nillable="true" type="dateTime"  />
+							<element minOccurs="0" name="Currency" nillable="true" type="string" />
+							<element minOccurs="0" name="EndingUnit" nillable="true" type="decimal" />
+							<element minOccurs="0" name="IsOveragePrice" nillable="true" type="boolean"  />
+							<element minOccurs="0" name="Price" nillable="true" type="decimal" />
+							<element minOccurs="0" name="PriceFormat" nillable="true" type="string" />
+							<element minOccurs="0" name="ProductRatePlanChargeId" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="StartingUnit" nillable="true" type="decimal" />
+							<element minOccurs="0" name="Tier" nillable="true" type="int" />
+               				<element minOccurs="0" name="UpdatedById" nillable="true" type="zns:ID"  />
+               				<element minOccurs="0" name="UpdatedDate" nillable="true" type="dateTime"  />
+						</sequence>
+					</extension>
 				</complexContent>
 			</complexType>
 			<complexType name="RatePlan">
 				<complexContent>
-					<extension base="ons:zObject"><sequence/></extension>
+					<extension base="ons:zObject">
+						<sequence>
+							<element minOccurs="0" name="AmendmentId" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="AmendmentSubscriptionRatePlanId" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="AmendmentType" nillable="true" type="string" />
+               				<element minOccurs="0" name="CreatedById" nillable="true" type="zns:ID"  />
+               				<element minOccurs="0" name="CreatedDate" nillable="true" type="dateTime"  />
+							<element minOccurs="0" name="Name" nillable="true" type="string" /><!-- do we need this? -->
+							<element minOccurs="0" name="ProductRatePlanId" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="SubscriptionId" nillable="true" type="zns:ID" />
+               				<element minOccurs="0" name="UpdatedById" nillable="true" type="zns:ID"  />
+               				<element minOccurs="0" name="UpdatedDate" nillable="true" type="dateTime"  />
+						</sequence>
+					</extension>
 				</complexContent>
 			</complexType>
 			<complexType name="RatePlanCharge">
 				<complexContent>
-					<extension base="ons:zObject"><sequence/></extension>
+					<extension base="ons:zObject">
+						<sequence>
+							<element minOccurs="0" name="AccountingCode" nillable="true" type="string" />
+							<element minOccurs="0" name="ApplyDiscountTo" nillable="true" type="string" />
+							<element minOccurs="0" name="BillCycleDay" nillable="true" type="int"  />
+							<element minOccurs="0" name="BillCycleType" nillable="true" type="string"  />
+							<element minOccurs="0" name="BillingPeriodAlignment" nillable="true" type="string" />
+							<element minOccurs="0" name="ChargedThroughDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="ChargeModel" nillable="true" type="string" />
+							<element minOccurs="0" name="ChargeNumber" nillable="true" type="string" />
+							<element minOccurs="0" name="ChargeType" nillable="true" type="string" />
+			               	<element minOccurs="0" name="CreatedById" nillable="true" type="zns:ID"  />
+			               	<element minOccurs="0" name="CreatedDate" nillable="true" type="dateTime"  />
+							<element minOccurs="0" name="Description" nillable="true" type="string" />
+							<element minOccurs="0" name="DiscountAmount" nillable="true" type="decimal" />
+							<element minOccurs="0" name="DiscountLevel" nillable="true" type="string" />
+							<element minOccurs="0" name="DiscountPercentage" nillable="true" type="decimal" />
+							<element minOccurs="0" name="DMRC" nillable="true" type="decimal" />
+							<element minOccurs="0" name="DTCV" nillable="true" type="decimal" />
+							<element minOccurs="0" name="EffectiveEndDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="EffectiveStartDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="IncludedUnits" nillable="true" type="decimal" />
+							<element minOccurs="0" name="IsLastSegment" nillable="true" type="boolean"  />
+							<element minOccurs="0" name="MRR" nillable="true" type="decimal"  />
+							<element minOccurs="0" name="Name" nillable="true" type="string" />
+							<element minOccurs="0" name="NumberOfPeriods" nillable="true" type="long" />
+							<element minOccurs="0" name="OriginalId" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="OverageCalculationOption" nillable="true" type="string"  />
+							<element minOccurs="0" name="OveragePrice" nillable="true" type="decimal"  />
+							<element minOccurs="0" name="OverageUnusedUnitsCreditOption" nillable="true" type="string"  />
+							<element minOccurs="0" name="Price" nillable="true" type="decimal" />
+							<element minOccurs="0" name="ProcessedThroughDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="ProductRatePlanChargeId" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="Quantity" nillable="true" type="decimal" />
+							<element minOccurs="0" name="RatePlanId" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="RolloverBalance" nillable="true" type="decimal" />
+							<element minOccurs="0" name="Segment" nillable="true" type="int" />
+							<element minOccurs="0" name="TCV" nillable="true" type="decimal" />
+							<element minOccurs="0" name="TriggerDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="TriggerEvent" nillable="true" type="string" />
+							<element minOccurs="0" name="UnusedUnitsCreditRates" nillable="true" type="decimal"  />
+							<element minOccurs="0" name="UOM" nillable="true" type="string" />
+			               	<element minOccurs="0" name="UpdatedById" nillable="true" type="zns:ID"  />
+			               	<element minOccurs="0" name="UpdatedDate" nillable="true" type="dateTime"  />
+			               	<element minOccurs="0" name="UpToPeriods" nillable="true" type="long"  />
+			               	<element minOccurs="0" name="Version" nillable="true" type="long" />
+						</sequence>
+					</extension>
 				</complexContent>
 			</complexType>
 			<complexType name="RatePlanChargeTier">
 				<complexContent>
-					<extension base="ons:zObject"><sequence/></extension>
+					<extension base="ons:zObject">
+						<sequence>
+			               	<element minOccurs="0" name="CreatedById" nillable="true" type="zns:ID"  />
+			               	<element minOccurs="0" name="CreatedDate" nillable="true" type="dateTime"  />
+							<element minOccurs="0" name="EndingUnit" nillable="true" type="decimal" />
+							<element minOccurs="0" name="IsOveragePrice" nillable="true" type="boolean" />
+							<element minOccurs="0" name="Price" nillable="true" type="decimal" />
+							<element minOccurs="0" name="PriceFormat" nillable="true" type="string" />
+							<element minOccurs="0" name="RatePlanChargeId" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="StartingUnit" nillable="true" type="decimal"  />
+							<element minOccurs="0" name="Tier" nillable="true" type="int" />
+               				<element minOccurs="0" name="UpdatedById" nillable="true" type="zns:ID"  />
+               				<element minOccurs="0" name="UpdatedDate" nillable="true" type="dateTime"  />
+						</sequence>
+					</extension>
 				</complexContent>
 			</complexType>
 			<complexType name="Subscription">
 				<complexContent>
-					<extension base="ons:zObject"><sequence/></extension>
+					<extension base="ons:zObject">
+						<sequence>
+							<element minOccurs="0" name="AccountId" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="AncestorAccountId" nillable="true" type="zns:ID"  />
+							<element minOccurs="0" name="AutoRenew" nillable="true" type="boolean" />
+							<element minOccurs="0" name="CancelledDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="ContractAcceptanceDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="ContractEffectiveDate" nillable="true" type="dateTime" />
+			               	<element minOccurs="0" name="CreatedById" nillable="true" type="zns:ID"  />
+			               	<element minOccurs="0" name="CreatedDate" nillable="true" type="dateTime"  />
+							<element minOccurs="0" name="CreatorAccountId" nillable="true" type="zns:ID" />
+							<element minOccurs="0" name="Currency" nillable="true" type="string" />
+							<element minOccurs="0" name="InitialTerm" nillable="true" type="int" />
+							<element minOccurs="0" name="Name" nillable="true" type="string" />
+							<element minOccurs="0" name="Notes" nillable="true" type="string" />
+                     		<element minOccurs="0" name="OriginalCreatedDate" nillable="true" type="dateTime"  />
+							<element minOccurs="0" name="OriginalId" nillable="true" type="zns:ID"  />
+							<element minOccurs="0" name="PreviousSubscriptionId" nillable="true" type="zns:ID"  />
+							<element minOccurs="0" name="RenewalTerm" nillable="true" type="int" />
+							<element minOccurs="0" name="ServiceActivationDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="Status" nillable="true" type="string" />
+							<element minOccurs="0" name="SubscriptionEndDate" nillable="true" type="dateTime"  />
+							<element minOccurs="0" name="SubscriptionStartDate" nillable="true" type="dateTime"  />
+							<element minOccurs="0" name="TermEndDate" nillable="true" type="dateTime"  />
+							<element minOccurs="0" name="TermStartDate" nillable="true" type="dateTime" />
+							<element minOccurs="0" name="TermType" nillable="true" type="string" />
+			               	<element minOccurs="0" name="UpdatedById" nillable="true" type="zns:ID"  />
+			               	<element minOccurs="0" name="UpdatedDate" nillable="true" type="dateTime"  />
+							<element minOccurs="0" name="Version" nillable="true" type="int" />
+						</sequence>
+					</extension>
 				</complexContent>
 			</complexType>
 		<complexType name="TaxationItem" >
 	    		<complexContent>
-	    		 <extension base="ons:zObject"><sequence/></extension>
+	    		 <extension base="ons:zObject">
+	     			 <sequence>
+		      			 <element minOccurs="0" name="AccountingCode" nillable="true" type="string"/>	
+		               	 <element minOccurs="0" name="CreatedById" nillable="true" type="zns:ID"  />
+		                 <element minOccurs="0" name="CreatedDate" nillable="true" type="dateTime"  />
+	     			 	 <element minOccurs="0" name="ExemptAmount" nillable="true" type="decimal" />		
+		      			 <element minOccurs="0" name="InvoiceId" nillable="true" type="zns:ID" />
+		      			 <element minOccurs="0" name="InvoiceItemId" nillable="true" type="zns:ID"/>
+		      			 <element minOccurs="0" name="Jurisdiction" nillable="true" type="string"/>
+		      			 <element minOccurs="0" name="LocationCode" nillable="true" type="string"/>
+		      			 <element minOccurs="0" name="Name" nillable="true" type="string"/>
+		      			 <element minOccurs="0" name="TaxAmount" nillable="true" type="decimal" />
+		      			 <element minOccurs="0" name="TaxCode" nillable="true" type="string" />
+		      			 <element minOccurs="0" name="TaxCodeDescription" nillable="true" type="string" />
+		      			 <element minOccurs="0" name="TaxDate" nillable="true" type="dateTime" />
+		      			 <element minOccurs="0" name="TaxRate" nillable="true" type="decimal" />
+		      			 <element minOccurs="0" name="TaxRateDescription" nillable="true" type="string"/>
+		      			 <element minOccurs="0" name="TaxRateType" nillable="true" type="string"/>
+		                 <element minOccurs="0" name="UpdatedById" nillable="true" type="zns:ID"  />
+		                 <element minOccurs="0" name="UpdatedDate" nillable="true" type="dateTime"  />
+	                 </sequence>
+	            </extension>
 	           </complexContent>
 	   		</complexType>
 
 			
-	   	 <complexType name="Usage">
+	   		 <complexType name="Usage">
 	    		<complexContent>
-	    		 <extension base="ons:zObject"><sequence/></extension>
+	    		 <extension base="ons:zObject">
+	     			 <sequence>
+		      			 <element minOccurs="0" name="AccountId" nillable="true" type="zns:ID" />
+		      			 <element minOccurs="0" name="AccountNumber" nillable="true" type="string" />
+		      			 <element minOccurs="0" name="AncestorAccountId" nillable="true" type="zns:ID" />
+		      			 <element minOccurs="0" name="ChargeId" nillable="true" type="zns:ID" />
+		      			 <element minOccurs="0" name="ChargeNumber" nillable="true" type="string"/>
+		               	 <element minOccurs="0" name="CreatedById" nillable="true" type="zns:ID"  />
+		                 <element minOccurs="0" name="CreatedDate" nillable="true" type="dateTime"  />
+		      			 <element minOccurs="0" name="Description" nillable="true" type="string" />
+		    			 <element minOccurs="0" name="EndDateTime" nillable="true" type="dateTime" />
+		       			 <element minOccurs="0" name="Quantity" nillable="true" type="decimal" />
+		       			 <element minOccurs="0" name="RbeStatus" nillable="true" type="string"/>
+		    			 <element minOccurs="0" name="SourceName" nillable="true" type="string" />
+		        		 <element minOccurs="0" name="SourceType" nillable="true" type="string"/>		       			 
+		       			 <element minOccurs="0" name="StartDateTime" nillable="true" type="dateTime" />
+		       			 <element minOccurs="0" name="SubmissionDateTime" nillable="true" type="dateTime" />
+		       			 <element minOccurs="0" name="SubscriptionId" nillable="true" type="zns:ID" />
+		       			 <element minOccurs="0" name="SubscriptionNumber" nillable="true" type="string"/>
+		       			 <element minOccurs="0" name="UOM" nillable="true" type="string" />
+		                 <element minOccurs="0" name="UpdatedById" nillable="true" type="zns:ID"  />
+		                 <element minOccurs="0" name="UpdatedDate" nillable="true" type="dateTime"  />
+	                 </sequence>
+	            </extension>
 	           </complexContent>
 	   		</complexType>
 	   	 <complexType name="CreditBalanceAdjustment">
 	    		<complexContent>
-	    		 <extension base="ons:zObject"><sequence/></extension>
+	    		 <extension base="ons:zObject">
+	     			 <sequence>
+		      			 <element minOccurs="0" name="AccountId" nillable="true" type="zns:ID" />
+		      			 <element minOccurs="0" name="AccountingCode" nillable="true" type="string"/>
+		      			 <element minOccurs="0" name="AdjustmentDate" nillable="true" type="dateTime"/>
+		      			 <element minOccurs="0" name="Amount" nillable="true" type="decimal"/>
+		      			 <element minOccurs="0" name="Comment" nillable="true" type="string"/>
+		      			 <element minOccurs="0" name="CreatedById" nillable="true" type="zns:ID"/>
+		      			 <element minOccurs="0" name="CreatedDate" nillable="true" type="dateTime"/>
+		      			 <element minOccurs="0" name="Number" nillable="true" type="string"/>
+		      			 <element minOccurs="0" name="ReferenceId" nillable="true" type="string"/>
+		      			 <element minOccurs="0" name="SourceTransactionId" nillable="true" type="string"/>
+		      			 <element minOccurs="0" name="SourceTransactionNumber" nillable="true" type="string"/>
+		      			 <element minOccurs="0" name="SourceTransactionType" nillable="true" type="string"/>
+		      			 <element minOccurs="0" name="Status" nillable="true" type="string"/>
+		      			 <element minOccurs="0" name="TransferredToAccounting" nillable="true" type="string" />
+		      			 <element minOccurs="0" name="Type" nillable="true" type="string"/>
+		      			 <element minOccurs="0" name="UpdatedById" nillable="true" type="zns:ID"/>
+		      			 <element minOccurs="0" name="UpdatedDate" nillable="true" type="dateTime"/>
+	                 </sequence>
+	            </extension>
 	           </complexContent>
 	   		</complexType>
           <complexType name="Export">
             <complexContent>
-             <extension base="ons:zObject"><sequence/></extension>
+             <extension base="ons:zObject">
+                <sequence>
+                      <element minOccurs="0" name="CreatedById" nillable="true" type="zns:ID"/>
+                      <element minOccurs="0" name="CreatedDate" nillable="true" type="dateTime"/>
+                      <element minOccurs="0" name="FileId" nillable="true" type="zns:ID"/>
+                      <element minOccurs="0" name="Format" nillable="true" type="string"/>
+                      <element minOccurs="0" name="Name" nillable="true" type="string" />
+                      <element minOccurs="0" name="Query" nillable="true" type="string"/>
+                      <element minOccurs="0" name="Size" nillable="true" type="xs:int"/>
+                      <element minOccurs="0" name="Status" nillable="true" type="string"/>
+                      <element minOccurs="0" name="StatusReason" nillable="true" type="string"/>
+                      <element minOccurs="0" name="UpdatedById" nillable="true" type="zns:ID"/>
+                      <element minOccurs="0" name="UpdatedDate" nillable="true" type="dateTime"/>
+                      <element minOccurs="0" name="Zip" nillable="true" type="xs:boolean"/>
+                    </sequence>
+               </extension>
               </complexContent>
             </complexType>
    		</schema>

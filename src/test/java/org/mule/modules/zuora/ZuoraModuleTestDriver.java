@@ -14,6 +14,7 @@
 
 package org.mule.modules.zuora;
 
+import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -21,8 +22,11 @@ import static org.junit.Assert.assertTrue;
 
 import org.mule.modules.zuora.zobject.ZObjectType;
 
+import com.zuora.api.Amend;
+import com.zuora.api.AmendRequest;
 import com.zuora.api.DeleteResult;
 import com.zuora.api.SaveResult;
+import com.zuora.api.object.Amendment;
 import com.zuora.api.object.ZObject;
 
 import java.util.Arrays;
@@ -81,7 +85,7 @@ public class ZuoraModuleTestDriver
         try
         {
             SaveResult result = module.create(ZObjectType.Contact,
-                Collections.<Map<String, String>> singletonList(new HashMap<String, String>()
+                Collections.<Map<String, Object>> singletonList(new HashMap<String, Object>()
                 {
                     {
                         put("Country", "US");
@@ -133,6 +137,21 @@ public class ZuoraModuleTestDriver
             module.delete(ZObjectType.Account, Arrays.asList(id));
         }
     }
+    
+    @Test
+    public void testname() throws Exception
+    {
+        module.amend(Arrays.asList(new AmendRequest()
+        {
+            {
+                getAmendments().add(new Amendment()
+                {
+                    {
+                    }
+                });
+            }
+        }));
+    }
 
     @Test
     public void getUserInfo() 
@@ -147,9 +166,9 @@ public class ZuoraModuleTestDriver
     }
 
     @SuppressWarnings("serial")
-    private Map<String, String> testAccount()
+    private Map<String, Object> testAccount()
     {
-        return new HashMap<String, String>()
+        return new HashMap<String, Object>()
         {
             {
                 put("Name", "foo");
