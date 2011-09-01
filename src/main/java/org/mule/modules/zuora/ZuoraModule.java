@@ -13,211 +13,185 @@
  */
 package org.mule.modules.zuora;
 
+import com.zuora.api.AmendResult;
+import com.zuora.api.DeleteResult;
+import com.zuora.api.SaveResult;
+import com.zuora.api.SubscribeResult;
+import com.zuora.api.object.ZObject;
 import org.mule.api.annotations.Configurable;
 import org.mule.api.annotations.Module;
 import org.mule.api.annotations.Processor;
 import org.mule.api.annotations.param.Optional;
+import org.mule.api.annotations.param.Session;
+import org.mule.api.annotations.param.SessionKey;
+import org.mule.api.annotations.session.SessionCreate;
+import org.mule.api.annotations.session.SessionDestroy;
 import org.mule.modules.zuora.zobject.ZObjectType;
-import org.mule.modules.zuora.zuora.api.CxfZuoraClient;
 import org.mule.modules.zuora.zuora.api.ZObjectMapper;
 import org.mule.modules.zuora.zuora.api.ZuoraClient;
-import org.mule.modules.zuora.zuora.api.ZuoraClientAdaptor;
 import org.mule.modules.zuora.zuora.api.ZuoraException;
-
-import com.zuora.api.AmendRequest;
-import com.zuora.api.AmendResult;
-import com.zuora.api.DeleteResult;
-import com.zuora.api.SaveResult;
-import com.zuora.api.SubscribeRequest;
-import com.zuora.api.SubscribeResult;
-import com.zuora.api.object.ZObject;
 
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.PostConstruct;
-
 /**
  * @author flbulgarelli
  */
-@Module(name="zuora",
-        namespace="http://repository.mulesoft.org/releases/org/mule/modules/mule-module-zuora",
-        schemaLocation="http://repository.mulesoft.org/releases/org/mule/modules/mule-module-zuora/1.0/mule-zuora.xsd")
-public class ZuoraModule 
-{
+@Module(name = "zuora",
+        namespace = "http://repository.mulesoft.org/releases/org/mule/modules/mule-module-zuora",
+        schemaLocation = "http://repository.mulesoft.org/releases/org/mule/modules/mule-module-zuora/1.0/mule-zuora.xsd")
+public class ZuoraModule {
     @Configurable
     @Optional
     private ZuoraClient<ZuoraException> client;
-    @Configurable
-    private String username;
-    @Configurable
-    private String password;
+
     @Configurable
     private String endpoint;
-    
-    
+
+
+    @SessionCreate
+    public ZuoraSession createSession(@SessionKey String username, String password) {
+        if (client == null) {
+            return new ZuoraSession(username, password, endpoint);
+        } else {
+            return new ZuoraSession(client);
+        }
+    }
+
+    @SessionDestroy
+    public void destroySession(@Session ZuoraSession session) {
+        // DO NOTHING AS ZUORA DO NOT HAVE A LOGOUT API CALL (WTF?)
+    }
+
     /**
      * Batch creation of ZObjects associated to Subscriptions
+     * <p/>
+     * {@code <subscribe subscriptions-ref="#[variable:subscribtions]"/>}
      *
-     * {@code <subscribe subscriptions-ref="#[variable:subscribtions]"/>} 
      * @param subscriptions
-     * @return a subscription results list, one for each subscription 
+     * @return a subscription results list, one for each subscription
      */
     @Processor
-    public List<SubscribeResult> subscribe(List<com.zuora.api.SubscribeRequest> subscriptions)
-    {
-        return client.subscribe(subscriptions);
+    public List<SubscribeResult> subscribe(@Session ZuoraSession session, List<com.zuora.api.SubscribeRequest> subscriptions)
+            throws ZuoraException {
+        return session.getClient().subscribe(subscriptions);
     }
 
     /**
      * Batch creation of ZObjects
-     *
+     * <p/>
      * {@code <create>
-     *          <zobjects>
-     *              <zobject ref="#[variable:anObject]"/>
-     *           </zobject>
-     *         </create>}   
+     * <zobjects>
+     * <zobject ref="#[variable:anObject]"/>
+     * </zobject>
+     * </create>}
+     *
      * @param zobjects the zobjects to create
-     * @param type the type of zobject passed
-     * @return a list of SaveResult, one for each ZObject  
-     */
-    @Processor
-    public List<SaveResult> create(ZObjectType type, List<Map<String, Object>> zobjects)
-    {
-        return client.create(ZObjectMapper.toZObject(type, zobjects));
-    }
-
-    /**
-     * Batch creation of invoces for accounts 
-     * 
-     * {@code <generate zobjects-ref="#[variable:accounts]"/>}
-     * 
-     * @param zobjects the zobjects to generate, as a list of string-object maps . 
-     *  Zuora attribute names, unlike java beans, are CamelCase.
-     * @param type the type of zobject passed
+     * @param type     the type of zobject passed
      * @return a list of SaveResult, one for each ZObject
      */
     @Processor
-    public List<SaveResult> generate(ZObjectType type, List<Map<String, Object>> zobjects)
-    {
-        return client.generate(ZObjectMapper.toZObject(type, zobjects));
+    public List<SaveResult> create(@Session ZuoraSession session, ZObjectType type, List<Map<String, Object>> zobjects)
+            throws ZuoraException {
+        return session.getClient().create(ZObjectMapper.toZObject(type, zobjects));
+    }
+
+    /**
+     * Batch creation of invoces for accounts
+     * <p/>
+     * {@code <generate zobjects-ref="#[variable:accounts]"/>}
+     *
+     * @param zobjects the zobjects to generate, as a list of string-object maps .
+     *                 Zuora attribute names, unlike java beans, are CamelCase.
+     * @param type     the type of zobject passed
+     * @return a list of SaveResult, one for each ZObject
+     */
+    @Processor
+    public List<SaveResult> generate(@Session ZuoraSession session, ZObjectType type, List<Map<String, Object>> zobjects)
+            throws ZuoraException {
+        return session.getClient().generate(ZObjectMapper.toZObject(type, zobjects));
     }
 
     /**
      * Batch update of ZObjects
-     *
+     * <p/>
      * {@code <update zobjects-ref="#[variable:objects]"/>}
-     * @param zobjects the zobjects to update, as a list of string-object maps . 
-     *  Zuora attribute names, unlike java beans, are CamelCase.
-     * @param type the type of zobject passed
-     * @return a list of SaveResult, one for each ZObject 
+     *
+     * @param zobjects the zobjects to update, as a list of string-object maps .
+     *                 Zuora attribute names, unlike java beans, are CamelCase.
+     * @param type     the type of zobject passed
+     * @return a list of SaveResult, one for each ZObject
      */
     @Processor
-    public List<SaveResult> update(ZObjectType type, List<Map<String, Object>> zobjects)
-    {
-        return client.update(ZObjectMapper.toZObject(type, zobjects));
+    public List<SaveResult> update(@Session ZuoraSession session, ZObjectType type, List<Map<String, Object>> zobjects)
+            throws ZuoraException {
+        return session.getClient().update(ZObjectMapper.toZObject(type, zobjects));
     }
-    
+
     /**
      * Batch delete of ZObjects
-     * 
+     * <p/>
      * {@code <delete ids-ref="#[variable:ids]" type="#[variable:zobjectType]"/>}
-     * @param type the type of ZObjects to delete 
-     * @param ids 
-     * @return a list of DeleteResults, one for each id 
+     *
+     * @param type the type of ZObjects to delete
+     * @param ids
+     * @return a list of DeleteResults, one for each id
      */
     @Processor
-    public List<DeleteResult> delete(ZObjectType type, List<String> ids)
-    {
-        return client.delete(type.getTypeName(), ids);
+    public List<DeleteResult> delete(@Session ZuoraSession session, ZObjectType type, List<String> ids)
+            throws ZuoraException {
+        return session.getClient().delete(type.getTypeName(), ids);
     }
-    
+
     /**
-     * Lazily retrieves ZObject that match a given query, 
+     * Lazily retrieves ZObject that match a given query,
      * written in Zuora native query language
-     *
+     * <p/>
      * {@code <find query="#[header:queryString]" />}
+     *
      * @param zquery
      * @return a ZObjects iterable. ZObjects returned by this operation
-     *  may be instances of either StaticZObject - like Account or Amendment -,  if the object is a non-customizable Zuora entity,
-     *  or ZObject,  if the object is a customizable Zuora entity
+     *         may be instances of either StaticZObject - like Account or Amendment -,  if the object is a non-customizable Zuora entity,
+     *         or ZObject,  if the object is a customizable Zuora entity
      */
     @Processor
-    public Iterable<ZObject> find(String zquery)
-    {
-        return client.find(zquery);
+    public Iterable<ZObject> find(@Session ZuoraSession session, String zquery)
+            throws ZuoraException {
+        return session.getClient().find(zquery);
     }
-    
+
     /**
      * Answers user information
-     *
+     * <p/>
      * {@code <get-user-info userId="#[header:userId]""/>}
-     * @return a User 
+     *
+     * @return a User
      */
     @Processor
-    public User getUserInfo()
-    {
-        return client.getUserInfo();
+    public User getUserInfo(@Session ZuoraSession session)
+            throws ZuoraException {
+        return session.getClient().getUserInfo();
     }
-    
+
     /**
      * Amends subscriptions
-     *
+     * <p/>
      * {@code <amend amendaments-ref="#[header:amendamentsList]"/>}
-     * @param amendaments 
+     *
+     * @param amendaments
      * @return a list of AmmendResults, one for each amendament
      */
     @Processor
-    public List<AmendResult> amend(List<com.zuora.api.AmendRequest> amendaments)
-    {
-        return client.amend(amendaments);
-    }    
-    
-    @PostConstruct
-    public void init()
-    {
-        if (client == null)
-        {
-            setClient(new CxfZuoraClient(username, password, endpoint));
-        }
-        
+    public List<AmendResult> amend(@Session ZuoraSession session, List<com.zuora.api.AmendRequest> amendaments)
+            throws ZuoraException {
+        return session.getClient().amend(amendaments);
     }
-    
-    public String getPassword()
-    {
-        return password;
-    }
-    
-    public String getUsername()
-    {
-        return username;
-    }
-    
-    public void setPassword(String password)
-    {
-        this.password = password;
-    }
-    
-    public void setUsername(String username)
-    {
-        this.username = username;
-    }
-    
-    public void setClient(ZuoraClient<?> client)
-    {
-        this.client = ZuoraClientAdaptor.adapt(client);
-    }
-    
-    public void setEndpoint(String enpoint)
-    {
+
+    public void setEndpoint(String enpoint) {
         this.endpoint = enpoint;
     }
-    
-    public String getEnpoint()
-    {
+
+    public String getEnpoint() {
         return endpoint;
     }
-    
-   
-    
 }

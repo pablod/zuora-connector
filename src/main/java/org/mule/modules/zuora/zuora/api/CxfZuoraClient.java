@@ -221,6 +221,4 @@ public class CxfZuoraClient implements ZuoraClient<Exception>
 
         return client;
     }
-
-    
 }

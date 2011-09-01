@@ -10,58 +10,45 @@
 
 package org.mule.modules.zuora.zuora.api.internal;
 
+import org.slf4j.Logger;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import org.slf4j.Logger;
-
-public class ClientAdaptorInvocationHandler implements InvocationHandler
-{
+public class ClientAdaptorInvocationHandler implements InvocationHandler {
     private final Logger log;
     private final Object client;
     private final Class<? extends RuntimeException> exceptionClass;
 
-    public ClientAdaptorInvocationHandler(Logger log, Object client, Class<? extends RuntimeException> exceptionClass)
-    {
+    public ClientAdaptorInvocationHandler(Logger log, Object client, Class<? extends RuntimeException> exceptionClass) {
         this.log = log;
         this.client = client;
         this.exceptionClass = exceptionClass;
     }
 
-    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable
-    {
-        try
-        {
-            if (log.isDebugEnabled())
-            {
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        try {
+            if (log.isDebugEnabled()) {
                 log.debug("Entering {} with args {}", method.getName(), args);
             }
             Object ret = method.invoke(client, args);
-            if (log.isDebugEnabled())
-            {
+            if (log.isDebugEnabled()) {
                 log.debug("Returning from {} with value {}", method.getName(), ret);
             }
             return ret;
-        }
-        catch (InvocationTargetException e)
-        {
-            if (log.isWarnEnabled())
-            {
+        } catch (InvocationTargetException e) {
+            if (log.isWarnEnabled()) {
                 log.warn("An exception was thrown while invoking {}: {}", method.getName(), e.getCause());
             }
             throw adaptException(e.getCause());
         }
     }
 
-    private Throwable adaptException(Throwable e)
-    {
-        try
-        {
+    private Throwable adaptException(Throwable e) {
+        try {
             return exceptionClass.getConstructor(Throwable.class).newInstance(e);
-        }
-        catch (Exception e1)
-        {
+        } catch (Exception e1) {
             throw new AssertionError(e);
         }
     }

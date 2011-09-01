@@ -41,5 +41,4 @@ public interface ZuoraClient<E extends Throwable>
     User getUserInfo() throws E;
 
     List<AmendResult> amend(@NotNull  List<AmendRequest> amendaments) throws E;
-
 }
