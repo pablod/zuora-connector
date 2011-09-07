@@ -137,11 +137,11 @@ public abstract class Dynamic
     {
         try
         {
-        return new PropertyDescriptor(propertyName, this.getClass()).getReadMethod();
+            return new PropertyDescriptor(propertyName, this.getClass()).getReadMethod();
         }
         catch (IntrospectionException e)
         {
-            throw new AssertionError(e);
+            return null;
         }
 
     }
