@@ -11,17 +11,29 @@
 
 package com.zuora.api.object;
 
+import static org.apache.commons.collections.CollectionUtils.collect;
+
 import org.mule.modules.zuora.zobject.ElementBuilders;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import java.beans.IntrospectionException;
+import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map.Entry;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
+import org.apache.commons.collections.Transformer;
+import org.apache.commons.collections.keyvalue.DefaultMapEntry;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.UnhandledException;
 import org.apache.commons.lang.builder.ToStringBuilder;
@@ -33,13 +45,59 @@ import org.w3c.dom.Element;
  * 
  * @author flbulgarelli
  */
+@SuppressWarnings("unchecked")
 public abstract class Dynamic
 {
+    private static final HashSet<String> EXCLUDED_PROPERTY_NAMES = new HashSet<String>(Arrays.asList("any", "class", "fieldsToNull"));
+
     public List<Element> getAny()
     {
         throw new UnsupportedOperationException("Instances of class " + this.getClass()
                                                 + " are not dynamic. Use normal getters and setters instead");
     }
+    
+    public Collection<Entry<String,Object>> dynamicProperties() {
+        return CollectionUtils.collect(getAny(), new Transformer() {
+            public Object transform(Object input)
+            {
+                Element e = (Element) input;
+                return new DefaultMapEntry(e.getLocalName(), e.getTextContent());
+            }
+        });
+    }
+    
+    public Collection<Entry<String,Object>> staticProperties() {
+        return CollectionUtils.select(propertyValues(), new Predicate() {
+            public boolean evaluate(Object object)
+            {
+                Entry e = (Entry) object;
+                return e.getValue() != null && !EXCLUDED_PROPERTY_NAMES.contains(e.getKey());
+            }
+        });
+    }
+
+    private Collection<Entry<String, Object>> propertyValues()
+    {
+        try
+        {
+            return collect(Arrays.asList(Introspector.getBeanInfo(Account.class).getPropertyDescriptors()),
+                new Transformer() {
+                    public Object transform(Object input) {
+                        PropertyDescriptor p = ((PropertyDescriptor) input);
+                        return new DefaultMapEntry(p.getName(), new PropertyAccessor(p).getValue());
+                    }
+                });
+        }
+        catch (Exception e)
+        {
+            throw new UnhandledException(e);
+        }
+    }
+
+    public  Collection<Entry<String,Object>> properties() {
+        return CollectionUtils.union(staticProperties(), dynamicProperties());
+    }
+
 
     /**
      * Synonym of {@link #setField(String, String)} that lets groovy script users
@@ -145,7 +203,6 @@ public abstract class Dynamic
         }
 
     }
-
     
     private static Element getElement(Dynamic object, final String name)
     {
@@ -164,4 +221,39 @@ public abstract class Dynamic
         return ToStringBuilder.reflectionToString(this);
     }
 
+    class PropertyAccessor {
+        
+        private PropertyDescriptor descriptor;
+        
+        public PropertyAccessor(PropertyDescriptor descriptor)
+        {
+            this.descriptor = descriptor;
+        }
+
+        public Object getValue() {
+            try
+            {
+                return getReadMethod().invoke(Dynamic.this);
+            }
+            catch (Exception e)
+            {
+                throw new AssertionError(e);
+            }
+        }
+        
+        protected Method getReadMethod() {
+            if(descriptor.getReadMethod() != null) {
+                return descriptor.getReadMethod();
+            }
+            if(descriptor.getPropertyType() != Boolean.class) {
+                throw new AssertionError("This would that CXF had generated a setter without setter");
+            }
+            try {
+                return Dynamic.this.getClass().getMethod("is" + StringUtils.capitalize(descriptor.getName()));
+            } catch(Exception e){
+                throw new AssertionError(e);
+            }
+        }
+        
+    }
 }
