@@ -50,12 +50,21 @@ public abstract class Dynamic
 {
     private static final HashSet<String> EXCLUDED_PROPERTY_NAMES = new HashSet<String>(Arrays.asList("any", "class", "fieldsToNull"));
 
+    /**
+     * Answers the dynamic property elements. Warning: this method is CXF specific and
+     * its usage is discouraged
+     * @return a collection of elements, if this object has true dynamic properties
+     */
     public List<Element> getAny()
     {
         throw new UnsupportedOperationException("Instances of class " + this.getClass()
-                                                + " are not dynamic. Use normal getters and setters instead");
+                                                + " have not dynamic properties. Use normal getters and setters instead");
     }
     
+    /**
+     * Answers the name and values of the dynamic properties of this object
+     * @return the dynamic properties, as string-object pairs
+     */
     public Collection<Entry<String,Object>> dynamicProperties() {
         return CollectionUtils.collect(getAny(), new Transformer() {
             public Object transform(Object input)
@@ -66,6 +75,10 @@ public abstract class Dynamic
         });
     }
     
+    /**
+     * Answers the name and values of the static properties of this object
+     * @return the static properties, as string-object pairs
+     */
     public Collection<Entry<String,Object>> staticProperties() {
         return CollectionUtils.select(propertyValues(), new Predicate() {
             public boolean evaluate(Object object)
@@ -76,6 +89,10 @@ public abstract class Dynamic
         });
     }
 
+    /**
+     * Answers the name and values of the both static and dynamic properties of this object
+     * @return this object's properties, as string-object pairs
+     */
     private Collection<Entry<String, Object>> propertyValues()
     {
         try
