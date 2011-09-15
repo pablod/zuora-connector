@@ -111,7 +111,7 @@
       <docletArtifact>
         <groupId>org.mule.tools.devkit</groupId>
         <artifactId>mule-devkit-doclet</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>${mule.devkit.version}</version>
       </docletArtifact>
       <doclet>org.mule.devkit.doclet.Doclava</doclet>
       <bootclasspath>${sun.boot.class.path}</bootclasspath>
