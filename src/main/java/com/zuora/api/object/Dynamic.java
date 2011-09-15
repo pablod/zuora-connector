@@ -15,12 +15,10 @@ import static org.apache.commons.collections.CollectionUtils.collect;
 
 import org.mule.modules.zuora.zobject.ElementBuilders;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Collection;
@@ -97,7 +95,7 @@ public abstract class Dynamic
     {
         try
         {
-            return collect(Arrays.asList(Introspector.getBeanInfo(Account.class).getPropertyDescriptors()),
+            return collect(Arrays.asList(Introspector.getBeanInfo(this.getClass()).getPropertyDescriptors()),
                 new Transformer() {
                     public Object transform(Object input) {
                         PropertyDescriptor p = ((PropertyDescriptor) input);

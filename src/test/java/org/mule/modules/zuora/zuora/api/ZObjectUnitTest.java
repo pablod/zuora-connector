@@ -10,23 +10,17 @@
 
 package org.mule.modules.zuora.zuora.api;
 
-import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 
-import com.zuora.api.object.Account;
-
-import java.beans.Introspector;
-import java.beans.PropertyDescriptor;
-import java.util.Arrays;
-
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.collections.Transformer;
 import org.junit.Test;
-import org.junit.experimental.theories.DataPoint;
 import org.junit.experimental.theories.DataPoints;
 import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
+
+import com.zuora.api.object.Account;
+import com.zuora.api.object.Contact;
+import com.zuora.api.object.ZObject;
 
 /**
  * {@link ZObjectUnitTest}
@@ -38,7 +32,8 @@ public class ZObjectUnitTest
 {
     @DataPoints
     @SuppressWarnings("serial")
-    public static Account[] ACCOUNTS = new Account[] {
+    public static ZObject[] ACCOUNTS = new ZObject[] {
+    	new Contact(),
         new Account(), 
         new Account(){{
             setAt("Foo", "Bar");
@@ -49,19 +44,17 @@ public class ZObjectUnitTest
         new Account(){{
             setAccountNumber("879");
             setAt("Foo", "Bar");
-        }}}; 
+        }}};
     
-    
-    @Test
-    public void accountIsDynamic()
+    @Theory
+    public void zobjectsAreDynamic(ZObject object)
     {
-        Account a = new Account();
-        assertEquals(0, a.getAny().size());
+    	int originalSize =  object.getAny().size();
         
-        a.setAt("Foo", "Bar");
+        object.setAt("Foo2", "Bar");
         
-        assertEquals(1, a.getAny().size());
-        assertEquals("Bar", a.getField("Foo"));
+        assertEquals(originalSize  + 1 , object.getAny().size());
+        assertEquals("Bar", object.getField("Foo2"));
     }
 
     @Test
@@ -113,13 +106,13 @@ public class ZObjectUnitTest
     }
     
     @Theory
-    public void dynamicProperiesAndAnyHaveSameSize(Account a) throws Exception
+    public void dynamicProperiesAndAnyHaveSameSize(ZObject a) throws Exception
     {
         assertEquals(a.getAny().size(), a.dynamicProperties().size());
     }
     
     @Theory
-    public void properiesSizeIsTheSumOfStaticAndDynamicPropertiesSizes(Account a) throws Exception
+    public void properiesSizeIsTheSumOfStaticAndDynamicPropertiesSizes(ZObject a) throws Exception
     {
         assertEquals(a.properties().size(), a.dynamicProperties().size() + a.staticProperties().size());
     }
