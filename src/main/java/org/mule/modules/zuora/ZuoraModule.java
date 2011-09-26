@@ -161,6 +161,17 @@ public class ZuoraModule {
     }
 
     /**
+     * Retrieve a product profile
+     *
+     * @param productId The id of the product to retrieve a product profile for
+     * @throws ZuoraException
+     */
+    @Processor
+    public Map<String, Object> productProfile(@Session ZuoraSession session, String productId) throws ZuoraException {
+        return session.getClient().productProfile(productId);
+    }
+
+    /**
      * Answers user information
      * <p/>
      * {@code <get-user-info userId="#[header:userId]""/>}

@@ -20,7 +20,9 @@ import com.zuora.api.SubscribeRequest;
 import com.zuora.api.SubscribeResult;
 import com.zuora.api.object.ZObject;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.constraints.NotNull;
 
@@ -41,4 +43,6 @@ public interface ZuoraClient<E extends Throwable>
     User getUserInfo() throws E;
 
     List<AmendResult> amend(@NotNull  List<AmendRequest> amendaments) throws E;
+
+    Map<String, Object> productProfile(String productId) throws E;
 }
