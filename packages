@@ -3,8 +3,6 @@ org.mule.modules.zuora
 org.mule.modules.zuora.zuora.api.internal
 org.mule.modules.zuora.zuora.api
 com.zuora.api.object
-org.mule.modules.zuora.dsl
-org.mule.modules.zuora.dsl.internal
 org.mule.modules.zuora.config
 org.mule.modules.zuora.config.spring
 com.zuora.api
