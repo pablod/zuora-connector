@@ -1,0 +1,3065 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <meta name="description" content="Documentation for Mule Zuora Cloud Connector." />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico" />
+<title>
+
+  ObjectFactory
+
+
+| Mule Zuora Cloud Connector
+
+</title>
+<link href="../../../../assets/mule-developer-docs.css" rel="stylesheet" type="text/css" />
+<link href="../../../../assets/mule-developer-prettify.css" rel="stylesheet" type="text/css" />
+<link href="../../../../assets/customizations.css" rel="stylesheet" type="text/css" />
+<script src="../../../../assets/search_autocomplete.js" type="text/javascript"></script>
+<script src="../../../../assets/jquery-resizable.min.js" type="text/javascript"></script>
+<script src="../../../../assets/mule-developer-docs.js" type="text/javascript"></script>
+<script src="../../../../assets/prettify.js" type="text/javascript"></script>
+<script type="text/javascript">
+  setToRoot("../../../../", "../../../../assets/");
+</script>
+<script src="../../../../assets/mule-developer-reference.js" type="text/javascript"></script>
+<script src="../../../../assets/navtree_data.js" type="text/javascript"></script>
+<script src="../../../../assets/customizations.js" type="text/javascript"></script>
+<noscript>
+  <style type="text/css">
+    html,body{overflow:auto;}
+    #body-content{position:relative; top:0;}
+    #doc-content{overflow:visible;border-left:3px solid #666;}
+    #side-nav{padding:0;}
+    #side-nav .toggle-list ul {display:block;}
+    #resize-packages-nav{border-bottom:3px solid #666;}
+  </style>
+</noscript>
+</head>
+
+<body class="">
+
+<div id="header">
+    <div id="headerLeft">
+    
+      <span id="masthead-title">Mule Zuora Cloud Connector</span>
+    
+    <ul id="header-tabs" class="">
+    	<li id="guide"><a href="../../../../guide/index.html">
+	    	<span class="en">User Guide</span>
+    	</a></li>
+    	<li id="java"><a href="../../../../java/index.html">
+	    	<span class="en">Java API</span>
+    	</a></li>
+    	<li id="mule"><a href="../../../../mule/modules.html">
+	    	<span class="en">Mule API</span>
+    	</a></li>
+    </ul>
+    </div>
+    <div id="headerRight">
+      <a href="http://www.mulesoft.com" tabindex="-1">
+      <img src="../../../../assets//images/mulesoft-logo-final.gif" alt="MuleSoft" border="0" id="mulesoftlogo"></a><br/>
+      
+  <div id="search" >
+      <div id="searchForm">
+          <form accept-charset="utf-8" class="gsc-search-box" 
+                onsubmit="return submit_search()">
+            <table class="gsc-search-box" cellpadding="0" cellspacing="0"><tbody>
+                <tr>
+                  <td class="gsc-input">
+                    <input id="search_autocomplete" class="gsc-input" type="text" size="33" autocomplete="off"
+                      title="search developer docs" name="q"
+                      value="search developer docs"
+                      onFocus="search_focus_changed(this, true)"
+                      onBlur="search_focus_changed(this, false)"
+                      onkeydown="return search_changed(event, true, '../../../../')"
+                      onkeyup="return search_changed(event, false, '../../../../')" />
+                  <div id="search_filtered_div" class="no-display">
+                      <table id="search_filtered" cellspacing=0>
+                      </table>
+                  </div>
+                  </td>
+                  <td class="gsc-search-button">
+                    <input type="submit" value="Search" title="search" id="search-button" class="gsc-search-button" />
+                  </td>
+                  <td class="gsc-clear-button">
+                    <div title="clear results" class="gsc-clear-button">&nbsp;</div>
+                  </td>
+                </tr></tbody>
+              </table>
+          </form>
+      </div><!-- searchForm -->
+  </div><!-- search -->
+      
+    </div>
+</div><!-- header -->
+
+
+  <div class="g-section g-tpl-240" id="body-content">
+    <div class="g-unit g-first side-nav-resizable" id="side-nav">
+      <div id="swapper">
+        <div id="nav-panels">
+          <div id="resize-packages-nav">
+            <div id="packages-nav">
+              <div id="index-links"><nobr>
+                <a href="../../../../java/packages.html"  >Package Index</a> |
+                <a href="../../../../java/classes.html" >Class Index</a></nobr>
+              </div>
+              <ul>
+                
+    <li class="selected api apilevel-">
+  <a href="../../../../java/com/zuora/api/package-summary.html">com.zuora.api</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../java/com/zuora/api/fault/package-summary.html">com.zuora.api.fault</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../java/com/zuora/api/object/package-summary.html">com.zuora.api.object</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../java/org/mule/modules/zuora/package-summary.html">org.mule.modules.zuora</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../java/org/mule/modules/zuora/config/package-summary.html">org.mule.modules.zuora.config</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../java/org/mule/modules/zuora/config/spring/package-summary.html">org.mule.modules.zuora.config.spring</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../java/org/mule/modules/zuora/dsl/package-summary.html">org.mule.modules.zuora.dsl</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../java/org/mule/modules/zuora/dsl/internal/package-summary.html">org.mule.modules.zuora.dsl.internal</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../java/org/mule/modules/zuora/zobject/package-summary.html">org.mule.modules.zuora.zobject</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../java/org/mule/modules/zuora/zuora/api/package-summary.html">org.mule.modules.zuora.zuora.api</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../java/org/mule/modules/zuora/zuora/api/internal/package-summary.html">org.mule.modules.zuora.zuora.api.internal</a></li>
+              </ul><br/>
+            </div> <!-- end packages -->
+          </div> <!-- end resize-packages -->
+          <div id="classes-nav">
+            <ul>
+              
+    <li><h2>Interfaces</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/Soap.html">Soap</a></li>
+      </ul>
+    </li>
+              
+    <li><h2>Classes</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/Amend.html">Amend</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/AmendOptions.html">AmendOptions</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/AmendRequest.html">AmendRequest</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/AmendResponse.html">AmendResponse</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/AmendResult.html">AmendResult</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/CallOptions.html">CallOptions</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/Create.html">Create</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/CreateResponse.html">CreateResponse</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/Delete.html">Delete</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/DeleteResponse.html">DeleteResponse</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/DeleteResult.html">DeleteResult</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/DummyHeader.html">DummyHeader</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/Error.html">Error</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/Generate.html">Generate</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/GenerateResponse.html">GenerateResponse</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/GetUserInfo.html">GetUserInfo</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/GetUserInfoResponse.html">GetUserInfoResponse</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/InvoiceData.html">InvoiceData</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/InvoiceProcessingOptions.html">InvoiceProcessingOptions</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/Login.html">Login</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/LoginResponse.html">LoginResponse</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/LoginResult.html">LoginResult</a></li>
+          <li class="selected api apilevel-"><a href="../../../../java/com/zuora/api/ObjectFactory.html">ObjectFactory</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/PreviewOptions.html">PreviewOptions</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/ProductRatePlanChargeTierData.html">ProductRatePlanChargeTierData</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/Query.html">Query</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/QueryMore.html">QueryMore</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/QueryMoreResponse.html">QueryMoreResponse</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/QueryOptions.html">QueryOptions</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/QueryResponse.html">QueryResponse</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/QueryResult.html">QueryResult</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/RatePlanChargeData.html">RatePlanChargeData</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/RatePlanData.html">RatePlanData</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/SaveResult.html">SaveResult</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/SessionHeader.html">SessionHeader</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/Subscribe.html">Subscribe</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/SubscribeOptions.html">SubscribeOptions</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/SubscribeRequest.html">SubscribeRequest</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/SubscribeResponse.html">SubscribeResponse</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/SubscribeResult.html">SubscribeResult</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/SubscriptionData.html">SubscriptionData</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/Update.html">Update</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/UpdateResponse.html">UpdateResponse</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/ZuoraService.html">ZuoraService</a></li>
+      </ul>
+    </li>
+              
+              
+    <li><h2>Enums</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/ErrorCode.html">ErrorCode</a></li>
+      </ul>
+    </li>
+              
+    <li><h2>Exceptions</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/InvalidQueryLocatorFault.html">InvalidQueryLocatorFault</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/InvalidTypeFault.html">InvalidTypeFault</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/InvalidValueFault.html">InvalidValueFault</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/LoginFault.html">LoginFault</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/MalformedQueryFault.html">MalformedQueryFault</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/UnexpectedErrorFault.html">UnexpectedErrorFault</a></li>
+      </ul>
+    </li>
+              
+            </ul><br/>
+          </div><!-- end classes -->
+        </div><!-- end nav-panels -->
+        <div id="nav-tree" style="display:none">
+          <div id="index-links"><nobr>
+            <a href="../../../../packages.html"  >Package Index</a> | 
+            <a href="../../../../classes.html" >Class Index</a></nobr>
+          </div>
+        </div><!-- end nav-tree -->
+      </div><!-- end swapper -->
+    </div> <!-- end side-nav -->
+    <script>
+      if (!isMobile) {
+        $("<a href='#' id='nav-swap' onclick='swapNav();return false;' style='font-size:10px;line-height:9px;margin-left:1em;text-decoration:none;'><span id='tree-link'>Use Tree Navigation</span><span id='panel-link' style='display:none'>Use Panel Navigation</span></a>").appendTo("#side-nav");
+        chooseDefaultNav();
+        if ($("#nav-tree").is(':visible')) {
+          init_default_navtree("../../../../");
+        } else {
+          addLoadEvent(function() {
+            scrollIntoView("packages-nav");
+            scrollIntoView("classes-nav");
+          });
+        }
+        $("#swapper").css({borderBottom:"2px solid #aaa"});
+      } else {
+        swapNav(); // tree view should be used on mobile
+      }
+    </script>
+
+
+
+<div class="g-unit" id="doc-content">
+
+<div id="api-info-block">
+
+
+
+  
+   
+  
+  
+  
+  
+
+
+<div class="sum-details-links">
+
+
+Summary:
+
+
+
+
+
+
+
+
+
+  <a href="#pubctors">Ctors</a>
+  
+
+
+
+  &#124; <a href="#pubmethods">Methods</a>
+  
+
+
+
+  &#124; <a href="#inhmethods">Inherited Methods</a>
+
+&#124; <a href="#" onclick="return toggleAllClassInherited()" id="toggleAllClassInherited">[Expand All]</a>
+
+</div><!-- end sum-details-links -->
+<div class="api-level">
+  
+
+
+  
+  
+
+</div>
+</div><!-- end api-info-block -->
+
+
+<!-- ======== START OF CLASS DATA ======== -->
+
+<div id="jd-header">
+    public
+     
+     
+    
+    class
+<h1>ObjectFactory</h1>
+
+
+
+  
+    extends <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a><br/>
+  
+  
+  
+
+  
+  
+  
+
+
+</div><!-- end header -->
+
+<div id="naMessage"></div>
+
+<div id="jd-content" class="api apilevel-">
+<table class="jd-inheritance-table">
+
+
+    <tr>
+        
+        <td colspan="2" class="jd-inheritance-class-cell"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">java.lang.Object</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="1" class="jd-inheritance-class-cell">com.zuora.api.ObjectFactory</td>
+    </tr>
+    
+
+</table>
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Class Overview</h2>
+<p>This object contains factory methods for each 
+ Java content interface and Java element interface 
+ generated in the com.zuora.api package. 
+ <p>An ObjectFactory allows you to programatically 
+ construct new instances of the Java representation 
+ for XML content. The Java representation of XML 
+ content can consist of schema derived interfaces 
+ and classes representing the binding of schema 
+ type definitions, element declarations and model 
+ groups.  Factory methods for each of these are 
+ provided in this class.
+ 
+</p>
+
+
+
+
+
+</div><!-- jd-descr -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Summary</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<table id="pubctors" class="jd-sumtable"><tr><th colspan="12">Public Constructors</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            </nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#ObjectFactory()">ObjectFactory</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.zuora.api
+ 
+</div>
+  
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="pubmethods" class="jd-sumtable"><tr><th colspan="12">Public Methods</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/Amend.html">Amend</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createAmend()">createAmend</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/Amend.html">Amend</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/AmendOptions.html">AmendOptions</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createAmendOptions()">createAmendOptions</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/AmendOptions.html">AmendOptions</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/AmendRequest.html">AmendRequest</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createAmendRequest()">createAmendRequest</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/AmendRequest.html">AmendRequest</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/AmendResponse.html">AmendResponse</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createAmendResponse()">createAmendResponse</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/AmendResponse.html">AmendResponse</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/AmendResult.html">AmendResult</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createAmendResult()">createAmendResult</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/AmendResult.html">AmendResult</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/CallOptions.html">CallOptions</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createCallOptions()">createCallOptions</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/CallOptions.html">CallOptions</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/Create.html">Create</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createCreate()">createCreate</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/Create.html">Create</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/CreateResponse.html">CreateResponse</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createCreateResponse()">createCreateResponse</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/CreateResponse.html">CreateResponse</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/Delete.html">Delete</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createDelete()">createDelete</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/Delete.html">Delete</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/DeleteResponse.html">DeleteResponse</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createDeleteResponse()">createDeleteResponse</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/DeleteResponse.html">DeleteResponse</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/DeleteResult.html">DeleteResult</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createDeleteResult()">createDeleteResult</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/DeleteResult.html">DeleteResult</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/DummyHeader.html">DummyHeader</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createDummyHeader()">createDummyHeader</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/DummyHeader.html">DummyHeader</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/Error.html">Error</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createError()">createError</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/Error.html">Error</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/Generate.html">Generate</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createGenerate()">createGenerate</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/Generate.html">Generate</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/GenerateResponse.html">GenerateResponse</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createGenerateResponse()">createGenerateResponse</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/GenerateResponse.html">GenerateResponse</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/GetUserInfo.html">GetUserInfo</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createGetUserInfo()">createGetUserInfo</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/GetUserInfo.html">GetUserInfo</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/GetUserInfoResponse.html">GetUserInfoResponse</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createGetUserInfoResponse()">createGetUserInfoResponse</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/GetUserInfoResponse.html">GetUserInfoResponse</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/InvoiceData.html">InvoiceData</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createInvoiceData()">createInvoiceData</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/InvoiceData.html">InvoiceData</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/InvoiceProcessingOptions.html">InvoiceProcessingOptions</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createInvoiceProcessingOptions()">createInvoiceProcessingOptions</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/InvoiceProcessingOptions.html">InvoiceProcessingOptions</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/Login.html">Login</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createLogin()">createLogin</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/Login.html">Login</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/LoginResponse.html">LoginResponse</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createLoginResponse()">createLoginResponse</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/LoginResponse.html">LoginResponse</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/LoginResult.html">LoginResult</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createLoginResult()">createLoginResult</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/LoginResult.html">LoginResult</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/PreviewOptions.html">PreviewOptions</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createPreviewOptions()">createPreviewOptions</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/PreviewOptions.html">PreviewOptions</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/ProductRatePlanChargeTierData.html">ProductRatePlanChargeTierData</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createProductRatePlanChargeTierData()">createProductRatePlanChargeTierData</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/ProductRatePlanChargeTierData.html">ProductRatePlanChargeTierData</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/Query.html">Query</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createQuery()">createQuery</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/Query.html">Query</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/QueryMore.html">QueryMore</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createQueryMore()">createQueryMore</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/QueryMore.html">QueryMore</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/QueryMoreResponse.html">QueryMoreResponse</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createQueryMoreResponse()">createQueryMoreResponse</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/QueryMoreResponse.html">QueryMoreResponse</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/QueryOptions.html">QueryOptions</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createQueryOptions()">createQueryOptions</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/QueryOptions.html">QueryOptions</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/QueryResponse.html">QueryResponse</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createQueryResponse()">createQueryResponse</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/QueryResponse.html">QueryResponse</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/QueryResult.html">QueryResult</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createQueryResult()">createQueryResult</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/QueryResult.html">QueryResult</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/RatePlanChargeData.html">RatePlanChargeData</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createRatePlanChargeData()">createRatePlanChargeData</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/RatePlanChargeData.html">RatePlanChargeData</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/RatePlanData.html">RatePlanData</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createRatePlanData()">createRatePlanData</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/RatePlanData.html">RatePlanData</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/SaveResult.html">SaveResult</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createSaveResult()">createSaveResult</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/SaveResult.html">SaveResult</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/SessionHeader.html">SessionHeader</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createSessionHeader()">createSessionHeader</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/SessionHeader.html">SessionHeader</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/Subscribe.html">Subscribe</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createSubscribe()">createSubscribe</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/Subscribe.html">Subscribe</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/SubscribeOptions.html">SubscribeOptions</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createSubscribeOptions()">createSubscribeOptions</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/SubscribeOptions.html">SubscribeOptions</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/SubscribeRequest.html">SubscribeRequest</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createSubscribeRequest()">createSubscribeRequest</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/SubscribeRequest.html">SubscribeRequest</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/SubscribeResponse.html">SubscribeResponse</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createSubscribeResponse()">createSubscribeResponse</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/SubscribeResponse.html">SubscribeResponse</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/SubscribeResult.html">SubscribeResult</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createSubscribeResult()">createSubscribeResult</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/SubscribeResult.html">SubscribeResult</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/SubscriptionData.html">SubscriptionData</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createSubscriptionData()">createSubscriptionData</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/SubscriptionData.html">SubscriptionData</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/Update.html">Update</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createUpdate()">createUpdate</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/Update.html">Update</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/UpdateResponse.html">UpdateResponse</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/ObjectFactory.html#createUpdateResponse()">createUpdateResponse</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create an instance of <code><a href="../../../../java/com/zuora/api/UpdateResponse.html">UpdateResponse</a></code>
+ 
+</div>
+  
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="inhmethods" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Methods</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-java.lang.Object" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-java.lang.Object-trigger"
+          src="../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">java.lang.Object</a>
+
+<div id="inherited-methods-java.lang.Object">
+  <div id="inherited-methods-java.lang.Object-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-java.lang.Object-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">clone</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">equals</span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> arg0)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">finalize</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Class.html">Class</a>&lt;?&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">getClass</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">hashCode</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">notify</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">notifyAll</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">toString</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">wait</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">wait</span>(long arg0)</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+</table>
+
+
+</div><!-- jd-descr (summary) -->
+
+<!-- Details -->
+
+
+
+
+
+
+
+
+<!-- XML Attributes -->
+
+
+<!-- Enum Values -->
+
+
+<!-- Constants -->
+
+
+<!-- Fields -->
+
+
+<!-- Public ctors -->
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<h2>Public Constructors</h2>
+
+
+
+<A NAME="ObjectFactory()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        
+      </span>
+      <span class="sympad">ObjectFactory</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.zuora.api
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<!-- Protected ctors -->
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+<!-- Public methdos -->
+
+<h2>Public Methods</h2>
+
+
+
+<A NAME="createAmend()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/Amend.html">Amend</a>
+      </span>
+      <span class="sympad">createAmend</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/Amend.html">Amend</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createAmendOptions()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/AmendOptions.html">AmendOptions</a>
+      </span>
+      <span class="sympad">createAmendOptions</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/AmendOptions.html">AmendOptions</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createAmendRequest()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/AmendRequest.html">AmendRequest</a>
+      </span>
+      <span class="sympad">createAmendRequest</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/AmendRequest.html">AmendRequest</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createAmendResponse()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/AmendResponse.html">AmendResponse</a>
+      </span>
+      <span class="sympad">createAmendResponse</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/AmendResponse.html">AmendResponse</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createAmendResult()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/AmendResult.html">AmendResult</a>
+      </span>
+      <span class="sympad">createAmendResult</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/AmendResult.html">AmendResult</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createCallOptions()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/CallOptions.html">CallOptions</a>
+      </span>
+      <span class="sympad">createCallOptions</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/CallOptions.html">CallOptions</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createCreate()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/Create.html">Create</a>
+      </span>
+      <span class="sympad">createCreate</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/Create.html">Create</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createCreateResponse()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/CreateResponse.html">CreateResponse</a>
+      </span>
+      <span class="sympad">createCreateResponse</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/CreateResponse.html">CreateResponse</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createDelete()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/Delete.html">Delete</a>
+      </span>
+      <span class="sympad">createDelete</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/Delete.html">Delete</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createDeleteResponse()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/DeleteResponse.html">DeleteResponse</a>
+      </span>
+      <span class="sympad">createDeleteResponse</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/DeleteResponse.html">DeleteResponse</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createDeleteResult()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/DeleteResult.html">DeleteResult</a>
+      </span>
+      <span class="sympad">createDeleteResult</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/DeleteResult.html">DeleteResult</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createDummyHeader()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/DummyHeader.html">DummyHeader</a>
+      </span>
+      <span class="sympad">createDummyHeader</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/DummyHeader.html">DummyHeader</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createError()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/Error.html">Error</a>
+      </span>
+      <span class="sympad">createError</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/Error.html">Error</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createGenerate()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/Generate.html">Generate</a>
+      </span>
+      <span class="sympad">createGenerate</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/Generate.html">Generate</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createGenerateResponse()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/GenerateResponse.html">GenerateResponse</a>
+      </span>
+      <span class="sympad">createGenerateResponse</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/GenerateResponse.html">GenerateResponse</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createGetUserInfo()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/GetUserInfo.html">GetUserInfo</a>
+      </span>
+      <span class="sympad">createGetUserInfo</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/GetUserInfo.html">GetUserInfo</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createGetUserInfoResponse()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/GetUserInfoResponse.html">GetUserInfoResponse</a>
+      </span>
+      <span class="sympad">createGetUserInfoResponse</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/GetUserInfoResponse.html">GetUserInfoResponse</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createInvoiceData()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/InvoiceData.html">InvoiceData</a>
+      </span>
+      <span class="sympad">createInvoiceData</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/InvoiceData.html">InvoiceData</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createInvoiceProcessingOptions()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/InvoiceProcessingOptions.html">InvoiceProcessingOptions</a>
+      </span>
+      <span class="sympad">createInvoiceProcessingOptions</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/InvoiceProcessingOptions.html">InvoiceProcessingOptions</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createLogin()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/Login.html">Login</a>
+      </span>
+      <span class="sympad">createLogin</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/Login.html">Login</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createLoginResponse()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/LoginResponse.html">LoginResponse</a>
+      </span>
+      <span class="sympad">createLoginResponse</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/LoginResponse.html">LoginResponse</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createLoginResult()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/LoginResult.html">LoginResult</a>
+      </span>
+      <span class="sympad">createLoginResult</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/LoginResult.html">LoginResult</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createPreviewOptions()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/PreviewOptions.html">PreviewOptions</a>
+      </span>
+      <span class="sympad">createPreviewOptions</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/PreviewOptions.html">PreviewOptions</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createProductRatePlanChargeTierData()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/ProductRatePlanChargeTierData.html">ProductRatePlanChargeTierData</a>
+      </span>
+      <span class="sympad">createProductRatePlanChargeTierData</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/ProductRatePlanChargeTierData.html">ProductRatePlanChargeTierData</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createQuery()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/Query.html">Query</a>
+      </span>
+      <span class="sympad">createQuery</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/Query.html">Query</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createQueryMore()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/QueryMore.html">QueryMore</a>
+      </span>
+      <span class="sympad">createQueryMore</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/QueryMore.html">QueryMore</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createQueryMoreResponse()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/QueryMoreResponse.html">QueryMoreResponse</a>
+      </span>
+      <span class="sympad">createQueryMoreResponse</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/QueryMoreResponse.html">QueryMoreResponse</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createQueryOptions()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/QueryOptions.html">QueryOptions</a>
+      </span>
+      <span class="sympad">createQueryOptions</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/QueryOptions.html">QueryOptions</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createQueryResponse()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/QueryResponse.html">QueryResponse</a>
+      </span>
+      <span class="sympad">createQueryResponse</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/QueryResponse.html">QueryResponse</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createQueryResult()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/QueryResult.html">QueryResult</a>
+      </span>
+      <span class="sympad">createQueryResult</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/QueryResult.html">QueryResult</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createRatePlanChargeData()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/RatePlanChargeData.html">RatePlanChargeData</a>
+      </span>
+      <span class="sympad">createRatePlanChargeData</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/RatePlanChargeData.html">RatePlanChargeData</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createRatePlanData()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/RatePlanData.html">RatePlanData</a>
+      </span>
+      <span class="sympad">createRatePlanData</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/RatePlanData.html">RatePlanData</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createSaveResult()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/SaveResult.html">SaveResult</a>
+      </span>
+      <span class="sympad">createSaveResult</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/SaveResult.html">SaveResult</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createSessionHeader()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/SessionHeader.html">SessionHeader</a>
+      </span>
+      <span class="sympad">createSessionHeader</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/SessionHeader.html">SessionHeader</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createSubscribe()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/Subscribe.html">Subscribe</a>
+      </span>
+      <span class="sympad">createSubscribe</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/Subscribe.html">Subscribe</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createSubscribeOptions()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/SubscribeOptions.html">SubscribeOptions</a>
+      </span>
+      <span class="sympad">createSubscribeOptions</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/SubscribeOptions.html">SubscribeOptions</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createSubscribeRequest()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/SubscribeRequest.html">SubscribeRequest</a>
+      </span>
+      <span class="sympad">createSubscribeRequest</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/SubscribeRequest.html">SubscribeRequest</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createSubscribeResponse()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/SubscribeResponse.html">SubscribeResponse</a>
+      </span>
+      <span class="sympad">createSubscribeResponse</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/SubscribeResponse.html">SubscribeResponse</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createSubscribeResult()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/SubscribeResult.html">SubscribeResult</a>
+      </span>
+      <span class="sympad">createSubscribeResult</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/SubscribeResult.html">SubscribeResult</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createSubscriptionData()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/SubscriptionData.html">SubscriptionData</a>
+      </span>
+      <span class="sympad">createSubscriptionData</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/SubscriptionData.html">SubscriptionData</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createUpdate()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/Update.html">Update</a>
+      </span>
+      <span class="sympad">createUpdate</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/Update.html">Update</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createUpdateResponse()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/UpdateResponse.html">UpdateResponse</a>
+      </span>
+      <span class="sympad">createUpdateResponse</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create an instance of <code><a href="../../../../java/com/zuora/api/UpdateResponse.html">UpdateResponse</a></code>
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+
+
+
+<!-- ========= END OF CLASS DATA ========= -->
+<A NAME="navbar_top"></A>
+
+<div id="footer">
+Generated by <a href="http://www.mulesoft.com/devkit">Mule DevKit</a>. Document generation technology based on <a href="http://code.google.com/p/doclava/">Google's Doclava</a>.
+</div> <!-- end footer -->
+
+</div> <!-- jd-content -->
+
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+<script type="text/javascript">
+init(); /* initialize mule-developer-docs.js */
+</script>
+
+</body>
+</html>
