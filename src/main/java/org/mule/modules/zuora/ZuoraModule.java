@@ -205,4 +205,8 @@ public class ZuoraModule {
     public String getEnpoint() {
         return endpoint;
     }
+
+    public void setClient(ZuoraClient<ZuoraException> client) {
+        this.client = client;
+    }
 }
