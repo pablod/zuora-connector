@@ -66,7 +66,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-  <meta name="description" content="Documentation for Mule Zuora Cloud Connector." />
+  <meta name="description" content="Documentation for Mule Zuora Connector." />
 
 <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
 <title>
@@ -74,7 +74,7 @@
   ZuoraModule
 
 
-| Mule Zuora Cloud Connector
+| Mule Zuora Connector
 
 </title>
 <link href="../assets/mule-developer-docs.css" rel="stylesheet" type="text/css" />
@@ -105,7 +105,7 @@
 <div id="header">
     <div id="headerLeft">
     
-      <span id="masthead-title">Mule Zuora Cloud Connector</span>
+      <span id="masthead-title">Mule Zuora Connector</span>
     
     <ul id="header-tabs" class="mule">
     	<li id="guide"><a href="../guide/index.html">
@@ -187,9 +187,9 @@ Summary:
 <!-- ======== START OF MODULE DATA ======== -->
 
 <div id="jd-header">
-    
-<h1></h1>
-    
+    org.mule.modules
+<h1>mule-module-zuora</h1>
+    1.1.4-SNAPSHOT
 
 </div><!-- end header -->
 
@@ -216,6 +216,12 @@ Summary:
 
 <div class="jd-descr">
 
+
+<h2>Module Overview</h2>
+<p>Zuora is the leader in online recurring billing and payment solutions for SaaS and subscription businesses.
+
+ This connector provides full access to the Z-Commerce platform API.
+<br/></p>
 
 
 </div><!-- jd-descr -->
@@ -262,8 +268,8 @@ Summary:
         <span class="sympad"><a href="../mule/zuora.html#amend">&lt;zuora:amend&gt;</a></nobr>
         
         <div class="jd-descrdiv">Amends subscriptions
- <p/>
- <br/><code>&lt;amend amendaments-ref="#[header:amendamentsList]"/&gt;</code></div>
+ 
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;amend amendaments-ref="#[header:amendamentsList]"/&gt;</pre></div></div>
         
   </td></tr>
 
@@ -274,12 +280,12 @@ Summary:
         <span class="sympad"><a href="../mule/zuora.html#create">&lt;zuora:create&gt;</a></nobr>
         
         <div class="jd-descrdiv">Batch creation of ZObjects
- <p/>
- <br/><code>&lt;create&gt;
- &lt;zobjects&gt;
- &lt;zobject ref="#[variable:anObject]"/&gt;
- &lt;/zobject&gt;
- &lt;/create&gt;</code></div>
+ 
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;create&gt;
+    &lt;zobjects&gt;
+        &lt;zobject ref="#[variable:anObject]"/&gt;
+    &lt;/zobject&gt;
+&lt;/create&gt;</pre></div></div>
         
   </td></tr>
 
@@ -290,8 +296,8 @@ Summary:
         <span class="sympad"><a href="../mule/zuora.html#delete">&lt;zuora:delete&gt;</a></nobr>
         
         <div class="jd-descrdiv">Batch delete of ZObjects
- <p/>
- <br/><code>&lt;delete ids-ref="#[variable:ids]" type="#[variable:zobjectType]"/&gt;</code></div>
+ 
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;delete ids-ref="#[variable:ids]" type="#[variable:zobjectType]"/&gt;</pre></div></div>
         
   </td></tr>
 
@@ -303,8 +309,8 @@ Summary:
         
         <div class="jd-descrdiv">Lazily retrieves ZObject that match a given query,
  written in Zuora native query language
- <p/>
- <br/><code>&lt;find query="#[header:queryString]" /&gt;</code></div>
+ 
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;find query="#[header:queryString]" /&gt;</pre></div></div>
         
   </td></tr>
 
@@ -315,8 +321,8 @@ Summary:
         <span class="sympad"><a href="../mule/zuora.html#generate">&lt;zuora:generate&gt;</a></nobr>
         
         <div class="jd-descrdiv">Batch creation of invoces for accounts
- <p/>
- <br/><code>&lt;generate zobjects-ref="#[variable:accounts]"/&gt;</code></div>
+ 
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;generate zobjects-ref="#[variable:accounts]"/&gt;</pre></div></div>
         
   </td></tr>
 
@@ -327,8 +333,8 @@ Summary:
         <span class="sympad"><a href="../mule/zuora.html#get-user-info">&lt;zuora:get-user-info&gt;</a></nobr>
         
         <div class="jd-descrdiv">Answers user information
- <p/>
- <br/><code>&lt;get-user-info userId="#[header:userId]""/&gt;</code></div>
+ 
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;get-user-info userId="#[header:userId]"/&gt;</pre></div></div>
         
   </td></tr>
 
@@ -338,7 +344,9 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/zuora.html#product-profile">&lt;zuora:product-profile&gt;</a></nobr>
         
-        <div class="jd-descrdiv">Retrieve a product profile<br/></div>
+        <div class="jd-descrdiv">Retrieve a product profile
+ 
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;product-profile productId="001..."/&gt;</pre></div></div>
         
   </td></tr>
 
@@ -349,8 +357,8 @@ Summary:
         <span class="sympad"><a href="../mule/zuora.html#subscribe">&lt;zuora:subscribe&gt;</a></nobr>
         
         <div class="jd-descrdiv">Batch creation of ZObjects associated to Subscriptions
- <p/>
- <br/><code>&lt;subscribe subscriptions-ref="#[variable:subscribtions]"/&gt;</code></div>
+ 
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;subscribe subscriptions-ref="#[variable:subscribtions]"/&gt;</pre></div></div>
         
   </td></tr>
 
@@ -361,8 +369,8 @@ Summary:
         <span class="sympad"><a href="../mule/zuora.html#update">&lt;zuora:update&gt;</a></nobr>
         
         <div class="jd-descrdiv">Batch update of ZObjects
- <p/>
- <br/><code>&lt;update zobjects-ref="#[variable:objects]"/&gt;</code></div>
+ 
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;update zobjects-ref="#[variable:objects]"/&gt;</pre></div></div>
         
   </td></tr>
 
@@ -427,8 +435,9 @@ specify which configuration to use.</p>
           <td class="jd-typecol"><nobr>
           xs:string</nobr></td>
           <td class="jd-linkcol"><nobr>endpoint</nobr></td>
-          <td class="jd-descrcol"></td>
-          <td class="jd-descrcol" width="100%"></td>
+          <td class="jd-descrcol">htps://apisandbox.zuora.com/apps/services/a/29.0</td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Target URI to connect to
+</td>
       </tr>
       
     
@@ -459,13 +468,13 @@ resolution.</p>
     
       <tr class=" api apilevel-" >
           <td class="jd-linkcol"><nobr>username</nobr></td>
-          <td class="jd-descrcol" width="100%"></td>
+          <td class="jd-descrcol" width="100%">Username to identify the user<br/></td>
       </tr>
       
     
       <tr class="alt-color api apilevel-" >
           <td class="jd-linkcol"><nobr>password</nobr></td>
-          <td class="jd-descrcol" width="100%"></td>
+          <td class="jd-descrcol" width="100%">Password to authenticate the username<br/></td>
       </tr>
       
     
@@ -496,8 +505,8 @@ resolution.</p>
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p>Amends subscriptions
- <p/>
- <br/><code>&lt;amend amendaments-ref="#[header:amendamentsList]"/&gt;</code></p></div>
+ 
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;amend amendaments-ref="#[header:amendamentsList]"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -512,14 +521,14 @@ resolution.</p>
                     <tr class=" api apilevel-" >
                         <td class="jd-linkcol"><nobr>username</nobr></td>
                         <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i></td>
+                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user<br/></td>
                     </tr>
                     
                 
                     <tr class="alt-color api apilevel-" >
                         <td class="jd-linkcol"><nobr>password</nobr></td>
                         <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i></td>
+                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username<br/></td>
                     </tr>
                     
                 
@@ -553,7 +562,7 @@ resolution.</p>
   
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Return Payload</h5>
-      <ul class="nolist"><li>a list of AmmendResults, one for each amendament
+      <ul class="nolist"><li>a list of <br/><code><a href="../java/com/zuora/api/AmendResult.html">AmendResult</a></code>, one for each amendament
 <br/></li></ul>
   </div>
   <div class="jd-tagdata">
@@ -584,12 +593,12 @@ resolution.</p>
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p>Batch creation of ZObjects
- <p/>
- <br/><code>&lt;create&gt;
- &lt;zobjects&gt;
- &lt;zobject ref="#[variable:anObject]"/&gt;
- &lt;/zobject&gt;
- &lt;/create&gt;</code></p></div>
+ 
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;create&gt;
+    &lt;zobjects&gt;
+        &lt;zobject ref="#[variable:anObject]"/&gt;
+    &lt;/zobject&gt;
+&lt;/create&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -604,14 +613,14 @@ resolution.</p>
                     <tr class=" api apilevel-" >
                         <td class="jd-linkcol"><nobr>username</nobr></td>
                         <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i></td>
+                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user<br/></td>
                     </tr>
                     
                 
                     <tr class="alt-color api apilevel-" >
                         <td class="jd-linkcol"><nobr>password</nobr></td>
                         <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i></td>
+                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username<br/></td>
                     </tr>
                     
                 
@@ -658,7 +667,7 @@ resolution.</p>
   
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Return Payload</h5>
-      <ul class="nolist"><li>a list of SaveResult, one for each ZObject
+      <ul class="nolist"><li>a list of <br/><code><a href="../java/com/zuora/api/SaveResult.html">SaveResult</a></code>, one for each ZObject
 <br/></li></ul>
   </div>
   <div class="jd-tagdata">
@@ -689,8 +698,8 @@ resolution.</p>
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p>Batch delete of ZObjects
- <p/>
- <br/><code>&lt;delete ids-ref="#[variable:ids]" type="#[variable:zobjectType]"/&gt;</code></p></div>
+ 
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;delete ids-ref="#[variable:ids]" type="#[variable:zobjectType]"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -705,14 +714,14 @@ resolution.</p>
                     <tr class=" api apilevel-" >
                         <td class="jd-linkcol"><nobr>username</nobr></td>
                         <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i></td>
+                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user<br/></td>
                     </tr>
                     
                 
                     <tr class="alt-color api apilevel-" >
                         <td class="jd-linkcol"><nobr>password</nobr></td>
                         <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i></td>
+                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username<br/></td>
                     </tr>
                     
                 
@@ -759,7 +768,7 @@ resolution.</p>
   
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Return Payload</h5>
-      <ul class="nolist"><li>a list of DeleteResults, one for each id
+      <ul class="nolist"><li>a list of <br/><code><a href="../java/com/zuora/api/DeleteResult.html">DeleteResult</a></code>, one for each id
 <br/></li></ul>
   </div>
   <div class="jd-tagdata">
@@ -791,8 +800,8 @@ resolution.</p>
       
   <div class="jd-tagdata jd-tagdescr"><p>Lazily retrieves ZObject that match a given query,
  written in Zuora native query language
- <p/>
- <br/><code>&lt;find query="#[header:queryString]" /&gt;</code></p></div>
+ 
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;find query="#[header:queryString]" /&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -807,14 +816,14 @@ resolution.</p>
                     <tr class=" api apilevel-" >
                         <td class="jd-linkcol"><nobr>username</nobr></td>
                         <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i></td>
+                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user<br/></td>
                     </tr>
                     
                 
                     <tr class="alt-color api apilevel-" >
                         <td class="jd-linkcol"><nobr>password</nobr></td>
                         <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i></td>
+                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username<br/></td>
                     </tr>
                     
                 
@@ -848,9 +857,9 @@ resolution.</p>
   
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Return Payload</h5>
-      <ul class="nolist"><li>a ZObjects iterable. ZObjects returned by this operation
-         may be instances of either StaticZObject - like Account or Amendment -,  if the object is a non-customizable Zuora entity,
-         or ZObject,  if the object is a customizable Zuora entity
+      <ul class="nolist"><li>a <br/><code><a href="../java/com/zuora/api/object/ZObject.html">ZObject</a></code> iterable. <br/><code><a href="../java/com/zuora/api/object/ZObject.html">ZObject</a></code> returned by this operation
+         may be instances of either static ZObject - like Account or Amendment -,  if the object is a non-customizable Zuora entity,
+         or <br/><code><a href="../java/com/zuora/api/object/ZObject.html">ZObject</a></code>,  if the object is a customizable Zuora entity
 <br/></li></ul>
   </div>
   <div class="jd-tagdata">
@@ -881,8 +890,8 @@ resolution.</p>
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p>Batch creation of invoces for accounts
- <p/>
- <br/><code>&lt;generate zobjects-ref="#[variable:accounts]"/&gt;</code></p></div>
+ 
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;generate zobjects-ref="#[variable:accounts]"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -897,14 +906,14 @@ resolution.</p>
                     <tr class=" api apilevel-" >
                         <td class="jd-linkcol"><nobr>username</nobr></td>
                         <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i></td>
+                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user<br/></td>
                     </tr>
                     
                 
                     <tr class="alt-color api apilevel-" >
                         <td class="jd-linkcol"><nobr>password</nobr></td>
                         <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i></td>
+                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username<br/></td>
                     </tr>
                     
                 
@@ -952,7 +961,7 @@ resolution.</p>
   
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Return Payload</h5>
-      <ul class="nolist"><li>a list of SaveResult, one for each ZObject
+      <ul class="nolist"><li>a list of <br/><code><a href="../java/com/zuora/api/SaveResult.html">SaveResult</a></code>, one for each ZObject
 <br/></li></ul>
   </div>
   <div class="jd-tagdata">
@@ -983,8 +992,8 @@ resolution.</p>
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p>Answers user information
- <p/>
- <br/><code>&lt;get-user-info userId="#[header:userId]""/&gt;</code></p></div>
+ 
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;get-user-info userId="#[header:userId]"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -999,14 +1008,14 @@ resolution.</p>
                     <tr class=" api apilevel-" >
                         <td class="jd-linkcol"><nobr>username</nobr></td>
                         <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i></td>
+                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user<br/></td>
                     </tr>
                     
                 
                     <tr class="alt-color api apilevel-" >
                         <td class="jd-linkcol"><nobr>password</nobr></td>
                         <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i></td>
+                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username<br/></td>
                     </tr>
                     
                 
@@ -1027,7 +1036,7 @@ resolution.</p>
   
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Return Payload</h5>
-      <ul class="nolist"><li>a User
+      <ul class="nolist"><li>a <br/><code><a href="../java/org/mule/modules/zuora/User.html">User</a></code>
 <br/></li></ul>
   </div>
   <div class="jd-tagdata">
@@ -1057,7 +1066,9 @@ resolution.</p>
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Retrieve a product profile<br/></p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Retrieve a product profile
+ 
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;product-profile productId="001..."/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -1072,14 +1083,14 @@ resolution.</p>
                     <tr class=" api apilevel-" >
                         <td class="jd-linkcol"><nobr>username</nobr></td>
                         <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i></td>
+                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user<br/></td>
                     </tr>
                     
                 
                     <tr class="alt-color api apilevel-" >
                         <td class="jd-linkcol"><nobr>password</nobr></td>
                         <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i></td>
+                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username<br/></td>
                     </tr>
                     
                 
@@ -1115,6 +1126,11 @@ resolution.</p>
       <h5 class="jd-tagtitle">Exception Payload</h5>
       <table class="jd-tagtable">
         <tr>
+            <th></td>
+            <td>ZuoraException}
+<br/></td>
+        </tr>
+        <tr>
             <th><a href="../java/org/mule/modules/zuora/zuora/api/ZuoraException.html">ZuoraException</a></td>
             <td></td>
         </tr>
@@ -1139,8 +1155,8 @@ resolution.</p>
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p>Batch creation of ZObjects associated to Subscriptions
- <p/>
- <br/><code>&lt;subscribe subscriptions-ref="#[variable:subscribtions]"/&gt;</code></p></div>
+ 
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;subscribe subscriptions-ref="#[variable:subscribtions]"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -1155,14 +1171,14 @@ resolution.</p>
                     <tr class=" api apilevel-" >
                         <td class="jd-linkcol"><nobr>username</nobr></td>
                         <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i></td>
+                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user<br/></td>
                     </tr>
                     
                 
                     <tr class="alt-color api apilevel-" >
                         <td class="jd-linkcol"><nobr>password</nobr></td>
                         <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i></td>
+                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username<br/></td>
                     </tr>
                     
                 
@@ -1227,8 +1243,8 @@ resolution.</p>
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p>Batch update of ZObjects
- <p/>
- <br/><code>&lt;update zobjects-ref="#[variable:objects]"/&gt;</code></p></div>
+ 
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;update zobjects-ref="#[variable:objects]"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -1243,14 +1259,14 @@ resolution.</p>
                     <tr class=" api apilevel-" >
                         <td class="jd-linkcol"><nobr>username</nobr></td>
                         <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i></td>
+                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user<br/></td>
                     </tr>
                     
                 
                     <tr class="alt-color api apilevel-" >
                         <td class="jd-linkcol"><nobr>password</nobr></td>
                         <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i></td>
+                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username<br/></td>
                     </tr>
                     
                 
@@ -1298,7 +1314,7 @@ resolution.</p>
   
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Return Payload</h5>
-      <ul class="nolist"><li>a list of SaveResult, one for each ZObject
+      <ul class="nolist"><li>a list of <br/><code><a href="../java/com/zuora/api/SaveResult.html">SaveResult</a></code>, one for each ZObject
 <br/></li></ul>
   </div>
   <div class="jd-tagdata">

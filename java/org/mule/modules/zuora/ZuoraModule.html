@@ -65,7 +65,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-  <meta name="description" content="Documentation for Mule Zuora Cloud Connector." />
+  <meta name="description" content="Documentation for Mule Zuora Connector." />
 
 <link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico" />
 <title>
@@ -73,7 +73,7 @@
   ZuoraModule
 
 
-| Mule Zuora Cloud Connector
+| Mule Zuora Connector
 
 </title>
 <link href="../../../../../assets/mule-developer-docs.css" rel="stylesheet" type="text/css" />
@@ -106,7 +106,7 @@
 <div id="header">
     <div id="headerLeft">
     
-      <span id="masthead-title">Mule Zuora Cloud Connector</span>
+      <span id="masthead-title">Mule Zuora Connector</span>
     
     <ul id="header-tabs" class="">
     	<li id="guide"><a href="../../../../../guide/index.html">
@@ -307,7 +307,7 @@ Summary:
 
 
   
-    extends <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a><br/>
+    extends Object<br/>
   
   
   
@@ -327,7 +327,7 @@ Summary:
 
     <tr>
         
-        <td colspan="2" class="jd-inheritance-class-cell"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">java.lang.Object</a></td>
+        <td colspan="2" class="jd-inheritance-class-cell">java.lang.Object</td>
     </tr>
     
 
@@ -418,6 +418,12 @@ Summary:
 <div class="jd-descr">
 
 
+<h2>Class Overview</h2>
+<p>Zuora is the leader in online recurring billing and payment solutions for SaaS and subscription businesses.
+
+ This connector provides full access to the Z-Commerce platform API.
+</p>
+
 
 
 
@@ -482,9 +488,10 @@ Summary:
           private
           
           
-          <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr></td>
+          String</nobr></td>
           <td class="jd-linkcol"><a href="../../../../../org/mule/modules/zuora/ZuoraModule.html#endpoint">endpoint</a></td>
-          <td class="jd-descrcol" width="100%"></td>
+          <td class="jd-descrcol" width="100%">Target URI to connect to
+</td>
       </tr>
       
     
@@ -539,14 +546,14 @@ Summary:
             
             
             
-            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="../../../../../java/com/zuora/api/AmendResult.html">AmendResult</a>&gt;</nobr>
+            List&lt;<a href="../../../../../java/com/zuora/api/AmendResult.html">AmendResult</a>&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/modules/zuora/ZuoraModule.html#amend(org.mule.modules.zuora.ZuoraSession, java.util.List<com.zuora.api.AmendRequest>)">amend</a></span>(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="../../../../../java/com/zuora/api/AmendRequest.html">AmendRequest</a>&gt; amendaments)</nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/zuora/ZuoraModule.html#amend(org.mule.modules.zuora.ZuoraSession, java.util.List<com.zuora.api.AmendRequest>)">amend</a></span>(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session, List&lt;<a href="../../../../../java/com/zuora/api/AmendRequest.html">AmendRequest</a>&gt; amendaments)</nobr>
         
         <div class="jd-descrdiv">Amends subscriptions
- <p/>
- <code>&lt;amend amendaments-ref="#[header:amendamentsList]"/&gt;</code></div>
+ 
+ </div>
   
   </td></tr>
 
@@ -559,18 +566,14 @@ Summary:
             
             
             
-            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="../../../../../java/com/zuora/api/SaveResult.html">SaveResult</a>&gt;</nobr>
+            List&lt;<a href="../../../../../java/com/zuora/api/SaveResult.html">SaveResult</a>&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/modules/zuora/ZuoraModule.html#create(org.mule.modules.zuora.ZuoraSession, org.mule.modules.zuora.zobject.ZObjectType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)">create</a></span>(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session, <a href="../../../../../java/org/mule/modules/zuora/zobject/ZObjectType.html">ZObjectType</a> type, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; zobjects)</nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/zuora/ZuoraModule.html#create(org.mule.modules.zuora.ZuoraSession, org.mule.modules.zuora.zobject.ZObjectType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)">create</a></span>(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session, <a href="../../../../../java/org/mule/modules/zuora/zobject/ZObjectType.html">ZObjectType</a> type, List&lt;Map&lt;String,&nbsp;Object&gt;&gt; zobjects)</nobr>
         
         <div class="jd-descrdiv">Batch creation of ZObjects
- <p/>
- <code>&lt;create&gt;
- &lt;zobjects&gt;
- &lt;zobject ref="#[variable:anObject]"/&gt;
- &lt;/zobject&gt;
- &lt;/create&gt;</code></div>
+ 
+ </div>
   
   </td></tr>
 
@@ -586,8 +589,10 @@ Summary:
             <a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/modules/zuora/ZuoraModule.html#createSession(java.lang.String, java.lang.String)">createSession</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> username, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> password)</nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/zuora/ZuoraModule.html#createSession(java.lang.String, java.lang.String)">createSession</a></span>(String username, String password)</nobr>
         
+        <div class="jd-descrdiv">Create a new session</div>
+  
   </td></tr>
 
 
@@ -599,14 +604,14 @@ Summary:
             
             
             
-            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="../../../../../java/com/zuora/api/DeleteResult.html">DeleteResult</a>&gt;</nobr>
+            List&lt;<a href="../../../../../java/com/zuora/api/DeleteResult.html">DeleteResult</a>&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/modules/zuora/ZuoraModule.html#delete(org.mule.modules.zuora.ZuoraSession, org.mule.modules.zuora.zobject.ZObjectType, java.util.List<java.lang.String>)">delete</a></span>(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session, <a href="../../../../../java/org/mule/modules/zuora/zobject/ZObjectType.html">ZObjectType</a> type, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>&gt; ids)</nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/zuora/ZuoraModule.html#delete(org.mule.modules.zuora.ZuoraSession, org.mule.modules.zuora.zobject.ZObjectType, java.util.List<java.lang.String>)">delete</a></span>(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session, <a href="../../../../../java/org/mule/modules/zuora/zobject/ZObjectType.html">ZObjectType</a> type, List&lt;String&gt; ids)</nobr>
         
         <div class="jd-descrdiv">Batch delete of ZObjects
- <p/>
- <code>&lt;delete ids-ref="#[variable:ids]" type="#[variable:zobjectType]"/&gt;</code></div>
+ 
+ </div>
   
   </td></tr>
 
@@ -635,15 +640,15 @@ Summary:
             
             
             
-            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Iterable.html">Iterable</a>&lt;<a href="../../../../../java/com/zuora/api/object/ZObject.html">ZObject</a>&gt;</nobr>
+            Iterable&lt;<a href="../../../../../java/com/zuora/api/object/ZObject.html">ZObject</a>&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/modules/zuora/ZuoraModule.html#find(org.mule.modules.zuora.ZuoraSession, java.lang.String)">find</a></span>(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> zquery)</nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/zuora/ZuoraModule.html#find(org.mule.modules.zuora.ZuoraSession, java.lang.String)">find</a></span>(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session, String zquery)</nobr>
         
         <div class="jd-descrdiv">Lazily retrieves ZObject that match a given query,
  written in Zuora native query language
- <p/>
- <code>&lt;find query="#[header:queryString]" /&gt;</code></div>
+ 
+ </div>
   
   </td></tr>
 
@@ -656,14 +661,14 @@ Summary:
             
             
             
-            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="../../../../../java/com/zuora/api/SaveResult.html">SaveResult</a>&gt;</nobr>
+            List&lt;<a href="../../../../../java/com/zuora/api/SaveResult.html">SaveResult</a>&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/modules/zuora/ZuoraModule.html#generate(org.mule.modules.zuora.ZuoraSession, org.mule.modules.zuora.zobject.ZObjectType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)">generate</a></span>(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session, <a href="../../../../../java/org/mule/modules/zuora/zobject/ZObjectType.html">ZObjectType</a> type, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; zobjects)</nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/zuora/ZuoraModule.html#generate(org.mule.modules.zuora.ZuoraSession, org.mule.modules.zuora.zobject.ZObjectType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)">generate</a></span>(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session, <a href="../../../../../java/org/mule/modules/zuora/zobject/ZObjectType.html">ZObjectType</a> type, List&lt;Map&lt;String,&nbsp;Object&gt;&gt; zobjects)</nobr>
         
         <div class="jd-descrdiv">Batch creation of invoces for accounts
- <p/>
- <code>&lt;generate zobjects-ref="#[variable:accounts]"/&gt;</code></div>
+ 
+ </div>
   
   </td></tr>
 
@@ -676,7 +681,7 @@ Summary:
             
             
             
-            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr>
+            String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../org/mule/modules/zuora/ZuoraModule.html#getEnpoint()">getEnpoint</a></span>()</nobr>
@@ -698,8 +703,8 @@ Summary:
         <span class="sympad"><a href="../../../../../org/mule/modules/zuora/ZuoraModule.html#getUserInfo(org.mule.modules.zuora.ZuoraSession)">getUserInfo</a></span>(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session)</nobr>
         
         <div class="jd-descrdiv">Answers user information
- <p/>
- <code>&lt;get-user-info userId="#[header:userId]""/&gt;</code></div>
+ 
+ </div>
   
   </td></tr>
 
@@ -712,12 +717,14 @@ Summary:
             
             
             
-            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;</nobr>
+            Map&lt;String,&nbsp;Object&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/modules/zuora/ZuoraModule.html#productProfile(org.mule.modules.zuora.ZuoraSession, java.lang.String)">productProfile</a></span>(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> productId)</nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/zuora/ZuoraModule.html#productProfile(org.mule.modules.zuora.ZuoraSession, java.lang.String)">productProfile</a></span>(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session, String productId)</nobr>
         
-        <div class="jd-descrdiv">Retrieve a product profile</div>
+        <div class="jd-descrdiv">Retrieve a product profile
+ 
+ </div>
   
   </td></tr>
 
@@ -749,7 +756,7 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/modules/zuora/ZuoraModule.html#setEndpoint(java.lang.String)">setEndpoint</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> enpoint)</nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/zuora/ZuoraModule.html#setEndpoint(java.lang.String)">setEndpoint</a></span>(String enpoint)</nobr>
         
   </td></tr>
 
@@ -762,14 +769,14 @@ Summary:
             
             
             
-            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="../../../../../java/com/zuora/api/SubscribeResult.html">SubscribeResult</a>&gt;</nobr>
+            List&lt;<a href="../../../../../java/com/zuora/api/SubscribeResult.html">SubscribeResult</a>&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/modules/zuora/ZuoraModule.html#subscribe(org.mule.modules.zuora.ZuoraSession, java.util.List<com.zuora.api.SubscribeRequest>)">subscribe</a></span>(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="../../../../../java/com/zuora/api/SubscribeRequest.html">SubscribeRequest</a>&gt; subscriptions)</nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/zuora/ZuoraModule.html#subscribe(org.mule.modules.zuora.ZuoraSession, java.util.List<com.zuora.api.SubscribeRequest>)">subscribe</a></span>(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session, List&lt;<a href="../../../../../java/com/zuora/api/SubscribeRequest.html">SubscribeRequest</a>&gt; subscriptions)</nobr>
         
         <div class="jd-descrdiv">Batch creation of ZObjects associated to Subscriptions
- <p/>
- <code>&lt;subscribe subscriptions-ref="#[variable:subscribtions]"/&gt;</code></div>
+ 
+ </div>
   
   </td></tr>
 
@@ -782,14 +789,14 @@ Summary:
             
             
             
-            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="../../../../../java/com/zuora/api/SaveResult.html">SaveResult</a>&gt;</nobr>
+            List&lt;<a href="../../../../../java/com/zuora/api/SaveResult.html">SaveResult</a>&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/modules/zuora/ZuoraModule.html#update(org.mule.modules.zuora.ZuoraSession, org.mule.modules.zuora.zobject.ZObjectType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)">update</a></span>(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session, <a href="../../../../../java/org/mule/modules/zuora/zobject/ZObjectType.html">ZObjectType</a> type, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; zobjects)</nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/zuora/ZuoraModule.html#update(org.mule.modules.zuora.ZuoraSession, org.mule.modules.zuora.zobject.ZObjectType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)">update</a></span>(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session, <a href="../../../../../java/org/mule/modules/zuora/zobject/ZObjectType.html">ZObjectType</a> type, List&lt;Map&lt;String,&nbsp;Object&gt;&gt; zobjects)</nobr>
         
         <div class="jd-descrdiv">Batch update of ZObjects
- <p/>
- <code>&lt;update zobjects-ref="#[variable:objects]"/&gt;</code></div>
+ 
+ </div>
   
   </td></tr>
 
@@ -817,7 +824,7 @@ Summary:
           class="jd-expando-trigger-img" /></a>
 From class
 
-  <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">java.lang.Object</a>
+  java.lang.Object
 
 <div id="inherited-methods-java.lang.Object">
   <div id="inherited-methods-java.lang.Object-list"
@@ -836,7 +843,7 @@ From class
             
             
             
-            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a></nobr>
+            Object</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad">clone</span>()</nobr>
@@ -855,7 +862,7 @@ From class
             boolean</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">equals</span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> arg0)</nobr>
+        <span class="sympad">equals</span>(Object arg0)</nobr>
         
   </td></tr>
 
@@ -884,7 +891,7 @@ From class
             final
             
             
-            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Class.html">Class</a>&lt;?&gt;</nobr>
+            Class&lt;?&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad">getClass</span>()</nobr>
@@ -948,7 +955,7 @@ From class
             
             
             
-            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr>
+            String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad">toString</span>()</nobr>
@@ -1080,7 +1087,7 @@ From class
         private 
          
          
-        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
+        String
       </span>
         endpoint
     </h4>
@@ -1094,7 +1101,8 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Target URI to connect to
+</p></div>
 
     
     </div>
@@ -1167,10 +1175,10 @@ From class
          
          
          
-        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="../../../../../java/com/zuora/api/AmendResult.html">AmendResult</a>&gt;
+        List&lt;<a href="../../../../../java/com/zuora/api/AmendResult.html">AmendResult</a>&gt;
       </span>
       <span class="sympad">amend</span>
-      <span class="normal">(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="../../../../../java/com/zuora/api/AmendRequest.html">AmendRequest</a>&gt; amendaments)</span>
+      <span class="normal">(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session, List&lt;<a href="../../../../../java/com/zuora/api/AmendRequest.html">AmendRequest</a>&gt; amendaments)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1183,8 +1191,8 @@ From class
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p>Amends subscriptions
- <p/>
- <code>&lt;amend amendaments-ref="#[header:amendamentsList]"/&gt;</code></p></div>
+ 
+ </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
@@ -1200,7 +1208,7 @@ From class
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>a list of AmmendResults, one for each amendament
+      <ul class="nolist"><li>a list of <code><a href="../../../../../java/com/zuora/api/AmendResult.html">AmendResult</a></code>, one for each amendament
 </li></ul>
   </div>
   <div class="jd-tagdata">
@@ -1227,10 +1235,10 @@ From class
          
          
          
-        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="../../../../../java/com/zuora/api/SaveResult.html">SaveResult</a>&gt;
+        List&lt;<a href="../../../../../java/com/zuora/api/SaveResult.html">SaveResult</a>&gt;
       </span>
       <span class="sympad">create</span>
-      <span class="normal">(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session, <a href="../../../../../java/org/mule/modules/zuora/zobject/ZObjectType.html">ZObjectType</a> type, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; zobjects)</span>
+      <span class="normal">(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session, <a href="../../../../../java/org/mule/modules/zuora/zobject/ZObjectType.html">ZObjectType</a> type, List&lt;Map&lt;String,&nbsp;Object&gt;&gt; zobjects)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1243,12 +1251,8 @@ From class
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p>Batch creation of ZObjects
- <p/>
- <code>&lt;create&gt;
- &lt;zobjects&gt;
- &lt;zobject ref="#[variable:anObject]"/&gt;
- &lt;/zobject&gt;
- &lt;/create&gt;</code></p></div>
+ 
+ </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
@@ -1268,7 +1272,7 @@ From class
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>a list of SaveResult, one for each ZObject
+      <ul class="nolist"><li>a list of <code><a href="../../../../../java/com/zuora/api/SaveResult.html">SaveResult</a></code>, one for each ZObject
 </li></ul>
   </div>
   <div class="jd-tagdata">
@@ -1298,7 +1302,7 @@ From class
         <a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a>
       </span>
       <span class="sympad">createSession</span>
-      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> username, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> password)</span>
+      <span class="normal">(String username, String password)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1310,17 +1314,17 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Create a new session</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
           <th>username</td>
-          <td></td>
+          <td>Username to identify the user</td>
         </tr>
         <tr>
           <th>password</td>
-          <td></td>
+          <td>Password to authenticate the username</td>
         </tr>
       </table>
   </div>
@@ -1339,10 +1343,10 @@ From class
          
          
          
-        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="../../../../../java/com/zuora/api/DeleteResult.html">DeleteResult</a>&gt;
+        List&lt;<a href="../../../../../java/com/zuora/api/DeleteResult.html">DeleteResult</a>&gt;
       </span>
       <span class="sympad">delete</span>
-      <span class="normal">(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session, <a href="../../../../../java/org/mule/modules/zuora/zobject/ZObjectType.html">ZObjectType</a> type, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>&gt; ids)</span>
+      <span class="normal">(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session, <a href="../../../../../java/org/mule/modules/zuora/zobject/ZObjectType.html">ZObjectType</a> type, List&lt;String&gt; ids)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1355,8 +1359,8 @@ From class
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p>Batch delete of ZObjects
- <p/>
- <code>&lt;delete ids-ref="#[variable:ids]" type="#[variable:zobjectType]"/&gt;</code></p></div>
+ 
+ </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
@@ -1376,7 +1380,7 @@ From class
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>a list of DeleteResults, one for each id
+      <ul class="nolist"><li>a list of <code><a href="../../../../../java/com/zuora/api/DeleteResult.html">DeleteResult</a></code>, one for each id
 </li></ul>
   </div>
   <div class="jd-tagdata">
@@ -1443,10 +1447,10 @@ From class
          
          
          
-        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Iterable.html">Iterable</a>&lt;<a href="../../../../../java/com/zuora/api/object/ZObject.html">ZObject</a>&gt;
+        Iterable&lt;<a href="../../../../../java/com/zuora/api/object/ZObject.html">ZObject</a>&gt;
       </span>
       <span class="sympad">find</span>
-      <span class="normal">(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> zquery)</span>
+      <span class="normal">(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session, String zquery)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1460,8 +1464,8 @@ From class
       
   <div class="jd-tagdata jd-tagdescr"><p>Lazily retrieves ZObject that match a given query,
  written in Zuora native query language
- <p/>
- <code>&lt;find query="#[header:queryString]" /&gt;</code></p></div>
+ 
+ </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
@@ -1477,9 +1481,9 @@ From class
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>a ZObjects iterable. ZObjects returned by this operation
-         may be instances of either StaticZObject - like Account or Amendment -,  if the object is a non-customizable Zuora entity,
-         or ZObject,  if the object is a customizable Zuora entity
+      <ul class="nolist"><li>a <code><a href="../../../../../java/com/zuora/api/object/ZObject.html">ZObject</a></code> iterable. <code><a href="../../../../../java/com/zuora/api/object/ZObject.html">ZObject</a></code> returned by this operation
+         may be instances of either static ZObject - like Account or Amendment -,  if the object is a non-customizable Zuora entity,
+         or <code><a href="../../../../../java/com/zuora/api/object/ZObject.html">ZObject</a></code>,  if the object is a customizable Zuora entity
 </li></ul>
   </div>
   <div class="jd-tagdata">
@@ -1506,10 +1510,10 @@ From class
          
          
          
-        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="../../../../../java/com/zuora/api/SaveResult.html">SaveResult</a>&gt;
+        List&lt;<a href="../../../../../java/com/zuora/api/SaveResult.html">SaveResult</a>&gt;
       </span>
       <span class="sympad">generate</span>
-      <span class="normal">(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session, <a href="../../../../../java/org/mule/modules/zuora/zobject/ZObjectType.html">ZObjectType</a> type, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; zobjects)</span>
+      <span class="normal">(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session, <a href="../../../../../java/org/mule/modules/zuora/zobject/ZObjectType.html">ZObjectType</a> type, List&lt;Map&lt;String,&nbsp;Object&gt;&gt; zobjects)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1522,8 +1526,8 @@ From class
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p>Batch creation of invoces for accounts
- <p/>
- <code>&lt;generate zobjects-ref="#[variable:accounts]"/&gt;</code></p></div>
+ 
+ </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
@@ -1544,7 +1548,7 @@ From class
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>a list of SaveResult, one for each ZObject
+      <ul class="nolist"><li>a list of <code><a href="../../../../../java/com/zuora/api/SaveResult.html">SaveResult</a></code>, one for each ZObject
 </li></ul>
   </div>
   <div class="jd-tagdata">
@@ -1571,7 +1575,7 @@ From class
          
          
          
-        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
+        String
       </span>
       <span class="sympad">getEnpoint</span>
       <span class="normal">()</span>
@@ -1618,8 +1622,8 @@ From class
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p>Answers user information
- <p/>
- <code>&lt;get-user-info userId="#[header:userId]""/&gt;</code></p></div>
+ 
+ </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
@@ -1631,7 +1635,7 @@ From class
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>a User
+      <ul class="nolist"><li>a <code><a href="../../../../../java/org/mule/modules/zuora/User.html">User</a></code>
 </li></ul>
   </div>
   <div class="jd-tagdata">
@@ -1658,10 +1662,10 @@ From class
          
          
          
-        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;
+        Map&lt;String,&nbsp;Object&gt;
       </span>
       <span class="sympad">productProfile</span>
-      <span class="normal">(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> productId)</span>
+      <span class="normal">(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session, String productId)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1673,7 +1677,9 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Retrieve a product profile</p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Retrieve a product profile
+ 
+ </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
@@ -1690,6 +1696,11 @@ From class
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Throws</h5>
       <table class="jd-tagtable">  
+        <tr>
+            <th></td>
+            <td>ZuoraException}
+</td>
+        </tr>  
         <tr>
             <th><a href="../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraException.html">ZuoraException</a></td>
             <td></td>
@@ -1754,7 +1765,7 @@ From class
         void
       </span>
       <span class="sympad">setEndpoint</span>
-      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> enpoint)</span>
+      <span class="normal">(String enpoint)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1791,10 +1802,10 @@ From class
          
          
          
-        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="../../../../../java/com/zuora/api/SubscribeResult.html">SubscribeResult</a>&gt;
+        List&lt;<a href="../../../../../java/com/zuora/api/SubscribeResult.html">SubscribeResult</a>&gt;
       </span>
       <span class="sympad">subscribe</span>
-      <span class="normal">(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="../../../../../java/com/zuora/api/SubscribeRequest.html">SubscribeRequest</a>&gt; subscriptions)</span>
+      <span class="normal">(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session, List&lt;<a href="../../../../../java/com/zuora/api/SubscribeRequest.html">SubscribeRequest</a>&gt; subscriptions)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1807,8 +1818,8 @@ From class
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p>Batch creation of ZObjects associated to Subscriptions
- <p/>
- <code>&lt;subscribe subscriptions-ref="#[variable:subscribtions]"/&gt;</code></p></div>
+ 
+ </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
@@ -1851,10 +1862,10 @@ From class
          
          
          
-        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="../../../../../java/com/zuora/api/SaveResult.html">SaveResult</a>&gt;
+        List&lt;<a href="../../../../../java/com/zuora/api/SaveResult.html">SaveResult</a>&gt;
       </span>
       <span class="sympad">update</span>
-      <span class="normal">(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session, <a href="../../../../../java/org/mule/modules/zuora/zobject/ZObjectType.html">ZObjectType</a> type, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; zobjects)</span>
+      <span class="normal">(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session, <a href="../../../../../java/org/mule/modules/zuora/zobject/ZObjectType.html">ZObjectType</a> type, List&lt;Map&lt;String,&nbsp;Object&gt;&gt; zobjects)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1867,8 +1878,8 @@ From class
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p>Batch update of ZObjects
- <p/>
- <code>&lt;update zobjects-ref="#[variable:objects]"/&gt;</code></p></div>
+ 
+ </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
@@ -1889,7 +1900,7 @@ From class
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>a list of SaveResult, one for each ZObject
+      <ul class="nolist"><li>a list of <code><a href="../../../../../java/com/zuora/api/SaveResult.html">SaveResult</a></code>, one for each ZObject
 </li></ul>
   </div>
   <div class="jd-tagdata">
