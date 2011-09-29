@@ -62,6 +62,8 @@
 
 
 
+
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -108,10 +110,10 @@
       <span id="masthead-title">Mule Zuora Connector</span>
     
     <ul id="header-tabs" class="mule">
-    	<li id="guide"><a href="../guide/index.html">
-	    	<span class="en">User Guide</span>
+    	<li id="guide"><a href="../guide/install.html">
+	    	<span class="en">Install Guide</span>
     	</a></li>
-    	<li id="java"><a href="../java/index.html">
+    	<li id="java"><a href="../java/packages.html">
 	    	<span class="en">Java API</span>
     	</a></li>
     	<li id="mule"><a href="../mule/modules.html">
@@ -269,7 +271,7 @@ Summary:
         
         <div class="jd-descrdiv">Amends subscriptions
  
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;amend amendaments-ref="#[header:amendamentsList]"/&gt;</pre></div></div>
+ <br/></div>
         
   </td></tr>
 
@@ -281,11 +283,7 @@ Summary:
         
         <div class="jd-descrdiv">Batch creation of ZObjects
  
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;create&gt;
-    &lt;zobjects&gt;
-        &lt;zobject ref="#[variable:anObject]"/&gt;
-    &lt;/zobject&gt;
-&lt;/create&gt;</pre></div></div>
+ <br/></div>
         
   </td></tr>
 
@@ -297,7 +295,7 @@ Summary:
         
         <div class="jd-descrdiv">Batch delete of ZObjects
  
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;delete ids-ref="#[variable:ids]" type="#[variable:zobjectType]"/&gt;</pre></div></div>
+ <br/></div>
         
   </td></tr>
 
@@ -310,7 +308,7 @@ Summary:
         <div class="jd-descrdiv">Lazily retrieves ZObject that match a given query,
  written in Zuora native query language
  
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;find query="#[header:queryString]" /&gt;</pre></div></div>
+ <br/></div>
         
   </td></tr>
 
@@ -322,7 +320,7 @@ Summary:
         
         <div class="jd-descrdiv">Batch creation of invoces for accounts
  
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;generate zobjects-ref="#[variable:accounts]"/&gt;</pre></div></div>
+ <br/></div>
         
   </td></tr>
 
@@ -334,7 +332,7 @@ Summary:
         
         <div class="jd-descrdiv">Answers user information
  
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;get-user-info userId="#[header:userId]"/&gt;</pre></div></div>
+ <br/></div>
         
   </td></tr>
 
@@ -346,7 +344,7 @@ Summary:
         
         <div class="jd-descrdiv">Retrieve a product profile
  
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;product-profile productId="001..."/&gt;</pre></div></div>
+ <br/></div>
         
   </td></tr>
 
@@ -358,7 +356,7 @@ Summary:
         
         <div class="jd-descrdiv">Batch creation of ZObjects associated to Subscriptions
  
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;subscribe subscriptions-ref="#[variable:subscribtions]"/&gt;</pre></div></div>
+ <br/></div>
         
   </td></tr>
 
@@ -370,7 +368,7 @@ Summary:
         
         <div class="jd-descrdiv">Batch update of ZObjects
  
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;update zobjects-ref="#[variable:objects]"/&gt;</pre></div></div>
+ <br/></div>
         
   </td></tr>
 
