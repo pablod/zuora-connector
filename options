@@ -13,7 +13,7 @@
 '/opt/j2ee/domains/mulesource.com/bamboo/webapps/atlassian-bamboo/data/atlassian-bamboo-3.0.3/xml-data/build-dir/MULECONTRIB-ZUORA-JOB1/src/main/java:/opt/j2ee/domains/mulesource.com/bamboo/webapps/atlassian-bamboo/data/atlassian-bamboo-3.0.3/xml-data/build-dir/MULECONTRIB-ZUORA-JOB1/target/generated-sources/mule:/opt/j2ee/domains/mulesource.com/bamboo/webapps/atlassian-bamboo/data/atlassian-bamboo-3.0.3/xml-data/build-dir/MULECONTRIB-ZUORA-JOB1/target/generated-sources/cxf'
 -hdf project.artifactId "mule-module-zuora"
             -hdf project.groupId "org.mule.modules"
-            -hdf project.version "1.3-SNAPSHOT"
+            -hdf project.version "1.4-SNAPSHOT"
             -hdf project.name "Mule Zuora Connector"
 			-hdf project.repo.name "MuleSoft Snapshot Repository"
 			-hdf project.repo.id "mulesoft-releases"
