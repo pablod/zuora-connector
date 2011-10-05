@@ -223,8 +223,7 @@ Summary:
 <h2>Module Overview</h2>
 <p>Zuora is the leader in online recurring billing and payment solutions for SaaS and subscription businesses.
 
- This connector provides full access to the Z-Commerce platform API.
-<br/></p>
+ This connector provides full access to the Z-Commerce platform API.<br/></p>
 
 
 </div><!-- jd-descr -->
@@ -426,7 +425,7 @@ specify which configuration to use.</p>
           </nobr></td>
           <td class="jd-linkcol"><nobr>client</nobr></td>
           <td class="jd-descrcol"></td>
-          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The client to use.</td>
       </tr>
       
     
@@ -538,7 +537,7 @@ resolution.</p>
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>amendaments</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"></td>
+                    <td class="jd-descrcol" width="100%">the list of amendaments to perform<br/></td>
                 </tr>
                 
                 
@@ -742,7 +741,7 @@ resolution.</p>
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>ids</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"></td>
+                    <td class="jd-descrcol" width="100%">the list of ids to delete<br/></td>
                 </tr>
                 
                 
@@ -833,7 +832,7 @@ resolution.</p>
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>zquery</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"></td>
+                    <td class="jd-descrcol" width="100%">the query, using the SQL-Like Zuora Query Language<br/></td>
                 </tr>
                 
                 
@@ -1122,12 +1121,16 @@ resolution.</p>
   </div>
   
   <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Return Payload</h5>
+      <ul class="nolist"><li>the profile, as a String-Object Map
+<br/></li></ul>
+  </div>
+  <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Exception Payload</h5>
       <table class="jd-tagtable">
         <tr>
             <th></td>
-            <td>ZuoraException}
-<br/></td>
+            <td>ZuoraException}<br/></td>
         </tr>
         <tr>
             <th><a href="../java/org/mule/modules/zuora/zuora/api/ZuoraException.html">ZuoraException</a></td>
@@ -1188,7 +1191,7 @@ resolution.</p>
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>subscriptions</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"></td>
+                    <td class="jd-descrcol" width="100%">the list of subscriptions to perform<br/></td>
                 </tr>
                 
                 

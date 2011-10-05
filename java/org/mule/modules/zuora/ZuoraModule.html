@@ -424,8 +424,7 @@ Summary:
 <h2>Class Overview</h2>
 <p>Zuora is the leader in online recurring billing and payment solutions for SaaS and subscription businesses.
 
- This connector provides full access to the Z-Commerce platform API.
-</p>
+ This connector provides full access to the Z-Commerce platform API.</p>
 
 
 
@@ -482,7 +481,7 @@ Summary:
           
           <a href="../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraClient.html">ZuoraClient</a>&lt;<a href="../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraException.html">ZuoraException</a>&gt;</nobr></td>
           <td class="jd-linkcol"><a href="../../../../../org/mule/modules/zuora/ZuoraModule.html#client">client</a></td>
-          <td class="jd-descrcol" width="100%"></td>
+          <td class="jd-descrcol" width="100%">The client to use.</td>
       </tr>
       
     
@@ -632,6 +631,8 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../org/mule/modules/zuora/ZuoraModule.html#destroySession(org.mule.modules.zuora.ZuoraSession)">destroySession</a></span>(<a href="../../../../../java/org/mule/modules/zuora/ZuoraSession.html">ZuoraSession</a> session)</nobr>
         
+        <div class="jd-descrdiv">Destroys the session</div>
+  
   </td></tr>
 
 
@@ -1074,7 +1075,8 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>The client to use. Mainly for mocking purposes
+</p></div>
 
     
     </div>
@@ -1201,11 +1203,11 @@ From class
       <table class="jd-tagtable">
         <tr>
           <th>session</td>
-          <td></td>
+          <td>the Mule session</td>
         </tr>
         <tr>
           <th>amendaments</td>
-          <td></td>
+          <td>the list of amendaments to perform</td>
         </tr>
       </table>
   </div>
@@ -1261,7 +1263,7 @@ From class
       <table class="jd-tagtable">
         <tr>
           <th>session</td>
-          <td></td>
+          <td>the Mule session</td>
         </tr>
         <tr>
           <th>type</td>
@@ -1331,6 +1333,11 @@ From class
         </tr>
       </table>
   </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>the new sesion
+</li></ul>
+  </div>
 
     </div>
 </div>
@@ -1369,7 +1376,7 @@ From class
       <table class="jd-tagtable">
         <tr>
           <th>session</td>
-          <td></td>
+          <td>the Mule session</td>
         </tr>
         <tr>
           <th>type</td>
@@ -1377,7 +1384,7 @@ From class
         </tr>
         <tr>
           <th>ids</td>
-          <td></td>
+          <td>the list of ids to delete</td>
         </tr>
       </table>
   </div>
@@ -1425,13 +1432,14 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Destroys the session</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
           <th>session</td>
-          <td></td>
+          <td>the session to destroy
+</td>
         </tr>
       </table>
   </div>
@@ -1474,11 +1482,11 @@ From class
       <table class="jd-tagtable">
         <tr>
           <th>session</td>
-          <td></td>
+          <td>the Mule session</td>
         </tr>
         <tr>
           <th>zquery</td>
-          <td></td>
+          <td>the query, using the SQL-Like Zuora Query Language</td>
         </tr>
       </table>
   </div>
@@ -1536,7 +1544,7 @@ From class
       <table class="jd-tagtable">
         <tr>
           <th>session</td>
-          <td></td>
+          <td>the Mule session</td>
         </tr>
         <tr>
           <th>type</td>
@@ -1632,7 +1640,7 @@ From class
       <table class="jd-tagtable">
         <tr>
           <th>session</td>
-          <td></td>
+          <td>the Mule session</td>
         </tr>
       </table>
   </div>
@@ -1688,7 +1696,7 @@ From class
       <table class="jd-tagtable">
         <tr>
           <th>session</td>
-          <td></td>
+          <td>the Mule session</td>
         </tr>
         <tr>
           <th>productId</td>
@@ -1697,12 +1705,16 @@ From class
       </table>
   </div>
   <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>the profile, as a String-Object Map
+</li></ul>
+  </div>
+  <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Throws</h5>
       <table class="jd-tagtable">  
         <tr>
             <th></td>
-            <td>ZuoraException}
-</td>
+            <td>ZuoraException}</td>
         </tr>  
         <tr>
             <th><a href="../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraException.html">ZuoraException</a></td>
@@ -1828,11 +1840,11 @@ From class
       <table class="jd-tagtable">
         <tr>
           <th>session</td>
-          <td></td>
+          <td>the Mule session</td>
         </tr>
         <tr>
           <th>subscriptions</td>
-          <td></td>
+          <td>the list of subscriptions to perform</td>
         </tr>
       </table>
   </div>
@@ -1888,7 +1900,7 @@ From class
       <table class="jd-tagtable">
         <tr>
           <th>session</td>
-          <td></td>
+          <td>the Mule session</td>
         </tr>
         <tr>
           <th>type</td>
