@@ -71,12 +71,17 @@ public class ZuoraModule {
      * @return the new sesion
      */
     @SessionCreate
-    public ZuoraSession createSession(@SessionKey String username, String password) {
+    public ZuoraSession createSession(@SessionKey String username, String password) throws ZuoraException {
+        ZuoraSession session = null;
         if (client == null) {
-            return new ZuoraSession(username, password, endpoint);
+            session = new ZuoraSession(username, password, endpoint);
         } else {
-            return new ZuoraSession(client);
+            session = new ZuoraSession(client);
         }
+
+        session.getClient().validate();
+
+        return session;
     }
 
     /**

@@ -45,4 +45,6 @@ public interface ZuoraClient<E extends Throwable>
     List<AmendResult> amend(@NotNull  List<AmendRequest> amendaments) throws E;
 
     Map<String, Object> productProfile(String productId) throws E;
+
+    void validate() throws E;
 }

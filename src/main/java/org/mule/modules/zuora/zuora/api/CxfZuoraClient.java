@@ -287,4 +287,13 @@ public class CxfZuoraClient implements ZuoraClient<Exception> {
 		}
 		return hm;
 	}
+
+    @Override
+    public void validate() throws ZuoraException {
+        try {
+            Soap soap = getConnection();
+        } catch (Exception e) {
+            throw new ZuoraException(e);
+        }
+    }
 }
