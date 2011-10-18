@@ -72,7 +72,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico" />
 <title>
 
-  AmendMessageProcessor
+  ZuoraModuleConnectionManager
 
 
 | Mule Zuora Connector
@@ -201,7 +201,7 @@
               
     <li><h2>Classes</h2>
       <ul>
-          <li class="selected api apilevel-"><a href="../../../../../../java/org/mule/modules/zuora/config/AmendMessageProcessor.html">AmendMessageProcessor</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/zuora/config/AmendMessageProcessor.html">AmendMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/zuora/config/CreateMessageProcessor.html">CreateMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/zuora/config/DeleteMessageProcessor.html">DeleteMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/zuora/config/FindMessageProcessor.html">FindMessageProcessor</a></li>
@@ -212,7 +212,7 @@
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/zuora/config/UpdateMessageProcessor.html">UpdateMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/zuora/config/ZObjectTypeEnumTransformer.html">ZObjectTypeEnumTransformer</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleCapabilitiesAdapter.html">ZuoraModuleCapabilitiesAdapter</a></li>
-          <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html">ZuoraModuleConnectionManager</a></li>
+          <li class="selected api apilevel-"><a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html">ZuoraModuleConnectionManager</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.ConnectionKey.html">ZuoraModuleConnectionManager.ConnectionKey</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleLifecycleAdapter.html">ZuoraModuleLifecycleAdapter</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleSessionManagerAdapter.html">ZuoraModuleSessionManagerAdapter</a></li>
@@ -290,52 +290,21 @@
   
   
 
-  
-   
-  
-  
-   
-  
-  
-  
-
-  
-   
-  
-  
-   
-  
-  
-  
-
-  
-   
-  
-  
-   
-  
-  
-  
-
-  
-   
-  
-  
-  
-  
-
 
 <div class="sum-details-links">
 
 
 Summary:
 
+  <a href="#nestedclasses">Nested Classes</a>
+  
 
 
 
 
 
-  <a href="#inhconstants">Inherited Constants</a>
+
+  &#124; <a href="#inhconstants">Inherited Constants</a>
   
 
 
@@ -378,7 +347,7 @@ Summary:
      
     
     class
-<h1>AmendMessageProcessor</h1>
+<h1>ZuoraModuleConnectionManager</h1>
 
 
 
@@ -392,19 +361,11 @@ Summary:
   
       implements 
       
-        FlowConstructAware 
+        Capabilities 
       
-        MuleContextAware 
-      
-        Disposable 
+        ConnectionManager&lt;K,&nbsp;C&gt; 
       
         Initialisable 
-      
-        Startable 
-      
-        Stoppable 
-      
-        MessageProcessor 
       
   
   
@@ -428,7 +389,7 @@ Summary:
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
         
-        <td colspan="1" class="jd-inheritance-class-cell">org.mule.modules.zuora.config.AmendMessageProcessor</td>
+        <td colspan="1" class="jd-inheritance-class-cell">org.mule.modules.zuora.config.ZuoraModuleConnectionManager</td>
     </tr>
     
 
@@ -444,7 +405,7 @@ Summary:
 
 
 <h2>Class Overview</h2>
-<p>AmendMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/zuora/ZuoraModule.html#amend(java.util.List<com.zuora.api.AmendRequest>)">amend(java.util.List)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/zuora/ZuoraModule.html">ZuoraModule</a></code>. For each argument there is a field in this processor to match it.  Before invoking the actual method the processor will evaluate and transform where possible to the expected argument type.
+<p>A <code>ZuoraModuleConnectionManager</code> is a wrapper around <code><a href="../../../../../../java/org/mule/modules/zuora/ZuoraModule.html">ZuoraModule</a></code> that adds connection management capabilities to the pojo.
  
 </p>
 
@@ -476,6 +437,26 @@ Summary:
 
 
 
+<!-- ======== NESTED CLASS SUMMARY ======== -->
+<table id="nestedclasses" class="jd-sumtable"><tr><th colspan="12">Nested Classes</th></tr>
+
+
+  
+    <tr class="alt-color api apilevel-" >
+      <td class="jd-typecol"><nobr>
+        
+        
+        
+        
+        class</nobr></td>
+      <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.ConnectionKey.html">ZuoraModuleConnectionManager.ConnectionKey</a></td>
+      <td class="jd-descrcol" width="100%">&nbsp;</td>
+    </tr>
+    
+    
+
+
+
 
 
 
@@ -498,37 +479,6 @@ Summary:
 
 
 
-
-
-
-<tr class="api apilevel-" >
-<td colspan="12">
-
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-constants-org.mule.api.lifecycle.Disposable" class="jd-expando-trigger closed"
-          ><img id="inherited-constants-org.mule.api.lifecycle.Disposable-trigger"
-          src="../../../../../../assets/images/triangle-closed.png"
-          class="jd-expando-trigger-img" /></a>From interface
-org.mule.api.lifecycle.Disposable
-<div id="inherited-constants-org.mule.api.lifecycle.Disposable">
-  <div id="inherited-constants-org.mule.api.lifecycle.Disposable-list"
-        class="jd-inheritedlinks">
-  </div>
-  <div id="inherited-constants-org.mule.api.lifecycle.Disposable-summary" style="display: none;">
-    <table class="jd-sumtable-expando">
-    
-
-    
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol">String</td>
-        <td class="jd-linkcol">PHASE_NAME</td>
-        <td class="jd-descrcol" width="100%"></td>
-    </tr>
-    
-    
-</table>
-  </div>
-</div>
-</td></tr>
 
 
 
@@ -562,70 +512,6 @@ org.mule.api.lifecycle.Initialisable
 </td></tr>
 
 
-
-<tr class="api apilevel-" >
-<td colspan="12">
-
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-constants-org.mule.api.lifecycle.Startable" class="jd-expando-trigger closed"
-          ><img id="inherited-constants-org.mule.api.lifecycle.Startable-trigger"
-          src="../../../../../../assets/images/triangle-closed.png"
-          class="jd-expando-trigger-img" /></a>From interface
-org.mule.api.lifecycle.Startable
-<div id="inherited-constants-org.mule.api.lifecycle.Startable">
-  <div id="inherited-constants-org.mule.api.lifecycle.Startable-list"
-        class="jd-inheritedlinks">
-  </div>
-  <div id="inherited-constants-org.mule.api.lifecycle.Startable-summary" style="display: none;">
-    <table class="jd-sumtable-expando">
-    
-
-    
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol">String</td>
-        <td class="jd-linkcol">PHASE_NAME</td>
-        <td class="jd-descrcol" width="100%"></td>
-    </tr>
-    
-    
-</table>
-  </div>
-</div>
-</td></tr>
-
-
-
-<tr class="api apilevel-" >
-<td colspan="12">
-
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-constants-org.mule.api.lifecycle.Stoppable" class="jd-expando-trigger closed"
-          ><img id="inherited-constants-org.mule.api.lifecycle.Stoppable-trigger"
-          src="../../../../../../assets/images/triangle-closed.png"
-          class="jd-expando-trigger-img" /></a>From interface
-org.mule.api.lifecycle.Stoppable
-<div id="inherited-constants-org.mule.api.lifecycle.Stoppable">
-  <div id="inherited-constants-org.mule.api.lifecycle.Stoppable-list"
-        class="jd-inheritedlinks">
-  </div>
-  <div id="inherited-constants-org.mule.api.lifecycle.Stoppable-summary" style="display: none;">
-    <table class="jd-sumtable-expando">
-    
-
-    
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol">String</td>
-        <td class="jd-linkcol">PHASE_NAME</td>
-        <td class="jd-descrcol" width="100%"></td>
-    </tr>
-    
-    
-</table>
-  </div>
-</div>
-</td></tr>
-
-
-
-
 </table>
 
 
@@ -641,8 +527,8 @@ org.mule.api.lifecycle.Stoppable
           private
           
           
-          List&lt;<a href="../../../../../../java/com/zuora/api/AmendRequest.html">AmendRequest</a>&gt;</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/zuora/config/AmendMessageProcessor.html#_amendamentsType">_amendamentsType</a></td>
+          <a href="../../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraClient.html">ZuoraClient</a>&lt;<a href="../../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraException.html">ZuoraException</a>&gt;</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#client">client</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -652,68 +538,44 @@ org.mule.api.lifecycle.Stoppable
           private
           
           
-          String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/zuora/config/AmendMessageProcessor.html#_passwordType">_passwordType</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/zuora/config/AmendMessageProcessor.html#_usernameType">_usernameType</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/zuora/config/AmendMessageProcessor.html#amendaments">amendaments</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          ExpressionManager</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/zuora/config/AmendMessageProcessor.html#expressionManager">expressionManager</a></td>
-          <td class="jd-descrcol" width="100%">Mule Expression Manager
+          GenericKeyedObjectPool</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#connectionPool">connectionPool</a></td>
+          <td class="jd-descrcol" width="100%">Connector Pool
  
 </td>
       </tr>
       
     
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          PoolingProfile</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#connectionPoolingProfile">connectionPoolingProfile</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
       <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#endpoint">endpoint</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
           <td class="jd-typecol"><nobr>
           private
           
           
           FlowConstruct</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/zuora/config/AmendMessageProcessor.html#flowConstruct">flowConstruct</a></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#flowConstruct">flowConstruct</a></td>
           <td class="jd-descrcol" width="100%">Flow construct
- 
-</td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          <a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html">ZuoraModuleConnectionManager</a></nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/zuora/config/AmendMessageProcessor.html#moduleObject">moduleObject</a></td>
-          <td class="jd-descrcol" width="100%">Module object
  
 </td>
       </tr>
@@ -725,7 +587,7 @@ org.mule.api.lifecycle.Stoppable
           
           
           MuleContext</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/zuora/config/AmendMessageProcessor.html#muleContext">muleContext</a></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#muleContext">muleContext</a></td>
           <td class="jd-descrcol" width="100%">Mule Context
  
 </td>
@@ -737,8 +599,8 @@ org.mule.api.lifecycle.Stoppable
           private
           
           
-          Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/zuora/config/AmendMessageProcessor.html#password">password</a></td>
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#password">password</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -748,21 +610,8 @@ org.mule.api.lifecycle.Stoppable
           private
           
           
-          TemplateParser.PatternInfo</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/zuora/config/AmendMessageProcessor.html#patternInfo">patternInfo</a></td>
-          <td class="jd-descrcol" width="100%">Mule Pattern Info
- 
-</td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/zuora/config/AmendMessageProcessor.html#username">username</a></td>
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#username">username</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -792,7 +641,7 @@ org.mule.api.lifecycle.Stoppable
             </nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/AmendMessageProcessor.html#AmendMessageProcessor()">AmendMessageProcessor</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#ZuoraModuleConnectionManager()">ZuoraModuleConnectionManager</a></span>()</nobr>
         
   </td></tr>
 
@@ -818,10 +667,10 @@ org.mule.api.lifecycle.Stoppable
             
             
             
-            void</nobr>
+            <a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleLifecycleAdapter.html">ZuoraModuleLifecycleAdapter</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/AmendMessageProcessor.html#dispose()">dispose</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#acquireConnection(org.mule.modules.zuora.config.ZuoraModuleConnectionManager.ConnectionKey)">acquireConnection</a></span>(<a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.ConnectionKey.html">ZuoraModuleConnectionManager.ConnectionKey</a> key)</nobr>
         
   </td></tr>
 
@@ -837,9 +686,47 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/AmendMessageProcessor.html#initialise()">initialise</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#destroyConnection(org.mule.modules.zuora.config.ZuoraModuleConnectionManager.ConnectionKey, org.mule.modules.zuora.config.ZuoraModuleLifecycleAdapter)">destroyConnection</a></span>(<a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.ConnectionKey.html">ZuoraModuleConnectionManager.ConnectionKey</a> key, <a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleLifecycleAdapter.html">ZuoraModuleLifecycleAdapter</a> connection)</nobr>
         
-        <div class="jd-descrdiv">Obtains the expression manager from the Mule context and initialises the connector.</div>
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraClient.html">ZuoraClient</a>&lt;<a href="../../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraException.html">ZuoraException</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#getClient()">getClient</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Retrieves client
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            PoolingProfile</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#getConnectionPoolingProfile()">getConnectionPoolingProfile</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Retrieves connectionPoolingProfile
+ 
+</div>
   
   </td></tr>
 
@@ -852,12 +739,54 @@ org.mule.api.lifecycle.Stoppable
             
             
             
-            MuleEvent</nobr>
+            String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/AmendMessageProcessor.html#process(org.mule.api.MuleEvent)">process</a></span>(MuleEvent event)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#getEndpoint()">getEndpoint</a></span>()</nobr>
         
-        <div class="jd-descrdiv">Invokes the MessageProcessor.</div>
+        <div class="jd-descrdiv">Retrieves endpoint
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#getPassword()">getPassword</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Retrieves password
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#getUsername()">getUsername</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Retrieves username
+ 
+</div>
   
   </td></tr>
 
@@ -873,9 +802,79 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/AmendMessageProcessor.html#setAmendaments(java.lang.Object)">setAmendaments</a></span>(Object value)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#initialise()">initialise</a></span>()</nobr>
         
-        <div class="jd-descrdiv">Sets amendaments</div>
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#isCapableOf(org.mule.api.Capability)">isCapableOf</a></span>(Capability capability)</nobr>
+        
+        <div class="jd-descrdiv">Returns true if this module implements such capability
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#releaseConnection(org.mule.modules.zuora.config.ZuoraModuleConnectionManager.ConnectionKey, org.mule.modules.zuora.config.ZuoraModuleLifecycleAdapter)">releaseConnection</a></span>(<a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.ConnectionKey.html">ZuoraModuleConnectionManager.ConnectionKey</a> key, <a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleLifecycleAdapter.html">ZuoraModuleLifecycleAdapter</a> connection)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#setClient(org.mule.modules.zuora.zuora.api.ZuoraClient<org.mule.modules.zuora.zuora.api.ZuoraException>)">setClient</a></span>(<a href="../../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraClient.html">ZuoraClient</a>&lt;<a href="../../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraException.html">ZuoraException</a>&gt; value)</nobr>
+        
+        <div class="jd-descrdiv">Sets client</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#setConnectionPoolingProfile(org.mule.config.PoolingProfile)">setConnectionPoolingProfile</a></span>(PoolingProfile value)</nobr>
+        
+        <div class="jd-descrdiv">Sets connectionPoolingProfile</div>
   
   </td></tr>
 
@@ -891,7 +890,25 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/AmendMessageProcessor.html#setFlowConstruct(org.mule.api.construct.FlowConstruct)">setFlowConstruct</a></span>(FlowConstruct flowConstruct)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#setEndpoint(java.lang.String)">setEndpoint</a></span>(String value)</nobr>
+        
+        <div class="jd-descrdiv">Sets endpoint</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#setFlowConstruct(org.mule.api.construct.FlowConstruct)">setFlowConstruct</a></span>(FlowConstruct flowConstruct)</nobr>
         
         <div class="jd-descrdiv">Sets flow construct</div>
   
@@ -899,24 +916,6 @@ org.mule.api.lifecycle.Stoppable
 
 
 	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/AmendMessageProcessor.html#setModuleObject(org.mule.modules.zuora.config.ZuoraModuleConnectionManager)">setModuleObject</a></span>(<a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html">ZuoraModuleConnectionManager</a> moduleObject)</nobr>
-        
-        <div class="jd-descrdiv">Sets the instance of the object under which the processor will execute</div>
-  
-  </td></tr>
-
-
-	 
     <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
@@ -927,7 +926,7 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/AmendMessageProcessor.html#setMuleContext(org.mule.api.MuleContext)">setMuleContext</a></span>(MuleContext context)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#setMuleContext(org.mule.api.MuleContext)">setMuleContext</a></span>(MuleContext context)</nobr>
         
         <div class="jd-descrdiv">Set the Mule context</div>
   
@@ -945,7 +944,7 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/AmendMessageProcessor.html#setPassword(java.lang.Object)">setPassword</a></span>(Object value)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#setPassword(java.lang.String)">setPassword</a></span>(String value)</nobr>
         
         <div class="jd-descrdiv">Sets password</div>
   
@@ -963,42 +962,10 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/AmendMessageProcessor.html#setUsername(java.lang.Object)">setUsername</a></span>(Object value)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#setUsername(java.lang.String)">setUsername</a></span>(String value)</nobr>
         
         <div class="jd-descrdiv">Sets username</div>
   
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/AmendMessageProcessor.html#start()">start</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/AmendMessageProcessor.html#stop()">stop</a></span>()</nobr>
-        
   </td></tr>
 
 
@@ -1221,19 +1188,19 @@ From class
 
 <tr class="api apilevel-" >
 <td colspan="12">
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.construct.FlowConstructAware" class="jd-expando-trigger closed"
-          ><img id="inherited-methods-org.mule.api.construct.FlowConstructAware-trigger"
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.Capabilities" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.api.Capabilities-trigger"
           src="../../../../../../assets/images/triangle-closed.png"
           class="jd-expando-trigger-img" /></a>
 From interface
 
-  org.mule.api.construct.FlowConstructAware
+  org.mule.api.Capabilities
 
-<div id="inherited-methods-org.mule.api.construct.FlowConstructAware">
-  <div id="inherited-methods-org.mule.api.construct.FlowConstructAware-list"
+<div id="inherited-methods-org.mule.api.Capabilities">
+  <div id="inherited-methods-org.mule.api.Capabilities-list"
         class="jd-inheritedlinks">
   </div>
-  <div id="inherited-methods-org.mule.api.construct.FlowConstructAware-summary" style="display: none;">
+  <div id="inherited-methods-org.mule.api.Capabilities-summary" style="display: none;">
     <table class="jd-sumtable-expando">
     
 
@@ -1246,10 +1213,10 @@ From interface
             
             
             
-            void</nobr>
+            boolean</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">setFlowConstruct</span>(FlowConstruct arg0)</nobr>
+        <span class="sympad">isCapableOf</span>(Capability arg0)</nobr>
         
   </td></tr>
 
@@ -1263,19 +1230,19 @@ From interface
 
 <tr class="api apilevel-" >
 <td colspan="12">
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.context.MuleContextAware" class="jd-expando-trigger closed"
-          ><img id="inherited-methods-org.mule.api.context.MuleContextAware-trigger"
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.ConnectionManager" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.api.ConnectionManager-trigger"
           src="../../../../../../assets/images/triangle-closed.png"
           class="jd-expando-trigger-img" /></a>
 From interface
 
-  org.mule.api.context.MuleContextAware
+  org.mule.api.ConnectionManager
 
-<div id="inherited-methods-org.mule.api.context.MuleContextAware">
-  <div id="inherited-methods-org.mule.api.context.MuleContextAware-list"
+<div id="inherited-methods-org.mule.api.ConnectionManager">
+  <div id="inherited-methods-org.mule.api.ConnectionManager-list"
         class="jd-inheritedlinks">
   </div>
-  <div id="inherited-methods-org.mule.api.context.MuleContextAware-summary" style="display: none;">
+  <div id="inherited-methods-org.mule.api.ConnectionManager-summary" style="display: none;">
     <table class="jd-sumtable-expando">
     
 
@@ -1288,38 +1255,60 @@ From interface
             
             
             
-            void</nobr>
+            C</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">setMuleContext</span>(MuleContext arg0)</nobr>
+        <span class="sympad">acquireConnection</span>(K arg0)</nobr>
         
   </td></tr>
 
 
-</table>
-  </div>
-</div>
-</td></tr>
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">destroyConnection</span>(K arg0, C arg1)</nobr>
+        
+  </td></tr>
 
 
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            PoolingProfile</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">getConnectionPoolingProfile</span>()</nobr>
+        
+  </td></tr>
 
-<tr class="api apilevel-" >
-<td colspan="12">
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.lifecycle.Disposable" class="jd-expando-trigger closed"
-          ><img id="inherited-methods-org.mule.api.lifecycle.Disposable-trigger"
-          src="../../../../../../assets/images/triangle-closed.png"
-          class="jd-expando-trigger-img" /></a>
-From interface
 
-  org.mule.api.lifecycle.Disposable
-
-<div id="inherited-methods-org.mule.api.lifecycle.Disposable">
-  <div id="inherited-methods-org.mule.api.lifecycle.Disposable-list"
-        class="jd-inheritedlinks">
-  </div>
-  <div id="inherited-methods-org.mule.api.lifecycle.Disposable-summary" style="display: none;">
-    <table class="jd-sumtable-expando">
-    
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">releaseConnection</span>(K arg0, C arg1)</nobr>
+        
+  </td></tr>
 
 
 	 
@@ -1333,7 +1322,7 @@ From interface
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">dispose</span>()</nobr>
+        <span class="sympad">setConnectionPoolingProfile</span>(PoolingProfile arg0)</nobr>
         
   </td></tr>
 
@@ -1386,132 +1375,6 @@ From interface
 </td></tr>
 
 
-
-<tr class="api apilevel-" >
-<td colspan="12">
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.lifecycle.Startable" class="jd-expando-trigger closed"
-          ><img id="inherited-methods-org.mule.api.lifecycle.Startable-trigger"
-          src="../../../../../../assets/images/triangle-closed.png"
-          class="jd-expando-trigger-img" /></a>
-From interface
-
-  org.mule.api.lifecycle.Startable
-
-<div id="inherited-methods-org.mule.api.lifecycle.Startable">
-  <div id="inherited-methods-org.mule.api.lifecycle.Startable-list"
-        class="jd-inheritedlinks">
-  </div>
-  <div id="inherited-methods-org.mule.api.lifecycle.Startable-summary" style="display: none;">
-    <table class="jd-sumtable-expando">
-    
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            abstract
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">start</span>()</nobr>
-        
-  </td></tr>
-
-
-</table>
-  </div>
-</div>
-</td></tr>
-
-
-
-<tr class="api apilevel-" >
-<td colspan="12">
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.lifecycle.Stoppable" class="jd-expando-trigger closed"
-          ><img id="inherited-methods-org.mule.api.lifecycle.Stoppable-trigger"
-          src="../../../../../../assets/images/triangle-closed.png"
-          class="jd-expando-trigger-img" /></a>
-From interface
-
-  org.mule.api.lifecycle.Stoppable
-
-<div id="inherited-methods-org.mule.api.lifecycle.Stoppable">
-  <div id="inherited-methods-org.mule.api.lifecycle.Stoppable-list"
-        class="jd-inheritedlinks">
-  </div>
-  <div id="inherited-methods-org.mule.api.lifecycle.Stoppable-summary" style="display: none;">
-    <table class="jd-sumtable-expando">
-    
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            abstract
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">stop</span>()</nobr>
-        
-  </td></tr>
-
-
-</table>
-  </div>
-</div>
-</td></tr>
-
-
-
-<tr class="api apilevel-" >
-<td colspan="12">
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.processor.MessageProcessor" class="jd-expando-trigger closed"
-          ><img id="inherited-methods-org.mule.api.processor.MessageProcessor-trigger"
-          src="../../../../../../assets/images/triangle-closed.png"
-          class="jd-expando-trigger-img" /></a>
-From interface
-
-  org.mule.api.processor.MessageProcessor
-
-<div id="inherited-methods-org.mule.api.processor.MessageProcessor">
-  <div id="inherited-methods-org.mule.api.processor.MessageProcessor-list"
-        class="jd-inheritedlinks">
-  </div>
-  <div id="inherited-methods-org.mule.api.processor.MessageProcessor-summary" style="display: none;">
-    <table class="jd-sumtable-expando">
-    
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            abstract
-            
-            
-            
-            
-            MuleEvent</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">process</span>(MuleEvent arg0)</nobr>
-        
-  </td></tr>
-
-
-</table>
-  </div>
-</div>
-</td></tr>
-
-
 </table>
 
 
@@ -1544,7 +1407,7 @@ From interface
 
 
 
-<A NAME="_amendamentsType"></A>
+<A NAME="client"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1552,9 +1415,9 @@ From interface
         private 
          
          
-        List&lt;<a href="../../../../../../java/com/zuora/api/AmendRequest.html">AmendRequest</a>&gt;
+        <a href="../../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraClient.html">ZuoraClient</a>&lt;<a href="../../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraException.html">ZuoraException</a>&gt;
       </span>
-        _amendamentsType
+        client
     </h4>
       <div class="api-level">
         
@@ -1574,7 +1437,7 @@ From interface
 
 
 
-<A NAME="_passwordType"></A>
+<A NAME="connectionPool"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1582,9 +1445,9 @@ From interface
         private 
          
          
-        String
+        GenericKeyedObjectPool
       </span>
-        _passwordType
+        connectionPool
     </h4>
       <div class="api-level">
         
@@ -1596,99 +1459,69 @@ From interface
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="_usernameType"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        private 
-         
-         
-        String
-      </span>
-        _usernameType
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="amendaments"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        private 
-         
-         
-        Object
-      </span>
-        amendaments
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="expressionManager"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        private 
-         
-         
-        ExpressionManager
-      </span>
-        expressionManager
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Mule Expression Manager
+  <div class="jd-tagdata jd-tagdescr"><p>Connector Pool
  
 </p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="connectionPoolingProfile"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+        PoolingProfile
+      </span>
+        connectionPoolingProfile
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="endpoint"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        String
+      </span>
+        endpoint
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
 
     
     </div>
@@ -1719,38 +1552,6 @@ From interface
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p>Flow construct
- 
-</p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="moduleObject"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        private 
-         
-         
-        <a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html">ZuoraModuleConnectionManager</a>
-      </span>
-        moduleObject
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Module object
  
 </p></div>
 
@@ -1800,7 +1601,7 @@ From interface
         private 
          
          
-        Object
+        String
       </span>
         password
     </h4>
@@ -1822,38 +1623,6 @@ From interface
 
 
 
-<A NAME="patternInfo"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        private 
-         
-         
-        TemplateParser.PatternInfo
-      </span>
-        patternInfo
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Mule Pattern Info
- 
-</p></div>
-
-    
-    </div>
-</div>
-
-
-
 <A NAME="username"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -1862,7 +1631,7 @@ From interface
         private 
          
          
-        Object
+        String
       </span>
         username
     </h4>
@@ -1893,7 +1662,7 @@ From interface
 
 
 
-<A NAME="AmendMessageProcessor()"></A>
+<A NAME="ZuoraModuleConnectionManager()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1905,7 +1674,7 @@ From interface
          
         
       </span>
-      <span class="sympad">AmendMessageProcessor</span>
+      <span class="sympad">ZuoraModuleConnectionManager</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -1939,7 +1708,7 @@ From interface
 
 
 
-<A NAME="dispose()"></A>
+<A NAME="acquireConnection(org.mule.modules.zuora.config.ZuoraModuleConnectionManager.ConnectionKey)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1949,10 +1718,10 @@ From interface
          
          
          
-        void
+        <a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleLifecycleAdapter.html">ZuoraModuleLifecycleAdapter</a>
       </span>
-      <span class="sympad">dispose</span>
-      <span class="normal">()</span>
+      <span class="sympad">acquireConnection</span>
+      <span class="normal">(<a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.ConnectionKey.html">ZuoraModuleConnectionManager.ConnectionKey</a> key)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1965,6 +1734,242 @@ From interface
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>key</td>
+          <td></td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>Exception</td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="destroyConnection(org.mule.modules.zuora.config.ZuoraModuleConnectionManager.ConnectionKey, org.mule.modules.zuora.config.ZuoraModuleLifecycleAdapter)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">destroyConnection</span>
+      <span class="normal">(<a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.ConnectionKey.html">ZuoraModuleConnectionManager.ConnectionKey</a> key, <a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleLifecycleAdapter.html">ZuoraModuleLifecycleAdapter</a> connection)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>key</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>connection</td>
+          <td></td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>Exception</td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getClient()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraClient.html">ZuoraClient</a>&lt;<a href="../../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraException.html">ZuoraException</a>&gt;
+      </span>
+      <span class="sympad">getClient</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Retrieves client
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getConnectionPoolingProfile()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        PoolingProfile
+      </span>
+      <span class="sympad">getConnectionPoolingProfile</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Retrieves connectionPoolingProfile
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getEndpoint()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        String
+      </span>
+      <span class="sympad">getEndpoint</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Retrieves endpoint
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getPassword()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        String
+      </span>
+      <span class="sympad">getPassword</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Retrieves password
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getUsername()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        String
+      </span>
+      <span class="sympad">getUsername</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Retrieves username
+ 
+</p></div>
 
     </div>
 </div>
@@ -1995,22 +2000,13 @@ From interface
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Obtains the expression manager from the Mule context and initialises the connector. If a target object  has not been set already it will search the Mule registry for a default one.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Throws</h5>
-      <table class="jd-tagtable">  
-        <tr>
-            <th>InitialisationException</td>
-            <td></td>
-        </tr>
-      </table>
-  </div>
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
 
     </div>
 </div>
 
 
-<A NAME="process(org.mule.api.MuleEvent)"></A>
+<A NAME="isCapableOf(org.mule.api.Capability)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2020,10 +2016,10 @@ From interface
          
          
          
-        MuleEvent
+        boolean
       </span>
-      <span class="sympad">process</span>
-      <span class="normal">(MuleEvent event)</span>
+      <span class="sympad">isCapableOf</span>
+      <span class="normal">(Capability capability)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -2035,22 +2031,15 @@ From interface
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Invokes the MessageProcessor.</p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Returns true if this module implements such capability
+ 
+</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
-          <th>event</td>
-          <td>MuleEvent to be processed</td>
-        </tr>
-      </table>
-  </div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Throws</h5>
-      <table class="jd-tagtable">  
-        <tr>
-            <th>MuleException</td>
-            <td></td>
+          <th>capability</td>
+          <td></td>
         </tr>
       </table>
   </div>
@@ -2059,7 +2048,7 @@ From interface
 </div>
 
 
-<A NAME="setAmendaments(java.lang.Object)"></A>
+<A NAME="releaseConnection(org.mule.modules.zuora.config.ZuoraModuleConnectionManager.ConnectionKey, org.mule.modules.zuora.config.ZuoraModuleLifecycleAdapter)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2071,8 +2060,8 @@ From interface
          
         void
       </span>
-      <span class="sympad">setAmendaments</span>
-      <span class="normal">(Object value)</span>
+      <span class="sympad">releaseConnection</span>
+      <span class="normal">(<a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.ConnectionKey.html">ZuoraModuleConnectionManager.ConnectionKey</a> key, <a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleLifecycleAdapter.html">ZuoraModuleLifecycleAdapter</a> connection)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -2084,7 +2073,142 @@ From interface
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Sets amendaments</p></div>
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>key</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>connection</td>
+          <td></td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>Exception</td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setClient(org.mule.modules.zuora.zuora.api.ZuoraClient<org.mule.modules.zuora.zuora.api.ZuoraException>)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setClient</span>
+      <span class="normal">(<a href="../../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraClient.html">ZuoraClient</a>&lt;<a href="../../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraException.html">ZuoraException</a>&gt; value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets client</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>Value to set
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setConnectionPoolingProfile(org.mule.config.PoolingProfile)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setConnectionPoolingProfile</span>
+      <span class="normal">(PoolingProfile value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets connectionPoolingProfile</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>Value to set
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setEndpoint(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setEndpoint</span>
+      <span class="normal">(String value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets endpoint</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
@@ -2141,47 +2265,6 @@ From interface
 </div>
 
 
-<A NAME="setModuleObject(org.mule.modules.zuora.config.ZuoraModuleConnectionManager)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setModuleObject</span>
-      <span class="normal">(<a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html">ZuoraModuleConnectionManager</a> moduleObject)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets the instance of the object under which the processor will execute</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>moduleObject</td>
-          <td>Instace of the module
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
 <A NAME="setMuleContext(org.mule.api.MuleContext)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -2223,7 +2306,7 @@ From interface
 </div>
 
 
-<A NAME="setPassword(java.lang.Object)"></A>
+<A NAME="setPassword(java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2236,7 +2319,7 @@ From interface
         void
       </span>
       <span class="sympad">setPassword</span>
-      <span class="normal">(Object value)</span>
+      <span class="normal">(String value)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -2264,7 +2347,7 @@ From interface
 </div>
 
 
-<A NAME="setUsername(java.lang.Object)"></A>
+<A NAME="setUsername(java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2277,7 +2360,7 @@ From interface
         void
       </span>
       <span class="sympad">setUsername</span>
-      <span class="normal">(Object value)</span>
+      <span class="normal">(String value)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -2297,86 +2380,6 @@ From interface
           <th>value</td>
           <td>Value to set
 </td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="start()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">start</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Throws</h5>
-      <table class="jd-tagtable">  
-        <tr>
-            <th>MuleException</td>
-            <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="stop()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">stop</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Throws</h5>
-      <table class="jd-tagtable">  
-        <tr>
-            <th>MuleException</td>
-            <td></td>
         </tr>
       </table>
   </div>

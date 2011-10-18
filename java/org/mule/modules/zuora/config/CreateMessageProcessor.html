@@ -212,6 +212,8 @@
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/zuora/config/UpdateMessageProcessor.html">UpdateMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/zuora/config/ZObjectTypeEnumTransformer.html">ZObjectTypeEnumTransformer</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleCapabilitiesAdapter.html">ZuoraModuleCapabilitiesAdapter</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html">ZuoraModuleConnectionManager</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.ConnectionKey.html">ZuoraModuleConnectionManager.ConnectionKey</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleLifecycleAdapter.html">ZuoraModuleLifecycleAdapter</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleSessionManagerAdapter.html">ZuoraModuleSessionManagerAdapter</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleSessionManagerAdapter.SessionKey.html">ZuoraModuleSessionManagerAdapter.SessionKey</a></li>
@@ -442,7 +444,7 @@ Summary:
 
 
 <h2>Class Overview</h2>
-<p>CreateMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/zuora/ZuoraModule.html#create(org.mule.modules.zuora.ZuoraSession, org.mule.modules.zuora.zobject.ZObjectType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)">create(org.mule.modules.zuora.ZuoraSession, org.mule.modules.zuora.zobject.ZObjectType, java.util.List)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/zuora/ZuoraModule.html">ZuoraModule</a></code>. For each argument there is a field in this processor to match it.  Before invoking the actual method the processor will evaluate and transform where possible to the expected argument type.
+<p>CreateMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/modules/zuora/ZuoraModule.html#create(org.mule.modules.zuora.zobject.ZObjectType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)">create(org.mule.modules.zuora.zobject.ZObjectType, java.util.List)</a></code> method in <code><a href="../../../../../../java/org/mule/modules/zuora/ZuoraModule.html">ZuoraModule</a></code>. For each argument there is a field in this processor to match it.  Before invoking the actual method the processor will evaluate and transform where possible to the expected argument type.
  
 </p>
 
@@ -709,7 +711,7 @@ org.mule.api.lifecycle.Stoppable
           private
           
           
-          <a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleSessionManagerAdapter.html">ZuoraModuleSessionManagerAdapter</a></nobr></td>
+          <a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html">ZuoraModuleConnectionManager</a></nobr></td>
           <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/zuora/config/CreateMessageProcessor.html#moduleObject">moduleObject</a></td>
           <td class="jd-descrcol" width="100%">Module object
  
@@ -911,7 +913,7 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/CreateMessageProcessor.html#setModuleObject(org.mule.modules.zuora.config.ZuoraModuleSessionManagerAdapter)">setModuleObject</a></span>(<a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleSessionManagerAdapter.html">ZuoraModuleSessionManagerAdapter</a> moduleObject)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/CreateMessageProcessor.html#setModuleObject(org.mule.modules.zuora.config.ZuoraModuleConnectionManager)">setModuleObject</a></span>(<a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html">ZuoraModuleConnectionManager</a> moduleObject)</nobr>
         
         <div class="jd-descrdiv">Sets the instance of the object under which the processor will execute</div>
   
@@ -1774,7 +1776,7 @@ From interface
         private 
          
          
-        <a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleSessionManagerAdapter.html">ZuoraModuleSessionManagerAdapter</a>
+        <a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html">ZuoraModuleConnectionManager</a>
       </span>
         moduleObject
     </h4>
@@ -2198,7 +2200,7 @@ From interface
 </div>
 
 
-<A NAME="setModuleObject(org.mule.modules.zuora.config.ZuoraModuleSessionManagerAdapter)"></A>
+<A NAME="setModuleObject(org.mule.modules.zuora.config.ZuoraModuleConnectionManager)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2211,7 +2213,7 @@ From interface
         void
       </span>
       <span class="sympad">setModuleObject</span>
-      <span class="normal">(<a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleSessionManagerAdapter.html">ZuoraModuleSessionManagerAdapter</a> moduleObject)</span>
+      <span class="normal">(<a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html">ZuoraModuleConnectionManager</a> moduleObject)</span>
     </h4>
       <div class="api-level">
         <div>
