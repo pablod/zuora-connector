@@ -41,17 +41,16 @@ import org.junit.Test;
 public class ZuoraModuleTestDriver
 {
     private ZuoraModule module;
-    private ZuoraSession session;
 
     @Before
     public void setup() throws Exception
     {
         module = new ZuoraModule();
         module.setEndpoint("https://apisandbox.zuora.com/apps/services/a/29.0");
-        session = module.createSession(System.getenv("zuoraUsername"), System.getenv("zuoraPassword"));
-        for (ZObject z : module.find(session,"select id from Account"))
+        module.connect(System.getenv("zuoraUsername"), System.getenv("zuoraPassword"));
+        for (ZObject z : module.find("select id from Account"))
         {
-            module.delete(session, ZObjectType.Account, Arrays.asList(z.getId()));
+            module.delete(ZObjectType.Account, Arrays.asList(z.getId()));
         }
     }
     
@@ -61,12 +60,12 @@ public class ZuoraModuleTestDriver
     @Test
     public void createAndDelete() 
     {
-        SaveResult result = module.create(session, ZObjectType.Account, Collections.singletonList(testAccount())).get(0);
+        SaveResult result = module.create(ZObjectType.Account, Collections.singletonList(testAccount())).get(0);
         assertTrue(result.isSuccess());
         
         System.out.println(result.getId());
 
-        DeleteResult deleteResult = module.delete(session, ZObjectType.Account, Arrays.asList(result.getId())).get(0);
+        DeleteResult deleteResult = module.delete(ZObjectType.Account, Arrays.asList(result.getId())).get(0);
         assertTrue(deleteResult.isSuccess());
     }
 
@@ -77,13 +76,13 @@ public class ZuoraModuleTestDriver
     @SuppressWarnings("serial")
     public void createAndDeleteRelated() 
     {
-        SaveResult saveResult = module.create(session, ZObjectType.Account, Collections.singletonList(testAccount())).get(0);
+        SaveResult saveResult = module.create(ZObjectType.Account, Collections.singletonList(testAccount())).get(0);
         assertTrue(saveResult.isSuccess());
         
         final String accountId = saveResult.getId();
         try
         {
-            SaveResult result = module.create(session, ZObjectType.Contact,
+            SaveResult result = module.create(ZObjectType.Contact,
                 Collections.<Map<String, Object>> singletonList(new HashMap<String, Object>()
                 {
                     {
@@ -96,12 +95,12 @@ public class ZuoraModuleTestDriver
             System.out.println(result);
             assertTrue(result.isSuccess());
 
-            DeleteResult deleteResult = module.delete(session, ZObjectType.Contact, Arrays.asList(result.getId())).get(0);
+            DeleteResult deleteResult = module.delete(ZObjectType.Contact, Arrays.asList(result.getId())).get(0);
             assertTrue(deleteResult.isSuccess());
         }
         finally
         {
-            module.delete(session, ZObjectType.Account, Arrays.asList(accountId)).get(0);
+            module.delete(ZObjectType.Account, Arrays.asList(accountId)).get(0);
         }
     }
 
@@ -111,7 +110,7 @@ public class ZuoraModuleTestDriver
     @Test
     public void findNoResult() 
     {
-        Iterator<ZObject> result = module.find(session, "SELECT Id FROM Account").iterator();
+        Iterator<ZObject> result = module.find("SELECT Id FROM Account").iterator();
         assertFalse(result.hasNext());
     }
 
@@ -121,10 +120,10 @@ public class ZuoraModuleTestDriver
     @Test
     public void findOneResult() 
     {
-        String id = module.create(session, ZObjectType.Account, Collections.singletonList(testAccount())).get(0).getId();
+        String id = module.create(ZObjectType.Account, Collections.singletonList(testAccount())).get(0).getId();
         try
         {
-            Iterator<ZObject> result = module.find(session,"SELECT Id, Name FROM Account").iterator();
+            Iterator<ZObject> result = module.find("SELECT Id, Name FROM Account").iterator();
             assertTrue(result.hasNext());
             ZObject next = result.next();
             assertNotNull(next.getId());
@@ -133,14 +132,14 @@ public class ZuoraModuleTestDriver
         }
         finally
         {
-            module.delete(session, ZObjectType.Account, Arrays.asList(id));
+            module.delete(ZObjectType.Account, Arrays.asList(id));
         }
     }
     
     @Test
     public void getUserInfo() 
     {
-        User userInfo = module.getUserInfo(session);
+        User userInfo = module.getUserInfo();
         assertNotNull(userInfo);
         assertFalse(userInfo.getUserId().isEmpty());
         assertFalse(userInfo.getUserEmail().isEmpty());
