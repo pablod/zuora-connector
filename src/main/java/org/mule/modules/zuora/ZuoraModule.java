@@ -18,10 +18,11 @@ import com.zuora.api.DeleteResult;
 import com.zuora.api.SaveResult;
 import com.zuora.api.SubscribeResult;
 import com.zuora.api.object.ZObject;
+import org.mule.api.ConnectionException;
 import org.mule.api.annotations.Configurable;
 import org.mule.api.annotations.Connect;
+import org.mule.api.annotations.Connector;
 import org.mule.api.annotations.Disconnect;
-import org.mule.api.annotations.Module;
 import org.mule.api.annotations.Processor;
 import org.mule.api.annotations.param.ConnectionKey;
 import org.mule.api.annotations.param.Default;
@@ -38,7 +39,8 @@ import java.util.Map;
  * Zuora is the leader in online recurring billing and payment solutions for SaaS and subscription businesses.
  *
  * This connector provides full access to the Z-Commerce platform API.
- * @author flbulgarelli 
+ *
+ * @author MuleSoft, Inc.
  */
 @Connector(name = "zuora")
 public class ZuoraModule {
@@ -66,10 +68,10 @@ public class ZuoraModule {
      *
      * @param username Username to identify the user
      * @param password Password to authenticate the username
-     * @param session the Mule session
      */
     @Connect
-    public void connect(@ConnectionKey String username, String password) {
+    public void connect(@ConnectionKey String username, String password)
+        throws ConnectionException {
         if (client == null) {
             session = new ZuoraSession(username, password, endpoint);
         } else {
@@ -77,8 +79,6 @@ public class ZuoraModule {
         }
 
         session.getClient().validate();
-
-        return session;
     }
 
     /**
@@ -95,7 +95,6 @@ public class ZuoraModule {
      * {@sample.xml ../../../doc/mule-module-zuora.xml.sample zuora:subscribe}
      *
      * @param subscriptions the list of subscriptions to perform
-     * @param session the Mule session
      * @return a subscription results list, one for each subscription
      */
     @Processor
@@ -111,7 +110,6 @@ public class ZuoraModule {
      *
      * @param zobjects the zobjects to create
      * @param type     the type of zobject passed
-     * @param session the Mule session
      * @return a list of {@link SaveResult}, one for each ZObject
      */
     @Processor
@@ -128,7 +126,6 @@ public class ZuoraModule {
      * @param zobjects the zobjects to generate, as a list of string-object maps .
      *                 Zuora attribute names, unlike java beans, are CamelCase.
      * @param type     the type of zobject passed
-     * @param session the Mule session
      * @return a list of {@link SaveResult}, one for each ZObject
      */
     @Processor
@@ -145,7 +142,6 @@ public class ZuoraModule {
      * @param zobjects the zobjects to update, as a list of string-object maps .
      *                 Zuora attribute names, unlike java beans, are CamelCase.
      * @param type     the type of zobject passed
-     * @param session the Mule session
      * @return a list of {@link SaveResult}, one for each ZObject
      */
     @Processor
@@ -161,7 +157,6 @@ public class ZuoraModule {
      *
      * @param type the type of ZObjects to delete
      * @param ids the list of ids to delete
-     * @param session the Mule session
      * @return a list of {@link DeleteResult}, one for each id
      */
     @Processor
@@ -177,7 +172,6 @@ public class ZuoraModule {
      * {@sample.xml ../../../doc/mule-module-zuora.xml.sample zuora:find}
      *
      * @param zquery the query, using the SQL-Like Zuora Query Language
-     * @param session the Mule session
      * @return a {@link ZObject} iterable. {@link ZObject} returned by this operation
      *         may be instances of either static ZObject - like Account or Amendment -,  if the object is a non-customizable Zuora entity,
      *         or {@link ZObject},  if the object is a customizable Zuora entity
@@ -194,7 +188,6 @@ public class ZuoraModule {
      * {@sample.xml ../../../doc/mule-module-zuora.xml.sample zuora:product-profile}
      *
      * @param productId The id of the product to retrieve a product profile for
-     * @param session the Mule session
      * @throws {@link ZuoraException}
      * @return the profile, as a String-Object Map
      */
@@ -208,7 +201,6 @@ public class ZuoraModule {
      * 
      * {@sample.xml ../../../doc/mule-module-zuora.xml.sample zuora:get-user-info}
      *
-     * @param session the Mule session
      * @return a {@link User}
      */
     @Processor
@@ -222,7 +214,6 @@ public class ZuoraModule {
      * 
      * {@sample.xml ../../../doc/mule-module-zuora.xml.sample zuora:amend}
      *
-     * @param session the Mule session
      * @param amendaments the list of amendaments to perform
      * @return a list of {@link AmendResult}, one for each amendament
      */
