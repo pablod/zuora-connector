@@ -19,14 +19,13 @@ import com.zuora.api.SaveResult;
 import com.zuora.api.SubscribeResult;
 import com.zuora.api.object.ZObject;
 import org.mule.api.annotations.Configurable;
+import org.mule.api.annotations.Connect;
+import org.mule.api.annotations.Disconnect;
 import org.mule.api.annotations.Module;
 import org.mule.api.annotations.Processor;
+import org.mule.api.annotations.param.ConnectionKey;
 import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.Optional;
-import org.mule.api.annotations.param.Session;
-import org.mule.api.annotations.param.SessionKey;
-import org.mule.api.annotations.session.SessionCreate;
-import org.mule.api.annotations.session.SessionDestroy;
 import org.mule.modules.zuora.zobject.ZObjectType;
 import org.mule.modules.zuora.zuora.api.ZObjectMapper;
 import org.mule.modules.zuora.zuora.api.ZuoraClient;
@@ -41,9 +40,7 @@ import java.util.Map;
  * This connector provides full access to the Z-Commerce platform API.
  * @author flbulgarelli 
  */
-@Module(name = "zuora",
-        namespace = "http://repository.mulesoft.org/releases/org/mule/modules/mule-module-zuora",
-        schemaLocation = "http://repository.mulesoft.org/releases/org/mule/modules/mule-module-zuora/1.0/mule-zuora.xsd")
+@Connector(name = "zuora")
 public class ZuoraModule {
     
     /***
@@ -61,18 +58,18 @@ public class ZuoraModule {
     @Optional
     private String endpoint;
 
+    private ZuoraSession session;
+
 
     /**
-     * Create a new session
+     * Connects to Zuora
      *
      * @param username Username to identify the user
      * @param password Password to authenticate the username
      * @param session the Mule session
-     * @return the new sesion
      */
-    @SessionCreate
-    public ZuoraSession createSession(@SessionKey String username, String password) throws ZuoraException {
-        ZuoraSession session = null;
+    @Connect
+    public void connect(@ConnectionKey String username, String password) {
         if (client == null) {
             session = new ZuoraSession(username, password, endpoint);
         } else {
@@ -86,10 +83,9 @@ public class ZuoraModule {
 
     /**
      * Destroys the session
-     * @param session the session to destroy
      */
-    @SessionDestroy
-    public void destroySession(@Session ZuoraSession session) {
+    @Disconnect
+    public void destroySession() {
         // DO NOTHING AS ZUORA DO NOT HAVE A LOGOUT API CALL (WTF?)
     }
 
@@ -103,7 +99,7 @@ public class ZuoraModule {
      * @return a subscription results list, one for each subscription
      */
     @Processor
-    public List<SubscribeResult> subscribe(@Session ZuoraSession session, List<com.zuora.api.SubscribeRequest> subscriptions)
+    public List<SubscribeResult> subscribe(List<com.zuora.api.SubscribeRequest> subscriptions)
             throws ZuoraException {
         return session.getClient().subscribe(subscriptions);
     }
@@ -119,7 +115,7 @@ public class ZuoraModule {
      * @return a list of {@link SaveResult}, one for each ZObject
      */
     @Processor
-    public List<SaveResult> create(@Session ZuoraSession session, ZObjectType type, List<Map<String, Object>> zobjects)
+    public List<SaveResult> create(ZObjectType type, List<Map<String, Object>> zobjects)
             throws ZuoraException {
         return session.getClient().create(ZObjectMapper.toZObject(type, zobjects));
     }
@@ -136,7 +132,7 @@ public class ZuoraModule {
      * @return a list of {@link SaveResult}, one for each ZObject
      */
     @Processor
-    public List<SaveResult> generate(@Session ZuoraSession session, ZObjectType type, List<Map<String, Object>> zobjects)
+    public List<SaveResult> generate(ZObjectType type, List<Map<String, Object>> zobjects)
             throws ZuoraException {
         return session.getClient().generate(ZObjectMapper.toZObject(type, zobjects));
     }
@@ -153,7 +149,7 @@ public class ZuoraModule {
      * @return a list of {@link SaveResult}, one for each ZObject
      */
     @Processor
-    public List<SaveResult> update(@Session ZuoraSession session, ZObjectType type, List<Map<String, Object>> zobjects)
+    public List<SaveResult> update(ZObjectType type, List<Map<String, Object>> zobjects)
             throws ZuoraException {
         return session.getClient().update(ZObjectMapper.toZObject(type, zobjects));
     }
@@ -169,7 +165,7 @@ public class ZuoraModule {
      * @return a list of {@link DeleteResult}, one for each id
      */
     @Processor
-    public List<DeleteResult> delete(@Session ZuoraSession session, ZObjectType type, List<String> ids)
+    public List<DeleteResult> delete(ZObjectType type, List<String> ids)
             throws ZuoraException {
         return session.getClient().delete(type.getTypeName(), ids);
     }
@@ -187,7 +183,7 @@ public class ZuoraModule {
      *         or {@link ZObject},  if the object is a customizable Zuora entity
      */
     @Processor
-    public Iterable<ZObject> find(@Session ZuoraSession session, String zquery)
+    public Iterable<ZObject> find(String zquery)
             throws ZuoraException {
         return session.getClient().find(zquery);
     }
@@ -203,7 +199,7 @@ public class ZuoraModule {
      * @return the profile, as a String-Object Map
      */
     @Processor
-    public Map<String, Object> productProfile(@Session ZuoraSession session, String productId) throws ZuoraException {
+    public Map<String, Object> productProfile(String productId) throws ZuoraException {
         return session.getClient().productProfile(productId);
     }
 
@@ -216,7 +212,7 @@ public class ZuoraModule {
      * @return a {@link User}
      */
     @Processor
-    public User getUserInfo(@Session ZuoraSession session)
+    public User getUserInfo()
             throws ZuoraException {
         return session.getClient().getUserInfo();
     }
@@ -231,7 +227,7 @@ public class ZuoraModule {
      * @return a list of {@link AmendResult}, one for each amendament
      */
     @Processor
-    public List<AmendResult> amend(@Session ZuoraSession session, List<com.zuora.api.AmendRequest> amendaments)
+    public List<AmendResult> amend(List<com.zuora.api.AmendRequest> amendaments)
             throws ZuoraException {
         return session.getClient().amend(amendaments);
     }

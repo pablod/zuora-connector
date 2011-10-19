@@ -13,7 +13,7 @@
 	<mule.dsl.version>0.7</mule.dsl.version>
     <junit.version>4.8.2</junit.version>
     <mockito.version>1.8.2</mockito.version>
-    <cxf.version>2.3.0</cxf.version>
+    <cxf.version>2.3.1</cxf.version>
   </properties>
 
   <build>
@@ -24,6 +24,45 @@
           <artifactId>mule-devkit-maven-plugin</artifactId>
           <version>${mule.devkit.version}</version>
           <extensions>true</extensions>
+        </plugin>
+        <plugin>
+            <groupId>org.eclipse.m2e</groupId>
+            <artifactId>lifecycle-mapping</artifactId>
+            <version>1.0.0</version>
+            <configuration>
+                <lifecycleMappingMetadata>
+                    <pluginExecutions>
+                        <pluginExecution>
+                            <pluginExecutionFilter>
+                                <groupId>org.mule.tools.devkit</groupId>
+                                <artifactId>mule-devkit-maven-plugin</artifactId>
+                                <versionRange>[2.0,)</versionRange>
+                                <goals>
+                                    <goal>attach-test-resources</goal>
+                                    <goal>filter-resources</goal>
+                                    <goal>generate-sources</goal>
+                                </goals>
+                            </pluginExecutionFilter>
+                            <action>
+                                <ignore />
+                            </action>
+                        </pluginExecution>
+                        <pluginExecution>
+                            <pluginExecutionFilter>
+                                <artifactId>cxf-codegen-plugin</artifactId>
+                                <groupId>org.apache.cxf</groupId>
+                                <versionRange>[2.3.0,)</versionRange>
+                                <goals>
+                                    <goal>wsdl2java</goal>
+                                </goals>
+                            </pluginExecutionFilter>
+                            <action>
+                                <ignore />
+                            </action>
+                        </pluginExecution>
+                    </pluginExecutions>
+                </lifecycleMappingMetadata>
+            </configuration>
         </plugin>
       </plugins>
     </pluginManagement>
