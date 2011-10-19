@@ -1,5 +1,5 @@
 var DATA = [
-      { id:0, label:"amend", link:"mule/null.html#amend", type:"method" },
+      { id:0, label:"amend", link:"mule/zuora.html#amend", type:"method" },
       { id:1, label:"com.zuora.api", link:"java/com/zuora/api/package-summary.html", type:"package" },
       { id:2, label:"com.zuora.api.Amend", link:"java/com/zuora/api/Amend.html", type:"class" },
       { id:3, label:"com.zuora.api.AmendOptions", link:"java/com/zuora/api/AmendOptions.html", type:"class" },
@@ -97,11 +97,11 @@ var DATA = [
       { id:95, label:"com.zuora.api.object.TaxationItem", link:"java/com/zuora/api/object/TaxationItem.html", type:"class" },
       { id:96, label:"com.zuora.api.object.Usage", link:"java/com/zuora/api/object/Usage.html", type:"class" },
       { id:97, label:"com.zuora.api.object.ZObject", link:"java/com/zuora/api/object/ZObject.html", type:"class" },
-      { id:98, label:"create", link:"mule/null.html#create", type:"method" },
-      { id:99, label:"delete", link:"mule/null.html#delete", type:"method" },
-      { id:100, label:"find", link:"mule/null.html#find", type:"method" },
-      { id:101, label:"generate", link:"mule/null.html#generate", type:"method" },
-      { id:102, label:"get-user-info", link:"mule/null.html#get-user-info", type:"method" },
+      { id:98, label:"create", link:"mule/zuora.html#create", type:"method" },
+      { id:99, label:"delete", link:"mule/zuora.html#delete", type:"method" },
+      { id:100, label:"find", link:"mule/zuora.html#find", type:"method" },
+      { id:101, label:"generate", link:"mule/zuora.html#generate", type:"method" },
+      { id:102, label:"get-user-info", link:"mule/zuora.html#get-user-info", type:"method" },
       { id:103, label:"org.mule.modules.zuora", link:"java/org/mule/modules/zuora/package-summary.html", type:"package" },
       { id:104, label:"org.mule.modules.zuora.User", link:"java/org/mule/modules/zuora/User.html", type:"class" },
       { id:105, label:"org.mule.modules.zuora.ZuoraModule", link:"java/org/mule/modules/zuora/ZuoraModule.html", type:"class" },
@@ -147,8 +147,8 @@ var DATA = [
       { id:145, label:"org.mule.modules.zuora.zuora.api.internal", link:"java/org/mule/modules/zuora/zuora/api/internal/package-summary.html", type:"package" },
       { id:146, label:"org.mule.modules.zuora.zuora.api.internal.ClientAdaptorInvocationHandler", link:"java/org/mule/modules/zuora/zuora/api/internal/ClientAdaptorInvocationHandler.html", type:"class" },
       { id:147, label:"org.mule.modules.zuora.zuora.api.internal.PaginatedIterable", link:"java/org/mule/modules/zuora/zuora/api/internal/PaginatedIterable.html", type:"class" },
-      { id:148, label:"product-profile", link:"mule/null.html#product-profile", type:"method" },
-      { id:149, label:"subscribe", link:"mule/null.html#subscribe", type:"method" },
-      { id:150, label:"update", link:"mule/null.html#update", type:"method" }
+      { id:148, label:"product-profile", link:"mule/zuora.html#product-profile", type:"method" },
+      { id:149, label:"subscribe", link:"mule/zuora.html#subscribe", type:"method" },
+      { id:150, label:"update", link:"mule/zuora.html#update", type:"method" }
 
     ];
