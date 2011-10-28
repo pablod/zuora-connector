@@ -46,5 +46,5 @@ public interface ZuoraClient<E extends Throwable>
 
     Map<String, Object> productProfile(String productId) throws E;
 
-    void validate() throws E;
+    String getSessionId();
 }

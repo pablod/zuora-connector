@@ -58,7 +58,7 @@ public class ZuoraModuleTestDriver
      * Test for creating dynamic zobjects
      */
     @Test
-    public void createAndDelete() 
+    public void createAndDelete() throws Exception
     {
         SaveResult result = module.create(ZObjectType.Account, Collections.singletonList(testAccount())).get(0);
         assertTrue(result.isSuccess());
@@ -74,7 +74,7 @@ public class ZuoraModuleTestDriver
      */
     @Test
     @SuppressWarnings("serial")
-    public void createAndDeleteRelated() 
+    public void createAndDeleteRelated() throws Exception
     {
         SaveResult saveResult = module.create(ZObjectType.Account, Collections.singletonList(testAccount())).get(0);
         assertTrue(saveResult.isSuccess());
@@ -108,7 +108,7 @@ public class ZuoraModuleTestDriver
      * Test for fetching zobjects when there is no object that matches the query 
      */
     @Test
-    public void findNoResult() 
+    public void findNoResult() throws Exception
     {
         Iterator<ZObject> result = module.find("SELECT Id FROM Account").iterator();
         assertFalse(result.hasNext());
@@ -118,7 +118,7 @@ public class ZuoraModuleTestDriver
      * Test for fetching zobjects when there is an object that matches the query
      */
     @Test
-    public void findOneResult() 
+    public void findOneResult() throws Exception
     {
         String id = module.create(ZObjectType.Account, Collections.singletonList(testAccount())).get(0).getId();
         try
@@ -137,7 +137,7 @@ public class ZuoraModuleTestDriver
     }
     
     @Test
-    public void getUserInfo() 
+    public void getUserInfo() throws Exception
     {
         User userInfo = module.getUserInfo();
         assertNotNull(userInfo);

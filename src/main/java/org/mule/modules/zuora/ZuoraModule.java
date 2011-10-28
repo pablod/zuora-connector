@@ -13,44 +13,36 @@
  */
 package org.mule.modules.zuora;
 
-import com.zuora.api.AmendResult;
-import com.zuora.api.DeleteResult;
-import com.zuora.api.SaveResult;
-import com.zuora.api.SubscribeResult;
+import com.zuora.api.*;
 import com.zuora.api.object.ZObject;
 import org.mule.api.ConnectionException;
-import org.mule.api.annotations.Configurable;
-import org.mule.api.annotations.Connect;
-import org.mule.api.annotations.Connector;
-import org.mule.api.annotations.Disconnect;
-import org.mule.api.annotations.Processor;
+import org.mule.api.ConnectionExceptionCode;
+import org.mule.api.annotations.*;
 import org.mule.api.annotations.param.ConnectionKey;
 import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.Optional;
 import org.mule.modules.zuora.zobject.ZObjectType;
-import org.mule.modules.zuora.zuora.api.ZObjectMapper;
-import org.mule.modules.zuora.zuora.api.ZuoraClient;
-import org.mule.modules.zuora.zuora.api.ZuoraException;
+import org.mule.modules.zuora.zuora.api.*;
 
 import java.util.List;
 import java.util.Map;
 
 /**
  * Zuora is the leader in online recurring billing and payment solutions for SaaS and subscription businesses.
- *
+ * <p/>
  * This connector provides full access to the Z-Commerce platform API.
  *
  * @author MuleSoft, Inc.
  */
 @Connector(name = "zuora")
 public class ZuoraModule {
-    
-    /***
+
+    /**
      * The client to use. Mainly for mocking purposes
      */
     @Configurable
     @Optional
-    private ZuoraClient<ZuoraException> client;
+    private ZuoraClient<Exception> client;
 
     /**
      * Target URI to connect to
@@ -59,8 +51,6 @@ public class ZuoraModule {
     @Default("htps://apisandbox.zuora.com/apps/services/a/29.0")
     @Optional
     private String endpoint;
-
-    private ZuoraSession session;
 
 
     /**
@@ -71,41 +61,56 @@ public class ZuoraModule {
      */
     @Connect
     public void connect(@ConnectionKey String username, String password)
-        throws ConnectionException {
-        if (client == null) {
-            session = new ZuoraSession(username, password, endpoint);
-        } else {
-            session = new ZuoraSession(client);
+            throws ConnectionException {
+        try {
+            client = new CxfZuoraClient(username, password, this.endpoint);
+        } catch (UnexpectedErrorFault e) {
+            throw new ConnectionException(ConnectionExceptionCode.UNKNOWN, e.getFaultInfo().getFaultCode().value(), e.getFaultInfo().getFaultMessage());
+        } catch (LoginFault e) {
+            if (e.getFaultInfo().getFaultCode() == ErrorCode.INVALID_LOGIN) {
+                throw new ConnectionException(ConnectionExceptionCode.INCORRECT_CREDENTIALS, e.getFaultInfo().getFaultCode().value(), e.getFaultInfo().getFaultMessage());
+            } else {
+                throw new ConnectionException(ConnectionExceptionCode.UNKNOWN, e.getFaultInfo().getFaultCode().value(), e.getFaultInfo().getFaultMessage());
+            }
         }
+    }
 
-        session.getClient().validate();
+    @ValidateConnection
+    public boolean isConnected() {
+        return client != null;
     }
 
     /**
      * Destroys the session
      */
     @Disconnect
-    public void destroySession() {
-        // DO NOTHING AS ZUORA DO NOT HAVE A LOGOUT API CALL (WTF?)
+    public void disconnect() {
+        client = null;
+    }
+
+    @ConnectionIdentifier
+    public String getSessionId() {
+        return client.getSessionId();
     }
 
     /**
      * Batch creation of ZObjects associated to Subscriptions
-     * 
+     * <p/>
      * {@sample.xml ../../../doc/mule-module-zuora.xml.sample zuora:subscribe}
      *
      * @param subscriptions the list of subscriptions to perform
      * @return a subscription results list, one for each subscription
      */
     @Processor
+    @InvalidateConnectionOn(exception=SessionTimedOutException.class)
     public List<SubscribeResult> subscribe(List<com.zuora.api.SubscribeRequest> subscriptions)
-            throws ZuoraException {
-        return session.getClient().subscribe(subscriptions);
+            throws Exception {
+        return client.subscribe(subscriptions);
     }
 
     /**
      * Batch creation of ZObjects
-     * 
+     * <p/>
      * {@sample.xml ../../../doc/mule-module-zuora.xml.sample zuora:create}
      *
      * @param zobjects the zobjects to create
@@ -113,14 +118,15 @@ public class ZuoraModule {
      * @return a list of {@link SaveResult}, one for each ZObject
      */
     @Processor
+    @InvalidateConnectionOn(exception=SessionTimedOutException.class)
     public List<SaveResult> create(ZObjectType type, List<Map<String, Object>> zobjects)
-            throws ZuoraException {
-        return session.getClient().create(ZObjectMapper.toZObject(type, zobjects));
+            throws Exception {
+        return client.create(ZObjectMapper.toZObject(type, zobjects));
     }
 
     /**
      * Batch creation of invoces for accounts
-     * 
+     * <p/>
      * {@sample.xml ../../../doc/mule-module-zuora.xml.sample zuora:generate}
      *
      * @param zobjects the zobjects to generate, as a list of string-object maps .
@@ -129,14 +135,15 @@ public class ZuoraModule {
      * @return a list of {@link SaveResult}, one for each ZObject
      */
     @Processor
+    @InvalidateConnectionOn(exception=SessionTimedOutException.class)
     public List<SaveResult> generate(ZObjectType type, List<Map<String, Object>> zobjects)
-            throws ZuoraException {
-        return session.getClient().generate(ZObjectMapper.toZObject(type, zobjects));
+            throws Exception {
+        return client.generate(ZObjectMapper.toZObject(type, zobjects));
     }
 
     /**
      * Batch update of ZObjects
-     * 
+     * <p/>
      * {@sample.xml ../../../doc/mule-module-zuora.xml.sample zuora:update}
      *
      * @param zobjects the zobjects to update, as a list of string-object maps .
@@ -145,30 +152,32 @@ public class ZuoraModule {
      * @return a list of {@link SaveResult}, one for each ZObject
      */
     @Processor
+    @InvalidateConnectionOn(exception=SessionTimedOutException.class)
     public List<SaveResult> update(ZObjectType type, List<Map<String, Object>> zobjects)
-            throws ZuoraException {
-        return session.getClient().update(ZObjectMapper.toZObject(type, zobjects));
+            throws Exception {
+        return client.update(ZObjectMapper.toZObject(type, zobjects));
     }
 
     /**
      * Batch delete of ZObjects
-     * 
+     * <p/>
      * {@sample.xml ../../../doc/mule-module-zuora.xml.sample zuora:delete}
      *
      * @param type the type of ZObjects to delete
-     * @param ids the list of ids to delete
+     * @param ids  the list of ids to delete
      * @return a list of {@link DeleteResult}, one for each id
      */
     @Processor
+    @InvalidateConnectionOn(exception=SessionTimedOutException.class)
     public List<DeleteResult> delete(ZObjectType type, List<String> ids)
-            throws ZuoraException {
-        return session.getClient().delete(type.getTypeName(), ids);
+            throws Exception {
+        return client.delete(type.getTypeName(), ids);
     }
 
     /**
      * Lazily retrieves ZObject that match a given query,
      * written in Zuora native query language
-     * 
+     * <p/>
      * {@sample.xml ../../../doc/mule-module-zuora.xml.sample zuora:find}
      *
      * @param zquery the query, using the SQL-Like Zuora Query Language
@@ -177,50 +186,54 @@ public class ZuoraModule {
      *         or {@link ZObject},  if the object is a customizable Zuora entity
      */
     @Processor
+    @InvalidateConnectionOn(exception=SessionTimedOutException.class)
     public Iterable<ZObject> find(String zquery)
-            throws ZuoraException {
-        return session.getClient().find(zquery);
+            throws Exception {
+        return client.find(zquery);
     }
 
     /**
      * Retrieve a product profile
-     * 
+     * <p/>
      * {@sample.xml ../../../doc/mule-module-zuora.xml.sample zuora:product-profile}
      *
      * @param productId The id of the product to retrieve a product profile for
-     * @throws {@link ZuoraException}
      * @return the profile, as a String-Object Map
+     * @throws {@link ZuoraException}
      */
     @Processor
-    public Map<String, Object> productProfile(String productId) throws ZuoraException {
-        return session.getClient().productProfile(productId);
+    @InvalidateConnectionOn(exception=SessionTimedOutException.class)
+    public Map<String, Object> productProfile(String productId) throws Exception {
+        return client.productProfile(productId);
     }
 
     /**
      * Answers user information
-     * 
+     * <p/>
      * {@sample.xml ../../../doc/mule-module-zuora.xml.sample zuora:get-user-info}
      *
      * @return a {@link User}
      */
     @Processor
+    @InvalidateConnectionOn(exception=SessionTimedOutException.class)
     public User getUserInfo()
-            throws ZuoraException {
-        return session.getClient().getUserInfo();
+            throws Exception {
+        return client.getUserInfo();
     }
 
     /**
      * Amends subscriptions
-     * 
+     * <p/>
      * {@sample.xml ../../../doc/mule-module-zuora.xml.sample zuora:amend}
      *
      * @param amendaments the list of amendaments to perform
      * @return a list of {@link AmendResult}, one for each amendament
      */
     @Processor
+    @InvalidateConnectionOn(exception=SessionTimedOutException.class)
     public List<AmendResult> amend(List<com.zuora.api.AmendRequest> amendaments)
-            throws ZuoraException {
-        return session.getClient().amend(amendaments);
+            throws Exception {
+        return client.amend(amendaments);
     }
 
     public void setEndpoint(String enpoint) {
@@ -231,7 +244,7 @@ public class ZuoraModule {
         return endpoint;
     }
 
-    public void setClient(ZuoraClient<ZuoraException> client) {
+    public void setClient(ZuoraClient<Exception> client) {
         this.client = client;
     }
 }
