@@ -222,7 +222,7 @@ Summary:
 
 <h2>Module Overview</h2>
 <p>Zuora is the leader in online recurring billing and payment solutions for SaaS and subscription businesses.
-
+ <p/>
  This connector provides full access to the Z-Commerce platform API.<br/></p>
 
 
@@ -270,7 +270,7 @@ Summary:
         <span class="sympad"><a href="../mule/zuora.html#amend">&lt;zuora:amend&gt;</a></nobr>
         
         <div class="jd-descrdiv">Amends subscriptions
- 
+ <p/>
  <br/></div>
         
   </td></tr>
@@ -282,7 +282,7 @@ Summary:
         <span class="sympad"><a href="../mule/zuora.html#create">&lt;zuora:create&gt;</a></nobr>
         
         <div class="jd-descrdiv">Batch creation of ZObjects
- 
+ <p/>
  <br/></div>
         
   </td></tr>
@@ -294,7 +294,7 @@ Summary:
         <span class="sympad"><a href="../mule/zuora.html#delete">&lt;zuora:delete&gt;</a></nobr>
         
         <div class="jd-descrdiv">Batch delete of ZObjects
- 
+ <p/>
  <br/></div>
         
   </td></tr>
@@ -307,7 +307,7 @@ Summary:
         
         <div class="jd-descrdiv">Lazily retrieves ZObject that match a given query,
  written in Zuora native query language
- 
+ <p/>
  <br/></div>
         
   </td></tr>
@@ -319,7 +319,7 @@ Summary:
         <span class="sympad"><a href="../mule/zuora.html#generate">&lt;zuora:generate&gt;</a></nobr>
         
         <div class="jd-descrdiv">Batch creation of invoces for accounts
- 
+ <p/>
  <br/></div>
         
   </td></tr>
@@ -331,7 +331,7 @@ Summary:
         <span class="sympad"><a href="../mule/zuora.html#get-user-info">&lt;zuora:get-user-info&gt;</a></nobr>
         
         <div class="jd-descrdiv">Answers user information
- 
+ <p/>
  <br/></div>
         
   </td></tr>
@@ -343,7 +343,7 @@ Summary:
         <span class="sympad"><a href="../mule/zuora.html#product-profile">&lt;zuora:product-profile&gt;</a></nobr>
         
         <div class="jd-descrdiv">Retrieve a product profile
- 
+ <p/>
  <br/></div>
         
   </td></tr>
@@ -355,7 +355,7 @@ Summary:
         <span class="sympad"><a href="../mule/zuora.html#subscribe">&lt;zuora:subscribe&gt;</a></nobr>
         
         <div class="jd-descrdiv">Batch creation of ZObjects associated to Subscriptions
- 
+ <p/>
  <br/></div>
         
   </td></tr>
@@ -367,7 +367,7 @@ Summary:
         <span class="sympad"><a href="../mule/zuora.html#update">&lt;zuora:update&gt;</a></nobr>
         
         <div class="jd-descrdiv">Batch update of ZObjects
- 
+ <p/>
  <br/></div>
         
   </td></tr>
@@ -477,6 +477,13 @@ resolution.</p>
       
     
 </table>
+<p>Also this connector offers automatic retry for certain operations. There are a couple of situations in which a retry may solve the problem at hand, like for example if the system is
+currently busy or if the session has expired. Those kind of situations are solvable by reacquiring a connection and retrying the operation.</p>
+<p>By default, the connector will automatically attempt to retry the operation only once. You can at your choosing specify a greater ammount of retries by using the <i>retryMax</i>
+attribute on each operation.</p>
+<pre>
+    ... retryMax="3"/&gt;
+</pre>
 
 
 
@@ -503,7 +510,7 @@ resolution.</p>
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p>Amends subscriptions
- 
+ <p/>
  <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;amend amendaments-ref="#[header:amendamentsList]"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
@@ -523,15 +530,23 @@ resolution.</p>
                 
                 
           
-        
+          
             <tr class="alt-color api apilevel-" >
+                <td class="jd-linkcol"><nobr>retryMax</nobr></td>
+                <td class="jd-descrcol">1</td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify how many times this operation can be retried automatically</td>
+            </tr>
+            
+          
+        
+            <tr class=" api apilevel-" >
                 <td class="jd-linkcol"><nobr>username</nobr></td>
                 <td class="jd-descrcol"></td>
                 <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user<br/></td>
             </tr>
         
         
-            <tr class=" api apilevel-" >
+            <tr class="alt-color api apilevel-" >
                 <td class="jd-linkcol"><nobr>password</nobr></td>
                 <td class="jd-descrcol"></td>
                 <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username
@@ -561,7 +576,7 @@ resolution.</p>
       <h5 class="jd-tagtitle">Exception Payload</h5>
       <table class="jd-tagtable">
         <tr>
-            <th><a href="../java/org/mule/modules/zuora/zuora/api/ZuoraException.html">ZuoraException</a></td>
+            <th>Exception</td>
             <td></td>
         </tr>
       </table>
@@ -585,7 +600,7 @@ resolution.</p>
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p>Batch creation of ZObjects
- 
+ <p/>
  <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;create&gt;
     &lt;zobjects&gt;
         &lt;zobject ref="#[variable:anObject]"/&gt;
@@ -618,15 +633,23 @@ resolution.</p>
                 
                 
           
-        
+          
             <tr class=" api apilevel-" >
+                <td class="jd-linkcol"><nobr>retryMax</nobr></td>
+                <td class="jd-descrcol">1</td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify how many times this operation can be retried automatically</td>
+            </tr>
+            
+          
+        
+            <tr class="alt-color api apilevel-" >
                 <td class="jd-linkcol"><nobr>username</nobr></td>
                 <td class="jd-descrcol"></td>
                 <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user<br/></td>
             </tr>
         
         
-            <tr class="alt-color api apilevel-" >
+            <tr class=" api apilevel-" >
                 <td class="jd-linkcol"><nobr>password</nobr></td>
                 <td class="jd-descrcol"></td>
                 <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username
@@ -658,7 +681,7 @@ resolution.</p>
       <h5 class="jd-tagtitle">Exception Payload</h5>
       <table class="jd-tagtable">
         <tr>
-            <th><a href="../java/org/mule/modules/zuora/zuora/api/ZuoraException.html">ZuoraException</a></td>
+            <th>Exception</td>
             <td></td>
         </tr>
       </table>
@@ -682,7 +705,7 @@ resolution.</p>
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p>Batch delete of ZObjects
- 
+ <p/>
  <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;delete ids-ref="#[variable:ids]" type="#[variable:zobjectType]"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
@@ -711,15 +734,23 @@ resolution.</p>
                 
                 
           
-        
+          
             <tr class=" api apilevel-" >
+                <td class="jd-linkcol"><nobr>retryMax</nobr></td>
+                <td class="jd-descrcol">1</td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify how many times this operation can be retried automatically</td>
+            </tr>
+            
+          
+        
+            <tr class="alt-color api apilevel-" >
                 <td class="jd-linkcol"><nobr>username</nobr></td>
                 <td class="jd-descrcol"></td>
                 <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user<br/></td>
             </tr>
         
         
-            <tr class="alt-color api apilevel-" >
+            <tr class=" api apilevel-" >
                 <td class="jd-linkcol"><nobr>password</nobr></td>
                 <td class="jd-descrcol"></td>
                 <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username
@@ -751,7 +782,7 @@ resolution.</p>
       <h5 class="jd-tagtitle">Exception Payload</h5>
       <table class="jd-tagtable">
         <tr>
-            <th><a href="../java/org/mule/modules/zuora/zuora/api/ZuoraException.html">ZuoraException</a></td>
+            <th>Exception</td>
             <td></td>
         </tr>
       </table>
@@ -776,7 +807,7 @@ resolution.</p>
       
   <div class="jd-tagdata jd-tagdescr"><p>Lazily retrieves ZObject that match a given query,
  written in Zuora native query language
- 
+ <p/>
  <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;find query="#[header:queryString]" /&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
@@ -796,15 +827,23 @@ resolution.</p>
                 
                 
           
-        
+          
             <tr class="alt-color api apilevel-" >
+                <td class="jd-linkcol"><nobr>retryMax</nobr></td>
+                <td class="jd-descrcol">1</td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify how many times this operation can be retried automatically</td>
+            </tr>
+            
+          
+        
+            <tr class=" api apilevel-" >
                 <td class="jd-linkcol"><nobr>username</nobr></td>
                 <td class="jd-descrcol"></td>
                 <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user<br/></td>
             </tr>
         
         
-            <tr class=" api apilevel-" >
+            <tr class="alt-color api apilevel-" >
                 <td class="jd-linkcol"><nobr>password</nobr></td>
                 <td class="jd-descrcol"></td>
                 <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username
@@ -836,7 +875,7 @@ resolution.</p>
       <h5 class="jd-tagtitle">Exception Payload</h5>
       <table class="jd-tagtable">
         <tr>
-            <th><a href="../java/org/mule/modules/zuora/zuora/api/ZuoraException.html">ZuoraException</a></td>
+            <th>Exception</td>
             <td></td>
         </tr>
       </table>
@@ -860,7 +899,7 @@ resolution.</p>
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p>Batch creation of invoces for accounts
- 
+ <p/>
  <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;generate zobjects-ref="#[variable:accounts]"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
@@ -890,15 +929,23 @@ resolution.</p>
                 
                 
           
-        
+          
             <tr class=" api apilevel-" >
+                <td class="jd-linkcol"><nobr>retryMax</nobr></td>
+                <td class="jd-descrcol">1</td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify how many times this operation can be retried automatically</td>
+            </tr>
+            
+          
+        
+            <tr class="alt-color api apilevel-" >
                 <td class="jd-linkcol"><nobr>username</nobr></td>
                 <td class="jd-descrcol"></td>
                 <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user<br/></td>
             </tr>
         
         
-            <tr class="alt-color api apilevel-" >
+            <tr class=" api apilevel-" >
                 <td class="jd-linkcol"><nobr>password</nobr></td>
                 <td class="jd-descrcol"></td>
                 <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username
@@ -930,7 +977,7 @@ resolution.</p>
       <h5 class="jd-tagtitle">Exception Payload</h5>
       <table class="jd-tagtable">
         <tr>
-            <th><a href="../java/org/mule/modules/zuora/zuora/api/ZuoraException.html">ZuoraException</a></td>
+            <th>Exception</td>
             <td></td>
         </tr>
       </table>
@@ -954,7 +1001,7 @@ resolution.</p>
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p>Answers user information
- 
+ <p/>
  <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;get-user-info userId="#[header:userId]"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
@@ -965,15 +1012,23 @@ resolution.</p>
       <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
-        
+          
             <tr class=" api apilevel-" >
+                <td class="jd-linkcol"><nobr>retryMax</nobr></td>
+                <td class="jd-descrcol">1</td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify how many times this operation can be retried automatically</td>
+            </tr>
+            
+          
+        
+            <tr class="alt-color api apilevel-" >
                 <td class="jd-linkcol"><nobr>username</nobr></td>
                 <td class="jd-descrcol"></td>
                 <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user<br/></td>
             </tr>
         
         
-            <tr class="alt-color api apilevel-" >
+            <tr class=" api apilevel-" >
                 <td class="jd-linkcol"><nobr>password</nobr></td>
                 <td class="jd-descrcol"></td>
                 <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username
@@ -1001,7 +1056,7 @@ resolution.</p>
       <h5 class="jd-tagtitle">Exception Payload</h5>
       <table class="jd-tagtable">
         <tr>
-            <th><a href="../java/org/mule/modules/zuora/zuora/api/ZuoraException.html">ZuoraException</a></td>
+            <th>Exception</td>
             <td></td>
         </tr>
       </table>
@@ -1025,7 +1080,7 @@ resolution.</p>
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p>Retrieve a product profile
- 
+ <p/>
  <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;product-profile productId="001..."/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
@@ -1045,15 +1100,23 @@ resolution.</p>
                 
                 
           
-        
+          
             <tr class="alt-color api apilevel-" >
+                <td class="jd-linkcol"><nobr>retryMax</nobr></td>
+                <td class="jd-descrcol">1</td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify how many times this operation can be retried automatically</td>
+            </tr>
+            
+          
+        
+            <tr class=" api apilevel-" >
                 <td class="jd-linkcol"><nobr>username</nobr></td>
                 <td class="jd-descrcol"></td>
                 <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user<br/></td>
             </tr>
         
         
-            <tr class=" api apilevel-" >
+            <tr class="alt-color api apilevel-" >
                 <td class="jd-linkcol"><nobr>password</nobr></td>
                 <td class="jd-descrcol"></td>
                 <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username
@@ -1076,18 +1139,18 @@ resolution.</p>
   
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Return Payload</h5>
-      <ul class="nolist"><li>the profile, as a String-Object Map
-<br/></li></ul>
+      <ul class="nolist"><li>the profile, as a String-Object Map<br/></li></ul>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Exception Payload</h5>
       <table class="jd-tagtable">
         <tr>
             <th></td>
-            <td>ZuoraException}<br/></td>
+            <td>ZuoraException}
+<br/></td>
         </tr>
         <tr>
-            <th><a href="../java/org/mule/modules/zuora/zuora/api/ZuoraException.html">ZuoraException</a></td>
+            <th>Exception</td>
             <td></td>
         </tr>
       </table>
@@ -1111,7 +1174,7 @@ resolution.</p>
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p>Batch creation of ZObjects associated to Subscriptions
- 
+ <p/>
  <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;subscribe subscriptions-ref="#[variable:subscribtions]"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
@@ -1131,15 +1194,23 @@ resolution.</p>
                 
                 
           
-        
+          
             <tr class="alt-color api apilevel-" >
+                <td class="jd-linkcol"><nobr>retryMax</nobr></td>
+                <td class="jd-descrcol">1</td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify how many times this operation can be retried automatically</td>
+            </tr>
+            
+          
+        
+            <tr class=" api apilevel-" >
                 <td class="jd-linkcol"><nobr>username</nobr></td>
                 <td class="jd-descrcol"></td>
                 <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user<br/></td>
             </tr>
         
         
-            <tr class=" api apilevel-" >
+            <tr class="alt-color api apilevel-" >
                 <td class="jd-linkcol"><nobr>password</nobr></td>
                 <td class="jd-descrcol"></td>
                 <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username
@@ -1169,7 +1240,7 @@ resolution.</p>
       <h5 class="jd-tagtitle">Exception Payload</h5>
       <table class="jd-tagtable">
         <tr>
-            <th><a href="../java/org/mule/modules/zuora/zuora/api/ZuoraException.html">ZuoraException</a></td>
+            <th>Exception</td>
             <td></td>
         </tr>
       </table>
@@ -1193,7 +1264,7 @@ resolution.</p>
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p>Batch update of ZObjects
- 
+ <p/>
  <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;update zobjects-ref="#[variable:objects]"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
@@ -1223,15 +1294,23 @@ resolution.</p>
                 
                 
           
-        
+          
             <tr class=" api apilevel-" >
+                <td class="jd-linkcol"><nobr>retryMax</nobr></td>
+                <td class="jd-descrcol">1</td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify how many times this operation can be retried automatically</td>
+            </tr>
+            
+          
+        
+            <tr class="alt-color api apilevel-" >
                 <td class="jd-linkcol"><nobr>username</nobr></td>
                 <td class="jd-descrcol"></td>
                 <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user<br/></td>
             </tr>
         
         
-            <tr class="alt-color api apilevel-" >
+            <tr class=" api apilevel-" >
                 <td class="jd-linkcol"><nobr>password</nobr></td>
                 <td class="jd-descrcol"></td>
                 <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username
@@ -1263,7 +1342,7 @@ resolution.</p>
       <h5 class="jd-tagtitle">Exception Payload</h5>
       <table class="jd-tagtable">
         <tr>
-            <th><a href="../java/org/mule/modules/zuora/zuora/api/ZuoraException.html">ZuoraException</a></td>
+            <th>Exception</td>
             <td></td>
         </tr>
       </table>

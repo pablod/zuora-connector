@@ -213,7 +213,7 @@
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/zuora/config/ZObjectTypeEnumTransformer.html">ZObjectTypeEnumTransformer</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleCapabilitiesAdapter.html">ZuoraModuleCapabilitiesAdapter</a></li>
           <li class="selected api apilevel-"><a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html">ZuoraModuleConnectionManager</a></li>
-          <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.ConnectionKey.html">ZuoraModuleConnectionManager.ConnectionKey</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.ConnectionParameters.html">ZuoraModuleConnectionManager.ConnectionParameters</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleLifecycleAdapter.html">ZuoraModuleLifecycleAdapter</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleSessionManagerAdapter.html">ZuoraModuleSessionManagerAdapter</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleSessionManagerAdapter.SessionKey.html">ZuoraModuleSessionManagerAdapter.SessionKey</a></li>
@@ -449,7 +449,7 @@ Summary:
         
         
         class</nobr></td>
-      <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.ConnectionKey.html">ZuoraModuleConnectionManager.ConnectionKey</a></td>
+      <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.ConnectionParameters.html">ZuoraModuleConnectionManager.ConnectionParameters</a></td>
       <td class="jd-descrcol" width="100%">&nbsp;</td>
     </tr>
     
@@ -527,7 +527,7 @@ org.mule.api.lifecycle.Initialisable
           private
           
           
-          <a href="../../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraClient.html">ZuoraClient</a>&lt;<a href="../../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraException.html">ZuoraException</a>&gt;</nobr></td>
+          <a href="../../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraClient.html">ZuoraClient</a>&lt;Exception&gt;</nobr></td>
           <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#client">client</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
@@ -584,6 +584,17 @@ org.mule.api.lifecycle.Initialisable
       <tr class=" api apilevel-" >
           <td class="jd-typecol"><nobr>
           private
+          static
+          
+          Logger</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#logger">logger</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
           
           
           MuleContext</nobr></td>
@@ -594,7 +605,7 @@ org.mule.api.lifecycle.Initialisable
       </tr>
       
     
-      <tr class="alt-color api apilevel-" >
+      <tr class=" api apilevel-" >
           <td class="jd-typecol"><nobr>
           private
           
@@ -605,7 +616,7 @@ org.mule.api.lifecycle.Initialisable
       </tr>
       
     
-      <tr class=" api apilevel-" >
+      <tr class="alt-color api apilevel-" >
           <td class="jd-typecol"><nobr>
           private
           
@@ -670,7 +681,7 @@ org.mule.api.lifecycle.Initialisable
             <a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleLifecycleAdapter.html">ZuoraModuleLifecycleAdapter</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#acquireConnection(org.mule.modules.zuora.config.ZuoraModuleConnectionManager.ConnectionKey)">acquireConnection</a></span>(<a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.ConnectionKey.html">ZuoraModuleConnectionManager.ConnectionKey</a> key)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#acquireConnection(org.mule.modules.zuora.config.ZuoraModuleConnectionManager.ConnectionParameters)">acquireConnection</a></span>(<a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.ConnectionParameters.html">ZuoraModuleConnectionManager.ConnectionParameters</a> key)</nobr>
         
   </td></tr>
 
@@ -686,7 +697,7 @@ org.mule.api.lifecycle.Initialisable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#destroyConnection(org.mule.modules.zuora.config.ZuoraModuleConnectionManager.ConnectionKey, org.mule.modules.zuora.config.ZuoraModuleLifecycleAdapter)">destroyConnection</a></span>(<a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.ConnectionKey.html">ZuoraModuleConnectionManager.ConnectionKey</a> key, <a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleLifecycleAdapter.html">ZuoraModuleLifecycleAdapter</a> connection)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#destroyConnection(org.mule.modules.zuora.config.ZuoraModuleConnectionManager.ConnectionParameters, org.mule.modules.zuora.config.ZuoraModuleLifecycleAdapter)">destroyConnection</a></span>(<a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.ConnectionParameters.html">ZuoraModuleConnectionManager.ConnectionParameters</a> key, <a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleLifecycleAdapter.html">ZuoraModuleLifecycleAdapter</a> connection)</nobr>
         
   </td></tr>
 
@@ -699,7 +710,7 @@ org.mule.api.lifecycle.Initialisable
             
             
             
-            <a href="../../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraClient.html">ZuoraClient</a>&lt;<a href="../../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraException.html">ZuoraException</a>&gt;</nobr>
+            <a href="../../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraClient.html">ZuoraClient</a>&lt;Exception&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#getClient()">getClient</a></span>()</nobr>
@@ -838,7 +849,7 @@ org.mule.api.lifecycle.Initialisable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#releaseConnection(org.mule.modules.zuora.config.ZuoraModuleConnectionManager.ConnectionKey, org.mule.modules.zuora.config.ZuoraModuleLifecycleAdapter)">releaseConnection</a></span>(<a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.ConnectionKey.html">ZuoraModuleConnectionManager.ConnectionKey</a> key, <a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleLifecycleAdapter.html">ZuoraModuleLifecycleAdapter</a> connection)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#releaseConnection(org.mule.modules.zuora.config.ZuoraModuleConnectionManager.ConnectionParameters, org.mule.modules.zuora.config.ZuoraModuleLifecycleAdapter)">releaseConnection</a></span>(<a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.ConnectionParameters.html">ZuoraModuleConnectionManager.ConnectionParameters</a> key, <a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleLifecycleAdapter.html">ZuoraModuleLifecycleAdapter</a> connection)</nobr>
         
   </td></tr>
 
@@ -854,7 +865,7 @@ org.mule.api.lifecycle.Initialisable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#setClient(org.mule.modules.zuora.zuora.api.ZuoraClient<org.mule.modules.zuora.zuora.api.ZuoraException>)">setClient</a></span>(<a href="../../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraClient.html">ZuoraClient</a>&lt;<a href="../../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraException.html">ZuoraException</a>&gt; value)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/zuora/config/ZuoraModuleConnectionManager.html#setClient(org.mule.modules.zuora.zuora.api.ZuoraClient<java.lang.Exception>)">setClient</a></span>(<a href="../../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraClient.html">ZuoraClient</a>&lt;Exception&gt; value)</nobr>
         
         <div class="jd-descrdiv">Sets client</div>
   
@@ -1415,7 +1426,7 @@ From interface
         private 
          
          
-        <a href="../../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraClient.html">ZuoraClient</a>&lt;<a href="../../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraException.html">ZuoraException</a>&gt;
+        <a href="../../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraClient.html">ZuoraClient</a>&lt;Exception&gt;
       </span>
         client
     </h4>
@@ -1554,6 +1565,36 @@ From interface
   <div class="jd-tagdata jd-tagdescr"><p>Flow construct
  
 </p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="logger"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+        static 
+         
+        Logger
+      </span>
+        logger
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
 
     
     </div>
@@ -1708,7 +1749,7 @@ From interface
 
 
 
-<A NAME="acquireConnection(org.mule.modules.zuora.config.ZuoraModuleConnectionManager.ConnectionKey)"></A>
+<A NAME="acquireConnection(org.mule.modules.zuora.config.ZuoraModuleConnectionManager.ConnectionParameters)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1721,7 +1762,7 @@ From interface
         <a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleLifecycleAdapter.html">ZuoraModuleLifecycleAdapter</a>
       </span>
       <span class="sympad">acquireConnection</span>
-      <span class="normal">(<a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.ConnectionKey.html">ZuoraModuleConnectionManager.ConnectionKey</a> key)</span>
+      <span class="normal">(<a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.ConnectionParameters.html">ZuoraModuleConnectionManager.ConnectionParameters</a> key)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1757,7 +1798,7 @@ From interface
 </div>
 
 
-<A NAME="destroyConnection(org.mule.modules.zuora.config.ZuoraModuleConnectionManager.ConnectionKey, org.mule.modules.zuora.config.ZuoraModuleLifecycleAdapter)"></A>
+<A NAME="destroyConnection(org.mule.modules.zuora.config.ZuoraModuleConnectionManager.ConnectionParameters, org.mule.modules.zuora.config.ZuoraModuleLifecycleAdapter)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1770,7 +1811,7 @@ From interface
         void
       </span>
       <span class="sympad">destroyConnection</span>
-      <span class="normal">(<a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.ConnectionKey.html">ZuoraModuleConnectionManager.ConnectionKey</a> key, <a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleLifecycleAdapter.html">ZuoraModuleLifecycleAdapter</a> connection)</span>
+      <span class="normal">(<a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.ConnectionParameters.html">ZuoraModuleConnectionManager.ConnectionParameters</a> key, <a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleLifecycleAdapter.html">ZuoraModuleLifecycleAdapter</a> connection)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1820,7 +1861,7 @@ From interface
          
          
          
-        <a href="../../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraClient.html">ZuoraClient</a>&lt;<a href="../../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraException.html">ZuoraException</a>&gt;
+        <a href="../../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraClient.html">ZuoraClient</a>&lt;Exception&gt;
       </span>
       <span class="sympad">getClient</span>
       <span class="normal">()</span>
@@ -2048,7 +2089,7 @@ From interface
 </div>
 
 
-<A NAME="releaseConnection(org.mule.modules.zuora.config.ZuoraModuleConnectionManager.ConnectionKey, org.mule.modules.zuora.config.ZuoraModuleLifecycleAdapter)"></A>
+<A NAME="releaseConnection(org.mule.modules.zuora.config.ZuoraModuleConnectionManager.ConnectionParameters, org.mule.modules.zuora.config.ZuoraModuleLifecycleAdapter)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2061,7 +2102,7 @@ From interface
         void
       </span>
       <span class="sympad">releaseConnection</span>
-      <span class="normal">(<a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.ConnectionKey.html">ZuoraModuleConnectionManager.ConnectionKey</a> key, <a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleLifecycleAdapter.html">ZuoraModuleLifecycleAdapter</a> connection)</span>
+      <span class="normal">(<a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleConnectionManager.ConnectionParameters.html">ZuoraModuleConnectionManager.ConnectionParameters</a> key, <a href="../../../../../../java/org/mule/modules/zuora/config/ZuoraModuleLifecycleAdapter.html">ZuoraModuleLifecycleAdapter</a> connection)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -2101,7 +2142,7 @@ From interface
 </div>
 
 
-<A NAME="setClient(org.mule.modules.zuora.zuora.api.ZuoraClient<org.mule.modules.zuora.zuora.api.ZuoraException>)"></A>
+<A NAME="setClient(org.mule.modules.zuora.zuora.api.ZuoraClient<java.lang.Exception>)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2114,7 +2155,7 @@ From interface
         void
       </span>
       <span class="sympad">setClient</span>
-      <span class="normal">(<a href="../../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraClient.html">ZuoraClient</a>&lt;<a href="../../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraException.html">ZuoraException</a>&gt; value)</span>
+      <span class="normal">(<a href="../../../../../../java/org/mule/modules/zuora/zuora/api/ZuoraClient.html">ZuoraClient</a>&lt;Exception&gt; value)</span>
     </h4>
       <div class="api-level">
         <div>
