@@ -140,42 +140,16 @@ public class CxfZuoraClient implements ZuoraClient<Exception> {
     @Override
     public Iterable<ZObject> find(final String zquery) throws Exception {
         Validate.notEmpty(zquery);
-        return new PaginatedIterable<ZObject, QueryResult>() {
-            @Override
-            protected QueryResult firstPage() {
-                try {
-                    return soap.query(zquery);
-                } catch (Exception e) {
-                    throw new ZuoraException("Failed to get first result page",
-                            e);
-                }
-            }
+        
+        List<ZObject> allRecords = new ArrayList<ZObject>();
+        
+        QueryResult result = soap.query(zquery);
+        while( !result.isDone() ) {
+            allRecords.addAll(result.getRecords());
+            result = soap.queryMore(result.getQueryLocator());
+        }
 
-            @Override
-            protected boolean hasNextPage(QueryResult page) {
-                return !page.isDone();
-            }
-
-            @Override
-            protected QueryResult nextPage(QueryResult currentPage) {
-                try {
-                    return soap.queryMore(
-                            currentPage.getQueryLocator());
-                } catch (Exception e) {
-                    throw new ZuoraException("Failed to get more results", e);
-                }
-            }
-
-            @Override
-            protected Iterator<ZObject> pageIterator(QueryResult page) {
-                // This is necessary since cxf is returning a list
-                // with a null element instead of an empty list
-                if (page.getSize() == 0) {
-                    return Collections.<ZObject>emptyList().iterator();
-                }
-                return page.getRecords().iterator();
-            }
-        };
+        return allRecords;
     }
 
     @Override
