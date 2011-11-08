@@ -10,6 +10,11 @@
 
 package org.mule.modules.zuora.zuora.api;
 
+import java.util.List;
+import java.util.Map;
+
+import javax.validation.constraints.NotNull;
+
 import org.mule.modules.zuora.User;
 
 import com.zuora.api.AmendRequest;
@@ -19,12 +24,6 @@ import com.zuora.api.SaveResult;
 import com.zuora.api.SubscribeRequest;
 import com.zuora.api.SubscribeResult;
 import com.zuora.api.object.ZObject;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.validation.constraints.NotNull;
 
 public interface ZuoraClient<E extends Throwable>
 {
@@ -47,4 +46,6 @@ public interface ZuoraClient<E extends Throwable>
     Map<String, Object> productProfile(String productId) throws E;
 
     String getSessionId();
+
+    Map<String, Object> accountProfile(String accountId) throws E;
 }

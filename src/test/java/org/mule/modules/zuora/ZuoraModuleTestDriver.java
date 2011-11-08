@@ -15,19 +15,6 @@
 package org.mule.modules.zuora;
 
 import static org.junit.Assert.*;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
-import org.mule.modules.zuora.zobject.ZObjectType;
-
-import com.zuora.api.Amend;
-import com.zuora.api.AmendRequest;
-import com.zuora.api.DeleteResult;
-import com.zuora.api.SaveResult;
-import com.zuora.api.object.Amendment;
-import com.zuora.api.object.ZObject;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -37,6 +24,11 @@ import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mule.modules.zuora.zobject.ZObjectType;
+
+import com.zuora.api.DeleteResult;
+import com.zuora.api.SaveResult;
+import com.zuora.api.object.ZObject;
 
 public class ZuoraModuleTestDriver
 {
@@ -46,7 +38,7 @@ public class ZuoraModuleTestDriver
     public void setup() throws Exception
     {
         module = new ZuoraModule();
-        module.setEndpoint("https://apisandbox.zuora.com/apps/services/a/29.0");
+        module.setEndpoint("https://apisandbox.zuora.com/apps/services/a/32.0");
         module.connect(System.getenv("zuoraUsername"), System.getenv("zuoraPassword"));
         for (ZObject z : module.find("select id from Account"))
         {
@@ -123,7 +115,7 @@ public class ZuoraModuleTestDriver
         String id = module.create(ZObjectType.Account, Collections.singletonList(testAccount())).get(0).getId();
         try
         {
-            Iterator<ZObject> result = module.find("SELECT Id, Name FROM Account").iterator();
+            Iterator<ZObject> result = module.find("SELECT Id, Name, AccountNumber FROM Account WHERE AccountNumber = '7891'").iterator();
             assertTrue(result.hasNext());
             ZObject next = result.next();
             assertNotNull(next.getId());
@@ -146,6 +138,48 @@ public class ZuoraModuleTestDriver
         assertEquals(System.getenv("zuoraUsername"), userInfo.getUsername());
         assertFalse(userInfo.getTenantId().isEmpty());
         assertFalse(userInfo.getTenantName().isEmpty());
+    }
+    
+    @Test
+    @SuppressWarnings("serial")
+    public void createRetrieveAnAccountProfileAndDeleteRelatedAccount() throws Exception
+    {
+        SaveResult accountResult = module.create(ZObjectType.Account, Collections.singletonList(testAccount())).get(0);
+        assertTrue(accountResult.isSuccess());
+        
+        final String accountId = accountResult.getId();
+        try
+        {
+            SaveResult contactResult = module.create(ZObjectType.Contact,
+                Collections.<Map<String, Object>> singletonList(new HashMap<String, Object>()
+                {
+                    {
+                        put("Country", "US");
+                        put("FirstName", "John");
+                        put("LastName", "Doe");
+                        put("AccountId", accountId);
+                    }
+                })).get(0);
+            
+            assertTrue(contactResult.isSuccess());
+
+            Map<String, Object> accountMap = testAccount();
+            accountMap.put("Id", accountId);
+            accountMap.put("BillToId", contactResult.getId());
+            
+            SaveResult accountUpdateResult = module.update(ZObjectType.Account, Collections.singletonList(accountMap)).get(0);
+            System.out.println(accountUpdateResult);
+            assertTrue(accountUpdateResult.isSuccess());
+            
+            Map<String, Object> accountProfile = module.accountProfile(accountId);
+            System.out.println(accountProfile);
+            
+            assertEquals("Doe", ((Map<String, Object>) accountProfile.get("billTo")).get("lastName"));            
+        }
+        finally
+        {
+            module.delete(ZObjectType.Account, Arrays.asList(accountId)).get(0);
+        }
     }
 
     @SuppressWarnings("serial")

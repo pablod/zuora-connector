@@ -29,3 +29,6 @@
 <!-- BEGIN_INCLUDE(zuora:amend) -->
 <amend amendaments-ref="#[header:amendamentsList]"/>
 <!-- END_INCLUDE(zuora:amend) -->
+<!-- BEGIN_INCLUDE(zuora:account-profile) -->
+<account-profile accountId="0012..."/>
+<!-- END_INCLUDE(zuora:account-profile) -->

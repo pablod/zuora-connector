@@ -10,15 +10,6 @@
 
 package org.mule.modules.zuora;
 
-import com.zuora.api.LoginResult;
-import com.zuora.api.QueryResult;
-import com.zuora.api.SaveResult;
-import com.zuora.api.SessionHeader;
-import com.zuora.api.Soap;
-import com.zuora.api.ZuoraService;
-import com.zuora.api.object.Account;
-import com.zuora.api.object.ZObject;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -32,6 +23,15 @@ import org.apache.cxf.headers.Header;
 import org.apache.cxf.jaxb.JAXBDataBinding;
 import org.junit.Test;
 
+import com.zuora.api.LoginResult;
+import com.zuora.api.QueryResult;
+import com.zuora.api.SaveResult;
+import com.zuora.api.SessionHeader;
+import com.zuora.api.Soap;
+import com.zuora.api.ZuoraService;
+import com.zuora.api.object.Account;
+import com.zuora.api.object.ZObject;
+
 public class ZuoraConnectionTestDriver
 {
     private static final String PASSWORD = System.getenv("zuoraPassword");
@@ -41,10 +41,10 @@ public class ZuoraConnectionTestDriver
     @Test
     public void testname() throws Exception
     {
-        ZuoraService serviceLocator = new ZuoraService(getClass().getResource("/zuora-29.wsdl"));
+        ZuoraService serviceLocator = new ZuoraService(getClass().getResource("/zuora-32.wsdl"));
         Soap  newConnection = serviceLocator.getPort(Soap.class);
         BindingProvider bindingProvider = ((BindingProvider) newConnection);
-        bindingProvider.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, "https://apisandbox.zuora.com/apps/services/a/29.0");
+        bindingProvider.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, "https://apisandbox.zuora.com/apps/services/a/32.0");
         LoginResult loginResult = null;
         try
         {

@@ -31,7 +31,7 @@
              <extension>true</extension>
               <wsdlOptions>
                 <wsdlOption>
-                  <wsdl>${basedir}/src/main/resources/zuora-29.modified.wsdl</wsdl>
+                  <wsdl>${basedir}/src/main/resources/zuora-32.modified.wsdl</wsdl>
                   
                     <bindingFiles>
                         <bindingFile>${basedir}/src/main/resources/bindings.xml</bindingFile>

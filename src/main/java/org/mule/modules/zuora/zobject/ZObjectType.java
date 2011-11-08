@@ -11,22 +11,16 @@
 package org.mule.modules.zuora.zobject;
 
 import com.zuora.api.object.Account;
-import com.zuora.api.object.AccountingRun;
-import com.zuora.api.object.AccountingRunAdjustmentSummary;
-import com.zuora.api.object.AccountingRunInvoiceSummary;
-import com.zuora.api.object.AccountingRunPaymentSummary;
-import com.zuora.api.object.AdjustmentAccountingDetail;
 import com.zuora.api.object.Amendment;
 import com.zuora.api.object.Contact;
 import com.zuora.api.object.CreditBalanceAdjustment;
 import com.zuora.api.object.Export;
 import com.zuora.api.object.Invoice;
-import com.zuora.api.object.InvoiceAccountingDetail;
+import com.zuora.api.object.InvoiceAdjustment;
 import com.zuora.api.object.InvoiceItem;
 import com.zuora.api.object.InvoiceItemAdjustment;
 import com.zuora.api.object.InvoicePayment;
 import com.zuora.api.object.Payment;
-import com.zuora.api.object.PaymentAccountingDetail;
 import com.zuora.api.object.PaymentMethod;
 import com.zuora.api.object.Product;
 import com.zuora.api.object.ProductRatePlan;
@@ -49,8 +43,10 @@ import com.zuora.api.object.ZObject;
 public enum ZObjectType
 {
     Account(Account.class), //
-    Invoice(Invoice.class), InvoiceItem(InvoiceItem.class), //
+    Invoice(Invoice.class), //
+    InvoiceItem(InvoiceItem.class), //
     InvoiceItemAdjustment(InvoiceItemAdjustment.class), //
+    InvoiceAdjustment(InvoiceAdjustment.class), //
     Payment(Payment.class), //
     Product(Product.class), //
     ProductRatePlan(ProductRatePlan.class), //
@@ -58,18 +54,18 @@ public enum ZObjectType
     Refund(Refund.class), // 
     Subscription(Subscription.class), //
     Usage(Usage.class), //
-    AccountingRun(AccountingRun.class), // 
-    AccountingRunAdjustmentSummary(AccountingRunAdjustmentSummary.class), //
-    AccountingRunInvoiceSummary(AccountingRunInvoiceSummary.class), //
-    AccountingRunPaymentSummary(AccountingRunPaymentSummary.class), //
-    AdjustmentAccountingDetail(AdjustmentAccountingDetail.class), //
+//    AccountingRun(AccountingRun.class), // 
+//    AccountingRunAdjustmentSummary(AccountingRunAdjustmentSummary.class), //
+//    AccountingRunInvoiceSummary(AccountingRunInvoiceSummary.class), //
+//    AccountingRunPaymentSummary(AccountingRunPaymentSummary.class), //
+//    AdjustmentAccountingDetail(AdjustmentAccountingDetail.class), //
     Amendment(Amendment.class), //
     Contact(Contact.class), //
     CreditBalanceAdjustment(CreditBalanceAdjustment.class), //
     Export(Export.class), // 
-    InvoiceAccountingDetail(InvoiceAccountingDetail.class), //
+//    InvoiceAccountingDetail(InvoiceAccountingDetail.class), //
     InvoicePayment(InvoicePayment.class), //
-    PaymentAccountingDetail(PaymentAccountingDetail.class), //
+//    PaymentAccountingDetail(PaymentAccountingDetail.class), //
     PaymentMethod(PaymentMethod.class), //
     ProductRatePlanChargeTier(ProductRatePlanChargeTier.class), //
     RatePlan(RatePlan.class), //

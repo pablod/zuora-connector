@@ -13,19 +13,36 @@
  */
 package org.mule.modules.zuora;
 
-import com.zuora.api.*;
-import com.zuora.api.object.ZObject;
+import java.util.List;
+import java.util.Map;
+
 import org.mule.api.ConnectionException;
 import org.mule.api.ConnectionExceptionCode;
-import org.mule.api.annotations.*;
+import org.mule.api.annotations.Configurable;
+import org.mule.api.annotations.Connect;
+import org.mule.api.annotations.ConnectionIdentifier;
+import org.mule.api.annotations.Connector;
+import org.mule.api.annotations.Disconnect;
+import org.mule.api.annotations.InvalidateConnectionOn;
+import org.mule.api.annotations.Processor;
+import org.mule.api.annotations.ValidateConnection;
 import org.mule.api.annotations.param.ConnectionKey;
 import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.Optional;
 import org.mule.modules.zuora.zobject.ZObjectType;
-import org.mule.modules.zuora.zuora.api.*;
+import org.mule.modules.zuora.zuora.api.CxfZuoraClient;
+import org.mule.modules.zuora.zuora.api.SessionTimedOutException;
+import org.mule.modules.zuora.zuora.api.ZObjectMapper;
+import org.mule.modules.zuora.zuora.api.ZuoraClient;
 
-import java.util.List;
-import java.util.Map;
+import com.zuora.api.AmendResult;
+import com.zuora.api.DeleteResult;
+import com.zuora.api.ErrorCode;
+import com.zuora.api.LoginFault;
+import com.zuora.api.SaveResult;
+import com.zuora.api.SubscribeResult;
+import com.zuora.api.UnexpectedErrorFault;
+import com.zuora.api.object.ZObject;
 
 /**
  * Zuora is the leader in online recurring billing and payment solutions for SaaS and subscription businesses.
@@ -48,7 +65,7 @@ public class ZuoraModule {
      * Target URI to connect to
      */
     @Configurable
-    @Default("htps://apisandbox.zuora.com/apps/services/a/29.0")
+    @Default("htps://apisandbox.zuora.com/apps/services/a/32.0")
     @Optional
     private String endpoint;
 
@@ -236,6 +253,21 @@ public class ZuoraModule {
         return client.amend(amendaments);
     }
 
+    /**
+     * Retrieve an account profile
+     * <p/>
+     * {@sample.xml ../../../doc/mule-module-zuora.xml.sample zuora:account-profile}
+     * 
+     * @param accountId The id of the account to retrieve an account profile for
+     * @return the account, as a String-Object Map
+     */
+    @Processor
+    @InvalidateConnectionOn(exception=SessionTimedOutException.class)
+    public Map<String, Object> accountProfile(String accountId)
+            throws Exception {
+        return client.accountProfile(accountId);
+    }
+    
     public void setEndpoint(String enpoint) {
         this.endpoint = enpoint;
     }
