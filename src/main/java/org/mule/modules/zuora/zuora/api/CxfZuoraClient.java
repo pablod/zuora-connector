@@ -166,9 +166,10 @@ public class CxfZuoraClient implements ZuoraClient<Exception> {
 
         try {
             QueryResult result = soap.query(zquery);
+            allRecords.addAll(result.getRecords());
             while (!result.isDone()) {
-                allRecords.addAll(result.getRecords());
                 result = soap.queryMore(result.getQueryLocator());
+                allRecords.addAll(result.getRecords());
             }
         } catch (UnexpectedErrorFault unexpectedErrorFault) {
             if (unexpectedErrorFault.getFaultInfo().getFaultCode() == ErrorCode.INVALID_SESSION) {
