@@ -16,7 +16,6 @@ import org.apache.commons.lang.Validate;
 import org.apache.cxf.headers.Header;
 import org.apache.cxf.jaxb.JAXBDataBinding;
 import org.mule.modules.zuora.User;
-import org.mule.modules.zuora.zuora.api.internal.PaginatedIterable;
 
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.JAXBException;
@@ -140,13 +139,20 @@ public class CxfZuoraClient implements ZuoraClient<Exception> {
     @Override
     public Iterable<ZObject> find(final String zquery) throws Exception {
         Validate.notEmpty(zquery);
-        
+
         List<ZObject> allRecords = new ArrayList<ZObject>();
-        
-        QueryResult result = soap.query(zquery);
-        while( !result.isDone() ) {
-            allRecords.addAll(result.getRecords());
-            result = soap.queryMore(result.getQueryLocator());
+
+        try {
+            QueryResult result = soap.query(zquery);
+            while (!result.isDone()) {
+                allRecords.addAll(result.getRecords());
+                result = soap.queryMore(result.getQueryLocator());
+            }
+        } catch (UnexpectedErrorFault unexpectedErrorFault) {
+            if (unexpectedErrorFault.getFaultInfo().getFaultCode() == ErrorCode.INVALID_SESSION) {
+                throw new SessionTimedOutException();
+            }
+            throw unexpectedErrorFault;
         }
 
         return allRecords;
