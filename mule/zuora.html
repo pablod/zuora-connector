@@ -267,6 +267,18 @@ Summary:
 	 
     <tr class="alt-color api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../mule/zuora.html#account-profile">&lt;zuora:account-profile&gt;</a></nobr>
+        
+        <div class="jd-descrdiv">Retrieve an account profile
+ <p/>
+ <br/></div>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/zuora.html#amend">&lt;zuora:amend&gt;</a></nobr>
         
         <div class="jd-descrdiv">Amends subscriptions
@@ -277,7 +289,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/zuora.html#create">&lt;zuora:create&gt;</a></nobr>
         
@@ -289,7 +301,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/zuora.html#delete">&lt;zuora:delete&gt;</a></nobr>
         
@@ -301,7 +313,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/zuora.html#find">&lt;zuora:find&gt;</a></nobr>
         
@@ -314,7 +326,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/zuora.html#generate">&lt;zuora:generate&gt;</a></nobr>
         
@@ -326,7 +338,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/zuora.html#get-user-info">&lt;zuora:get-user-info&gt;</a></nobr>
         
@@ -338,7 +350,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/zuora.html#product-profile">&lt;zuora:product-profile&gt;</a></nobr>
         
@@ -350,7 +362,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/zuora.html#subscribe">&lt;zuora:subscribe&gt;</a></nobr>
         
@@ -362,7 +374,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/zuora.html#update">&lt;zuora:update&gt;</a></nobr>
         
@@ -433,7 +445,7 @@ specify which configuration to use.</p>
           <td class="jd-typecol"><nobr>
           xs:string</nobr></td>
           <td class="jd-linkcol"><nobr>endpoint</nobr></td>
-          <td class="jd-descrcol">htps://apisandbox.zuora.com/apps/services/a/29.0</td>
+          <td class="jd-descrcol">htps://apisandbox.zuora.com/apps/services/a/32.0</td>
           <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Target URI to connect to
 </td>
       </tr>
@@ -494,6 +506,96 @@ attribute on each operation.</p>
 
 <h2>Message Processors</h2>
 
+
+
+<A NAME="account-profile"></A>
+
+<div class="jd-details api apilevel-">
+    <h4 class="jd-details-title">
+      <span class="sympad">&lt;zuora:account-profile&gt;</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Retrieve an account profile
+ <p/>
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;account-profile accountId="0012..."/&gt;</pre></div></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Attributes</h5>
+
+      <table class="jd-tagtable">
+      <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+      <td class="jd-descrcol"></td>
+      <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
+          
+          
+                
+                <tr class=" api apilevel-" >
+                    <td class="jd-linkcol"><nobr>accountId</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%">The id of the account to retrieve an account profile for<br/></td>
+                </tr>
+                
+                
+          
+          
+            <tr class="alt-color api apilevel-" >
+                <td class="jd-linkcol"><nobr>retryMax</nobr></td>
+                <td class="jd-descrcol">1</td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify how many times this operation can be retried automatically</td>
+            </tr>
+            
+          
+        
+            <tr class=" api apilevel-" >
+                <td class="jd-linkcol"><nobr>username</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user<br/></td>
+            </tr>
+        
+        
+            <tr class="alt-color api apilevel-" >
+                <td class="jd-linkcol"><nobr>password</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username
+<br/></td>
+            </tr>
+        
+        
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Child Elements</h5>
+
+      <table class="jd-tagtable">
+          
+          
+            
+          
+      </table>
+  </div>
+  
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Return Payload</h5>
+      <ul class="nolist"><li>the account, as a String-Object Map
+<br/></li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Exception Payload</h5>
+      <table class="jd-tagtable">
+        <tr>
+            <th>Exception</td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
 
 
 <A NAME="amend"></A>

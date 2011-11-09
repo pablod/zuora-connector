@@ -208,10 +208,12 @@
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/AccountingRunPaymentSummary.html">AccountingRunPaymentSummary</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/AdjustmentAccountingDetail.html">AdjustmentAccountingDetail</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/Amendment.html">Amendment</a></li>
+          <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/CommunicationProfile.html">CommunicationProfile</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/Contact.html">Contact</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/CreditBalanceAdjustment.html">CreditBalanceAdjustment</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/Dynamic.html">Dynamic</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/Export.html">Export</a></li>
+          <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/GatewayOption.html">GatewayOption</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/Invoice.html">Invoice</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/InvoiceAccountingDetail.html">InvoiceAccountingDetail</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/InvoiceAdjustment.html">InvoiceAdjustment</a></li>
@@ -222,6 +224,7 @@
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/Payment.html">Payment</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/PaymentAccountingDetail.html">PaymentAccountingDetail</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/PaymentMethod.html">PaymentMethod</a></li>
+          <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/PaymentTransactionLog.html">PaymentTransactionLog</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/Product.html">Product</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/ProductRatePlan.html">ProductRatePlan</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/ProductRatePlanCharge.html">ProductRatePlanCharge</a></li>
@@ -231,6 +234,7 @@
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/RatePlanChargeTier.html">RatePlanChargeTier</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/Refund.html">Refund</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/RefundInvoicePayment.html">RefundInvoicePayment</a></li>
+          <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/RefundTransactionLog.html">RefundTransactionLog</a></li>
           <li class="selected api apilevel-"><a href="../../../../../java/com/zuora/api/object/Subscription.html">Subscription</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/TaxationItem.html">TaxationItem</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/Usage.html">Usage</a></li>
@@ -471,9 +475,9 @@ Summary:
          &lt;element name="ContractEffectiveDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
          &lt;element name="CreatedById" type="{http://api.zuora.com/}ID" minOccurs="0"/>
          &lt;element name="CreatedDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
-         &lt;element name="CreatorAccountId" type="{http://api.zuora.com/}ID" minOccurs="0"/>
          &lt;element name="Currency" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
          &lt;element name="InitialTerm" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+         &lt;element name="IsInvoiceSeparate" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
          &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
          &lt;element name="Notes" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
          &lt;element name="OriginalCreatedDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
@@ -702,7 +706,7 @@ Summary:
           
           
           String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../com/zuora/api/object/Subscription.html#creatorAccountId">creatorAccountId</a></td>
+          <td class="jd-linkcol"><a href="../../../../../com/zuora/api/object/Subscription.html#currency">currency</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -712,8 +716,8 @@ Summary:
           protected
           
           
-          String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../com/zuora/api/object/Subscription.html#currency">currency</a></td>
+          Integer</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../com/zuora/api/object/Subscription.html#initialTerm">initialTerm</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -723,8 +727,8 @@ Summary:
           protected
           
           
-          Integer</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../com/zuora/api/object/Subscription.html#initialTerm">initialTerm</a></td>
+          Boolean</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../com/zuora/api/object/Subscription.html#isInvoiceSeparate">isInvoiceSeparate</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -1189,24 +1193,6 @@ Summary:
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/zuora/api/object/Subscription.html#getCreatorAccountId()">getCreatorAccountId</a></span>()</nobr>
-        
-        <div class="jd-descrdiv">Gets the value of the creatorAccountId property.</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            String</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../com/zuora/api/object/Subscription.html#getCurrency()">getCurrency</a></span>()</nobr>
         
         <div class="jd-descrdiv">Gets the value of the currency property.</div>
@@ -1215,7 +1201,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1233,7 +1219,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1251,7 +1237,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1269,7 +1255,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1287,7 +1273,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1305,7 +1291,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1323,7 +1309,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1341,7 +1327,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1359,7 +1345,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1377,7 +1363,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1395,7 +1381,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1413,7 +1399,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1431,7 +1417,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1449,7 +1435,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1467,7 +1453,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1485,7 +1471,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1503,7 +1489,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1521,7 +1507,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1534,6 +1520,24 @@ Summary:
         <span class="sympad"><a href="../../../../../com/zuora/api/object/Subscription.html#isAutoRenew()">isAutoRenew</a></span>()</nobr>
         
         <div class="jd-descrdiv">Gets the value of the autoRenew property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/zuora/api/object/Subscription.html#isIsInvoiceSeparate()">isIsInvoiceSeparate</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets the value of the isInvoiceSeparate property.</div>
   
   </td></tr>
 
@@ -1693,9 +1697,9 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/zuora/api/object/Subscription.html#setCreatorAccountId(java.lang.String)">setCreatorAccountId</a></span>(String value)</nobr>
+        <span class="sympad"><a href="../../../../../com/zuora/api/object/Subscription.html#setCurrency(java.lang.String)">setCurrency</a></span>(String value)</nobr>
         
-        <div class="jd-descrdiv">Sets the value of the creatorAccountId property.</div>
+        <div class="jd-descrdiv">Sets the value of the currency property.</div>
   
   </td></tr>
 
@@ -1711,9 +1715,9 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/zuora/api/object/Subscription.html#setCurrency(java.lang.String)">setCurrency</a></span>(String value)</nobr>
+        <span class="sympad"><a href="../../../../../com/zuora/api/object/Subscription.html#setInitialTerm(java.lang.Integer)">setInitialTerm</a></span>(Integer value)</nobr>
         
-        <div class="jd-descrdiv">Sets the value of the currency property.</div>
+        <div class="jd-descrdiv">Sets the value of the initialTerm property.</div>
   
   </td></tr>
 
@@ -1729,9 +1733,9 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/zuora/api/object/Subscription.html#setInitialTerm(java.lang.Integer)">setInitialTerm</a></span>(Integer value)</nobr>
+        <span class="sympad"><a href="../../../../../com/zuora/api/object/Subscription.html#setIsInvoiceSeparate(java.lang.Boolean)">setIsInvoiceSeparate</a></span>(Boolean value)</nobr>
         
-        <div class="jd-descrdiv">Sets the value of the initialTerm property.</div>
+        <div class="jd-descrdiv">Sets the value of the isInvoiceSeparate property.</div>
   
   </td></tr>
 
@@ -2857,36 +2861,6 @@ From class
 
 
 
-<A NAME="creatorAccountId"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        String
-      </span>
-        creatorAccountId
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
 <A NAME="currency"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -2928,6 +2902,36 @@ From class
         Integer
       </span>
         initialTerm
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="isInvoiceSeparate"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+        Boolean
+      </span>
+        isInvoiceSeparate
     </h4>
       <div class="api-level">
         
@@ -3748,44 +3752,6 @@ From class
 </div>
 
 
-<A NAME="getCreatorAccountId()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        String
-      </span>
-      <span class="sympad">getCreatorAccountId</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the creatorAccountId property.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>possible object is
-     String
-     
-</li></ul>
-  </div>
-
-    </div>
-</div>
-
-
 <A NAME="getCurrency()"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -4508,6 +4474,44 @@ From class
 </div>
 
 
+<A NAME="isIsInvoiceSeparate()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Boolean
+      </span>
+      <span class="sympad">isIsInvoiceSeparate</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the isInvoiceSeparate property.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>possible object is
+     Boolean
+     
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
 <A NAME="setAccountId(java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -4852,49 +4856,6 @@ From class
 </div>
 
 
-<A NAME="setCreatorAccountId(java.lang.String)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setCreatorAccountId</span>
-      <span class="normal">(String value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the creatorAccountId property.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Allowed object is
-     String
-     
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
 <A NAME="setCurrency(java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -4971,6 +4932,49 @@ From class
           <th>value</td>
           <td>Allowed object is
      Integer
+     
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setIsInvoiceSeparate(java.lang.Boolean)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setIsInvoiceSeparate</span>
+      <span class="normal">(Boolean value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the isInvoiceSeparate property.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>Allowed object is
+     Boolean
      
 </td>
         </tr>

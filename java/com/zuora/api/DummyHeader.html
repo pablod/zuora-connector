@@ -219,12 +219,14 @@
           <li class="api apilevel-"><a href="../../../../java/com/zuora/api/DeleteResult.html">DeleteResult</a></li>
           <li class="selected api apilevel-"><a href="../../../../java/com/zuora/api/DummyHeader.html">DummyHeader</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/zuora/api/Error.html">Error</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/GatewayOptionData.html">GatewayOptionData</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/zuora/api/Generate.html">Generate</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/zuora/api/GenerateResponse.html">GenerateResponse</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/zuora/api/GetUserInfo.html">GetUserInfo</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/zuora/api/GetUserInfoResponse.html">GetUserInfoResponse</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/zuora/api/InvoiceData.html">InvoiceData</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/zuora/api/InvoiceProcessingOptions.html">InvoiceProcessingOptions</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/InvoiceResult.html">InvoiceResult</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/zuora/api/Login.html">Login</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/zuora/api/LoginResponse.html">LoginResponse</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/zuora/api/LoginResult.html">LoginResult</a></li>
@@ -242,6 +244,7 @@
           <li class="api apilevel-"><a href="../../../../java/com/zuora/api/SaveResult.html">SaveResult</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/zuora/api/SessionHeader.html">SessionHeader</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/zuora/api/Subscribe.html">Subscribe</a></li>
+          <li class="api apilevel-"><a href="../../../../java/com/zuora/api/SubscribeInvoiceProcessingOptions.html">SubscribeInvoiceProcessingOptions</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/zuora/api/SubscribeOptions.html">SubscribeOptions</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/zuora/api/SubscribeRequest.html">SubscribeRequest</a></li>
           <li class="api apilevel-"><a href="../../../../java/com/zuora/api/SubscribeResponse.html">SubscribeResponse</a></li>
@@ -464,13 +467,6 @@ Summary:
      &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
        &lt;sequence>
          &lt;element name="Account" type="{http://object.api.zuora.com/}Account" minOccurs="0"/>
-         &lt;element name="AccountingRun" type="{http://object.api.zuora.com/}AccountingRun" minOccurs="0"/>
-         &lt;element name="AccountingRunInvoiceSummary" type="{http://object.api.zuora.com/}AccountingRunInvoiceSummary" minOccurs="0"/>
-         &lt;element name="AccountingRunAdjustmentSummary" type="{http://object.api.zuora.com/}AccountingRunAdjustmentSummary" minOccurs="0"/>
-         &lt;element name="AccountingRunPaymentSummary" type="{http://object.api.zuora.com/}AccountingRunPaymentSummary" minOccurs="0"/>
-         &lt;element name="InvoiceAccountingDetail" type="{http://object.api.zuora.com/}InvoiceAccountingDetail" minOccurs="0"/>
-         &lt;element name="AdjustmentAccountingDetail" type="{http://object.api.zuora.com/}AdjustmentAccountingDetail" minOccurs="0"/>
-         &lt;element name="PaymentAccountingDetail" type="{http://object.api.zuora.com/}PaymentAccountingDetail" minOccurs="0"/>
          &lt;element name="InvoiceAdjustment" type="{http://object.api.zuora.com/}InvoiceAdjustment" minOccurs="0"/>
          &lt;element name="Amendment" type="{http://object.api.zuora.com/}Amendment" minOccurs="0"/>
          &lt;element name="Invoice" type="{http://object.api.zuora.com/}Invoice" minOccurs="0"/>
@@ -484,13 +480,13 @@ Summary:
          &lt;element name="RatePlan" type="{http://object.api.zuora.com/}RatePlan" minOccurs="0"/>
          &lt;element name="RatePlanCharge" type="{http://object.api.zuora.com/}RatePlanCharge" minOccurs="0"/>
          &lt;element name="RatePlanChargeTier" type="{http://object.api.zuora.com/}RatePlanChargeTier" minOccurs="0"/>
-         &lt;element name="TaxationItem" type="{http://object.api.zuora.com/}TaxationItem" minOccurs="0"/>
          &lt;element name="Usage" type="{http://object.api.zuora.com/}Usage" minOccurs="0"/>
          &lt;element name="Refund" type="{http://object.api.zuora.com/}Refund" minOccurs="0"/>
          &lt;element name="RefundInvoicePayment" type="{http://object.api.zuora.com/}RefundInvoicePayment" minOccurs="0"/>
          &lt;element name="CreditBalanceAdjustment" type="{http://object.api.zuora.com/}CreditBalanceAdjustment" minOccurs="0"/>
          &lt;element name="Export" type="{http://object.api.zuora.com/}Export" minOccurs="0"/>
          &lt;element name="InvoiceItemAdjustment" type="{http://object.api.zuora.com/}InvoiceItemAdjustment" minOccurs="0"/>
+         &lt;element name="CommunicationProfile" type="{http://object.api.zuora.com/}CommunicationProfile" minOccurs="0"/>
        &lt;/sequence>
      &lt;/restriction>
    &lt;/complexContent>
@@ -580,63 +576,19 @@ Summary:
           protected
           
           
-          <a href="../../../../java/com/zuora/api/object/AccountingRun.html">AccountingRun</a></nobr></td>
-          <td class="jd-linkcol"><a href="../../../../com/zuora/api/DummyHeader.html#accountingRun">accountingRun</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          <a href="../../../../java/com/zuora/api/object/AccountingRunAdjustmentSummary.html">AccountingRunAdjustmentSummary</a></nobr></td>
-          <td class="jd-linkcol"><a href="../../../../com/zuora/api/DummyHeader.html#accountingRunAdjustmentSummary">accountingRunAdjustmentSummary</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          <a href="../../../../java/com/zuora/api/object/AccountingRunInvoiceSummary.html">AccountingRunInvoiceSummary</a></nobr></td>
-          <td class="jd-linkcol"><a href="../../../../com/zuora/api/DummyHeader.html#accountingRunInvoiceSummary">accountingRunInvoiceSummary</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          <a href="../../../../java/com/zuora/api/object/AccountingRunPaymentSummary.html">AccountingRunPaymentSummary</a></nobr></td>
-          <td class="jd-linkcol"><a href="../../../../com/zuora/api/DummyHeader.html#accountingRunPaymentSummary">accountingRunPaymentSummary</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          <a href="../../../../java/com/zuora/api/object/AdjustmentAccountingDetail.html">AdjustmentAccountingDetail</a></nobr></td>
-          <td class="jd-linkcol"><a href="../../../../com/zuora/api/DummyHeader.html#adjustmentAccountingDetail">adjustmentAccountingDetail</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
           <a href="../../../../java/com/zuora/api/object/Amendment.html">Amendment</a></nobr></td>
           <td class="jd-linkcol"><a href="../../../../com/zuora/api/DummyHeader.html#amendment">amendment</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          <a href="../../../../java/com/zuora/api/object/CommunicationProfile.html">CommunicationProfile</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../com/zuora/api/DummyHeader.html#communicationProfile">communicationProfile</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -679,24 +631,13 @@ Summary:
           protected
           
           
-          <a href="../../../../java/com/zuora/api/object/InvoiceAccountingDetail.html">InvoiceAccountingDetail</a></nobr></td>
-          <td class="jd-linkcol"><a href="../../../../com/zuora/api/DummyHeader.html#invoiceAccountingDetail">invoiceAccountingDetail</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
           <a href="../../../../java/com/zuora/api/object/InvoiceAdjustment.html">InvoiceAdjustment</a></nobr></td>
           <td class="jd-linkcol"><a href="../../../../com/zuora/api/DummyHeader.html#invoiceAdjustment">invoiceAdjustment</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
     
-      <tr class="alt-color api apilevel-" >
+      <tr class=" api apilevel-" >
           <td class="jd-typecol"><nobr>
           protected
           
@@ -707,7 +648,7 @@ Summary:
       </tr>
       
     
-      <tr class=" api apilevel-" >
+      <tr class="alt-color api apilevel-" >
           <td class="jd-typecol"><nobr>
           protected
           
@@ -718,7 +659,7 @@ Summary:
       </tr>
       
     
-      <tr class="alt-color api apilevel-" >
+      <tr class=" api apilevel-" >
           <td class="jd-typecol"><nobr>
           protected
           
@@ -729,24 +670,13 @@ Summary:
       </tr>
       
     
-      <tr class=" api apilevel-" >
+      <tr class="alt-color api apilevel-" >
           <td class="jd-typecol"><nobr>
           protected
           
           
           <a href="../../../../java/com/zuora/api/object/Payment.html">Payment</a></nobr></td>
           <td class="jd-linkcol"><a href="../../../../com/zuora/api/DummyHeader.html#payment">payment</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          <a href="../../../../java/com/zuora/api/object/PaymentAccountingDetail.html">PaymentAccountingDetail</a></nobr></td>
-          <td class="jd-linkcol"><a href="../../../../com/zuora/api/DummyHeader.html#paymentAccountingDetail">paymentAccountingDetail</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -851,17 +781,6 @@ Summary:
       
     
       <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          <a href="../../../../java/com/zuora/api/object/TaxationItem.html">TaxationItem</a></nobr></td>
-          <td class="jd-linkcol"><a href="../../../../com/zuora/api/DummyHeader.html#taxationItem">taxationItem</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
           <td class="jd-typecol"><nobr>
           protected
           
@@ -988,102 +907,30 @@ Summary:
             
             
             
-            <a href="../../../../java/com/zuora/api/object/AccountingRun.html">AccountingRun</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/zuora/api/DummyHeader.html#getAccountingRun()">getAccountingRun</a></span>()</nobr>
-        
-        <div class="jd-descrdiv">Gets the value of the accountingRun property.</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            <a href="../../../../java/com/zuora/api/object/AccountingRunAdjustmentSummary.html">AccountingRunAdjustmentSummary</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/zuora/api/DummyHeader.html#getAccountingRunAdjustmentSummary()">getAccountingRunAdjustmentSummary</a></span>()</nobr>
-        
-        <div class="jd-descrdiv">Gets the value of the accountingRunAdjustmentSummary property.</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            <a href="../../../../java/com/zuora/api/object/AccountingRunInvoiceSummary.html">AccountingRunInvoiceSummary</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/zuora/api/DummyHeader.html#getAccountingRunInvoiceSummary()">getAccountingRunInvoiceSummary</a></span>()</nobr>
-        
-        <div class="jd-descrdiv">Gets the value of the accountingRunInvoiceSummary property.</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            <a href="../../../../java/com/zuora/api/object/AccountingRunPaymentSummary.html">AccountingRunPaymentSummary</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/zuora/api/DummyHeader.html#getAccountingRunPaymentSummary()">getAccountingRunPaymentSummary</a></span>()</nobr>
-        
-        <div class="jd-descrdiv">Gets the value of the accountingRunPaymentSummary property.</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            <a href="../../../../java/com/zuora/api/object/AdjustmentAccountingDetail.html">AdjustmentAccountingDetail</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/zuora/api/DummyHeader.html#getAdjustmentAccountingDetail()">getAdjustmentAccountingDetail</a></span>()</nobr>
-        
-        <div class="jd-descrdiv">Gets the value of the adjustmentAccountingDetail property.</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
             <a href="../../../../java/com/zuora/api/object/Amendment.html">Amendment</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../com/zuora/api/DummyHeader.html#getAmendment()">getAmendment</a></span>()</nobr>
         
         <div class="jd-descrdiv">Gets the value of the amendment property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../java/com/zuora/api/object/CommunicationProfile.html">CommunicationProfile</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/DummyHeader.html#getCommunicationProfile()">getCommunicationProfile</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets the value of the communicationProfile property.</div>
   
   </td></tr>
 
@@ -1150,24 +997,6 @@ Summary:
             
             
             
-            <a href="../../../../java/com/zuora/api/object/InvoiceAccountingDetail.html">InvoiceAccountingDetail</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/zuora/api/DummyHeader.html#getInvoiceAccountingDetail()">getInvoiceAccountingDetail</a></span>()</nobr>
-        
-        <div class="jd-descrdiv">Gets the value of the invoiceAccountingDetail property.</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
             <a href="../../../../java/com/zuora/api/object/InvoiceAdjustment.html">InvoiceAdjustment</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
@@ -1179,7 +1008,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1197,7 +1026,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1215,7 +1044,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1233,7 +1062,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1246,24 +1075,6 @@ Summary:
         <span class="sympad"><a href="../../../../com/zuora/api/DummyHeader.html#getPayment()">getPayment</a></span>()</nobr>
         
         <div class="jd-descrdiv">Gets the value of the payment property.</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            <a href="../../../../java/com/zuora/api/object/PaymentAccountingDetail.html">PaymentAccountingDetail</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/zuora/api/DummyHeader.html#getPaymentAccountingDetail()">getPaymentAccountingDetail</a></span>()</nobr>
-        
-        <div class="jd-descrdiv">Gets the value of the paymentAccountingDetail property.</div>
   
   </td></tr>
 
@@ -1438,24 +1249,6 @@ Summary:
             
             
             
-            <a href="../../../../java/com/zuora/api/object/TaxationItem.html">TaxationItem</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/zuora/api/DummyHeader.html#getTaxationItem()">getTaxationItem</a></span>()</nobr>
-        
-        <div class="jd-descrdiv">Gets the value of the taxationItem property.</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
             <a href="../../../../java/com/zuora/api/object/Usage.html">Usage</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
@@ -1467,7 +1260,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1480,96 +1273,6 @@ Summary:
         <span class="sympad"><a href="../../../../com/zuora/api/DummyHeader.html#setAccount(com.zuora.api.object.Account)">setAccount</a></span>(<a href="../../../../java/com/zuora/api/object/Account.html">Account</a> value)</nobr>
         
         <div class="jd-descrdiv">Sets the value of the account property.</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/zuora/api/DummyHeader.html#setAccountingRun(com.zuora.api.object.AccountingRun)">setAccountingRun</a></span>(<a href="../../../../java/com/zuora/api/object/AccountingRun.html">AccountingRun</a> value)</nobr>
-        
-        <div class="jd-descrdiv">Sets the value of the accountingRun property.</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/zuora/api/DummyHeader.html#setAccountingRunAdjustmentSummary(com.zuora.api.object.AccountingRunAdjustmentSummary)">setAccountingRunAdjustmentSummary</a></span>(<a href="../../../../java/com/zuora/api/object/AccountingRunAdjustmentSummary.html">AccountingRunAdjustmentSummary</a> value)</nobr>
-        
-        <div class="jd-descrdiv">Sets the value of the accountingRunAdjustmentSummary property.</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/zuora/api/DummyHeader.html#setAccountingRunInvoiceSummary(com.zuora.api.object.AccountingRunInvoiceSummary)">setAccountingRunInvoiceSummary</a></span>(<a href="../../../../java/com/zuora/api/object/AccountingRunInvoiceSummary.html">AccountingRunInvoiceSummary</a> value)</nobr>
-        
-        <div class="jd-descrdiv">Sets the value of the accountingRunInvoiceSummary property.</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/zuora/api/DummyHeader.html#setAccountingRunPaymentSummary(com.zuora.api.object.AccountingRunPaymentSummary)">setAccountingRunPaymentSummary</a></span>(<a href="../../../../java/com/zuora/api/object/AccountingRunPaymentSummary.html">AccountingRunPaymentSummary</a> value)</nobr>
-        
-        <div class="jd-descrdiv">Sets the value of the accountingRunPaymentSummary property.</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/zuora/api/DummyHeader.html#setAdjustmentAccountingDetail(com.zuora.api.object.AdjustmentAccountingDetail)">setAdjustmentAccountingDetail</a></span>(<a href="../../../../java/com/zuora/api/object/AdjustmentAccountingDetail.html">AdjustmentAccountingDetail</a> value)</nobr>
-        
-        <div class="jd-descrdiv">Sets the value of the adjustmentAccountingDetail property.</div>
   
   </td></tr>
 
@@ -1603,6 +1306,24 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/zuora/api/DummyHeader.html#setCommunicationProfile(com.zuora.api.object.CommunicationProfile)">setCommunicationProfile</a></span>(<a href="../../../../java/com/zuora/api/object/CommunicationProfile.html">CommunicationProfile</a> value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the value of the communicationProfile property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../com/zuora/api/DummyHeader.html#setCreditBalanceAdjustment(com.zuora.api.object.CreditBalanceAdjustment)">setCreditBalanceAdjustment</a></span>(<a href="../../../../java/com/zuora/api/object/CreditBalanceAdjustment.html">CreditBalanceAdjustment</a> value)</nobr>
         
         <div class="jd-descrdiv">Sets the value of the creditBalanceAdjustment property.</div>
@@ -1611,7 +1332,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1629,7 +1350,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1642,24 +1363,6 @@ Summary:
         <span class="sympad"><a href="../../../../com/zuora/api/DummyHeader.html#setInvoice(com.zuora.api.object.Invoice)">setInvoice</a></span>(<a href="../../../../java/com/zuora/api/object/Invoice.html">Invoice</a> value)</nobr>
         
         <div class="jd-descrdiv">Sets the value of the invoice property.</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/zuora/api/DummyHeader.html#setInvoiceAccountingDetail(com.zuora.api.object.InvoiceAccountingDetail)">setInvoiceAccountingDetail</a></span>(<a href="../../../../java/com/zuora/api/object/InvoiceAccountingDetail.html">InvoiceAccountingDetail</a> value)</nobr>
-        
-        <div class="jd-descrdiv">Sets the value of the invoiceAccountingDetail property.</div>
   
   </td></tr>
 
@@ -1765,24 +1468,6 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/zuora/api/DummyHeader.html#setPaymentAccountingDetail(com.zuora.api.object.PaymentAccountingDetail)">setPaymentAccountingDetail</a></span>(<a href="../../../../java/com/zuora/api/object/PaymentAccountingDetail.html">PaymentAccountingDetail</a> value)</nobr>
-        
-        <div class="jd-descrdiv">Sets the value of the paymentAccountingDetail property.</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../com/zuora/api/DummyHeader.html#setProduct(com.zuora.api.object.Product)">setProduct</a></span>(<a href="../../../../java/com/zuora/api/object/Product.html">Product</a> value)</nobr>
         
         <div class="jd-descrdiv">Sets the value of the product property.</div>
@@ -1791,7 +1476,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1809,7 +1494,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1827,7 +1512,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1845,7 +1530,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1863,7 +1548,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1881,7 +1566,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1899,7 +1584,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1917,7 +1602,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1930,24 +1615,6 @@ Summary:
         <span class="sympad"><a href="../../../../com/zuora/api/DummyHeader.html#setRefundInvoicePayment(com.zuora.api.object.RefundInvoicePayment)">setRefundInvoicePayment</a></span>(<a href="../../../../java/com/zuora/api/object/RefundInvoicePayment.html">RefundInvoicePayment</a> value)</nobr>
         
         <div class="jd-descrdiv">Sets the value of the refundInvoicePayment property.</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/zuora/api/DummyHeader.html#setTaxationItem(com.zuora.api.object.TaxationItem)">setTaxationItem</a></span>(<a href="../../../../java/com/zuora/api/object/TaxationItem.html">TaxationItem</a> value)</nobr>
-        
-        <div class="jd-descrdiv">Sets the value of the taxationItem property.</div>
   
   </td></tr>
 
@@ -2495,156 +2162,6 @@ From class
 
 
 
-<A NAME="accountingRun"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        <a href="../../../../java/com/zuora/api/object/AccountingRun.html">AccountingRun</a>
-      </span>
-        accountingRun
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="accountingRunAdjustmentSummary"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        <a href="../../../../java/com/zuora/api/object/AccountingRunAdjustmentSummary.html">AccountingRunAdjustmentSummary</a>
-      </span>
-        accountingRunAdjustmentSummary
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="accountingRunInvoiceSummary"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        <a href="../../../../java/com/zuora/api/object/AccountingRunInvoiceSummary.html">AccountingRunInvoiceSummary</a>
-      </span>
-        accountingRunInvoiceSummary
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="accountingRunPaymentSummary"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        <a href="../../../../java/com/zuora/api/object/AccountingRunPaymentSummary.html">AccountingRunPaymentSummary</a>
-      </span>
-        accountingRunPaymentSummary
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="adjustmentAccountingDetail"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        <a href="../../../../java/com/zuora/api/object/AdjustmentAccountingDetail.html">AdjustmentAccountingDetail</a>
-      </span>
-        adjustmentAccountingDetail
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
 <A NAME="amendment"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -2656,6 +2173,36 @@ From class
         <a href="../../../../java/com/zuora/api/object/Amendment.html">Amendment</a>
       </span>
         amendment
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="communicationProfile"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+        <a href="../../../../java/com/zuora/api/object/CommunicationProfile.html">CommunicationProfile</a>
+      </span>
+        communicationProfile
     </h4>
       <div class="api-level">
         
@@ -2746,36 +2293,6 @@ From class
         <a href="../../../../java/com/zuora/api/object/Invoice.html">Invoice</a>
       </span>
         invoice
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="invoiceAccountingDetail"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        <a href="../../../../java/com/zuora/api/object/InvoiceAccountingDetail.html">InvoiceAccountingDetail</a>
-      </span>
-        invoiceAccountingDetail
     </h4>
       <div class="api-level">
         
@@ -2926,36 +2443,6 @@ From class
         <a href="../../../../java/com/zuora/api/object/Payment.html">Payment</a>
       </span>
         payment
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="paymentAccountingDetail"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        <a href="../../../../java/com/zuora/api/object/PaymentAccountingDetail.html">PaymentAccountingDetail</a>
-      </span>
-        paymentAccountingDetail
     </h4>
       <div class="api-level">
         
@@ -3245,36 +2732,6 @@ From class
 
 
 
-<A NAME="taxationItem"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        <a href="../../../../java/com/zuora/api/object/TaxationItem.html">TaxationItem</a>
-      </span>
-        taxationItem
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
 <A NAME="usage"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -3398,196 +2855,6 @@ From class
 </div>
 
 
-<A NAME="getAccountingRun()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../java/com/zuora/api/object/AccountingRun.html">AccountingRun</a>
-      </span>
-      <span class="sympad">getAccountingRun</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the accountingRun property.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>possible object is
-     <code><a href="../../../../java/com/zuora/api/object/AccountingRun.html">AccountingRun</a></code>
-     
-</li></ul>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="getAccountingRunAdjustmentSummary()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../java/com/zuora/api/object/AccountingRunAdjustmentSummary.html">AccountingRunAdjustmentSummary</a>
-      </span>
-      <span class="sympad">getAccountingRunAdjustmentSummary</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the accountingRunAdjustmentSummary property.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>possible object is
-     <code><a href="../../../../java/com/zuora/api/object/AccountingRunAdjustmentSummary.html">AccountingRunAdjustmentSummary</a></code>
-     
-</li></ul>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="getAccountingRunInvoiceSummary()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../java/com/zuora/api/object/AccountingRunInvoiceSummary.html">AccountingRunInvoiceSummary</a>
-      </span>
-      <span class="sympad">getAccountingRunInvoiceSummary</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the accountingRunInvoiceSummary property.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>possible object is
-     <code><a href="../../../../java/com/zuora/api/object/AccountingRunInvoiceSummary.html">AccountingRunInvoiceSummary</a></code>
-     
-</li></ul>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="getAccountingRunPaymentSummary()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../java/com/zuora/api/object/AccountingRunPaymentSummary.html">AccountingRunPaymentSummary</a>
-      </span>
-      <span class="sympad">getAccountingRunPaymentSummary</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the accountingRunPaymentSummary property.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>possible object is
-     <code><a href="../../../../java/com/zuora/api/object/AccountingRunPaymentSummary.html">AccountingRunPaymentSummary</a></code>
-     
-</li></ul>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="getAdjustmentAccountingDetail()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../java/com/zuora/api/object/AdjustmentAccountingDetail.html">AdjustmentAccountingDetail</a>
-      </span>
-      <span class="sympad">getAdjustmentAccountingDetail</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the adjustmentAccountingDetail property.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>possible object is
-     <code><a href="../../../../java/com/zuora/api/object/AdjustmentAccountingDetail.html">AdjustmentAccountingDetail</a></code>
-     
-</li></ul>
-  </div>
-
-    </div>
-</div>
-
-
 <A NAME="getAmendment()"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -3618,6 +2885,44 @@ From class
       <h5 class="jd-tagtitle">Returns</h5>
       <ul class="nolist"><li>possible object is
      <code><a href="../../../../java/com/zuora/api/object/Amendment.html">Amendment</a></code>
+     
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getCommunicationProfile()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../java/com/zuora/api/object/CommunicationProfile.html">CommunicationProfile</a>
+      </span>
+      <span class="sympad">getCommunicationProfile</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the communicationProfile property.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>possible object is
+     <code><a href="../../../../java/com/zuora/api/object/CommunicationProfile.html">CommunicationProfile</a></code>
      
 </li></ul>
   </div>
@@ -3732,44 +3037,6 @@ From class
       <h5 class="jd-tagtitle">Returns</h5>
       <ul class="nolist"><li>possible object is
      <code><a href="../../../../java/com/zuora/api/object/Invoice.html">Invoice</a></code>
-     
-</li></ul>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="getInvoiceAccountingDetail()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../java/com/zuora/api/object/InvoiceAccountingDetail.html">InvoiceAccountingDetail</a>
-      </span>
-      <span class="sympad">getInvoiceAccountingDetail</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the invoiceAccountingDetail property.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>possible object is
-     <code><a href="../../../../java/com/zuora/api/object/InvoiceAccountingDetail.html">InvoiceAccountingDetail</a></code>
      
 </li></ul>
   </div>
@@ -3960,44 +3227,6 @@ From class
       <h5 class="jd-tagtitle">Returns</h5>
       <ul class="nolist"><li>possible object is
      <code><a href="../../../../java/com/zuora/api/object/Payment.html">Payment</a></code>
-     
-</li></ul>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="getPaymentAccountingDetail()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../java/com/zuora/api/object/PaymentAccountingDetail.html">PaymentAccountingDetail</a>
-      </span>
-      <span class="sympad">getPaymentAccountingDetail</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the paymentAccountingDetail property.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>possible object is
-     <code><a href="../../../../java/com/zuora/api/object/PaymentAccountingDetail.html">PaymentAccountingDetail</a></code>
      
 </li></ul>
   </div>
@@ -4348,44 +3577,6 @@ From class
 </div>
 
 
-<A NAME="getTaxationItem()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../java/com/zuora/api/object/TaxationItem.html">TaxationItem</a>
-      </span>
-      <span class="sympad">getTaxationItem</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the taxationItem property.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>possible object is
-     <code><a href="../../../../java/com/zuora/api/object/TaxationItem.html">TaxationItem</a></code>
-     
-</li></ul>
-  </div>
-
-    </div>
-</div>
-
-
 <A NAME="getUsage()"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -4467,221 +3658,6 @@ From class
 </div>
 
 
-<A NAME="setAccountingRun(com.zuora.api.object.AccountingRun)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setAccountingRun</span>
-      <span class="normal">(<a href="../../../../java/com/zuora/api/object/AccountingRun.html">AccountingRun</a> value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the accountingRun property.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Allowed object is
-     <code><a href="../../../../java/com/zuora/api/object/AccountingRun.html">AccountingRun</a></code>
-     
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setAccountingRunAdjustmentSummary(com.zuora.api.object.AccountingRunAdjustmentSummary)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setAccountingRunAdjustmentSummary</span>
-      <span class="normal">(<a href="../../../../java/com/zuora/api/object/AccountingRunAdjustmentSummary.html">AccountingRunAdjustmentSummary</a> value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the accountingRunAdjustmentSummary property.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Allowed object is
-     <code><a href="../../../../java/com/zuora/api/object/AccountingRunAdjustmentSummary.html">AccountingRunAdjustmentSummary</a></code>
-     
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setAccountingRunInvoiceSummary(com.zuora.api.object.AccountingRunInvoiceSummary)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setAccountingRunInvoiceSummary</span>
-      <span class="normal">(<a href="../../../../java/com/zuora/api/object/AccountingRunInvoiceSummary.html">AccountingRunInvoiceSummary</a> value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the accountingRunInvoiceSummary property.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Allowed object is
-     <code><a href="../../../../java/com/zuora/api/object/AccountingRunInvoiceSummary.html">AccountingRunInvoiceSummary</a></code>
-     
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setAccountingRunPaymentSummary(com.zuora.api.object.AccountingRunPaymentSummary)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setAccountingRunPaymentSummary</span>
-      <span class="normal">(<a href="../../../../java/com/zuora/api/object/AccountingRunPaymentSummary.html">AccountingRunPaymentSummary</a> value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the accountingRunPaymentSummary property.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Allowed object is
-     <code><a href="../../../../java/com/zuora/api/object/AccountingRunPaymentSummary.html">AccountingRunPaymentSummary</a></code>
-     
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setAdjustmentAccountingDetail(com.zuora.api.object.AdjustmentAccountingDetail)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setAdjustmentAccountingDetail</span>
-      <span class="normal">(<a href="../../../../java/com/zuora/api/object/AdjustmentAccountingDetail.html">AdjustmentAccountingDetail</a> value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the adjustmentAccountingDetail property.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Allowed object is
-     <code><a href="../../../../java/com/zuora/api/object/AdjustmentAccountingDetail.html">AdjustmentAccountingDetail</a></code>
-     
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
 <A NAME="setAmendment(com.zuora.api.object.Amendment)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -4715,6 +3691,49 @@ From class
           <th>value</td>
           <td>Allowed object is
      <code><a href="../../../../java/com/zuora/api/object/Amendment.html">Amendment</a></code>
+     
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setCommunicationProfile(com.zuora.api.object.CommunicationProfile)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setCommunicationProfile</span>
+      <span class="normal">(<a href="../../../../java/com/zuora/api/object/CommunicationProfile.html">CommunicationProfile</a> value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the communicationProfile property.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>Allowed object is
+     <code><a href="../../../../java/com/zuora/api/object/CommunicationProfile.html">CommunicationProfile</a></code>
      
 </td>
         </tr>
@@ -4844,49 +3863,6 @@ From class
           <th>value</td>
           <td>Allowed object is
      <code><a href="../../../../java/com/zuora/api/object/Invoice.html">Invoice</a></code>
-     
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setInvoiceAccountingDetail(com.zuora.api.object.InvoiceAccountingDetail)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setInvoiceAccountingDetail</span>
-      <span class="normal">(<a href="../../../../java/com/zuora/api/object/InvoiceAccountingDetail.html">InvoiceAccountingDetail</a> value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the invoiceAccountingDetail property.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Allowed object is
-     <code><a href="../../../../java/com/zuora/api/object/InvoiceAccountingDetail.html">InvoiceAccountingDetail</a></code>
      
 </td>
         </tr>
@@ -5102,49 +4078,6 @@ From class
           <th>value</td>
           <td>Allowed object is
      <code><a href="../../../../java/com/zuora/api/object/Payment.html">Payment</a></code>
-     
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setPaymentAccountingDetail(com.zuora.api.object.PaymentAccountingDetail)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setPaymentAccountingDetail</span>
-      <span class="normal">(<a href="../../../../java/com/zuora/api/object/PaymentAccountingDetail.html">PaymentAccountingDetail</a> value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the paymentAccountingDetail property.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Allowed object is
-     <code><a href="../../../../java/com/zuora/api/object/PaymentAccountingDetail.html">PaymentAccountingDetail</a></code>
      
 </td>
         </tr>
@@ -5532,49 +4465,6 @@ From class
           <th>value</td>
           <td>Allowed object is
      <code><a href="../../../../java/com/zuora/api/object/RefundInvoicePayment.html">RefundInvoicePayment</a></code>
-     
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setTaxationItem(com.zuora.api.object.TaxationItem)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setTaxationItem</span>
-      <span class="normal">(<a href="../../../../java/com/zuora/api/object/TaxationItem.html">TaxationItem</a> value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the taxationItem property.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Allowed object is
-     <code><a href="../../../../java/com/zuora/api/object/TaxationItem.html">TaxationItem</a></code>
      
 </td>
         </tr>

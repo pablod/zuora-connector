@@ -208,10 +208,12 @@
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/AccountingRunPaymentSummary.html">AccountingRunPaymentSummary</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/AdjustmentAccountingDetail.html">AdjustmentAccountingDetail</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/Amendment.html">Amendment</a></li>
+          <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/CommunicationProfile.html">CommunicationProfile</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/Contact.html">Contact</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/CreditBalanceAdjustment.html">CreditBalanceAdjustment</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/Dynamic.html">Dynamic</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/Export.html">Export</a></li>
+          <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/GatewayOption.html">GatewayOption</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/Invoice.html">Invoice</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/InvoiceAccountingDetail.html">InvoiceAccountingDetail</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/InvoiceAdjustment.html">InvoiceAdjustment</a></li>
@@ -222,6 +224,7 @@
           <li class="selected api apilevel-"><a href="../../../../../java/com/zuora/api/object/Payment.html">Payment</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/PaymentAccountingDetail.html">PaymentAccountingDetail</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/PaymentMethod.html">PaymentMethod</a></li>
+          <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/PaymentTransactionLog.html">PaymentTransactionLog</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/Product.html">Product</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/ProductRatePlan.html">ProductRatePlan</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/ProductRatePlanCharge.html">ProductRatePlanCharge</a></li>
@@ -231,6 +234,7 @@
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/RatePlanChargeTier.html">RatePlanChargeTier</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/Refund.html">Refund</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/RefundInvoicePayment.html">RefundInvoicePayment</a></li>
+          <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/RefundTransactionLog.html">RefundTransactionLog</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/Subscription.html">Subscription</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/TaxationItem.html">TaxationItem</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/Usage.html">Usage</a></li>
@@ -470,23 +474,27 @@ Summary:
          &lt;element name="AppliedInvoiceAmount" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
          &lt;element name="AuthTransactionId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
          &lt;element name="BankIdentificationNumber" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+         &lt;element name="CancelledOn" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
          &lt;element name="Comment" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
          &lt;element name="CreatedById" type="{http://api.zuora.com/}ID" minOccurs="0"/>
          &lt;element name="CreatedDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
          &lt;element name="EffectiveDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+         &lt;element name="GatewayOptionData" type="{http://api.zuora.com/}GatewayOptionData" minOccurs="0"/>
          &lt;element name="GatewayOrderId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
          &lt;element name="GatewayResponse" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
          &lt;element name="GatewayResponseCode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+         &lt;element name="GatewayState" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
          &lt;element name="InvoiceId" type="{http://api.zuora.com/}ID" minOccurs="0"/>
          &lt;element name="InvoiceNumber" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+         &lt;element name="MarkedForSubmissionOn" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
          &lt;element name="PaymentMethodId" type="{http://api.zuora.com/}ID" minOccurs="0"/>
          &lt;element name="PaymentNumber" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
          &lt;element name="ReferenceId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
          &lt;element name="RefundAmount" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
          &lt;element name="SecondPaymentReferenceId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
-         &lt;element name="SoftDescriptor" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
-         &lt;element name="SoftDescriptorPhone" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+         &lt;element name="SettledOn" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
          &lt;element name="Status" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+         &lt;element name="SubmittedOn" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
          &lt;element name="TransferredToAccounting" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
          &lt;element name="Type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
          &lt;element name="UpdatedById" type="{http://api.zuora.com/}ID" minOccurs="0"/>
@@ -691,13 +699,24 @@ Summary:
           protected
           
           
+          XMLGregorianCalendar</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../com/zuora/api/object/Payment.html#cancelledOn">cancelledOn</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
           String</nobr></td>
           <td class="jd-linkcol"><a href="../../../../../com/zuora/api/object/Payment.html#comment">comment</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
     
-      <tr class="alt-color api apilevel-" >
+      <tr class=" api apilevel-" >
           <td class="jd-typecol"><nobr>
           protected
           
@@ -708,7 +727,7 @@ Summary:
       </tr>
       
     
-      <tr class=" api apilevel-" >
+      <tr class="alt-color api apilevel-" >
           <td class="jd-typecol"><nobr>
           protected
           
@@ -719,13 +738,24 @@ Summary:
       </tr>
       
     
-      <tr class="alt-color api apilevel-" >
+      <tr class=" api apilevel-" >
           <td class="jd-typecol"><nobr>
           protected
           
           
           XMLGregorianCalendar</nobr></td>
           <td class="jd-linkcol"><a href="../../../../../com/zuora/api/object/Payment.html#effectiveDate">effectiveDate</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          <a href="../../../../../java/com/zuora/api/GatewayOptionData.html">GatewayOptionData</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../com/zuora/api/object/Payment.html#gatewayOptionData">gatewayOptionData</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -769,7 +799,7 @@ Summary:
           
           
           String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../com/zuora/api/object/Payment.html#invoiceId">invoiceId</a></td>
+          <td class="jd-linkcol"><a href="../../../../../com/zuora/api/object/Payment.html#gatewayState">gatewayState</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -780,7 +810,29 @@ Summary:
           
           
           String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../com/zuora/api/object/Payment.html#invoiceId">invoiceId</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          String</nobr></td>
           <td class="jd-linkcol"><a href="../../../../../com/zuora/api/object/Payment.html#invoiceNumber">invoiceNumber</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          XMLGregorianCalendar</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../com/zuora/api/object/Payment.html#markedForSubmissionOn">markedForSubmissionOn</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -845,8 +897,8 @@ Summary:
           protected
           
           
-          String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../com/zuora/api/object/Payment.html#softDescriptor">softDescriptor</a></td>
+          XMLGregorianCalendar</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../com/zuora/api/object/Payment.html#settledOn">settledOn</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -857,7 +909,7 @@ Summary:
           
           
           String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../com/zuora/api/object/Payment.html#softDescriptorPhone">softDescriptorPhone</a></td>
+          <td class="jd-linkcol"><a href="../../../../../com/zuora/api/object/Payment.html#status">status</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -867,8 +919,8 @@ Summary:
           protected
           
           
-          String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../com/zuora/api/object/Payment.html#status">status</a></td>
+          XMLGregorianCalendar</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../com/zuora/api/object/Payment.html#submittedOn">submittedOn</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -1198,6 +1250,24 @@ Summary:
             
             
             
+            XMLGregorianCalendar</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/zuora/api/object/Payment.html#getCancelledOn()">getCancelledOn</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets the value of the cancelledOn property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
@@ -1209,7 +1279,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1227,7 +1297,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1245,7 +1315,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1258,6 +1328,24 @@ Summary:
         <span class="sympad"><a href="../../../../../com/zuora/api/object/Payment.html#getEffectiveDate()">getEffectiveDate</a></span>()</nobr>
         
         <div class="jd-descrdiv">Gets the value of the effectiveDate property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../java/com/zuora/api/GatewayOptionData.html">GatewayOptionData</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/zuora/api/object/Payment.html#getGatewayOptionData()">getGatewayOptionData</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets the value of the gatewayOptionData property.</div>
   
   </td></tr>
 
@@ -1327,9 +1415,9 @@ Summary:
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/zuora/api/object/Payment.html#getInvoiceId()">getInvoiceId</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../com/zuora/api/object/Payment.html#getGatewayState()">getGatewayState</a></span>()</nobr>
         
-        <div class="jd-descrdiv">Gets the value of the invoiceId property.</div>
+        <div class="jd-descrdiv">Gets the value of the gatewayState property.</div>
   
   </td></tr>
 
@@ -1345,9 +1433,45 @@ Summary:
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/zuora/api/object/Payment.html#getInvoiceId()">getInvoiceId</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets the value of the invoiceId property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../com/zuora/api/object/Payment.html#getInvoiceNumber()">getInvoiceNumber</a></span>()</nobr>
         
         <div class="jd-descrdiv">Gets the value of the invoiceNumber property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            XMLGregorianCalendar</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/zuora/api/object/Payment.html#getMarkedForSubmissionOn()">getMarkedForSubmissionOn</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets the value of the markedForSubmissionOn property.</div>
   
   </td></tr>
 
@@ -1450,12 +1574,12 @@ Summary:
             
             
             
-            String</nobr>
+            XMLGregorianCalendar</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/zuora/api/object/Payment.html#getSoftDescriptor()">getSoftDescriptor</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../com/zuora/api/object/Payment.html#getSettledOn()">getSettledOn</a></span>()</nobr>
         
-        <div class="jd-descrdiv">Gets the value of the softDescriptor property.</div>
+        <div class="jd-descrdiv">Gets the value of the settledOn property.</div>
   
   </td></tr>
 
@@ -1471,9 +1595,9 @@ Summary:
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/zuora/api/object/Payment.html#getSoftDescriptorPhone()">getSoftDescriptorPhone</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../com/zuora/api/object/Payment.html#getStatus()">getStatus</a></span>()</nobr>
         
-        <div class="jd-descrdiv">Gets the value of the softDescriptorPhone property.</div>
+        <div class="jd-descrdiv">Gets the value of the status property.</div>
   
   </td></tr>
 
@@ -1486,12 +1610,12 @@ Summary:
             
             
             
-            String</nobr>
+            XMLGregorianCalendar</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/zuora/api/object/Payment.html#getStatus()">getStatus</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../com/zuora/api/object/Payment.html#getSubmittedOn()">getSubmittedOn</a></span>()</nobr>
         
-        <div class="jd-descrdiv">Gets the value of the status property.</div>
+        <div class="jd-descrdiv">Gets the value of the submittedOn property.</div>
   
   </td></tr>
 
@@ -1705,6 +1829,24 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/zuora/api/object/Payment.html#setCancelledOn(javax.xml.datatype.XMLGregorianCalendar)">setCancelledOn</a></span>(XMLGregorianCalendar value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the value of the cancelledOn property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../com/zuora/api/object/Payment.html#setComment(java.lang.String)">setComment</a></span>(String value)</nobr>
         
         <div class="jd-descrdiv">Sets the value of the comment property.</div>
@@ -1713,7 +1855,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1731,7 +1873,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1749,7 +1891,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1762,6 +1904,24 @@ Summary:
         <span class="sympad"><a href="../../../../../com/zuora/api/object/Payment.html#setEffectiveDate(javax.xml.datatype.XMLGregorianCalendar)">setEffectiveDate</a></span>(XMLGregorianCalendar value)</nobr>
         
         <div class="jd-descrdiv">Sets the value of the effectiveDate property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/zuora/api/object/Payment.html#setGatewayOptionData(com.zuora.api.GatewayOptionData)">setGatewayOptionData</a></span>(<a href="../../../../../java/com/zuora/api/GatewayOptionData.html">GatewayOptionData</a> value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the value of the gatewayOptionData property.</div>
   
   </td></tr>
 
@@ -1831,9 +1991,9 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/zuora/api/object/Payment.html#setInvoiceId(java.lang.String)">setInvoiceId</a></span>(String value)</nobr>
+        <span class="sympad"><a href="../../../../../com/zuora/api/object/Payment.html#setGatewayState(java.lang.String)">setGatewayState</a></span>(String value)</nobr>
         
-        <div class="jd-descrdiv">Sets the value of the invoiceId property.</div>
+        <div class="jd-descrdiv">Sets the value of the gatewayState property.</div>
   
   </td></tr>
 
@@ -1849,9 +2009,45 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/zuora/api/object/Payment.html#setInvoiceId(java.lang.String)">setInvoiceId</a></span>(String value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the value of the invoiceId property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../com/zuora/api/object/Payment.html#setInvoiceNumber(java.lang.String)">setInvoiceNumber</a></span>(String value)</nobr>
         
         <div class="jd-descrdiv">Sets the value of the invoiceNumber property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/zuora/api/object/Payment.html#setMarkedForSubmissionOn(javax.xml.datatype.XMLGregorianCalendar)">setMarkedForSubmissionOn</a></span>(XMLGregorianCalendar value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the value of the markedForSubmissionOn property.</div>
   
   </td></tr>
 
@@ -1957,9 +2153,9 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/zuora/api/object/Payment.html#setSoftDescriptor(java.lang.String)">setSoftDescriptor</a></span>(String value)</nobr>
+        <span class="sympad"><a href="../../../../../com/zuora/api/object/Payment.html#setSettledOn(javax.xml.datatype.XMLGregorianCalendar)">setSettledOn</a></span>(XMLGregorianCalendar value)</nobr>
         
-        <div class="jd-descrdiv">Sets the value of the softDescriptor property.</div>
+        <div class="jd-descrdiv">Sets the value of the settledOn property.</div>
   
   </td></tr>
 
@@ -1975,9 +2171,9 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/zuora/api/object/Payment.html#setSoftDescriptorPhone(java.lang.String)">setSoftDescriptorPhone</a></span>(String value)</nobr>
+        <span class="sympad"><a href="../../../../../com/zuora/api/object/Payment.html#setStatus(java.lang.String)">setStatus</a></span>(String value)</nobr>
         
-        <div class="jd-descrdiv">Sets the value of the softDescriptorPhone property.</div>
+        <div class="jd-descrdiv">Sets the value of the status property.</div>
   
   </td></tr>
 
@@ -1993,9 +2189,9 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/zuora/api/object/Payment.html#setStatus(java.lang.String)">setStatus</a></span>(String value)</nobr>
+        <span class="sympad"><a href="../../../../../com/zuora/api/object/Payment.html#setSubmittedOn(javax.xml.datatype.XMLGregorianCalendar)">setSubmittedOn</a></span>(XMLGregorianCalendar value)</nobr>
         
-        <div class="jd-descrdiv">Sets the value of the status property.</div>
+        <div class="jd-descrdiv">Sets the value of the submittedOn property.</div>
   
   </td></tr>
 
@@ -2875,6 +3071,36 @@ From class
 
 
 
+<A NAME="cancelledOn"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+        XMLGregorianCalendar
+      </span>
+        cancelledOn
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
 <A NAME="comment"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -2995,6 +3221,36 @@ From class
 
 
 
+<A NAME="gatewayOptionData"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+        <a href="../../../../../java/com/zuora/api/GatewayOptionData.html">GatewayOptionData</a>
+      </span>
+        gatewayOptionData
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
 <A NAME="gatewayOrderId"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -3085,6 +3341,36 @@ From class
 
 
 
+<A NAME="gatewayState"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+        String
+      </span>
+        gatewayState
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
 <A NAME="invoiceId"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -3126,6 +3412,36 @@ From class
         String
       </span>
         invoiceNumber
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="markedForSubmissionOn"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+        XMLGregorianCalendar
+      </span>
+        markedForSubmissionOn
     </h4>
       <div class="api-level">
         
@@ -3295,7 +3611,7 @@ From class
 
 
 
-<A NAME="softDescriptor"></A>
+<A NAME="settledOn"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -3303,39 +3619,9 @@ From class
         protected 
          
          
-        String
+        XMLGregorianCalendar
       </span>
-        softDescriptor
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="softDescriptorPhone"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        String
-      </span>
-        softDescriptorPhone
+        settledOn
     </h4>
       <div class="api-level">
         
@@ -3366,6 +3652,36 @@ From class
         String
       </span>
         status
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="submittedOn"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+        XMLGregorianCalendar
+      </span>
+        submittedOn
     </h4>
       <div class="api-level">
         
@@ -3826,6 +4142,44 @@ From class
 </div>
 
 
+<A NAME="getCancelledOn()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        XMLGregorianCalendar
+      </span>
+      <span class="sympad">getCancelledOn</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the cancelledOn property.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>possible object is
+     XMLGregorianCalendar
+     
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
 <A NAME="getComment()"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -3978,6 +4332,44 @@ From class
 </div>
 
 
+<A NAME="getGatewayOptionData()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../../java/com/zuora/api/GatewayOptionData.html">GatewayOptionData</a>
+      </span>
+      <span class="sympad">getGatewayOptionData</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the gatewayOptionData property.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>possible object is
+     <code><a href="../../../../../java/com/zuora/api/GatewayOptionData.html">GatewayOptionData</a></code>
+     
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
 <A NAME="getGatewayOrderId()"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -4092,6 +4484,44 @@ From class
 </div>
 
 
+<A NAME="getGatewayState()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        String
+      </span>
+      <span class="sympad">getGatewayState</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the gatewayState property.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>possible object is
+     String
+     
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
 <A NAME="getInvoiceId()"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -4160,6 +4590,44 @@ From class
       <h5 class="jd-tagtitle">Returns</h5>
       <ul class="nolist"><li>possible object is
      String
+     
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getMarkedForSubmissionOn()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        XMLGregorianCalendar
+      </span>
+      <span class="sympad">getMarkedForSubmissionOn</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the markedForSubmissionOn property.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>possible object is
+     XMLGregorianCalendar
      
 </li></ul>
   </div>
@@ -4358,7 +4826,7 @@ From class
 </div>
 
 
-<A NAME="getSoftDescriptor()"></A>
+<A NAME="getSettledOn()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -4368,9 +4836,9 @@ From class
          
          
          
-        String
+        XMLGregorianCalendar
       </span>
-      <span class="sympad">getSoftDescriptor</span>
+      <span class="sympad">getSettledOn</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -4383,49 +4851,11 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the softDescriptor property.</p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the settledOn property.</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Returns</h5>
       <ul class="nolist"><li>possible object is
-     String
-     
-</li></ul>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="getSoftDescriptorPhone()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        String
-      </span>
-      <span class="sympad">getSoftDescriptorPhone</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the softDescriptorPhone property.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>possible object is
-     String
+     XMLGregorianCalendar
      
 </li></ul>
   </div>
@@ -4464,6 +4894,44 @@ From class
       <h5 class="jd-tagtitle">Returns</h5>
       <ul class="nolist"><li>possible object is
      String
+     
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getSubmittedOn()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        XMLGregorianCalendar
+      </span>
+      <span class="sympad">getSubmittedOn</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the submittedOn property.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>possible object is
+     XMLGregorianCalendar
      
 </li></ul>
   </div>
@@ -4925,6 +5393,49 @@ From class
 </div>
 
 
+<A NAME="setCancelledOn(javax.xml.datatype.XMLGregorianCalendar)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setCancelledOn</span>
+      <span class="normal">(XMLGregorianCalendar value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the cancelledOn property.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>Allowed object is
+     XMLGregorianCalendar
+     
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
 <A NAME="setComment(java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -5097,6 +5608,49 @@ From class
 </div>
 
 
+<A NAME="setGatewayOptionData(com.zuora.api.GatewayOptionData)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setGatewayOptionData</span>
+      <span class="normal">(<a href="../../../../../java/com/zuora/api/GatewayOptionData.html">GatewayOptionData</a> value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the gatewayOptionData property.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>Allowed object is
+     <code><a href="../../../../../java/com/zuora/api/GatewayOptionData.html">GatewayOptionData</a></code>
+     
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
 <A NAME="setGatewayOrderId(java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -5226,6 +5780,49 @@ From class
 </div>
 
 
+<A NAME="setGatewayState(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setGatewayState</span>
+      <span class="normal">(String value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the gatewayState property.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>Allowed object is
+     String
+     
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
 <A NAME="setInvoiceId(java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -5302,6 +5899,49 @@ From class
           <th>value</td>
           <td>Allowed object is
      String
+     
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setMarkedForSubmissionOn(javax.xml.datatype.XMLGregorianCalendar)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setMarkedForSubmissionOn</span>
+      <span class="normal">(XMLGregorianCalendar value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the markedForSubmissionOn property.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>Allowed object is
+     XMLGregorianCalendar
      
 </td>
         </tr>
@@ -5527,7 +6167,7 @@ From class
 </div>
 
 
-<A NAME="setSoftDescriptor(java.lang.String)"></A>
+<A NAME="setSettledOn(javax.xml.datatype.XMLGregorianCalendar)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -5539,8 +6179,8 @@ From class
          
         void
       </span>
-      <span class="sympad">setSoftDescriptor</span>
-      <span class="normal">(String value)</span>
+      <span class="sympad">setSettledOn</span>
+      <span class="normal">(XMLGregorianCalendar value)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -5552,57 +6192,14 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the softDescriptor property.</p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the settledOn property.</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
           <th>value</td>
           <td>Allowed object is
-     String
-     
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setSoftDescriptorPhone(java.lang.String)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setSoftDescriptorPhone</span>
-      <span class="normal">(String value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the softDescriptorPhone property.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Allowed object is
-     String
+     XMLGregorianCalendar
      
 </td>
         </tr>
@@ -5646,6 +6243,49 @@ From class
           <th>value</td>
           <td>Allowed object is
      String
+     
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setSubmittedOn(javax.xml.datatype.XMLGregorianCalendar)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setSubmittedOn</span>
+      <span class="normal">(XMLGregorianCalendar value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the submittedOn property.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>Allowed object is
+     XMLGregorianCalendar
      
 </td>
         </tr>

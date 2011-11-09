@@ -208,10 +208,12 @@
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/AccountingRunPaymentSummary.html">AccountingRunPaymentSummary</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/AdjustmentAccountingDetail.html">AdjustmentAccountingDetail</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/Amendment.html">Amendment</a></li>
+          <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/CommunicationProfile.html">CommunicationProfile</a></li>
           <li class="selected api apilevel-"><a href="../../../../../java/com/zuora/api/object/Contact.html">Contact</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/CreditBalanceAdjustment.html">CreditBalanceAdjustment</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/Dynamic.html">Dynamic</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/Export.html">Export</a></li>
+          <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/GatewayOption.html">GatewayOption</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/Invoice.html">Invoice</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/InvoiceAccountingDetail.html">InvoiceAccountingDetail</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/InvoiceAdjustment.html">InvoiceAdjustment</a></li>
@@ -222,6 +224,7 @@
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/Payment.html">Payment</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/PaymentAccountingDetail.html">PaymentAccountingDetail</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/PaymentMethod.html">PaymentMethod</a></li>
+          <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/PaymentTransactionLog.html">PaymentTransactionLog</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/Product.html">Product</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/ProductRatePlan.html">ProductRatePlan</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/ProductRatePlanCharge.html">ProductRatePlanCharge</a></li>
@@ -231,6 +234,7 @@
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/RatePlanChargeTier.html">RatePlanChargeTier</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/Refund.html">Refund</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/RefundInvoicePayment.html">RefundInvoicePayment</a></li>
+          <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/RefundTransactionLog.html">RefundTransactionLog</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/Subscription.html">Subscription</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/TaxationItem.html">TaxationItem</a></li>
           <li class="api apilevel-"><a href="../../../../../java/com/zuora/api/object/Usage.html">Usage</a></li>
@@ -468,10 +472,8 @@ Summary:
          &lt;element name="Address2" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
          &lt;element name="City" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
          &lt;element name="Country" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
-         &lt;element name="County" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
          &lt;element name="CreatedById" type="{http://api.zuora.com/}ID" minOccurs="0"/>
          &lt;element name="CreatedDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
-         &lt;element name="Description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
          &lt;element name="Fax" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
          &lt;element name="FirstName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
          &lt;element name="HomePhone" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -483,7 +485,6 @@ Summary:
          &lt;element name="PersonalEmail" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
          &lt;element name="PostalCode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
          &lt;element name="State" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
-         &lt;element name="TaxRegion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
          &lt;element name="UpdatedById" type="{http://api.zuora.com/}ID" minOccurs="0"/>
          &lt;element name="UpdatedDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
          &lt;element name="WorkEmail" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -667,40 +668,18 @@ Summary:
           
           
           String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../com/zuora/api/object/Contact.html#county">county</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          String</nobr></td>
           <td class="jd-linkcol"><a href="../../../../../com/zuora/api/object/Contact.html#createdById">createdById</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
     
-      <tr class=" api apilevel-" >
+      <tr class="alt-color api apilevel-" >
           <td class="jd-typecol"><nobr>
           protected
           
           
           XMLGregorianCalendar</nobr></td>
           <td class="jd-linkcol"><a href="../../../../../com/zuora/api/object/Contact.html#createdDate">createdDate</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../com/zuora/api/object/Contact.html#description">description</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -832,23 +811,12 @@ Summary:
           
           
           String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../com/zuora/api/object/Contact.html#taxRegion">taxRegion</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          String</nobr></td>
           <td class="jd-linkcol"><a href="../../../../../com/zuora/api/object/Contact.html#updatedById">updatedById</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
     
-      <tr class="alt-color api apilevel-" >
+      <tr class=" api apilevel-" >
           <td class="jd-typecol"><nobr>
           protected
           
@@ -859,7 +827,7 @@ Summary:
       </tr>
       
     
-      <tr class=" api apilevel-" >
+      <tr class="alt-color api apilevel-" >
           <td class="jd-typecol"><nobr>
           protected
           
@@ -870,7 +838,7 @@ Summary:
       </tr>
       
     
-      <tr class="alt-color api apilevel-" >
+      <tr class=" api apilevel-" >
           <td class="jd-typecol"><nobr>
           protected
           
@@ -1129,24 +1097,6 @@ Summary:
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/zuora/api/object/Contact.html#getCounty()">getCounty</a></span>()</nobr>
-        
-        <div class="jd-descrdiv">Gets the value of the county property.</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            String</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../com/zuora/api/object/Contact.html#getCreatedById()">getCreatedById</a></span>()</nobr>
         
         <div class="jd-descrdiv">Gets the value of the createdById property.</div>
@@ -1155,7 +1105,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1168,24 +1118,6 @@ Summary:
         <span class="sympad"><a href="../../../../../com/zuora/api/object/Contact.html#getCreatedDate()">getCreatedDate</a></span>()</nobr>
         
         <div class="jd-descrdiv">Gets the value of the createdDate property.</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            String</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/zuora/api/object/Contact.html#getDescription()">getDescription</a></span>()</nobr>
-        
-        <div class="jd-descrdiv">Gets the value of the description property.</div>
   
   </td></tr>
 
@@ -1399,24 +1331,6 @@ Summary:
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/zuora/api/object/Contact.html#getTaxRegion()">getTaxRegion</a></span>()</nobr>
-        
-        <div class="jd-descrdiv">Gets the value of the taxRegion property.</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            String</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../com/zuora/api/object/Contact.html#getUpdatedById()">getUpdatedById</a></span>()</nobr>
         
         <div class="jd-descrdiv">Gets the value of the updatedById property.</div>
@@ -1425,7 +1339,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1443,7 +1357,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1461,7 +1375,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1479,7 +1393,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1497,7 +1411,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1515,7 +1429,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1533,7 +1447,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1551,7 +1465,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1564,24 +1478,6 @@ Summary:
         <span class="sympad"><a href="../../../../../com/zuora/api/object/Contact.html#setCountry(java.lang.String)">setCountry</a></span>(String value)</nobr>
         
         <div class="jd-descrdiv">Sets the value of the country property.</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/zuora/api/object/Contact.html#setCounty(java.lang.String)">setCounty</a></span>(String value)</nobr>
-        
-        <div class="jd-descrdiv">Sets the value of the county property.</div>
   
   </td></tr>
 
@@ -1633,24 +1529,6 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/zuora/api/object/Contact.html#setDescription(java.lang.String)">setDescription</a></span>(String value)</nobr>
-        
-        <div class="jd-descrdiv">Sets the value of the description property.</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../com/zuora/api/object/Contact.html#setFax(java.lang.String)">setFax</a></span>(String value)</nobr>
         
         <div class="jd-descrdiv">Sets the value of the fax property.</div>
@@ -1659,7 +1537,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1677,7 +1555,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1695,7 +1573,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1713,7 +1591,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1731,7 +1609,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1749,7 +1627,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1767,7 +1645,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1785,7 +1663,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1803,7 +1681,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1821,7 +1699,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1834,24 +1712,6 @@ Summary:
         <span class="sympad"><a href="../../../../../com/zuora/api/object/Contact.html#setState(java.lang.String)">setState</a></span>(String value)</nobr>
         
         <div class="jd-descrdiv">Sets the value of the state property.</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/zuora/api/object/Contact.html#setTaxRegion(java.lang.String)">setTaxRegion</a></span>(String value)</nobr>
-        
-        <div class="jd-descrdiv">Sets the value of the taxRegion property.</div>
   
   </td></tr>
 
@@ -2671,36 +2531,6 @@ From class
 
 
 
-<A NAME="county"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        String
-      </span>
-        county
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
 <A NAME="createdById"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -2742,36 +2572,6 @@ From class
         XMLGregorianCalendar
       </span>
         createdDate
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="description"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        String
-      </span>
-        description
     </h4>
       <div class="api-level">
         
@@ -3102,36 +2902,6 @@ From class
         String
       </span>
         state
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="taxRegion"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        String
-      </span>
-        taxRegion
     </h4>
       <div class="api-level">
         
@@ -3516,44 +3286,6 @@ From class
 </div>
 
 
-<A NAME="getCounty()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        String
-      </span>
-      <span class="sympad">getCounty</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the county property.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>possible object is
-     String
-     
-</li></ul>
-  </div>
-
-    </div>
-</div>
-
-
 <A NAME="getCreatedById()"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -3622,44 +3354,6 @@ From class
       <h5 class="jd-tagtitle">Returns</h5>
       <ul class="nolist"><li>possible object is
      XMLGregorianCalendar
-     
-</li></ul>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="getDescription()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        String
-      </span>
-      <span class="sympad">getDescription</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the description property.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>possible object is
-     String
      
 </li></ul>
   </div>
@@ -4086,44 +3780,6 @@ From class
 </div>
 
 
-<A NAME="getTaxRegion()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        String
-      </span>
-      <span class="sympad">getTaxRegion</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the taxRegion property.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>possible object is
-     String
-     
-</li></ul>
-  </div>
-
-    </div>
-</div>
-
-
 <A NAME="getUpdatedById()"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -4491,49 +4147,6 @@ From class
 </div>
 
 
-<A NAME="setCounty(java.lang.String)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setCounty</span>
-      <span class="normal">(String value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the county property.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Allowed object is
-     String
-     
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
 <A NAME="setCreatedById(java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -4610,49 +4223,6 @@ From class
           <th>value</td>
           <td>Allowed object is
      XMLGregorianCalendar
-     
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setDescription(java.lang.String)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setDescription</span>
-      <span class="normal">(String value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the description property.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Allowed object is
-     String
      
 </td>
         </tr>
@@ -5119,49 +4689,6 @@ From class
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the state property.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Allowed object is
-     String
-     
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setTaxRegion(java.lang.String)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setTaxRegion</span>
-      <span class="normal">(String value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the taxRegion property.</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
