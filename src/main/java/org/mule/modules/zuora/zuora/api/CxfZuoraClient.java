@@ -72,11 +72,23 @@ public class CxfZuoraClient implements ZuoraClient<Exception> {
 		this.username = username;
 		this.password = password;
 		this.endpoint = endpoint;
-		try {
-			jSessionDataBinding = new JAXBDataBinding(SessionHeader.class);
-		} catch (JAXBException e) {
-			throw new AssertionError(e);
-		}
+
+        // @EL if multiple clients are created at the same time this JAXB code can
+        // generate race condiitons on the ClassLoader when it searches for the
+        // ObjectFactory:
+        //
+        // 1. Could not create a validated object, cause: loader (instance of
+        // org/mule/module/launcher/MuleApplicationClassLoader): attempted  duplicate class
+        // definition for name: "com/zuora/api/object/ObjectFactory" (java.util.NoSuchElementException)
+        //
+        // So I'm locking it so it can happen only one at a time
+        synchronized (CxfZuoraClient.class) {
+            try {
+                jSessionDataBinding = new JAXBDataBinding(SessionHeader.class);
+            } catch (JAXBException e) {
+                throw new AssertionError(e);
+            }
+        }
 
 		ZuoraService serviceLocator = new ZuoraService(getClass().getResource(
 				"/zuora-32.wsdl"));

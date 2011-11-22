@@ -77,7 +77,7 @@ public class ZuoraModule {
      * @param password Password to authenticate the username
      */
     @Connect
-    public void connect(@ConnectionKey String username, String password)
+    public synchronized void connect(@ConnectionKey String username, String password)
             throws ConnectionException {
         try {
             client = new CxfZuoraClient(username, password, this.endpoint);
@@ -101,7 +101,7 @@ public class ZuoraModule {
      * Destroys the session
      */
     @Disconnect
-    public void disconnect() {
+    public synchronized void disconnect() {
         client = null;
     }
 
