@@ -6,18 +6,16 @@
   <artifactId>mule-zuora-demo-search</artifactId>
   <packaging>mule</packaging>
   <name>Mule Zuora Cloud Search Demo</name>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.5-SNAPSHOT</version>
 
-  <properties>
-    <mule.version>3.2.0-M1</mule.version>
-    <mule.devkit.version>1.0-SNAPSHOT</mule.devkit.version>
+    <properties>
+    <mule.version>3.2.0</mule.version>
+    <mule.devkit.version>LATEST</mule.devkit.version>
     <junit.version>4.8.2</junit.version>
-    <mule.zuora.version>1.1-SNAPSHOT</mule.zuora.version>
-    <ibeans.version>1.1</ibeans.version>
+    <mule.zuora.version>1.5-SNAPSHOT</mule.zuora.version>
   </properties>
 
-  <description>Example that creates and search of objects in Zuora</description>
-
+  <description>Example that shows how to get taxes</description>
 
   <build>
     <defaultGoal>install</defaultGoal>
@@ -50,9 +48,9 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>2.3.1</version>
         <configuration>
-          <source>1.5</source>
-          <target>1.5</target>
-          <encoding>ISO-8859-1</encoding>
+          <source>1.6</source>
+          <target>1.6</target>
+          <encoding>UTF-8</encoding>
         </configuration>
       </plugin>
       <plugin>
@@ -109,18 +107,8 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.ibeans</groupId>
-      <artifactId>ibeans-support</artifactId>
-      <version>${ibeans.version}</version>
-    </dependency>
-    <dependency>
       <groupId>org.mule.modules</groupId>
       <artifactId>mule-module-ognl</artifactId>
-      <version>${mule.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.mule.modules</groupId>
-      <artifactId>mule-module-ibeans</artifactId>
       <version>${mule.version}</version>
     </dependency>
     <dependency>
@@ -140,12 +128,6 @@
       <id>codehaus-repo</id>
       <name>Codehaus Repository</name>
       <url>http://dist.codehaus.org/mule/dependencies/maven2</url>
-      <layout>default</layout>
-    </repository>
-    <repository>
-      <id>ibeans-repo</id>
-      <name>iBeans Repository</name>
-      <url>http://repository.ibeans.muleforge.org</url>
       <layout>default</layout>
     </repository>
   </repositories>
