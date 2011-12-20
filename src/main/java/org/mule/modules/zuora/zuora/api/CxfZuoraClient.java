@@ -317,17 +317,17 @@ public class CxfZuoraClient implements ZuoraClient<Exception> {
 
 						}
 						productRatePlanChargeMap.put(
-								"ProductRatePlanChargeTiers",
+								"productRatePlanChargeTiers",
 								productRatePlanChargeTierList);
 
 						productRatePlanChargeList.add(productRatePlanChargeMap);
 					}
-					productRatePlanMap.put("ProductRatePlanCharges",
+					productRatePlanMap.put("productRatePlanCharges",
 							productRatePlanChargeList);
 					ratePlanList.add(productRatePlanMap);
 
 				}
-				productprofile.put("ProductRatePlans", ratePlanList);
+				productprofile.put("productRatePlans", ratePlanList);
 			} else {
 				productprofile.put("error",
 						"Unable to find a product with the id: " + productId);
