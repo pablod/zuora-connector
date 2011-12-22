@@ -15,6 +15,7 @@
 
   <properties>
   	<cxf.version>2.3.1</cxf.version>
+  	<mule.modules.utils.version>1.0-SNAPSHOT</mule.modules.utils.version>
   </properties>
 
   <build>
@@ -89,6 +90,11 @@
           <artifactId>commons-logging</artifactId>
         </exclusion>
       </exclusions>
+    </dependency>
+    <dependency>
+        <groupId>org.mule.modules</groupId>
+        <artifactId>mule-modules-utils</artifactId>
+        <version>${mule.modules.utils.version}</version>
     </dependency>
   </dependencies>
 

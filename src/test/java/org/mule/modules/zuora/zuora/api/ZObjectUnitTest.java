@@ -10,7 +10,7 @@
 
 package org.mule.modules.zuora.zuora.api;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoints;
@@ -103,6 +103,26 @@ public class ZObjectUnitTest
             setBatch("foo"); 
             setAllowInvoiceEdit(true);
             }}.staticProperties().size());
+    }
+    
+    @Test
+    public void testUsingStringDatesInStaticField()
+    {
+        Account a = new Account();
+        a.setField("createdDate", "2001-01-01T03:18:09Z");
+        
+        assertEquals(2001, a.getCreatedDate().getYear());
+        
+    }
+    
+    @Test
+    public void testUsingStringDatesInDinamicField()
+    {
+        Account a = new Account();
+        a.setField("dateTestField", "2001-01-01T03:18:09Z");
+        
+        assertEquals("2001-01-01T03:18:09Z", a.getField("dateTestField"));
+        
     }
     
     @Theory
