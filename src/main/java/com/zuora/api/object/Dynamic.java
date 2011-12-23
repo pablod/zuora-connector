@@ -11,10 +11,7 @@
 
 package com.zuora.api.object;
 
-import static org.apache.commons.collections.CollectionUtils.collect;
-
-import org.mule.modules.zuora.zobject.ElementBuilders;
-
+import static org.apache.commons.collections.CollectionUtils.*;
 
 import java.beans.IntrospectionException;
 import java.beans.Introspector;
@@ -26,7 +23,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map.Entry;
 
-import org.apache.commons.beanutils.BeanUtils;
+import javax.xml.datatype.XMLGregorianCalendar;
+
+import org.apache.commons.beanutils.BeanUtilsBean;
+import org.apache.commons.beanutils.ConvertUtilsBean;
+import org.apache.commons.beanutils.Converter;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
@@ -34,7 +35,11 @@ import org.apache.commons.collections.Transformer;
 import org.apache.commons.collections.keyvalue.DefaultMapEntry;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.UnhandledException;
+import org.apache.commons.lang.Validate;
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.mule.modules.utils.date.DateConventions;
+import org.mule.modules.utils.date.XmlGregorianCalendars;
+import org.mule.modules.zuora.zobject.ElementBuilders;
 import org.w3c.dom.Element;
 
 /**
@@ -47,7 +52,22 @@ import org.w3c.dom.Element;
 public abstract class Dynamic
 {
     private static final HashSet<String> EXCLUDED_PROPERTY_NAMES = new HashSet<String>(Arrays.asList("any", "class", "fieldsToNull"));
-
+    
+    ConvertUtilsBean convertUtils  = new ConvertUtilsBean();
+    BeanUtilsBean beanUtils = new BeanUtilsBean(convertUtils); 
+    
+    {  
+        convertUtils.register(new Converter()
+        {
+            @Override
+            public Object convert(Class type, Object value)
+            {  
+                Validate.isTrue(value.getClass() == String.class);
+                return XmlGregorianCalendars.toGregorianCalendar( 
+                    DateConventions.defaultDateTimeFormat().parseDateTime((String) value).toDate()); 
+            }
+        }, XMLGregorianCalendar.class);
+    }
     /**
      * Answers the dynamic property elements. Warning: this method is CXF specific and
      * its usage is discouraged
@@ -155,8 +175,8 @@ public abstract class Dynamic
     private void setProperty(Object value, String propertyName)
     {
         try
-        {
-            BeanUtils.setProperty(this, propertyName, value);
+        {   
+            beanUtils.setProperty(this, propertyName, value);
         }
         catch (Exception e)
         {
