@@ -12,9 +12,11 @@ package org.mule.modules.zuora.zobject;
 
 import com.zuora.api.object.Account;
 import com.zuora.api.object.Amendment;
+import com.zuora.api.object.CommunicationProfile;
 import com.zuora.api.object.Contact;
 import com.zuora.api.object.CreditBalanceAdjustment;
 import com.zuora.api.object.Export;
+import com.zuora.api.object.GatewayOption;
 import com.zuora.api.object.Invoice;
 import com.zuora.api.object.InvoiceAdjustment;
 import com.zuora.api.object.InvoiceItem;
@@ -22,6 +24,7 @@ import com.zuora.api.object.InvoiceItemAdjustment;
 import com.zuora.api.object.InvoicePayment;
 import com.zuora.api.object.Payment;
 import com.zuora.api.object.PaymentMethod;
+import com.zuora.api.object.PaymentTransactionLog;
 import com.zuora.api.object.Product;
 import com.zuora.api.object.ProductRatePlan;
 import com.zuora.api.object.ProductRatePlanCharge;
@@ -31,6 +34,7 @@ import com.zuora.api.object.RatePlanCharge;
 import com.zuora.api.object.RatePlanChargeTier;
 import com.zuora.api.object.Refund;
 import com.zuora.api.object.RefundInvoicePayment;
+import com.zuora.api.object.RefundTransactionLog;
 import com.zuora.api.object.Subscription;
 import com.zuora.api.object.TaxationItem;
 import com.zuora.api.object.Usage;
@@ -43,36 +47,40 @@ import com.zuora.api.object.ZObject;
 public enum ZObjectType
 {
     Account(Account.class), //
+    Amendment(Amendment.class), //
+    CommunicationProfile(CommunicationProfile.class), //
+    Contact(Contact.class), //
+    CreditBalanceAdjustment(CreditBalanceAdjustment.class), //
+    Export(Export.class), // 
+    GatewayOption(GatewayOption.class), //
     Invoice(Invoice.class), //
+    InvoiceAdjustment(InvoiceAdjustment.class), //
     InvoiceItem(InvoiceItem.class), //
     InvoiceItemAdjustment(InvoiceItemAdjustment.class), //
-    InvoiceAdjustment(InvoiceAdjustment.class), //
+    InvoicePayment(InvoicePayment.class), //
     Payment(Payment.class), //
+    PaymentMethod(PaymentMethod.class), //
+    PaymentTransactionLog(PaymentTransactionLog.class), //
     Product(Product.class), //
     ProductRatePlan(ProductRatePlan.class), //
     ProductRatePlanCharge(ProductRatePlanCharge.class), //
+    ProductRatePlanChargeTier(ProductRatePlanChargeTier.class), //
+    RatePlan(RatePlan.class), //
+    RatePlanChargeTier(RatePlanChargeTier.class), // 
+    RatePlanCharge(RatePlanCharge.class), //
     Refund(Refund.class), // 
+    RefundInvoicePayment(RefundInvoicePayment.class), //
+    RefundTransactionLog(RefundTransactionLog.class), //
     Subscription(Subscription.class), //
-    Usage(Usage.class), //
+    TaxationItem(TaxationItem.class), //
+    Usage(Usage.class); //
 //    AccountingRun(AccountingRun.class), // 
 //    AccountingRunAdjustmentSummary(AccountingRunAdjustmentSummary.class), //
 //    AccountingRunInvoiceSummary(AccountingRunInvoiceSummary.class), //
 //    AccountingRunPaymentSummary(AccountingRunPaymentSummary.class), //
 //    AdjustmentAccountingDetail(AdjustmentAccountingDetail.class), //
-    Amendment(Amendment.class), //
-    Contact(Contact.class), //
-    CreditBalanceAdjustment(CreditBalanceAdjustment.class), //
-    Export(Export.class), // 
 //    InvoiceAccountingDetail(InvoiceAccountingDetail.class), //
-    InvoicePayment(InvoicePayment.class), //
 //    PaymentAccountingDetail(PaymentAccountingDetail.class), //
-    PaymentMethod(PaymentMethod.class), //
-    ProductRatePlanChargeTier(ProductRatePlanChargeTier.class), //
-    RatePlan(RatePlan.class), //
-    RatePlanChargeTier(RatePlanChargeTier.class), // 
-    RefundInvoicePayment(RefundInvoicePayment.class), //
-    RatePlanCharge(RatePlanCharge.class), //
-    TaxationItem(TaxationItem.class);
 
     
     private Class<? extends ZObject> clazz;
