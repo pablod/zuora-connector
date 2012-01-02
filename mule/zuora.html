@@ -111,15 +111,19 @@
       <span id="masthead-title">Mule Zuora Connector</span>
     
     <ul id="header-tabs" class="mule">
+    
     	<li id="guide"><a href="../guide/install.html">
 	    	<span class="en">Install Guide</span>
     	</a></li>
+    
     	<li id="java"><a href="../java/packages.html">
-	    	<span class="en">Java API</span>
+	    	<span class="en">Java API Reference</span>
     	</a></li>
+    
     	<li id="mule"><a href="../mule/modules.html">
-	    	<span class="en">Mule API</span>
+	    	<span class="en">Mule API Reference</span>
     	</a></li>
+    
     </ul>
     </div>
     <div id="headerRight">
@@ -223,7 +227,7 @@ Summary:
 <h2>Module Overview</h2>
 <p>Zuora is the leader in online recurring billing and payment solutions for SaaS and subscription businesses.
  <p/>
- This connector provides full access to the Z-Commerce platform API.<br/></p>
+ This connector provides full access to the Z-Commerce platform API.</p>
 
 
 </div><!-- jd-descr -->
@@ -477,14 +481,14 @@ resolution.</p>
     
       <tr class=" api apilevel-" >
           <td class="jd-linkcol"><nobr>username</nobr></td>
-          <td class="jd-descrcol" width="100%">Username to identify the user<br/></td>
+          <td class="jd-descrcol" width="100%">Username to identify the user</td>
       </tr>
       
     
       <tr class="alt-color api apilevel-" >
           <td class="jd-linkcol"><nobr>password</nobr></td>
           <td class="jd-descrcol" width="100%">Password to authenticate the username
-<br/></td>
+</td>
       </tr>
       
     
@@ -496,6 +500,8 @@ attribute on each operation.</p>
 <pre>
     ... retryMax="3"/&gt;
 </pre>
+
+
 
 
 
@@ -523,26 +529,49 @@ attribute on each operation.</p>
       
   <div class="jd-tagdata jd-tagdescr"><p>Retrieve an account profile
  <p/>
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;account-profile accountId="0012..."/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;account-profile accountId="0012..."/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
-      <table class="jd-tagtable">
-      <td class="jd-linkcol"><nobr>config-ref</nobr></td>
-      <td class="jd-descrcol"></td>
-      <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>accountId</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The id of the account to retrieve an account profile for<br/></td>
+                    <td class="jd-descrcol" width="100%">The id of the account to retrieve an account profile for</td>
                 </tr>
                 
                 
           
           
+          <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
+            
+                <tr class="alt-color api apilevel-" >
+                    <td class="jd-linkcol"><nobr>username</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user</td>
+                </tr>
+                
+            
+                <tr class=" api apilevel-" >
+                    <td class="jd-linkcol"><nobr>password</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username
+</td>
+                </tr>
+                
+            
+          
+          
+          
+            <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
             <tr class="alt-color api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
@@ -550,28 +579,12 @@ attribute on each operation.</p>
             </tr>
             
           
-        
-            <tr class=" api apilevel-" >
-                <td class="jd-linkcol"><nobr>username</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user<br/></td>
-            </tr>
-        
-        
-            <tr class="alt-color api apilevel-" >
-                <td class="jd-linkcol"><nobr>password</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username
-<br/></td>
-            </tr>
-        
-        
-      </table>
+          
+        </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Child Elements</h5>
-
-      <table class="jd-tagtable">
+        <table id="lconfig" class="jd-sumtable">
           
           
             
@@ -582,8 +595,10 @@ attribute on each operation.</p>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Return Payload</h5>
       <ul class="nolist"><li>the account, as a String-Object Map
-<br/></li></ul>
+</li></ul>
   </div>
+    
+  
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Exception Payload</h5>
       <table class="jd-tagtable">
@@ -613,57 +628,60 @@ attribute on each operation.</p>
       
   <div class="jd-tagdata jd-tagdescr"><p>Amends subscriptions
  <p/>
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;amend amendaments-ref="#[header:amendamentsList]"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;amend amendaments-ref="#[header:amendamentsList]"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
-      <table class="jd-tagtable">
-      <td class="jd-linkcol"><nobr>config-ref</nobr></td>
-      <td class="jd-descrcol"></td>
-      <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
                 
+          
+          
+          <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
+            
                 <tr class=" api apilevel-" >
-                    <td class="jd-linkcol"><nobr>amendaments</nobr></td>
+                    <td class="jd-linkcol"><nobr>username</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The list of amendaments to perform<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user</td>
                 </tr>
                 
+            
+                <tr class="alt-color api apilevel-" >
+                    <td class="jd-linkcol"><nobr>password</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username
+</td>
+                </tr>
                 
+            
           
           
-            <tr class="alt-color api apilevel-" >
+          
+            <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
+            <tr class=" api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
                 <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify how many times this operation can be retried automatically</td>
             </tr>
             
           
-        
-            <tr class=" api apilevel-" >
-                <td class="jd-linkcol"><nobr>username</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user<br/></td>
-            </tr>
-        
-        
-            <tr class="alt-color api apilevel-" >
-                <td class="jd-linkcol"><nobr>password</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username
-<br/></td>
-            </tr>
-        
-        
-      </table>
+          
+        </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Child Elements</h5>
-
-      <table class="jd-tagtable">
+        <table id="lconfig" class="jd-sumtable">
           
           
+            
+            <tr><th colspan="12"><nobr>&lt;zuora:amendaments&gt;</nobr></br><span style="font-weight: normal;">The list of amendaments to perform</span></th></tr>
+            
             
           
       </table>
@@ -671,9 +689,11 @@ attribute on each operation.</p>
   
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Return Payload</h5>
-      <ul class="nolist"><li>a list of <br/><code><a href="../java/com/zuora/api/AmendResult.html">AmendResult</a></code>, one for each amendament
-<br/></li></ul>
+      <ul class="nolist"><li>a list of <code><a href="../java/com/zuora/api/AmendResult.html">AmendResult</a></code>, one for each amendament
+</li></ul>
   </div>
+    
+  
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Exception Payload</h5>
       <table class="jd-tagtable">
@@ -703,7 +723,7 @@ attribute on each operation.</p>
       
   <div class="jd-tagdata jd-tagdescr"><p>Batch creation of ZObjects
  <p/>
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;create&gt;
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;create&gt;
     &lt;zobjects&gt;
         &lt;zobject ref="#[variable:anObject]"/&gt;
     &lt;/zobject&gt;
@@ -711,64 +731,67 @@ attribute on each operation.</p>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
-      <table class="jd-tagtable">
-      <td class="jd-linkcol"><nobr>config-ref</nobr></td>
-      <td class="jd-descrcol"></td>
-      <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>type</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The type of zobject passed<br/></td>
+                    <td class="jd-descrcol" width="100%">The type of zobject passed</td>
                 </tr>
                 
                 
           
                 
+          
+          
+          <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
+            
                 <tr class="alt-color api apilevel-" >
-                    <td class="jd-linkcol"><nobr>zobjects</nobr></td>
+                    <td class="jd-linkcol"><nobr>username</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The zobjects to create<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user</td>
                 </tr>
                 
+            
+                <tr class=" api apilevel-" >
+                    <td class="jd-linkcol"><nobr>password</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username
+</td>
+                </tr>
                 
+            
           
           
-            <tr class=" api apilevel-" >
+          
+            <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
+            <tr class="alt-color api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
                 <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify how many times this operation can be retried automatically</td>
             </tr>
             
           
-        
-            <tr class="alt-color api apilevel-" >
-                <td class="jd-linkcol"><nobr>username</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user<br/></td>
-            </tr>
-        
-        
-            <tr class=" api apilevel-" >
-                <td class="jd-linkcol"><nobr>password</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username
-<br/></td>
-            </tr>
-        
-        
-      </table>
+          
+        </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Child Elements</h5>
-
-      <table class="jd-tagtable">
+        <table id="lconfig" class="jd-sumtable">
           
           
             
           
+            
+            <tr><th colspan="12"><nobr>&lt;zuora:zobjects&gt;</nobr></br><span style="font-weight: normal;">The zobjects to create</span></th></tr>
+            
             
           
       </table>
@@ -776,9 +799,11 @@ attribute on each operation.</p>
   
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Return Payload</h5>
-      <ul class="nolist"><li>a list of <br/><code><a href="../java/com/zuora/api/SaveResult.html">SaveResult</a></code>, one for each ZObject
-<br/></li></ul>
+      <ul class="nolist"><li>a list of <code><a href="../java/com/zuora/api/SaveResult.html">SaveResult</a></code>, one for each ZObject
+</li></ul>
   </div>
+    
+  
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Exception Payload</h5>
       <table class="jd-tagtable">
@@ -808,68 +833,71 @@ attribute on each operation.</p>
       
   <div class="jd-tagdata jd-tagdescr"><p>Batch delete of ZObjects
  <p/>
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;delete ids-ref="#[variable:ids]" type="#[variable:zobjectType]"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;delete ids-ref="#[variable:ids]" type="#[variable:zobjectType]"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
-      <table class="jd-tagtable">
-      <td class="jd-linkcol"><nobr>config-ref</nobr></td>
-      <td class="jd-descrcol"></td>
-      <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>type</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The type of ZObjects to delete<br/></td>
+                    <td class="jd-descrcol" width="100%">The type of ZObjects to delete</td>
                 </tr>
                 
                 
           
                 
+          
+          
+          <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
+            
                 <tr class="alt-color api apilevel-" >
-                    <td class="jd-linkcol"><nobr>ids</nobr></td>
+                    <td class="jd-linkcol"><nobr>username</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The list of ids to delete<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user</td>
                 </tr>
                 
+            
+                <tr class=" api apilevel-" >
+                    <td class="jd-linkcol"><nobr>password</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username
+</td>
+                </tr>
                 
+            
           
           
-            <tr class=" api apilevel-" >
+          
+            <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
+            <tr class="alt-color api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
                 <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify how many times this operation can be retried automatically</td>
             </tr>
             
           
-        
-            <tr class="alt-color api apilevel-" >
-                <td class="jd-linkcol"><nobr>username</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user<br/></td>
-            </tr>
-        
-        
-            <tr class=" api apilevel-" >
-                <td class="jd-linkcol"><nobr>password</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username
-<br/></td>
-            </tr>
-        
-        
-      </table>
+          
+        </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Child Elements</h5>
-
-      <table class="jd-tagtable">
+        <table id="lconfig" class="jd-sumtable">
           
           
             
           
+            
+            <tr><th colspan="12"><nobr>&lt;zuora:ids&gt;</nobr></br><span style="font-weight: normal;">The list of ids to delete</span></th></tr>
+            
             
           
       </table>
@@ -877,9 +905,11 @@ attribute on each operation.</p>
   
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Return Payload</h5>
-      <ul class="nolist"><li>a list of <br/><code><a href="../java/com/zuora/api/DeleteResult.html">DeleteResult</a></code>, one for each id
-<br/></li></ul>
+      <ul class="nolist"><li>a list of <code><a href="../java/com/zuora/api/DeleteResult.html">DeleteResult</a></code>, one for each id
+</li></ul>
   </div>
+    
+  
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Exception Payload</h5>
       <table class="jd-tagtable">
@@ -910,26 +940,49 @@ attribute on each operation.</p>
   <div class="jd-tagdata jd-tagdescr"><p>Lazily retrieves ZObject that match a given query,
  written in Zuora native query language
  <p/>
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;find query="#[header:queryString]" /&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;find query="#[header:queryString]" /&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
-      <table class="jd-tagtable">
-      <td class="jd-linkcol"><nobr>config-ref</nobr></td>
-      <td class="jd-descrcol"></td>
-      <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>zquery</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The query, using the SQL-Like Zuora Query Language<br/></td>
+                    <td class="jd-descrcol" width="100%">The query, using the SQL-Like Zuora Query Language</td>
                 </tr>
                 
                 
           
           
+          <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
+            
+                <tr class="alt-color api apilevel-" >
+                    <td class="jd-linkcol"><nobr>username</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user</td>
+                </tr>
+                
+            
+                <tr class=" api apilevel-" >
+                    <td class="jd-linkcol"><nobr>password</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username
+</td>
+                </tr>
+                
+            
+          
+          
+          
+            <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
             <tr class="alt-color api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
@@ -937,28 +990,12 @@ attribute on each operation.</p>
             </tr>
             
           
-        
-            <tr class=" api apilevel-" >
-                <td class="jd-linkcol"><nobr>username</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user<br/></td>
-            </tr>
-        
-        
-            <tr class="alt-color api apilevel-" >
-                <td class="jd-linkcol"><nobr>password</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username
-<br/></td>
-            </tr>
-        
-        
-      </table>
+          
+        </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Child Elements</h5>
-
-      <table class="jd-tagtable">
+        <table id="lconfig" class="jd-sumtable">
           
           
             
@@ -968,11 +1005,13 @@ attribute on each operation.</p>
   
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Return Payload</h5>
-      <ul class="nolist"><li>a <br/><code><a href="../java/com/zuora/api/object/ZObject.html">ZObject</a></code> iterable. <br/><code><a href="../java/com/zuora/api/object/ZObject.html">ZObject</a></code> returned by this operation
+      <ul class="nolist"><li>a <code><a href="../java/com/zuora/api/object/ZObject.html">ZObject</a></code> iterable. <code><a href="../java/com/zuora/api/object/ZObject.html">ZObject</a></code> returned by this operation
          may be instances of either static ZObject - like Account or Amendment -,  if the object is a non-customizable Zuora entity,
-         or <br/><code><a href="../java/com/zuora/api/object/ZObject.html">ZObject</a></code>,  if the object is a customizable Zuora entity
-<br/></li></ul>
+         or <code><a href="../java/com/zuora/api/object/ZObject.html">ZObject</a></code>,  if the object is a customizable Zuora entity
+</li></ul>
   </div>
+    
+  
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Exception Payload</h5>
       <table class="jd-tagtable">
@@ -1002,69 +1041,72 @@ attribute on each operation.</p>
       
   <div class="jd-tagdata jd-tagdescr"><p>Batch creation of invoces for accounts
  <p/>
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;generate zobjects-ref="#[variable:accounts]"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;generate zobjects-ref="#[variable:accounts]"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
-      <table class="jd-tagtable">
-      <td class="jd-linkcol"><nobr>config-ref</nobr></td>
-      <td class="jd-descrcol"></td>
-      <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>type</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The type of zobject passed<br/></td>
+                    <td class="jd-descrcol" width="100%">The type of zobject passed</td>
                 </tr>
                 
                 
           
                 
+          
+          
+          <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
+            
                 <tr class="alt-color api apilevel-" >
-                    <td class="jd-linkcol"><nobr>zobjects</nobr></td>
+                    <td class="jd-linkcol"><nobr>username</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The zobjects to generate, as a list of string-object maps .
-                 Zuora attribute names, unlike java beans, are CamelCase.<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user</td>
                 </tr>
                 
+            
+                <tr class=" api apilevel-" >
+                    <td class="jd-linkcol"><nobr>password</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username
+</td>
+                </tr>
                 
+            
           
           
-            <tr class=" api apilevel-" >
+          
+            <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
+            <tr class="alt-color api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
                 <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify how many times this operation can be retried automatically</td>
             </tr>
             
           
-        
-            <tr class="alt-color api apilevel-" >
-                <td class="jd-linkcol"><nobr>username</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user<br/></td>
-            </tr>
-        
-        
-            <tr class=" api apilevel-" >
-                <td class="jd-linkcol"><nobr>password</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username
-<br/></td>
-            </tr>
-        
-        
-      </table>
+          
+        </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Child Elements</h5>
-
-      <table class="jd-tagtable">
+        <table id="lconfig" class="jd-sumtable">
           
           
             
           
+            
+            <tr><th colspan="12"><nobr>&lt;zuora:zobjects&gt;</nobr></br><span style="font-weight: normal;">The zobjects to generate, as a list of string-object maps .
+                 Zuora attribute names, unlike java beans, are CamelCase.</span></th></tr>
+            
             
           
       </table>
@@ -1072,9 +1114,11 @@ attribute on each operation.</p>
   
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Return Payload</h5>
-      <ul class="nolist"><li>a list of <br/><code><a href="../java/com/zuora/api/SaveResult.html">SaveResult</a></code>, one for each ZObject
-<br/></li></ul>
+      <ul class="nolist"><li>a list of <code><a href="../java/com/zuora/api/SaveResult.html">SaveResult</a></code>, one for each ZObject
+</li></ul>
   </div>
+    
+  
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Exception Payload</h5>
       <table class="jd-tagtable">
@@ -1104,17 +1148,40 @@ attribute on each operation.</p>
       
   <div class="jd-tagdata jd-tagdescr"><p>Answers user information
  <p/>
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;get-user-info userId="#[header:userId]"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;get-user-info userId="#[header:userId]"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
-      <table class="jd-tagtable">
-      <td class="jd-linkcol"><nobr>config-ref</nobr></td>
-      <td class="jd-descrcol"></td>
-      <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
           
+          <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
+            
+                <tr class=" api apilevel-" >
+                    <td class="jd-linkcol"><nobr>username</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user</td>
+                </tr>
+                
+            
+                <tr class="alt-color api apilevel-" >
+                    <td class="jd-linkcol"><nobr>password</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username
+</td>
+                </tr>
+                
+            
+          
+          
+          
+            <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
             <tr class=" api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
@@ -1122,28 +1189,12 @@ attribute on each operation.</p>
             </tr>
             
           
-        
-            <tr class="alt-color api apilevel-" >
-                <td class="jd-linkcol"><nobr>username</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user<br/></td>
-            </tr>
-        
-        
-            <tr class=" api apilevel-" >
-                <td class="jd-linkcol"><nobr>password</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username
-<br/></td>
-            </tr>
-        
-        
-      </table>
+          
+        </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Child Elements</h5>
-
-      <table class="jd-tagtable">
+        <table id="lconfig" class="jd-sumtable">
           
           
       </table>
@@ -1151,9 +1202,11 @@ attribute on each operation.</p>
   
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Return Payload</h5>
-      <ul class="nolist"><li>a <br/><code><a href="../java/org/mule/modules/zuora/User.html">User</a></code>
-<br/></li></ul>
+      <ul class="nolist"><li>a <code><a href="../java/org/mule/modules/zuora/User.html">User</a></code>
+</li></ul>
   </div>
+    
+  
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Exception Payload</h5>
       <table class="jd-tagtable">
@@ -1183,26 +1236,49 @@ attribute on each operation.</p>
       
   <div class="jd-tagdata jd-tagdescr"><p>Retrieve a product profile
  <p/>
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;product-profile productId="001..."/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;product-profile productId="001..."/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
-      <table class="jd-tagtable">
-      <td class="jd-linkcol"><nobr>config-ref</nobr></td>
-      <td class="jd-descrcol"></td>
-      <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>productId</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The id of the product to retrieve a product profile for<br/></td>
+                    <td class="jd-descrcol" width="100%">The id of the product to retrieve a product profile for</td>
                 </tr>
                 
                 
           
           
+          <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
+            
+                <tr class="alt-color api apilevel-" >
+                    <td class="jd-linkcol"><nobr>username</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user</td>
+                </tr>
+                
+            
+                <tr class=" api apilevel-" >
+                    <td class="jd-linkcol"><nobr>password</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username
+</td>
+                </tr>
+                
+            
+          
+          
+          
+            <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
             <tr class="alt-color api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
@@ -1210,28 +1286,12 @@ attribute on each operation.</p>
             </tr>
             
           
-        
-            <tr class=" api apilevel-" >
-                <td class="jd-linkcol"><nobr>username</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user<br/></td>
-            </tr>
-        
-        
-            <tr class="alt-color api apilevel-" >
-                <td class="jd-linkcol"><nobr>password</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username
-<br/></td>
-            </tr>
-        
-        
-      </table>
+          
+        </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Child Elements</h5>
-
-      <table class="jd-tagtable">
+        <table id="lconfig" class="jd-sumtable">
           
           
             
@@ -1241,15 +1301,17 @@ attribute on each operation.</p>
   
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Return Payload</h5>
-      <ul class="nolist"><li>the profile, as a String-Object Map<br/></li></ul>
+      <ul class="nolist"><li>the profile, as a String-Object Map</li></ul>
   </div>
+    
+  
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Exception Payload</h5>
       <table class="jd-tagtable">
         <tr>
             <th></td>
             <td>ZuoraException}
-<br/></td>
+</td>
         </tr>
         <tr>
             <th>Exception</td>
@@ -1277,57 +1339,60 @@ attribute on each operation.</p>
       
   <div class="jd-tagdata jd-tagdescr"><p>Batch creation of ZObjects associated to Subscriptions
  <p/>
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;subscribe subscriptions-ref="#[variable:subscribtions]"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;subscribe subscriptions-ref="#[variable:subscribtions]"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
-      <table class="jd-tagtable">
-      <td class="jd-linkcol"><nobr>config-ref</nobr></td>
-      <td class="jd-descrcol"></td>
-      <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
                 
+          
+          
+          <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
+            
                 <tr class=" api apilevel-" >
-                    <td class="jd-linkcol"><nobr>subscriptions</nobr></td>
+                    <td class="jd-linkcol"><nobr>username</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The list of subscriptions to perform<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user</td>
                 </tr>
                 
+            
+                <tr class="alt-color api apilevel-" >
+                    <td class="jd-linkcol"><nobr>password</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username
+</td>
+                </tr>
                 
+            
           
           
-            <tr class="alt-color api apilevel-" >
+          
+            <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
+            <tr class=" api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
                 <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify how many times this operation can be retried automatically</td>
             </tr>
             
           
-        
-            <tr class=" api apilevel-" >
-                <td class="jd-linkcol"><nobr>username</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user<br/></td>
-            </tr>
-        
-        
-            <tr class="alt-color api apilevel-" >
-                <td class="jd-linkcol"><nobr>password</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username
-<br/></td>
-            </tr>
-        
-        
-      </table>
+          
+        </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Child Elements</h5>
-
-      <table class="jd-tagtable">
+        <table id="lconfig" class="jd-sumtable">
           
           
+            
+            <tr><th colspan="12"><nobr>&lt;zuora:subscriptions&gt;</nobr></br><span style="font-weight: normal;">The list of subscriptions to perform</span></th></tr>
+            
             
           
       </table>
@@ -1336,8 +1401,10 @@ attribute on each operation.</p>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Return Payload</h5>
       <ul class="nolist"><li>a subscription results list, one for each subscription
-<br/></li></ul>
+</li></ul>
   </div>
+    
+  
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Exception Payload</h5>
       <table class="jd-tagtable">
@@ -1367,69 +1434,72 @@ attribute on each operation.</p>
       
   <div class="jd-tagdata jd-tagdescr"><p>Batch update of ZObjects
  <p/>
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;update zobjects-ref="#[variable:objects]"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;update zobjects-ref="#[variable:objects]"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
-      <table class="jd-tagtable">
-      <td class="jd-linkcol"><nobr>config-ref</nobr></td>
-      <td class="jd-descrcol"></td>
-      <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>type</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The type of zobject passed<br/></td>
+                    <td class="jd-descrcol" width="100%">The type of zobject passed</td>
                 </tr>
                 
                 
           
                 
+          
+          
+          <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
+            
                 <tr class="alt-color api apilevel-" >
-                    <td class="jd-linkcol"><nobr>zobjects</nobr></td>
+                    <td class="jd-linkcol"><nobr>username</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The zobjects to update, as a list of string-object maps .
-                 Zuora attribute names, unlike java beans, are CamelCase.<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user</td>
                 </tr>
                 
+            
+                <tr class=" api apilevel-" >
+                    <td class="jd-linkcol"><nobr>password</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username
+</td>
+                </tr>
                 
+            
           
           
-            <tr class=" api apilevel-" >
+          
+            <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
+            <tr class="alt-color api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
                 <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify how many times this operation can be retried automatically</td>
             </tr>
             
           
-        
-            <tr class="alt-color api apilevel-" >
-                <td class="jd-linkcol"><nobr>username</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Username to identify the user<br/></td>
-            </tr>
-        
-        
-            <tr class=" api apilevel-" >
-                <td class="jd-linkcol"><nobr>password</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Password to authenticate the username
-<br/></td>
-            </tr>
-        
-        
-      </table>
+          
+        </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Child Elements</h5>
-
-      <table class="jd-tagtable">
+        <table id="lconfig" class="jd-sumtable">
           
           
             
           
+            
+            <tr><th colspan="12"><nobr>&lt;zuora:zobjects&gt;</nobr></br><span style="font-weight: normal;">The zobjects to update, as a list of string-object maps .
+                 Zuora attribute names, unlike java beans, are CamelCase.</span></th></tr>
+            
             
           
       </table>
@@ -1437,9 +1507,11 @@ attribute on each operation.</p>
   
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Return Payload</h5>
-      <ul class="nolist"><li>a list of <br/><code><a href="../java/com/zuora/api/SaveResult.html">SaveResult</a></code>, one for each ZObject
-<br/></li></ul>
+      <ul class="nolist"><li>a list of <code><a href="../java/com/zuora/api/SaveResult.html">SaveResult</a></code>, one for each ZObject
+</li></ul>
   </div>
+    
+  
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Exception Payload</h5>
       <table class="jd-tagtable">
