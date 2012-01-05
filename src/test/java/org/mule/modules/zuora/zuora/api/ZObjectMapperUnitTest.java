@@ -39,7 +39,7 @@ public class ZObjectMapperUnitTest
 
         ZObject zObject = ZObjectMapper.toZObject(ZObjectType.Account, accountMap);
         assertThat(zObject, instanceOf(Account.class));
-        for(Entry<String,Object> e : accountMap.entrySet())
+        for (Entry<String, Object> e : accountMap.entrySet())
         {
             assertEquals(zObject.getAt(e.getKey()), e.getValue());
         }

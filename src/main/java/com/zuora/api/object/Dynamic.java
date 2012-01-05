@@ -25,6 +25,8 @@ import java.util.Map.Entry;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
+import net.sf.staccatocommons.lang.SoftException;
+
 import org.apache.commons.beanutils.BeanUtilsBean;
 import org.apache.commons.beanutils.ConvertUtilsBean;
 import org.apache.commons.beanutils.Converter;
@@ -39,35 +41,37 @@ import org.apache.commons.lang.Validate;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.mule.modules.utils.date.DateConventions;
 import org.mule.modules.utils.date.XmlGregorianCalendars;
+import org.mule.modules.utils.mom.CxfMapObjectMappers;
 import org.mule.modules.zuora.zobject.ElementBuilders;
 import org.w3c.dom.Element;
+
+import ar.com.zauber.commons.mom.MapObjectMapper;
+import ar.com.zauber.commons.mom.MapObjectMappers;
+import ar.com.zauber.commons.mom.PropertyModel;
+import ar.com.zauber.commons.mom.StructureType;
+import ar.com.zauber.commons.mom.style.impl.CXFStyle;
 
 /**
  * Base class for Zuora objects that simplifies accessing customizable properties -
  * properties that may be defined by user
- * 
+ *
  * @author flbulgarelli
  */
 @SuppressWarnings("unchecked")
 public abstract class Dynamic
 {
     private static final HashSet<String> EXCLUDED_PROPERTY_NAMES = new HashSet<String>(Arrays.asList("any", "class", "fieldsToNull"));
-    
-    ConvertUtilsBean convertUtils  = new ConvertUtilsBean();
-    BeanUtilsBean beanUtils = new BeanUtilsBean(convertUtils); 
-    
-    {  
-        convertUtils.register(new Converter()
+    private static MapObjectMapper mom = MapObjectMappers.defaultWithPackage("com.zuora.api")
+        .withConverter(CxfMapObjectMappers.muleStringToXmlGregorianCalendarConverter())
+        .withPropertyModel(new PropertyModel()
         {
-            @Override
-            public Object convert(Class type, Object value)
-            {  
-                Validate.isTrue(value.getClass() == String.class);
-                return XmlGregorianCalendars.toGregorianCalendar( 
-                    DateConventions.defaultDateTimeFormat().parseDateTime((String) value).toDate()); 
+            public void setProperty(Object value, Object destination, String key, MapObjectMapper mom)
+            {
+                Dynamic dynamic = (Dynamic) destination;
+                dynamic.setAt(key, value);
             }
-        }, XMLGregorianCalendar.class);
-    }
+        })
+        .build();
     /**
      * Answers the dynamic property elements. Warning: this method is CXF specific and
      * its usage is discouraged
@@ -78,7 +82,7 @@ public abstract class Dynamic
         throw new UnsupportedOperationException("Instances of class " + this.getClass()
                                                 + " have not dynamic properties. Use normal getters and setters instead");
     }
-    
+
     /**
      * Answers the name and values of the dynamic properties of this object
      * @return the dynamic properties, as string-object pairs
@@ -92,7 +96,7 @@ public abstract class Dynamic
             }
         });
     }
-    
+
     /**
      * Answers the name and values of the static properties of this object
      * @return the static properties, as string-object pairs
@@ -137,7 +141,7 @@ public abstract class Dynamic
     /**
      * Synonym of {@link #setField(String, String)} that lets groovy script users
      * to set dynamic properties with the indexed brackets [] syntax.
-     * 
+     *
      * @param name
      * @param value
      */
@@ -149,9 +153,9 @@ public abstract class Dynamic
     public void setField(String name, Object value)
     {
         String propertyName = toPropertyName(name);
-        if (PropertyUtils.isWriteable(this, propertyName))
+        if (PropertyUtils.isWriteable(this, propertyName) || PropertyUtils.isReadable(this, propertyName))
         {
-            setProperty(value, propertyName);
+            setStaticProperty(value, propertyName);
         }
         else
         {
@@ -172,15 +176,15 @@ public abstract class Dynamic
         }
     }
 
-    private void setProperty(Object value, String propertyName)
+    private void setStaticProperty(Object value, String propertyName)
     {
         try
-        {   
-            beanUtils.setProperty(this, propertyName, value);
+        {
+            CXFStyle.STYLE.setValue(this, propertyName, mom.unmap(value, StructureType.getStructureType(this, propertyName)));
         }
         catch (Exception e)
         {
-            throw new UnhandledException(e);
+            throw SoftException.soften(e);
         }
     }
 
@@ -192,7 +196,7 @@ public abstract class Dynamic
     /**
      * Synonym of {@link #getField(String)} that lets groovy script users
      * to access dynamic properties with the indexed brackets [] syntax.
-     * 
+     *
      * @param name
      * @return {@link #getField(String)}
      */
@@ -205,16 +209,16 @@ public abstract class Dynamic
     {
         String propertyName = toPropertyName(name);
         Method readMethod = getReadMethod(propertyName);
-        if(readMethod != null)
+        if (readMethod != null)
         {
             return getProperty(readMethod);
         }
-        
+
         Element element = getElement(this, name);
         return element != null ? element.getTextContent() : null;
     }
 
-    private Object getProperty(Method readMethod) throws AssertionError
+    private Object getProperty(Method readMethod)
     {
         try
         {
@@ -238,18 +242,25 @@ public abstract class Dynamic
         }
 
     }
-    
+
     private static Element getElement(Dynamic object, final String name)
     {
-        return (Element) CollectionUtils.find(object.getAny(), new Predicate()
+        try
         {
-            public boolean evaluate(Object object)
+            return (Element) CollectionUtils.find(object.getAny(), new Predicate()
             {
-                return (object instanceof Element && ((Element) object).getLocalName().equals(name));
-            }
-        });
+                public boolean evaluate(Object object)
+                {
+                    return (object instanceof Element && ((Element) object).getLocalName().equals(name));
+                }
+            });
+        }
+        catch (UnsupportedOperationException e)
+        {
+            throw new UnsupportedOperationException("There is no property " + name, e);
+        }
     }
-    
+
     @Override
     public String toString()
     {
@@ -257,9 +268,9 @@ public abstract class Dynamic
     }
 
     class PropertyAccessor {
-        
+
         private PropertyDescriptor descriptor;
-        
+
         public PropertyAccessor(PropertyDescriptor descriptor)
         {
             this.descriptor = descriptor;
@@ -275,7 +286,7 @@ public abstract class Dynamic
                 throw new AssertionError(e);
             }
         }
-        
+
         protected Method getReadMethod() {
             if(descriptor.getReadMethod() != null) {
                 return descriptor.getReadMethod();
@@ -289,6 +300,6 @@ public abstract class Dynamic
                 throw new AssertionError(e);
             }
         }
-        
+
     }
 }

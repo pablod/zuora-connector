@@ -24,13 +24,19 @@ import java.util.Map.Entry;
 public class ZObjectMapper {
     private static Logger logger = LoggerFactory.getLogger(ZObjectMapper.class);
 
-    public static ZObject toZObject(ZObjectType type, Map<String, Object> map) {
+    public static ZObject toZObject(ZObjectType type, Map<String, Object> map)
+    {
         ZObject zobject = type.newInstance();
-        for (Entry<String, Object> entry : map.entrySet()) {
-            if (!entry.getKey().equalsIgnoreCase("id")) {
+        for (Entry<String, Object> entry : map.entrySet())
+        {
+            if (!entry.getKey().equalsIgnoreCase("id"))
+            {
                 zobject.setField(entry.getKey(), entry.getValue());
-            } else {
-                if (!(entry.getValue() instanceof String)) {
+            }
+            else
+            {
+                if (!(entry.getValue() instanceof String))
+                {
                     logger.error("The ID of a ZObject must be a String");
                 }
                 zobject.setId((String) entry.getValue());
@@ -40,10 +46,13 @@ public class ZObjectMapper {
     }
 
     @SuppressWarnings("unchecked")
-    public static List<ZObject> toZObject(final ZObjectType type, List<Map<String, Object>> maps) {
-        return (List<ZObject>) CollectionUtils.collect(maps, new Transformer() {
+    public static List<ZObject> toZObject(final ZObjectType type, List<Map<String, Object>> maps)
+    {
+        return (List<ZObject>) CollectionUtils.collect(maps, new Transformer()
+        {
             @Override
-            public Object transform(Object input) {
+            public Object transform(Object input)
+            {
                 return toZObject(type, (Map<String, Object>) input);
             }
         });
