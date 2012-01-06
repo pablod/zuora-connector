@@ -11,7 +11,7 @@
 
 package com.zuora.api.object;
 
-import static org.apache.commons.collections.CollectionUtils.*;
+import static org.apache.commons.collections.CollectionUtils.collect;
 
 import java.beans.IntrospectionException;
 import java.beans.Introspector;
@@ -23,30 +23,22 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map.Entry;
 
-import javax.xml.datatype.XMLGregorianCalendar;
-
 import net.sf.staccatocommons.lang.SoftException;
 
-import org.apache.commons.beanutils.BeanUtilsBean;
-import org.apache.commons.beanutils.ConvertUtilsBean;
-import org.apache.commons.beanutils.Converter;
-import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
 import org.apache.commons.collections.Transformer;
 import org.apache.commons.collections.keyvalue.DefaultMapEntry;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.UnhandledException;
-import org.apache.commons.lang.Validate;
 import org.apache.commons.lang.builder.ToStringBuilder;
-import org.mule.modules.utils.date.DateConventions;
-import org.mule.modules.utils.date.XmlGregorianCalendars;
 import org.mule.modules.utils.mom.CxfMapObjectMappers;
 import org.mule.modules.zuora.zobject.ElementBuilders;
 import org.w3c.dom.Element;
 
 import ar.com.zauber.commons.mom.MapObjectMapper;
 import ar.com.zauber.commons.mom.MapObjectMappers;
+import ar.com.zauber.commons.mom.NaiveProperties;
 import ar.com.zauber.commons.mom.PropertyModel;
 import ar.com.zauber.commons.mom.StructureType;
 import ar.com.zauber.commons.mom.style.impl.CXFStyle;
@@ -123,13 +115,13 @@ public abstract class Dynamic
                 new Transformer() {
                     public Object transform(Object input) {
                         PropertyDescriptor p = ((PropertyDescriptor) input);
-                        return new DefaultMapEntry(p.getName(), new PropertyAccessor(p).getValue());
+                        return new DefaultMapEntry(p.getName(), NaiveProperties.get(Dynamic.this, p.getName()));
                     }
                 });
         }
         catch (Exception e)
         {
-            throw new UnhandledException(e);
+            throw SoftException.soften(e);
         }
     }
 
@@ -153,7 +145,7 @@ public abstract class Dynamic
     public void setField(String name, Object value)
     {
         String propertyName = toPropertyName(name);
-        if (PropertyUtils.isWriteable(this, propertyName) || PropertyUtils.isReadable(this, propertyName))
+        if (NaiveProperties.getterOrNull(getClass(), propertyName) != null)
         {
             setStaticProperty(value, propertyName);
         }
@@ -208,7 +200,7 @@ public abstract class Dynamic
     public Object getField(final String name)
     {
         String propertyName = toPropertyName(name);
-        Method readMethod = getReadMethod(propertyName);
+        Method readMethod = NaiveProperties.getterOrNull(getClass(), propertyName);
         if (readMethod != null)
         {
             return getProperty(readMethod);
@@ -230,18 +222,6 @@ public abstract class Dynamic
         }
     }
 
-    private Method getReadMethod(String propertyName)
-    {
-        try
-        {
-            return new PropertyDescriptor(propertyName, this.getClass()).getReadMethod();
-        }
-        catch (IntrospectionException e)
-        {
-            return null;
-        }
-
-    }
 
     private static Element getElement(Dynamic object, final String name)
     {
@@ -267,39 +247,4 @@ public abstract class Dynamic
         return ToStringBuilder.reflectionToString(this);
     }
 
-    class PropertyAccessor {
-
-        private PropertyDescriptor descriptor;
-
-        public PropertyAccessor(PropertyDescriptor descriptor)
-        {
-            this.descriptor = descriptor;
-        }
-
-        public Object getValue() {
-            try
-            {
-                return getReadMethod().invoke(Dynamic.this);
-            }
-            catch (Exception e)
-            {
-                throw new AssertionError(e);
-            }
-        }
-
-        protected Method getReadMethod() {
-            if(descriptor.getReadMethod() != null) {
-                return descriptor.getReadMethod();
-            }
-            if(descriptor.getPropertyType() != Boolean.class) {
-                throw new AssertionError("This would that CXF had generated a setter without setter");
-            }
-            try {
-                return Dynamic.this.getClass().getMethod("is" + StringUtils.capitalize(descriptor.getName()));
-            } catch(Exception e){
-                throw new AssertionError(e);
-            }
-        }
-
-    }
 }
