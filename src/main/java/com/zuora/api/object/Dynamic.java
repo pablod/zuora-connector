@@ -13,7 +13,6 @@ package com.zuora.api.object;
 
 import static org.apache.commons.collections.CollectionUtils.collect;
 
-import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Method;
@@ -23,15 +22,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map.Entry;
 
-import net.sf.staccatocommons.lang.SoftException;
-
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
 import org.apache.commons.collections.Transformer;
 import org.apache.commons.collections.keyvalue.DefaultMapEntry;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.UnhandledException;
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.mule.modules.utils.MuleSoftException;
 import org.mule.modules.utils.mom.CxfMapObjectMappers;
 import org.mule.modules.zuora.zobject.ElementBuilders;
 import org.w3c.dom.Element;
@@ -121,7 +118,7 @@ public abstract class Dynamic
         }
         catch (Exception e)
         {
-            throw SoftException.soften(e);
+            throw MuleSoftException.soften(e);
         }
     }
 
@@ -176,7 +173,7 @@ public abstract class Dynamic
         }
         catch (Exception e)
         {
-            throw SoftException.soften(e);
+            throw MuleSoftException.soften(e);
         }
     }
 
