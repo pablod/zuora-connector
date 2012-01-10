@@ -36,7 +36,7 @@ public class ZuoraPaymentExampleTest extends FunctionalTestCase
     {
         MessageProcessor flow = lookupFlowConstruct("example");
         Map<String, Object> payload = getDefaultMap();
-        payload.put("effectiveDate", XmlGregorianCalendars.toGregorianCalendar(new Date()));
+        payload.put("effectiveDate", XmlGregorianCalendars.from(new Date()));
         MuleMessage message = flow.process(getTestEvent(payload)).getMessage();
         
         assertNull(message.getExceptionPayload());
