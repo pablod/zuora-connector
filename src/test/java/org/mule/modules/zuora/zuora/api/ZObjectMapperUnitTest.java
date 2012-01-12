@@ -11,9 +11,19 @@
 package org.mule.modules.zuora.zuora.api;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import org.junit.Test;
 import org.mule.modules.zuora.zobject.ZObjectType;
 
 import com.zuora.api.ProductRatePlanChargeTierData;
@@ -21,14 +31,6 @@ import com.zuora.api.object.Account;
 import com.zuora.api.object.ProductRatePlanCharge;
 import com.zuora.api.object.ProductRatePlanChargeTier;
 import com.zuora.api.object.ZObject;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-
-import org.junit.Test;
-
 
 public class ZObjectMapperUnitTest
 {
@@ -71,9 +73,9 @@ public class ZObjectMapperUnitTest
         ProductRatePlanCharge charge = (ProductRatePlanCharge) ZObjectMapper.toZObject(ZObjectType.ProductRatePlanCharge, new HashMap() { {
             put("AccountingCode", "AXD");
             put("ProductRatePlanChargeTierData", new HashMap() { {
-                put("ProductRatePlanChargeTier", Arrays.asList(new HashMap(){{
+                put("ProductRatePlanChargeTier", Arrays.asList(new HashMap() { {
                     put("Id", "456");
-                }}));
+                } }));
             } } );
         } });
 
@@ -81,8 +83,6 @@ public class ZObjectMapperUnitTest
         assertEquals("456", charge.getProductRatePlanChargeTierData().getProductRatePlanChargeTier().get(0).getId());
 
     }
-
-
 
 
     @SuppressWarnings("serial")
@@ -101,6 +101,34 @@ public class ZObjectMapperUnitTest
                 put("Status", "Draft");
             }
         };
+    }
+
+
+    @SuppressWarnings({"rawtypes","unchecked"})
+    @Test
+    public void testNestedStructure() throws Exception
+    {
+        HashMap<String,Object> productRatePlanChargeMap = new HashMap() { {
+            put("ChargeModel", "Per Unit Pricing");
+            put("ChargeType", "Recurring");
+            put("Model", "PerUnit");
+            put("Name", "Product Rate Plan Charge");
+            put("ProductRatePlanId", "1");
+            put("TriggerEvent", "ContractEffective");
+            put("ProductRatePlanChargeTierData", new HashMap() { {
+                put("productRatePlanChargeTier", Arrays.asList(new HashMap() { {
+                    put("Active", "true");
+                    put("Currency", "USD");
+                    put("Price", "20");
+                    put("Tier", "1");
+                } }));
+            }});
+        } };
+
+        ProductRatePlanCharge zobject = (ProductRatePlanCharge) ZObjectMapper.toZObject(ZObjectType.ProductRatePlanCharge, productRatePlanChargeMap);
+        assertEquals(zobject.getChargeModel(), "Per Unit Pricing");
+        assertEquals(zobject.getChargeType(), "Recurring");
+        assertEquals(zobject.getProductRatePlanId(), "1");
     }
 }
 
