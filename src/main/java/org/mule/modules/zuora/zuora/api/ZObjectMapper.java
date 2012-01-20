@@ -10,16 +10,17 @@
 
 package org.mule.modules.zuora.zuora.api;
 
-import com.zuora.api.object.ZObject;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Transformer;
 import org.mule.modules.zuora.zobject.ZObjectType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
+import com.zuora.api.object.ZObject;
 
 public class ZObjectMapper {
     private static Logger logger = LoggerFactory.getLogger(ZObjectMapper.class);

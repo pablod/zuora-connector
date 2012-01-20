@@ -10,11 +10,11 @@
 
 package org.mule.modules.zuora.zuora.api.internal;
 
-import org.slf4j.Logger;
-
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+
+import org.slf4j.Logger;
 
 public class ClientAdaptorInvocationHandler implements InvocationHandler {
     private final Logger log;

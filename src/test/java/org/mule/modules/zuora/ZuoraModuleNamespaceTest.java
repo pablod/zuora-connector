@@ -14,11 +14,10 @@
 
 package org.mule.modules.zuora;
 
+import org.junit.Test;
 import org.mule.api.construct.FlowConstruct;
 import org.mule.tck.AbstractMuleTestCase;
 import org.mule.tck.FunctionalTestCase;
-
-import org.junit.Test;
 
 /**
  * Test for zuora mule schema ZuoraModuleNamespaceTest

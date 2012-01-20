@@ -11,7 +11,7 @@
 
 package com.zuora.api.object;
 
-import static org.apache.commons.collections.CollectionUtils.collect;
+import static org.apache.commons.collections.CollectionUtils.*;
 
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
@@ -33,12 +33,12 @@ import org.mule.modules.utils.mom.CxfMapObjectMappers;
 import org.mule.modules.zuora.zobject.ElementBuilders;
 import org.w3c.dom.Element;
 
-import ar.com.zauber.commons.mom.MapObjectMapper;
-import ar.com.zauber.commons.mom.MapObjectMappers;
-import ar.com.zauber.commons.mom.NaiveProperties;
-import ar.com.zauber.commons.mom.PropertyModel;
-import ar.com.zauber.commons.mom.StructureType;
-import ar.com.zauber.commons.mom.style.impl.CXFStyle;
+import com.zauberlabs.commons.mom.MapObjectMapper;
+import com.zauberlabs.commons.mom.MapObjectMappers;
+import com.zauberlabs.commons.mom.NaiveProperties;
+import com.zauberlabs.commons.mom.PropertyModel;
+import com.zauberlabs.commons.mom.StructureType;
+import com.zauberlabs.commons.mom.style.impl.CXFStyle;
 
 /**
  * Base class for Zuora objects that simplifies accessing customizable properties -

@@ -10,10 +10,9 @@
 
 package org.mule.modules.zuora.zuora.api;
 
-import org.mule.modules.zuora.zuora.api.internal.ClientAdaptorInvocationHandler;
-
 import java.lang.reflect.Proxy;
 
+import org.mule.modules.zuora.zuora.api.internal.ClientAdaptorInvocationHandler;
 import org.slf4j.LoggerFactory;
 
 public class ZuoraClientAdaptor
