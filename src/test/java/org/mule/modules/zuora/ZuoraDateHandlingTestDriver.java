@@ -11,7 +11,7 @@ import org.mule.modules.utils.date.XmlGregorianCalendars;
 import org.mule.tck.AbstractMuleTestCase;
 import org.mule.tck.FunctionalTestCase;
 
-public class ZuoraPaymentExampleTest extends FunctionalTestCase
+public class ZuoraDateHandlingTestDriver extends FunctionalTestCase
 {
 
     @Override
