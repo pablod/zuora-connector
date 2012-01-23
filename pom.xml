@@ -16,7 +16,6 @@
   <properties>
   	<cxf.version>2.3.1</cxf.version>
   	<mule.modules.utils.version>1.0-SNAPSHOT</mule.modules.utils.version>
-  	<mom.version>1.4-SNAPSHOT</mom.version>
   </properties>
 
   <build>
@@ -96,11 +95,6 @@
         <groupId>org.mule.modules</groupId>
         <artifactId>mule-modules-utils</artifactId>
         <version>${mule.modules.utils.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.zaubersoftware</groupId>
-      <artifactId>mom</artifactId>
-      <version>${mom.version}</version>
     </dependency>
   </dependencies>
 

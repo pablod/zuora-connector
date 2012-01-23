@@ -29,7 +29,7 @@ import org.apache.commons.collections.keyvalue.DefaultMapEntry;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.mule.modules.utils.MuleSoftException;
-import org.mule.modules.utils.mom.CxfMapObjectMappers;
+import org.mule.modules.utils.mom.JaxbMapObjectMappers;
 import org.mule.modules.zuora.zobject.ElementBuilders;
 import org.w3c.dom.Element;
 
@@ -38,7 +38,7 @@ import com.zauberlabs.commons.mom.MapObjectMappers;
 import com.zauberlabs.commons.mom.NaiveProperties;
 import com.zauberlabs.commons.mom.PropertyModel;
 import com.zauberlabs.commons.mom.StructureType;
-import com.zauberlabs.commons.mom.style.impl.CXFStyle;
+import com.zauberlabs.commons.mom.style.impl.JaxbStyle;
 
 /**
  * Base class for Zuora objects that simplifies accessing customizable properties -
@@ -51,7 +51,7 @@ public abstract class Dynamic
 {
     private static final HashSet<String> EXCLUDED_PROPERTY_NAMES = new HashSet<String>(Arrays.asList("any", "class", "fieldsToNull"));
     private static MapObjectMapper mom = MapObjectMappers.defaultWithPackage("com.zuora.api")
-        .withConverter(CxfMapObjectMappers.muleStringToXmlGregorianCalendarConverter())
+        .withConverter(JaxbMapObjectMappers.muleStringToXmlGregorianCalendarConverter())
         .withPropertyModel(new PropertyModel()
         {
             public void setProperty(Object value, Object destination, String key, MapObjectMapper mom)
@@ -111,7 +111,7 @@ public abstract class Dynamic
             return collect(Arrays.asList(Introspector.getBeanInfo(this.getClass()).getPropertyDescriptors()),
                 new Transformer() {
                     public Object transform(Object input) {
-                        PropertyDescriptor p = ((PropertyDescriptor) input);
+                        PropertyDescriptor p = (PropertyDescriptor) input;
                         return new DefaultMapEntry(p.getName(), NaiveProperties.get(Dynamic.this, p.getName()));
                     }
                 });
@@ -169,7 +169,7 @@ public abstract class Dynamic
     {
         try
         {
-            CXFStyle.STYLE.setValue(this, propertyName, mom.unmap(value, StructureType.getStructureType(this, propertyName)));
+            JaxbStyle.STYLE.setValue(this, propertyName, mom.unmap(value, StructureType.getStructureType(this, propertyName)));
         }
         catch (Exception e)
         {
@@ -228,7 +228,7 @@ public abstract class Dynamic
             {
                 public boolean evaluate(Object object)
                 {
-                    return (object instanceof Element && ((Element) object).getLocalName().equals(name));
+                    return object instanceof Element && ((Element) object).getLocalName().equals(name);
                 }
             });
         }
