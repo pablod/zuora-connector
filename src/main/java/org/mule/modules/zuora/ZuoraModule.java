@@ -257,7 +257,7 @@ public class ZuoraModule {
      * Retrieve an account profile
      * <p/>
      * {@sample.xml ../../../doc/mule-module-zuora.xml.sample zuora:account-profile}
-     * 
+     *
      * @param accountId The id of the account to retrieve an account profile for
      * @return the account, as a String-Object Map
      */
@@ -266,6 +266,21 @@ public class ZuoraModule {
     public Map<String, Object> accountProfile(String accountId)
             throws Exception {
         return client.accountProfile(accountId);
+    }
+
+    /**
+     * Retrieve a full invoice
+     * <p/>
+     * {@sample.xml ../../../doc/mule-module-zuora.xml.sample zuora:get-invoice}
+     *
+     * @param invoiceId The id of the account to retrieve an account profile for
+     * @return the invoice, as a String-Object Map
+     */
+    @Processor
+    @InvalidateConnectionOn(exception=SessionTimedOutException.class)
+    public Map<String, Object> getInvoice(String invoiceId)
+            throws Exception {
+        return client.getInvoice(invoiceId);
     }
     
     public void setEndpoint(String enpoint) {

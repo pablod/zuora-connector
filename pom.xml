@@ -1,107 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"> 
-  <parent>
-	  <groupId>org.mule.tools.devkit</groupId>
-	  <artifactId>mule-devkit-parent</artifactId>
-	  <version>3.2</version>
-  </parent>
-	
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>org.mule.modules</groupId>
-  <artifactId>mule-module-zuora</artifactId>
-  <version>1.7-SNAPSHOT</version>
-  <packaging>mule-module</packaging>
-  <name>Mule Zuora Connector</name>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>org.mule.tools.devkit</groupId>
+        <artifactId>mule-devkit-parent</artifactId>
+        <version>3.2</version>
+    </parent>
 
-  <properties>
-  	<cxf.version>2.3.1</cxf.version>
-  	<mule.modules.utils.version>1.0</mule.modules.utils.version>
-  </properties>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.mule.modules</groupId>
+    <artifactId>mule-module-zuora</artifactId>
+    <version>1.8-SNAPSHOT</version>
+    <packaging>mule-module</packaging>
+    <name>Mule Zuora Connector</name>
 
-  <build>
-    <plugins>
-      <plugin>
-        <artifactId>cxf-codegen-plugin</artifactId>
-        <groupId>org.apache.cxf</groupId>
-        <version>${cxf.version}</version>
-        <executions>
-          <execution>
-            <id>generate-sources</id>
-            <phase>generate-sources</phase>
-            <configuration>
-             <extension>true</extension>
-              <wsdlOptions>
-                <wsdlOption>
-                  <wsdl>${basedir}/src/main/resources/zuora-32.modified.wsdl</wsdl>
-                  
-                    <bindingFiles>
-                        <bindingFile>${basedir}/src/main/resources/bindings.xml</bindingFile>
-                    </bindingFiles>
-                  <autoNameResolution>true</autoNameResolution>
-                </wsdlOption>
-              </wsdlOptions>
-            </configuration>
-            <goals>
-              <goal>wsdl2java</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>      
-    </plugins>
-  </build>
+    <properties>
+        <cxf.version>2.3.1</cxf.version>
+        <mule.modules.utils.version>1.0</mule.modules.utils.version>
+    </properties>
 
-  <dependencies>
-    <!-- CXF -->
-    <dependency>
-      <groupId>org.mule.modules</groupId>
-      <artifactId>mule-module-cxf</artifactId>
-      <version>${mule.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.cxf</groupId>
-      <artifactId>cxf-rt-databinding-jaxb</artifactId>
-      <version>${cxf.version}</version>
-      <scope>provided</scope>
-      <exclusions>
-        <!-- We use javax.activation -->
-        <exclusion>
-          <groupId>org.apache.geronimo.specs</groupId>
-          <artifactId>geronimo-activation_1.1_spec</artifactId>
-        </exclusion>
-        <!-- We use javax.mail -->
-        <exclusion>
-          <groupId>org.apache.geronimo.specs</groupId>
-          <artifactId>geronimo-javamail_1.4_spec</artifactId>
-        </exclusion>
-        <!-- We use stax-api -->
-        <exclusion>
-          <groupId>org.apache.geronimo.specs</groupId>
-          <artifactId>geronimo-stax-api_1.0_spec</artifactId>
-        </exclusion>
-        <!-- We use javax.xml.ws:jaxws-api -->
-        <exclusion>
-          <groupId>org.apache.geronimo.specs</groupId>
-          <artifactId>geronimo-jaxws_2.1_spec</artifactId>
-        </exclusion>
-        <!-- We use slf4j -->
-        <exclusion>
-          <groupId>commons-logging</groupId>
-          <artifactId>commons-logging</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-        <groupId>org.mule.modules</groupId>
-        <artifactId>mule-modules-utils</artifactId>
-        <version>${mule.modules.utils.version}</version>
-    </dependency>
-  </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>cxf-codegen-plugin</artifactId>
+                <groupId>org.apache.cxf</groupId>
+                <version>${cxf.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-sources</id>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <extension>true</extension>
+                            <wsdlOptions>
+                                <wsdlOption>
+                                    <wsdl>${basedir}/src/main/resources/zuora-32.modified.wsdl</wsdl>
 
-  <scm>
-    <connection>scm:git:git://github.com:mulesoft/zuora-connector.git</connection>
-    <developerConnection>scm:git:git@github.com:mulesoft/zuora-connector.git</developerConnection>
-    <url>http://github.com/mulesoft/zuora-connector</url>
-  </scm>
+                                    <bindingFiles>
+                                        <bindingFile>${basedir}/src/main/resources/bindings.xml</bindingFile>
+                                    </bindingFiles>
+                                    <autoNameResolution>true</autoNameResolution>
+                                </wsdlOption>
+                            </wsdlOptions>
+                        </configuration>
+                        <goals>
+                            <goal>wsdl2java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <!-- CXF -->
+        <dependency>
+            <groupId>org.mule.modules</groupId>
+            <artifactId>mule-module-cxf</artifactId>
+            <version>${mule.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-databinding-jaxb</artifactId>
+            <version>${cxf.version}</version>
+            <scope>provided</scope>
+            <exclusions>
+                <!-- We use javax.activation -->
+                <exclusion>
+                    <groupId>org.apache.geronimo.specs</groupId>
+                    <artifactId>geronimo-activation_1.1_spec</artifactId>
+                </exclusion>
+                <!-- We use javax.mail -->
+                <exclusion>
+                    <groupId>org.apache.geronimo.specs</groupId>
+                    <artifactId>geronimo-javamail_1.4_spec</artifactId>
+                </exclusion>
+                <!-- We use stax-api -->
+                <exclusion>
+                    <groupId>org.apache.geronimo.specs</groupId>
+                    <artifactId>geronimo-stax-api_1.0_spec</artifactId>
+                </exclusion>
+                <!-- We use javax.xml.ws:jaxws-api -->
+                <exclusion>
+                    <groupId>org.apache.geronimo.specs</groupId>
+                    <artifactId>geronimo-jaxws_2.1_spec</artifactId>
+                </exclusion>
+                <!-- We use slf4j -->
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.mule.modules</groupId>
+            <artifactId>mule-modules-utils</artifactId>
+            <version>${mule.modules.utils.version}</version>
+        </dependency>
+    </dependencies>
+
+    <scm>
+        <connection>scm:git:git://github.com:mulesoft/zuora-connector.git</connection>
+        <developerConnection>scm:git:git@github.com:mulesoft/zuora-connector.git</developerConnection>
+        <url>http://github.com/mulesoft/zuora-connector</url>
+    </scm>
 
 </project>
