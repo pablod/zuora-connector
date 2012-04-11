@@ -12,7 +12,7 @@
     <mule.version>3.2.0</mule.version>
     <mule.devkit.version>LATEST</mule.devkit.version>
     <junit.version>4.8.2</junit.version>
-    <mule.zuora.version>1.5-SNAPSHOT</mule.zuora.version>
+    <mule.zuora.version>1.8-SNAPSHOT</mule.zuora.version>
   </properties>
 
   <description>Example that shows how to get taxes</description>
