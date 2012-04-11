@@ -15,8 +15,10 @@
     <name>Mule Zuora Connector</name>
 
     <properties>
-        <cxf.version>2.3.1</cxf.version>
+        <cxf.version>2.5.1</cxf.version>
+        <mule.module.cxf.version>3.3-M2</mule.module.cxf.version>
         <mule.modules.utils.version>1.0</mule.modules.utils.version>
+        <org.springframework.version>3.1.0.RELEASE</org.springframework.version>
     </properties>
 
     <build>
@@ -54,10 +56,20 @@
     <dependencies>
         <!-- CXF -->
         <dependency>
-            <groupId>org.mule.modules</groupId>
-            <artifactId>mule-module-cxf</artifactId>
-            <version>${mule.version}</version>
-            <scope>provided</scope>
+          <groupId>org.mule.modules</groupId>
+          <artifactId>mule-module-cxf</artifactId>
+          <version>${mule.module.cxf.version}</version>
+          <scope>provided</scope>
+        </dependency>
+        <dependency>
+	      <groupId>org.springframework</groupId>
+	      <artifactId>spring-core</artifactId>
+	      <version>${org.springframework.version}</version>
+	    </dependency>
+	    <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-beans</artifactId>
+          <version>${org.springframework.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.cxf</groupId>
@@ -99,21 +111,21 @@
         </dependency>
     </dependencies>
     
-	<repositories>
-		<repository>
-			<id>mule-ee-snapshot</id>
-			<name>EE Repository Snapshots</name>
-			<url>https://repository.mulesoft.org/nexus/content/repositories/snapshots</url>
-			<layout>default</layout>
-		</repository>
-		<repository>
-			<id>mule-ee</id>
-			<name>EE Repository Releases</name>
-			<url>https://repository.mulesoft.org/nexus/content/repositories/releases</url>
-			<layout>default</layout>
-		</repository>
-	</repositories>
-	
+    <repositories>
+      <repository>
+            <id>mule-ee-snapshot</id>
+            <name>EE Repository Snapshots</name>
+            <url>https://repository.mulesoft.org/nexus/content/repositories/snapshots</url>
+            <layout>default</layout>
+        </repository>
+        <repository>
+            <id>mule-ee</id>
+            <name>EE Repository Releases</name>
+            <url>https://repository.mulesoft.org/nexus/content/repositories/releases</url>
+            <layout>default</layout>
+        </repository>
+    </repositories>
+
     <scm>
         <connection>scm:git:git://github.com:mulesoft/zuora-connector.git</connection>
         <developerConnection>scm:git:git@github.com:mulesoft/zuora-connector.git</developerConnection>
