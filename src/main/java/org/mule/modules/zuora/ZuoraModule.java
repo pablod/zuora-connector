@@ -26,6 +26,8 @@ import org.mule.api.annotations.Disconnect;
 import org.mule.api.annotations.InvalidateConnectionOn;
 import org.mule.api.annotations.Processor;
 import org.mule.api.annotations.ValidateConnection;
+import org.mule.api.annotations.display.Password;
+import org.mule.api.annotations.display.Placement;
 import org.mule.api.annotations.param.ConnectionKey;
 import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.Optional;
@@ -67,6 +69,7 @@ public class ZuoraModule {
     @Configurable
     @Default("htps://apisandbox.zuora.com/apps/services/a/32.0")
     @Optional
+    @Placement(group = "Connection")
     private String endpoint;
 
 
@@ -77,7 +80,7 @@ public class ZuoraModule {
      * @param password Password to authenticate the username
      */
     @Connect
-    public synchronized void connect(@ConnectionKey String username, String password)
+    public synchronized void connect(@ConnectionKey String username, @Password String password)
             throws ConnectionException {
         try {
             client = new CxfZuoraClient(username, password, this.endpoint);
