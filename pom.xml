@@ -3,7 +3,7 @@
     <parent>
         <groupId>org.mule.tools.devkit</groupId>
         <artifactId>mule-devkit-parent</artifactId>
-        <version>3.3.0-EA</version>
+        <version>3.3.0</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -16,8 +16,11 @@
     <properties>
         <cxf.version>2.5.1</cxf.version>
         <mule.module.cxf.version>3.3-M2</mule.module.cxf.version>
-        <mule.modules.utils.version>1.0</mule.modules.utils.version>
+        <mule.modules.utils.version>1.1.2</mule.modules.utils.version>
         <org.springframework.version>3.1.0.RELEASE</org.springframework.version>
+        <category>Standard</category>
+        <licensePath>LICENSE.md</licensePath>
+        <devkit.studio.package.skip>false</devkit.studio.package.skip>
     </properties>
 
     <build>
@@ -104,7 +107,7 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>org.mule.modules</groupId>
+            <groupId>com.mulesoft.modules</groupId>
             <artifactId>mule-modules-utils</artifactId>
             <version>${mule.modules.utils.version}</version>
         </dependency>
@@ -121,6 +124,12 @@
             <id>mule-ee</id>
             <name>EE Repository Releases</name>
             <url>https://repository.mulesoft.org/nexus/content/repositories/releases</url>
+            <layout>default</layout>
+        </repository>
+        <repository>
+            <id>mulesoft-releases</id>
+            <name>MuleSoft Releases Repository</name>
+            <url>http://repository.mulesoft.org/releases/</url>
             <layout>default</layout>
         </repository>
     </repositories>
