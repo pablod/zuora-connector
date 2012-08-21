@@ -42,9 +42,7 @@ public interface ZuoraClient<E extends Throwable>
 
     String getSessionId();
 
-    Map<String, Object> accountProfile(@NotNull String accountId) throws E;
-    
-    AccountProfile accountProfileObject(@NotNull String accountId) throws E;
+    AccountProfile accountProfile(@NotNull String accountId) throws E;
 
     Map<String, Object> getInvoice(@NotNull String accountId) throws E;
 }

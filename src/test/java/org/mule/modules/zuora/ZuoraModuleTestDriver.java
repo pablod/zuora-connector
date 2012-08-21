@@ -155,11 +155,9 @@ public class ZuoraModuleTestDriver {
 
             assertTrue(accountUpdateResult.isSuccess());
 
-            AccountProfile accountProfileObject = module.accountProfileObject(accountId);
-            Map<String, Object> accountProfile = module.accountProfile(accountId);
+            AccountProfile accountProfileObject = module.accountProfile(accountId);
 
 
-            assertEquals("Doe", ((Map<String, Object>) accountProfile.get("billTo")).get("lastName"));
             assertEquals("Doe", accountProfileObject.getBillTo().getLastName());
         } finally {
             module.delete(ZObjectType.Account, Arrays.asList(accountId)).get(0);

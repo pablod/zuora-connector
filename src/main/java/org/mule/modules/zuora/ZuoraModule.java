@@ -257,25 +257,9 @@ public class ZuoraModule {
     }
 
     /**
-     * Retrieve an account profile
-     * <p/>
-     * {@sample.xml ../../../doc/mule-module-zuora.xml.sample zuora:account-profile}
-     *
-     * @param accountId The id of the account to retrieve an account profile for
-     * @return the account, as a String-Object Map
-     */
-    @Processor
-    @InvalidateConnectionOn(exception=SessionTimedOutException.class)
-    public Map<String, Object> accountProfile(String accountId)
-            throws Exception {
-        final Map<String, Object> result = client.accountProfile(accountId);
-        return result;
-    }
-    
-    /**
      * Retrieve an account profile as an Object
      * <p/>
-     * {@sample.xml ../../../doc/mule-module-zuora.xml.sample zuora:account-profile-object}
+     * {@sample.xml ../../../doc/mule-module-zuora.xml.sample zuora:account-profile}
      *
      * @param accountId The id of the account to retrieve an account profile for
      * @return an object containing the account, subscriptions, payments, payment method and the contact to
@@ -283,9 +267,9 @@ public class ZuoraModule {
      */
     @Processor
     @InvalidateConnectionOn(exception=SessionTimedOutException.class)
-    public AccountProfile accountProfileObject(String accountId)
+    public AccountProfile accountProfile(String accountId)
             throws Exception {
-        return client.accountProfileObject(accountId);
+        return client.accountProfile(accountId);
     }
 
     /**
