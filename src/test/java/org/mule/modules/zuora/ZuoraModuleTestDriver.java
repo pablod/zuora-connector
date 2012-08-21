@@ -37,7 +37,6 @@ public class ZuoraModuleTestDriver {
         module.setEndpoint("https://apisandbox.zuora.com/apps/services/a/32.0");
         module.connect(System.getenv("zuoraUsername"), System.getenv("zuoraPassword"));
 
-
         for (ZObject z : module.find("select id from Account"))
         {
             module.delete(ZObjectType.Account, Arrays.asList(z.getId()));
@@ -156,10 +155,12 @@ public class ZuoraModuleTestDriver {
 
             assertTrue(accountUpdateResult.isSuccess());
 
+            AccountProfile accountProfileObject = module.accountProfileObject(accountId);
             Map<String, Object> accountProfile = module.accountProfile(accountId);
 
 
             assertEquals("Doe", ((Map<String, Object>) accountProfile.get("billTo")).get("lastName"));
+            assertEquals("Doe", accountProfileObject.getBillTo().getLastName());
         } finally {
             module.delete(ZObjectType.Account, Arrays.asList(accountId)).get(0);
         }

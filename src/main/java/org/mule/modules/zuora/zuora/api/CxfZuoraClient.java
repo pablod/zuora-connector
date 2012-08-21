@@ -10,12 +10,15 @@
 
 package org.mule.modules.zuora.zuora.api;
 
-import com.zuora.api.*;
-import com.zuora.api.object.ZObject;
-import org.apache.commons.lang.Validate;
-import org.apache.cxf.headers.Header;
-import org.apache.cxf.jaxb.JAXBDataBinding;
-import org.mule.modules.zuora.User;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.JAXBException;
@@ -23,9 +26,39 @@ import javax.xml.namespace.QName;
 import javax.xml.ws.BindingProvider;
 import javax.xml.ws.Holder;
 import javax.xml.ws.handler.MessageContext;
-import java.text.SimpleDateFormat;
-import java.util.*;
-import java.util.Map.Entry;
+
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections.Transformer;
+import org.apache.commons.lang.Validate;
+import org.apache.cxf.headers.Header;
+import org.apache.cxf.jaxb.JAXBDataBinding;
+import org.mule.modules.zuora.AccountProfile;
+import org.mule.modules.zuora.RatePlanProfile;
+import org.mule.modules.zuora.SubscriptionProfile;
+import org.mule.modules.zuora.User;
+
+import com.zuora.api.AmendRequest;
+import com.zuora.api.AmendResult;
+import com.zuora.api.DeleteResult;
+import com.zuora.api.ErrorCode;
+import com.zuora.api.LoginFault;
+import com.zuora.api.LoginResult;
+import com.zuora.api.QueryResult;
+import com.zuora.api.SaveResult;
+import com.zuora.api.SessionHeader;
+import com.zuora.api.Soap;
+import com.zuora.api.SubscribeRequest;
+import com.zuora.api.SubscribeResult;
+import com.zuora.api.UnexpectedErrorFault;
+import com.zuora.api.ZuoraService;
+import com.zuora.api.object.Account;
+import com.zuora.api.object.Contact;
+import com.zuora.api.object.Payment;
+import com.zuora.api.object.PaymentMethod;
+import com.zuora.api.object.RatePlan;
+import com.zuora.api.object.RatePlanCharge;
+import com.zuora.api.object.Subscription;
+import com.zuora.api.object.ZObject;
 
 /**
  * Implementation of {@link ZuoraClient} based on a slightly modified version of
@@ -454,6 +487,118 @@ public class CxfZuoraClient implements ZuoraClient<Exception> {
         }
 
         return accountMap;
+    }
+    
+    @Override
+    public AccountProfile accountProfileObject(String accountId)
+            throws Exception {
+
+        Validate.notEmpty(accountId);
+        
+        AccountProfile accountProfile = new AccountProfile();
+
+        String accountQuery = "select AccountNumber,AdditionalEmailAddresses,AllowInvoiceEdit,AutoPay,Balance,Batch,BillCycleDay,BillToId,CommunicationProfileId,CreatedById,CreatedDate,CreditBalance,CrmId,Currency,CustomerServiceRepName,DefaultPaymentMethodId,InvoiceDeliveryPrefsEmail,InvoiceDeliveryPrefsPrint,InvoiceTemplateId,LastInvoiceDate,Name,Notes,ParentId,PaymentGateway,PaymentTerm,PurchaseOrderNumber,SalesRepName,SoldToId,Status,TaxExemptCertificateId,TaxExemptCertificateType,TaxExemptDescription,TaxExemptEffectiveDate,TaxExemptExpirationDate,TaxExemptIssuingJurisdiction,TaxExemptStatus,TotalInvoiceBalance,UpdatedById,UpdatedDate  from Account where id = '"
+                + accountId + "'";
+
+        QueryResult qr = this.soap.query(accountQuery);
+
+        if (qr.getSize() != 0) {
+
+            final Account account = (Account) qr.getRecords().get(0);
+            accountProfile.setAccount(account);
+
+            if (account.getDefaultPaymentMethodId() != null && !account.getDefaultPaymentMethodId().isEmpty()) {
+                String paymentMethodQuery = "SELECT AchAbaCode,AchAccountName,AchAccountNumberMask,AchAccountType,AchBankName,Active,BankBranchCode,BankCheckDigit,BankCity,BankCode,BankIdentificationNumber,BankName,BankPostalCode,BankStreetName,BankStreetNumber,BankTransferAccountName,BankTransferAccountType,BankTransferType,CreatedById,CreatedDate,CreditCardAddress1,CreditCardAddress2,CreditCardCity,CreditCardCountry,Id, CreditCardExpirationMonth, CreditCardExpirationYear, CreditCardMaskNumber,CreditCardHolderName,CreditCardPostalCode,CreditCardState,CreditCardType,DeviceSessionId,Email,IPAddress,LastFailedSaleTransactionDate,LastTransactionDateTime,LastTransactionStatus,MaxConsecutivePaymentFailures,Name,NumConsecutiveFailures,PaymentMethodStatus,PaymentRetryWindow,PaypalBaid,PaypalEmail,PaypalPreapprovalKey,PaypalType,Phone,TotalNumberOfErrorPayments,TotalNumberOfProcessedPayments,Type,UpdatedById,UpdatedDate,UseDefaultRetryRule from PaymentMethod where Id = '"
+                        + account.getDefaultPaymentMethodId() + "'";
+
+                final PaymentMethod paymentMethod = (PaymentMethod) this.soap.query(paymentMethodQuery)
+                    .getRecords().get(0);
+                accountProfile.setPaymentMethod(paymentMethod);
+
+            }
+            GregorianCalendar lastMonth = new GregorianCalendar();
+            lastMonth.add(GregorianCalendar.MONTH, -1);
+            SimpleDateFormat df = new SimpleDateFormat(
+                    "yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+            String lastMonthString = df.format(lastMonth.getTime());
+
+            String paymentQuery = "SELECT AccountingCode,Amount,AppliedCreditBalanceAmount,AuthTransactionId,BankIdentificationNumber,CancelledOn,Comment,CreatedById,CreatedDate,EffectiveDate,GatewayOrderId,GatewayResponse,GatewayResponseCode,GatewayState,MarkedForSubmissionOn,PaymentMethodID,PaymentNumber,ReferenceId,RefundAmount,SecondPaymentReferenceId,SettledOn,SoftDescriptor, SoftDescriptorPhone, Status, SubmittedOn,TransferredToAccounting,Type,UpdatedById,UpdatedDate from Payment where Id = '"
+                    + accountId
+                    + "' and EffectiveDate >= '"
+                    + lastMonthString
+                    + "'";
+
+            @SuppressWarnings("unchecked")
+            List<Payment> payments = (List<Payment>) CollectionUtils.collect(this.soap.query(paymentQuery)
+                    .getRecords(), new Transformer()
+                    {
+                        @Override
+                        public Object transform(Object input)
+                        {
+                            Payment payment = (Payment) input;
+                            return payment;
+                        }
+                    });
+            if(payments.size() > 0)
+            {
+                accountProfile.setPayments(payments);
+            }
+
+            String billToQuery = "select AccountId, Address1, Address2, City, Country, County, CreatedById, CreatedDate, Description, Fax, FirstName, HomePhone, LastName, MobilePhone, NickName, OtherPhone, OtherPhoneType, PersonalEmail, PostalCode, State, TaxRegion, UpdatedById, UpdatedDate, WorkEmail, WorkPhone from contact where id='"
+                    + accountProfile.getAccount().getBillToId() + "'";
+            QueryResult qrBillTo = this.soap.query(billToQuery);
+            if (qrBillTo.getSize() > 0) {
+                accountProfile.setBillTo((Contact) qrBillTo.getRecords().get(0));
+            }
+
+            String subscriptionQuery = "SELECT AutoRenew,CancelledDate,ContractAcceptanceDate,ContractEffectiveDate,CreatedById,CreatedDate,CreatorAccountId,InitialTerm,IsInvoiceSeparate,Name,Notes,OriginalCreatedDate,OriginalId,PreviousSubscriptionId,RenewalTerm,ServiceActivationDate,Status,SubscriptionEndDate,SubscriptionStartDate,TermEndDate,TermStartDate,TermType,UpdatedById,UpdatedDate,Version from Subscription where AccountId = '"
+                    + accountId + "' and status='Active'";
+
+            List<ZObject> subscriptionZList = this.soap
+                    .query(subscriptionQuery).getRecords();
+
+            final List<SubscriptionProfile> subscriptionProfiles = new ArrayList<SubscriptionProfile>();
+            for (ZObject zSubscription : subscriptionZList) {
+                if (zSubscription != null) {
+                    final SubscriptionProfile subscriptionProfile = new SubscriptionProfile();
+                    final Subscription subscription = (Subscription) zSubscription;
+                    subscriptionProfile.setSubscription(subscription);
+
+                    String rateplanQuery = "SELECT AmendmentId,AmendmentSubscriptionRatePlanId,AmendmentType,CreatedById,CreatedDate,Name,ProductRatePlanId,UpdatedById,UpdatedDate from RatePlan where SubscriptionId ='"
+                            + subscription.getId() + "'";
+
+                    List<ZObject> ratePlanZList = this.soap
+                            .query(rateplanQuery).getRecords();
+
+                    List<RatePlanProfile> ratePlanProfiles = new ArrayList<RatePlanProfile>();
+                    for (ZObject zRatePlan : ratePlanZList) {
+                        if (zRatePlan != null) {
+                            final RatePlanProfile ratePlanProfile = new RatePlanProfile();
+                            final RatePlan ratePlan = (RatePlan) zRatePlan;
+                            ratePlanProfile.setRatePlan(ratePlan);
+                            String rateplanchargeQuery = "SELECT AccountingCode,ApplyDiscountTo,BillCycleDay,BillCycleType,BillingPeriodAlignment,ChargedThroughDate,ChargeModel,ChargeNumber,ChargeType,CreatedById,CreatedDate,Description,DiscountLevel,DMRC,DTCV,EffectiveEndDate,EffectiveStartDate,IsLastSegment,MRR,Name,NumberOfPeriods,OriginalId,OverageCalculationOption,OverageUnusedUnitsCreditOption,Price,ProcessedThroughDate,ProductRatePlanChargeId,Quantity,Segment,TCV,TriggerDate,TriggerEvent,UnusedUnitsCreditRates,UOM,UpdatedById,UpdatedDate,UpToPeriods,Version from RatePlanCharge where RatePlanId ='"
+                                    + ratePlan.getId() + "'";
+                            List<ZObject> ratePlanChargeZList = this.soap
+                                    .query(rateplanchargeQuery).getRecords();
+                            final List<RatePlanCharge> ratePlanCharges = new ArrayList<RatePlanCharge>();
+                            for (ZObject zRatePlanCharge : ratePlanChargeZList) {
+                                if (zRatePlanCharge != null) {
+                                    ratePlanCharges.add((RatePlanCharge) zRatePlanCharge);
+                                }
+                            }
+                            ratePlanProfile.setRatePlanCharge(ratePlanCharges);
+                            ratePlanProfiles.add(ratePlanProfile);
+                        }
+                    }
+                    subscriptionProfile.setRatePlanProfiles(ratePlanProfiles);
+                    subscriptionProfiles.add(subscriptionProfile);
+                }
+            }
+
+            accountProfile.setSubscriptionProfiles(subscriptionProfiles);
+
+        }
+        return accountProfile;
     }
 
     @Override

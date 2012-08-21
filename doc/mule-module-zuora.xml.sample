@@ -32,6 +32,9 @@
 <!-- BEGIN_INCLUDE(zuora:account-profile) -->
 <account-profile accountId="0012..."/>
 <!-- END_INCLUDE(zuora:account-profile) -->
+<!-- BEGIN_INCLUDE(zuora:account-profile-object) -->
+  <zuora:account-profile-object accountId="12"/>
+<!-- END_INCLUDE(zuora:account-profile) -->
 <!-- BEGIN_INCLUDE(zuora:get-invoice) -->
 <get-invoice invoiceId="0012..."/>
 <!-- END_INCLUDE(zuora:get-invoice) -->

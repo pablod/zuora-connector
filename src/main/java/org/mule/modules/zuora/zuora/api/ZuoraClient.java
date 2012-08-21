@@ -12,6 +12,8 @@ package org.mule.modules.zuora.zuora.api;
 
 import com.zuora.api.*;
 import com.zuora.api.object.ZObject;
+
+import org.mule.modules.zuora.AccountProfile;
 import org.mule.modules.zuora.User;
 
 import javax.validation.constraints.NotNull;
@@ -41,6 +43,8 @@ public interface ZuoraClient<E extends Throwable>
     String getSessionId();
 
     Map<String, Object> accountProfile(@NotNull String accountId) throws E;
+    
+    AccountProfile accountProfileObject(@NotNull String accountId) throws E;
 
     Map<String, Object> getInvoice(@NotNull String accountId) throws E;
 }
