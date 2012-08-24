@@ -14,19 +14,41 @@
 
 package org.mule.modules.zuora;
 
-import com.zuora.api.*;
-import com.zuora.api.object.*;
-import org.junit.Before;
-import org.junit.Test;
-import org.mule.modules.zuora.zobject.ZObjectType;
+import static org.junit.Assert.*;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.UUID;
 
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
-import java.math.BigDecimal;
-import java.util.*;
 
-import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
+import org.mule.modules.zuora.zobject.ZObjectType;
+
+import com.zuora.api.DeleteResult;
+import com.zuora.api.ProductRatePlanChargeTierData;
+import com.zuora.api.RatePlanData;
+import com.zuora.api.SaveResult;
+import com.zuora.api.SubscribeRequest;
+import com.zuora.api.SubscribeResult;
+import com.zuora.api.SubscriptionData;
+import com.zuora.api.object.Account;
+import com.zuora.api.object.Contact;
+import com.zuora.api.object.PaymentMethod;
+import com.zuora.api.object.ProductRatePlanChargeTier;
+import com.zuora.api.object.RatePlan;
+import com.zuora.api.object.Subscription;
+import com.zuora.api.object.ZObject;
 
 public class ZuoraModuleTestDriver {
     private ZuoraModule module;
@@ -112,9 +134,21 @@ public class ZuoraModuleTestDriver {
             module.delete(ZObjectType.Account, Arrays.asList(id));
         }
     }
-
-
     
+    @Test
+    public void productProfile() throws Exception
+    {
+        String productId = getTestProduct();
+        try
+        {
+            final ProductProfile productProfileObject = module.productProfile(productId);
+            assertNotNull(productProfileObject.getProduct().getId());
+        }
+        finally
+        {
+            module.delete(ZObjectType.Product, Collections.singletonList(productId));
+        }
+    }
 
     @Test
     public void getUserInfo() throws Exception {
@@ -275,16 +309,14 @@ public class ZuoraModuleTestDriver {
 
 
 
-        Map<String, Object> result = module.getInvoice(subscribeResult.getInvoiceId());
+        InvoiceProfile resultObject = module.getInvoice(subscribeResult.getInvoiceId());
 
-        System.out.println("Result = "+result);
-        
-        assertEquals("Posted",result.get("status"));
+        assertEquals("Posted",resultObject.getInvoice().getStatus());
         //assertEquals("amount",result.get("amount"));
-        assertNotSame(0,((ArrayList)result.get("invoiceitems")).size());
+        assertNotSame(0,((ArrayList)resultObject.getInvoiceItemProfiles()).size());
 
-        assertNotNull(result.get("billTo"));
-        assertNotNull(result.get("soldTo"));
+        assertNotNull(resultObject.getBillTo());
+        assertNotNull(resultObject.getSoldTo());
 
 
         DeleteResult deleteResultAccount = null;
