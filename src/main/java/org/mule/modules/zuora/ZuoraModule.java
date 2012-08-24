@@ -218,12 +218,12 @@ public class ZuoraModule {
      * {@sample.xml ../../../doc/mule-module-zuora.xml.sample zuora:product-profile}
      *
      * @param productId The id of the product to retrieve a product profile for
-     * @return the profile, as a String-Object Map
+     * @return the product profile as an object
      * @throws {@link ZuoraException}
      */
     @Processor
     @InvalidateConnectionOn(exception=SessionTimedOutException.class)
-    public Map<String, Object> productProfile(String productId) throws Exception {
+    public ProductProfile productProfile(String productId) throws Exception {
         return client.productProfile(productId);
     }
 
@@ -278,11 +278,11 @@ public class ZuoraModule {
      * {@sample.xml ../../../doc/mule-module-zuora.xml.sample zuora:get-invoice}
      *
      * @param invoiceId The id of the account to retrieve an account profile for
-     * @return the invoice, as a String-Object Map
+     * @return the invoice and related data, as an object
      */
     @Processor
     @InvalidateConnectionOn(exception=SessionTimedOutException.class)
-    public Map<String, Object> getInvoice(String invoiceId)
+    public InvoiceProfile getInvoice(String invoiceId)
             throws Exception {
         return client.getInvoice(invoiceId);
     }

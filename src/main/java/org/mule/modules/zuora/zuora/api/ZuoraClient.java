@@ -10,15 +10,22 @@
 
 package org.mule.modules.zuora.zuora.api;
 
-import com.zuora.api.*;
-import com.zuora.api.object.ZObject;
-
-import org.mule.modules.zuora.AccountProfile;
-import org.mule.modules.zuora.User;
+import java.util.List;
 
 import javax.validation.constraints.NotNull;
-import java.util.List;
-import java.util.Map;
+
+import org.mule.modules.zuora.AccountProfile;
+import org.mule.modules.zuora.InvoiceProfile;
+import org.mule.modules.zuora.ProductProfile;
+import org.mule.modules.zuora.User;
+
+import com.zuora.api.AmendRequest;
+import com.zuora.api.AmendResult;
+import com.zuora.api.DeleteResult;
+import com.zuora.api.SaveResult;
+import com.zuora.api.SubscribeRequest;
+import com.zuora.api.SubscribeResult;
+import com.zuora.api.object.ZObject;
 
 public interface ZuoraClient<E extends Throwable>
 {
@@ -38,11 +45,11 @@ public interface ZuoraClient<E extends Throwable>
 
     List<AmendResult> amend(@NotNull  List<AmendRequest> amendaments) throws E;
 
-    Map<String, Object> productProfile(@NotNull String productId) throws E;
+    ProductProfile productProfile(@NotNull String productId) throws E;
 
     String getSessionId();
 
     AccountProfile accountProfile(@NotNull String accountId) throws E;
 
-    Map<String, Object> getInvoice(@NotNull String accountId) throws E;
+    InvoiceProfile getInvoice(@NotNull String accountId) throws E;
 }

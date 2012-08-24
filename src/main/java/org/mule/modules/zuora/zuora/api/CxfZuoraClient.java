@@ -17,7 +17,6 @@ import java.util.Collection;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.validation.constraints.NotNull;
@@ -33,6 +32,11 @@ import org.apache.commons.lang.Validate;
 import org.apache.cxf.headers.Header;
 import org.apache.cxf.jaxb.JAXBDataBinding;
 import org.mule.modules.zuora.AccountProfile;
+import org.mule.modules.zuora.InvoiceItemProfile;
+import org.mule.modules.zuora.InvoiceProfile;
+import org.mule.modules.zuora.ProductProfile;
+import org.mule.modules.zuora.ProductRatePlanChargeProfile;
+import org.mule.modules.zuora.ProductRatePlanProfile;
 import org.mule.modules.zuora.RatePlanProfile;
 import org.mule.modules.zuora.SubscriptionProfile;
 import org.mule.modules.zuora.User;
@@ -53,11 +57,18 @@ import com.zuora.api.UnexpectedErrorFault;
 import com.zuora.api.ZuoraService;
 import com.zuora.api.object.Account;
 import com.zuora.api.object.Contact;
+import com.zuora.api.object.Invoice;
+import com.zuora.api.object.InvoiceItem;
 import com.zuora.api.object.Payment;
 import com.zuora.api.object.PaymentMethod;
+import com.zuora.api.object.Product;
+import com.zuora.api.object.ProductRatePlan;
+import com.zuora.api.object.ProductRatePlanCharge;
+import com.zuora.api.object.ProductRatePlanChargeTier;
 import com.zuora.api.object.RatePlan;
 import com.zuora.api.object.RatePlanCharge;
 import com.zuora.api.object.Subscription;
+import com.zuora.api.object.TaxationItem;
 import com.zuora.api.object.ZObject;
 
 /**
@@ -274,10 +285,10 @@ public class CxfZuoraClient implements ZuoraClient<Exception> {
     }
 
     @Override
-    public Map<String, Object> productProfile(String productId)
+    public ProductProfile productProfile(String productId)
             throws Exception {
-        // TODO Auto-generated method stub
-        HashMap<String, Object> productprofile = new HashMap<String, Object>();
+        
+        ProductProfile productProfile = new ProductProfile();
 
         try {
             Validate.notEmpty(productId);
@@ -288,61 +299,65 @@ public class CxfZuoraClient implements ZuoraClient<Exception> {
             QueryResult qr = this.soap.query(productQuery);
             if (qr.getSize() != 0) {
 
-                Collection<Entry<String, Object>> productCollection = qr
-                        .getRecords().get(0).properties();
-                productprofile = getAsHashMap(productCollection);
+                Product product = (Product) qr.getRecords().get(0);
+                productProfile.setProduct(product);
 
                 String productRatePlanQuery = "select Description,EffectiveEndDate,EffectiveStartDate,Name from ProductRatePlan where ProductId = '"
                         + productId + "'";
                 List<ZObject> ratePlans = this.soap.query(productRatePlanQuery)
                         .getRecords();
                 List<HashMap<String, Object>> ratePlanList = new ArrayList<HashMap<String, Object>>();
+                List<ProductRatePlanProfile> productRatePlanProfiles = new ArrayList<ProductRatePlanProfile>();
 
                 for (ZObject ratePlan : ratePlans) {
-                    Collection<Entry<String, Object>> rateplanCollection = ratePlan
-                            .properties();
-                    HashMap<String, Object> productRatePlanMap = getAsHashMap(rateplanCollection);
+                    if (ratePlan == null) continue;
+                    final ProductRatePlanProfile productRatePlanProfile = new ProductRatePlanProfile();
+                    final ProductRatePlan productRatePlan = (ProductRatePlan) ratePlan;
+                    productRatePlanProfile.setProductRatePlan(productRatePlan);
 
                     String productRatePlanChargesQuery = "select AccountingCode,BillCycleDay,BillCycleType,BillingPeriod,BillingPeriodAlignment,ChargeModel,ChargeType,DefaultQuantity,Description,IncludedUnits,MaxQuantity,MinQuantity,Name,NumberOfPeriod,OverageCalculationOption,OverageUnusedUnitsCreditOption,RevRecCode,RevRecTriggerCondition,SmoothingModel,SpecificBillingPeriod,Taxable,TaxCode,TriggerEvent,UOM from ProductRatePlanCharge where ProductRatePlanId ='"
-                            + productRatePlanMap.get("id") + "'";
-                    List<ZObject> productRatePlanCharges = this.soap.query(
-                            productRatePlanChargesQuery).getRecords();
-                    List<HashMap<String, Object>> productRatePlanChargeList = new ArrayList<HashMap<String, Object>>();
+                            + productRatePlan.getId() + "'";
+                    
+                    @SuppressWarnings("unchecked")
+                    List<ProductRatePlanCharge> productRatePlanCharges = (List<ProductRatePlanCharge>) CollectionUtils.collect(this.soap.query(
+                            productRatePlanChargesQuery).getRecords(), new Transformer()
+                            {
+                                @Override
+                                public Object transform(Object input)
+                                {
+                                    return (ProductRatePlanCharge) input;
+                                }
+                            });
+                    
 
-                    for (ZObject ratePlanCharge : productRatePlanCharges) {
-                        Collection<Entry<String, Object>> rateplanCargeCollection = ratePlanCharge
-                                .properties();
-                        HashMap<String, Object> productRatePlanChargeMap = getAsHashMap(rateplanCargeCollection);
+                    List<ProductRatePlanChargeProfile> productRatePlanChargeProfiles = new ArrayList<ProductRatePlanChargeProfile>();
+                    for (ProductRatePlanCharge ratePlanCharge : productRatePlanCharges) {
+                        final ProductRatePlanChargeProfile productRatePlanChargeProfile = new ProductRatePlanChargeProfile();
+                        productRatePlanChargeProfile.setProductRatePlanCharge(ratePlanCharge);
 
                         String productRatePlanChargesTierQuery = "select Active,Currency,EndingUnit,IsOveragePrice,Price,PriceFormat,StartingUnit,Tier from ProductRatePlanChargeTier where ProductRatePlanChargeId ='"
-                                + productRatePlanChargeMap.get("id") + "'";
-                        List<ZObject> productRatePlanChargeTiers = this.soap
-                                .query(productRatePlanChargesTierQuery)
-                                .getRecords();
-                        List<HashMap<String, Object>> productRatePlanChargeTierList = new ArrayList<HashMap<String, Object>>();
-                        for (ZObject ratePlanChargeTier : productRatePlanChargeTiers) {
-                            Collection<Entry<String, Object>> rateplanCargeTierCollection = ratePlanChargeTier
-                                    .properties();
-                            HashMap<String, Object> productRatePlanChargeTierMap = getAsHashMap(rateplanCargeTierCollection);
-                            productRatePlanChargeTierList
-                                    .add(productRatePlanChargeTierMap);
-
-                        }
-                        productRatePlanChargeMap.put(
-                                "productRatePlanChargeTiers",
-                                productRatePlanChargeTierList);
-
-                        productRatePlanChargeList.add(productRatePlanChargeMap);
+                                + ratePlanCharge.getId() + "'";
+                        
+                        @SuppressWarnings("unchecked")
+                        List<ProductRatePlanChargeTier> productRatePlanChargeTiers = (List<ProductRatePlanChargeTier>) CollectionUtils.collect(
+                                this.soap.query(productRatePlanChargesTierQuery).getRecords(),
+                                new Transformer()
+                                {
+                                    @Override
+                                    public Object transform(Object input)
+                                    {
+                                        return (ProductRatePlanChargeTier) input;
+                                    }
+                                });
+                        productRatePlanChargeProfile.setProductRatePlanChargeTiers(productRatePlanChargeTiers);
+                        
+                        productRatePlanChargeProfiles.add(productRatePlanChargeProfile);
+                        
                     }
-                    productRatePlanMap.put("productRatePlanCharges",
-                            productRatePlanChargeList);
-                    ratePlanList.add(productRatePlanMap);
-
+                    productRatePlanProfile.setProductRatePlanChargeProfiles(productRatePlanChargeProfiles);
+                    productRatePlanProfiles.add(productRatePlanProfile);
                 }
-                productprofile.put("productRatePlans", ratePlanList);
-            } else {
-                productprofile.put("error",
-                        "Unable to find a product with the id: " + productId);
+                productProfile.setProductRatePlanProfiles(productRatePlanProfiles);
             }
         } catch (UnexpectedErrorFault unexpectedErrorFault) {
             if (unexpectedErrorFault.getFaultInfo().getFaultCode() == ErrorCode.INVALID_SESSION) {
@@ -351,7 +366,7 @@ public class CxfZuoraClient implements ZuoraClient<Exception> {
             throw unexpectedErrorFault;
         }
 
-        return productprofile;
+        return productProfile;
     }
 
     @Override
@@ -467,9 +482,10 @@ public class CxfZuoraClient implements ZuoraClient<Exception> {
     }
 
     @Override
-    public Map<String, Object> getInvoice(String invoiceId)
+    public InvoiceProfile getInvoice(String invoiceId)
             throws Exception {
-        HashMap<String, Object> invoiceMap = new HashMap<String, Object>();
+        final InvoiceProfile invoiceProfile = new InvoiceProfile();
+        
         try {
             Validate.notEmpty(invoiceId);
 
@@ -478,103 +494,86 @@ public class CxfZuoraClient implements ZuoraClient<Exception> {
 
             QueryResult invoceQR = this.soap.query(invoiceQuery);
             if (invoceQR.getSize() != 0) {
-                Collection<Entry<String, Object>> invoiceCollection = invoceQR
-                        .getRecords().get(0).properties();
-
-                invoiceMap = getAsHashMap(invoiceCollection);
-
+                final Invoice invoice = (Invoice)invoceQR.getRecords().get(0);
+                invoiceProfile.setInvoice(invoice);
 
                 String accountQuery = "select AccountNumber,AdditionalEmailAddresses,AllowInvoiceEdit,AutoPay,Balance,Batch,BillCycleDay,BillToId,CommunicationProfileId,CreditBalance,CrmId,Currency,CustomerServiceRepName,DefaultPaymentMethodId,InvoiceDeliveryPrefsEmail,InvoiceDeliveryPrefsPrint,InvoiceTemplateId,LastInvoiceDate,Name,Notes,ParentId,PaymentGateway,PaymentTerm,PurchaseOrderNumber,SalesRepName,SoldToId,Status,TaxExemptCertificateId,TaxExemptCertificateType,TaxExemptDescription,TaxExemptEffectiveDate,TaxExemptExpirationDate,TaxExemptIssuingJurisdiction,TaxExemptStatus,TotalInvoiceBalance from Account where id = '"
-                        + invoiceMap.get("accountId") + "'";
+                        + invoice.getAccountId() + "'";
                 QueryResult accountQR = this.soap.query(accountQuery);
                 if (accountQR.getSize() != 0) {
-                    HashMap<String, Object> accountMap = new HashMap<String, Object>();
-                    Collection<Entry<String, Object>> accountCollection = accountQR
-                            .getRecords().get(0).properties();
-
-                    accountMap = getAsHashMap(accountCollection);
-                    invoiceMap.put("account", accountMap);
-
+                    final Account account = (Account) accountQR.getRecords().get(0);
+                    invoiceProfile.setAccount(account);
 
                     String paymentMethodQuery = "select AchAbaCode,AchAccountName,AchAccountNumberMask,AchAccountType,AchBankName,Active,BankBranchCode,BankCheckDigit,BankCity,BankCode,BankIdentificationNumber,BankName,BankPostalCode,BankStreetName,BankStreetNumber,BankTransferAccountName,BankTransferAccountType,BankTransferType,City,Country,CreditCardAddress1,CreditCardAddress2,CreditCardCity,CreditCardCity,CreditCardExpirationMonth,CreditCardExpirationYear,CreditCardHolderName,CreditCardMaskNumber,CreditCardPostalCode,CreditCardState,CreditCardType,DeviceSessionId,Email,FirstName,IBAN,IPAddress,LastFailedSaleTransactionDate,LastName,LastTransactionDateTime,LastTransactionDateTime,MandateCreationDate,MandateID,MandateReceived,MandateUpdateDate,MaxConsecutivePaymentFailures,Name,NumConsecutiveFailures,PaymentMethodStatus,PaymentRetryWindow,PaypalBaid,PaypalEmail,PaypalPreapprovalKey,PaypalType,Phone,PostalCode,State,StreetName,StreetNumber,TotalNumberOfErrorPayments,TotalNumberOfProcessedPayments,Type,UseDefaultRetryRule from PaymentMethod where id = '"
-                            + accountMap.get("defaultPaymentMethodId") + "'";
+                            + account.getDefaultPaymentMethodId() + "'";
                     QueryResult paymentMethodQR = this.soap.query(paymentMethodQuery);
                     if (paymentMethodQR.getSize() != 0) {
-                        HashMap<String, Object> paymentMethodMap = new HashMap<String, Object>();
-                        Collection<Entry<String, Object>> paymentMethodCollection = paymentMethodQR
-                                .getRecords().get(0).properties();
-
-                        paymentMethodMap = getAsHashMap(paymentMethodCollection);
-                        invoiceMap.put("paymentMethod", paymentMethodMap);
-
-
+                        final PaymentMethod paymentMethod = (PaymentMethod) paymentMethodQR.getRecords().get(0);
+                        invoiceProfile.setPaymentMethod(paymentMethod);
 
                     }
 
                     String billToQuery = "select AccountId, Address1, Address2, City, Country, County, CreatedById, CreatedDate, Description, Fax, FirstName, HomePhone, LastName, MobilePhone, NickName, OtherPhone, OtherPhoneType, PersonalEmail, PostalCode, State, TaxRegion, UpdatedById, UpdatedDate, WorkEmail, WorkPhone from contact where id='"
-                            + accountMap.get("billToId") + "'";
+                            + account.getBillToId() + "'";
 
                     QueryResult billToQR = this.soap.query(billToQuery);
                     if (billToQR.getSize() != 0) {
-                        HashMap<String, Object> billToMap = new HashMap<String, Object>();
-                        Collection<Entry<String, Object>> billToCollection = billToQR
-                                .getRecords().get(0).properties();
-
-                        billToMap = getAsHashMap(billToCollection);
-                        invoiceMap.put("billTo", billToMap);
+                        final Contact billTo = (Contact) billToQR.getRecords().get(0);
+                        invoiceProfile.setBillTo(billTo);
                     }
                     String soldToQuery = "select AccountId, Address1, Address2, City, Country, County, CreatedById, CreatedDate, Description, Fax, FirstName, HomePhone, LastName, MobilePhone, NickName, OtherPhone, OtherPhoneType, PersonalEmail, PostalCode, State, TaxRegion, UpdatedById, UpdatedDate, WorkEmail, WorkPhone from contact where id='"
-                            + accountMap.get("soldToId") + "'";
+                            + account.getSoldToId() + "'";
 
                     QueryResult soldToQR = this.soap.query(soldToQuery);
                     if (soldToQR.getSize() != 0) {
-                        HashMap<String, Object> soldToMap = new HashMap<String, Object>();
-                        Collection<Entry<String, Object>> soldToCollection = soldToQR
-                                .getRecords().get(0).properties();
-
-                        soldToMap = getAsHashMap(soldToCollection);
-                        invoiceMap.put("soldTo", soldToMap);
+                        final Contact soldTo = (Contact) soldToQR.getRecords().get(0);
+                        invoiceProfile.setSoldTo(soldTo);
                     }
 
                 }
 
 
                 String invoiceItemQuery = "select AccountingCode,ChargeAmount,ChargeDate,ChargeDescription,ChargeName,ChargeNumber,ProcessingType,ProductDescription,ProductId,ProductName,Quantity,RatePlanChargeId,RevRecCode,RevRecStartDate,RevRecTriggerCondition,ServiceEndDate,ServiceStartDate,SKU,SubscriptionId,SubscriptionNumber,TaxAmount,TaxCode,TaxExemptAmount,UnitPrice,UOM from InvoiceItem where invoiceid = '"
-                        + invoiceMap.get("id") + "'";
+                        + invoice.getId() + "'";
 
-                List<ZObject> invoiceItemZList = this.soap.query(invoiceItemQuery)
-                        .getRecords();
+                @SuppressWarnings("unchecked")
+                List<InvoiceItem> invoiceItemList = (List<InvoiceItem>) CollectionUtils.collect(this.soap.query(invoiceItemQuery)
+                        .getRecords(), new Transformer()
+                        {
+                            @Override
+                            public Object transform(Object input)
+                            {
+                                return (InvoiceItem) input;
+                            }
+                        });
 
-                List<Map<String, Object>> invoiceItemResultList = new ArrayList<Map<String, Object>>();
-                for (ZObject zInvoiceItem : invoiceItemZList) {
-
-                    if (zInvoiceItem != null) {
-                        Collection<Entry<String, Object>> invoiceItemCollection = zInvoiceItem
-                                .properties();
-
-
-                        HashMap<String, Object> invoiceItemMap = getAsHashMap(invoiceItemCollection);
+                final List<InvoiceItemProfile> invoiceItemProfiles = new ArrayList<InvoiceItemProfile>();
+                for (InvoiceItem invoiceItem : invoiceItemList) {
+                    if (invoiceItem != null) {
+                        InvoiceItemProfile invoiceItemProfile = new InvoiceItemProfile();
+                        invoiceItemProfile.setInvoiceItem(invoiceItem);
 
                         String taxationItemQuery = "select AccountingCode,ExemptAmount,Jurisdiction,LocationCode,Name,TaxAmount,TaxCode,TaxCodeDescription,TaxDate,TaxRate,TaxRateDescription,TaxRateType from TaxationItem where invoiceitemid = '"
-                                + invoiceItemMap.get("id") + "'";
+                                + invoiceItem.getId() + "'";
 
-                        List<ZObject> taxationItemZList = this.soap.query(taxationItemQuery)
-                                .getRecords();
-                        List<Map<String, Object>> taxationItemResultList = new ArrayList<Map<String, Object>>();
-                        for (ZObject taxationItem : taxationItemZList) {
-                            if (taxationItem != null) {
-                                Collection<Entry<String, Object>> taxationItemCollection = taxationItem.properties();
-                                taxationItemResultList.add(getAsHashMap(taxationItemCollection));
-                            }
+                        @SuppressWarnings("unchecked")
+                        List<TaxationItem> taxationItemList = (List<TaxationItem>) CollectionUtils.collect(
+                            this.soap.query(taxationItemQuery).getRecords(), new Transformer()
+                                {
+                                    @Override
+                                    public Object transform(Object input)
+                                    {
+                                        return (TaxationItem) input;
+                                    }
+                                });
+                        
+                        if(!taxationItemList.isEmpty()){
+                            invoiceItemProfile.setTaxationItems(taxationItemList);
                         }
-                        if(!taxationItemResultList.isEmpty()){
-                            invoiceItemMap.put("taxationitems", taxationItemResultList);
-                        }
-
-                        invoiceItemResultList.add(invoiceItemMap);
+                        invoiceItemProfiles.add(invoiceItemProfile);
                     }
                 }
-                invoiceMap.put("invoiceitems", invoiceItemResultList);
+                invoiceProfile.setInvoiceItemProfiles(invoiceItemProfiles);
 
 
             }
@@ -584,7 +583,7 @@ public class CxfZuoraClient implements ZuoraClient<Exception> {
             }
             throw unexpectedErrorFault;
         }
-        return invoiceMap;
+        return invoiceProfile;
     }
 
     private HashMap<String, Object> getAsHashMap(
